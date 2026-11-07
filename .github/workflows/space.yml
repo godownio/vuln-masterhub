@@ -75,3 +75,24 @@ jobs:
           PY
       - name: Upload runtime via short-lived repository token
         run: hf upload Downio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"
+      - name: Check Space runtime status
+        timeout-minutes: 12
+        run: |
+          python - <<'PY'
+          import time
+          from huggingface_hub import HfApi
+          api=HfApi()
+          ready=0
+          for attempt in range(30):
+              runtime=api.space_info('Downio/vuln-masterhub').runtime
+              stage=runtime.stage if runtime else 'UNKNOWN'
+              print('Space runtime:',stage,flush=True)
+              if stage in ('BUILD_ERROR','RUNTIME_ERROR','CONFIG_ERROR'):
+                  raise SystemExit('Space failed to start; inspect platform logs')
+              ready=ready+1 if stage=='RUNNING' else 0
+              if ready>=2:
+                  break
+              time.sleep(20)
+          else:
+              raise SystemExit('Space readiness timed out')
+          PY
