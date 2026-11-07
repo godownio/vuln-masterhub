@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import gzip
 import re
 import shutil
 import sys
@@ -70,8 +71,10 @@ def export() -> tuple[int, int]:
                       "updated": str(meta.get("updated") or "")})
     tree = [node for path, node in nodes.items() if "/" not in path]
     INDEX.parent.mkdir(parents=True, exist_ok=True)
-    INDEX.write_text(json.dumps({"tree": tree, "cards": cards,
-                                "nodes": {p: {"title": n["title"]} for p, n in nodes.items()}}, ensure_ascii=False), encoding="utf-8")
+    payload=json.dumps({"tree": tree, "cards": cards,
+                       "nodes": {p: {"title": n["title"]} for p, n in nodes.items()}}, ensure_ascii=False,separators=(',',':')).encode('utf8')
+    INDEX.write_bytes(payload)
+    INDEX.with_suffix('.json.gz').write_bytes(gzip.compress(payload,compresslevel=6,mtime=0))
     return len(nodes), len(cards)
 
 

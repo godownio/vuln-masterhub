@@ -3,21 +3,25 @@
   'use strict';
   const app = document.getElementById('knowledge-tree-app');
   if (!app) return;
+  const startedAt=performance.now();
   const $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
   const viewport = $('kt-viewport'), world = $('kt-world'), detail = $('kt-detail');
   const scene=document.createElement('div');scene.id='kt-scene';viewport.insertBefore(scene,$('kt-svg'));scene.append($('kt-svg'));
   const raster=document.createElement('canvas');raster.id='kt-raster';raster.setAttribute('aria-hidden','true');scene.prepend(raster);
-  let rasterReady=false,rasterVersion=0,interactionTimer,hudTime=0;
+  let rasterReady=false,rasterVersion=0,interactionTimer,hudTime=0,snapshotJob;
   const limits = new Map(), dirs = new Map(), cardsByPath = new Map(), cache = new Map();
   const pointers = new Map();
   const expanded = new Set(['']), INITIAL_BUDGET = 400;
   const gardenFrame=document.querySelector('.kt-cat-garden');gardenFrame.hidden=true;scene.prepend(gardenFrame);
   gardenFrame.replaceChildren();
   const sceneAssets=window.KnowledgeSceneAssets||{cats:[],flora:[]};
-  for(const [i,asset] of sceneAssets.flora.entries()){const image=document.createElement('img');image.className='kt-floor-cluster'+(i%4===0?' is-breezy':'');image.src=new URL(asset.file,document.baseURI);image.dataset.asset=asset.key;image.loading='lazy';image.decoding='async';image.alt='';image.setAttribute('aria-hidden','true');gardenFrame.append(image);}
+  const pendingArt=[];
+  const artObserver='IntersectionObserver' in window?new IntersectionObserver(entries=>{for(const entry of entries){const image=entry.target;image.classList.toggle('is-in-view',entry.isIntersecting);if(entry.isIntersecting&&image.dataset.src){image.src=image.dataset.src;delete image.dataset.src;}}},{root:viewport,rootMargin:'180px'}):null;
+  function prepareArt(image,asset){image.dataset.src=new URL(asset.file,document.baseURI).href;image.width=asset.width||512;image.height=asset.height||512;image.loading='lazy';image.decoding='async';image.fetchPriority='low';image.classList.add('kt-art-image');image.addEventListener('load',()=>image.classList.add('is-loaded'),{once:true});pendingArt.push(image);}
+  for(const [i,asset] of sceneAssets.flora.entries()){const image=document.createElement('img');image.className='kt-floor-cluster'+(i%4===0?' is-breezy':'');prepareArt(image,asset);image.dataset.asset=asset.key;image.alt='';image.setAttribute('aria-hidden','true');gardenFrame.append(image);}
   for(const [i,asset] of sceneAssets.cats.entries()){
     const cat=document.createElement('button');cat.type='button';cat.className='kt-cat kt-cat-unique';cat.dataset.cat=asset.name;cat.dataset.asset=asset.key;cat.setAttribute('aria-label',`点击猫${asset.name}，领取一片知识叶子`);
-    const image=document.createElement('img');image.src=new URL(asset.file,document.baseURI);image.alt='手绘猫'+asset.name;image.loading=i===0?'eager':'lazy';image.decoding='async';
+    const image=document.createElement('img');prepareArt(image,asset);image.alt='手绘猫'+asset.name;
     const label=document.createElement('span');label.textContent=asset.name;cat.append(image,label);gardenFrame.append(cat);
   }
   const revealed = new Set(), bookmarks = new Set();
@@ -35,6 +39,7 @@
   const urlFor = path => new URL(path.replace(/^\//,''), document.baseURI).href;
   function button(label, action, cls) {const b=textEl('button',label,cls);b.type='button';b.addEventListener('click',action);return b;}
   function setup() {
+    const renderStarted=performance.now();
     for (const card of data.cards) {
       card.search=normalize([card.title,card.path,card.breadcrumb,...(card.tags||[]),...(card.aliases||[]),...(card.cve||[])].join(' '));
       if(!cardsByPath.has(card.path)) cardsByPath.set(card.path,[]);
@@ -51,6 +56,8 @@
     rebuild(); renderGlobalDirectory(); openDirectory(root,false); homeView(); renderBookmarks(); $('kt-loading').hidden=true;
     $('kt-stats').textContent=`${dirs.size-1} 个目录 · ${data.cards.length.toLocaleString()} 张场景卡片`;
     app.dataset.ready='true';
+    app.dataset.renderMs=(performance.now()-renderStarted).toFixed(1);
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{app.dataset.treeReadyMs=(performance.now()-startedAt).toFixed(1);for(const image of pendingArt){if(artObserver)artObserver.observe(image);else{image.src=image.dataset.src;delete image.dataset.src;}}}));
   }
   function rebuild() {
     entities=[];
@@ -211,10 +218,15 @@
       g.addEventListener('pointerleave',()=>{$('kt-node-hint').hidden=true;});
       if(n.kind==='directory'&&n!==root)g.addEventListener('dblclick',e=>{e.preventDefault();toggleDirectory(n);});
     }
-    drawMini(); updateMatches(); transform();snapshot();
+    drawMini(); updateMatches(); transform();scheduleSnapshot();
   }
-  function snapshot(){
-    rasterReady=false;const version=++rasterVersion,clone=$('kt-svg').cloneNode(true),style=document.createElementNS(NS,'style');
+  function scheduleSnapshot(){
+    rasterReady=false;const version=++rasterVersion;
+    if('requestIdleCallback' in window){cancelIdleCallback(snapshotJob);snapshotJob=requestIdleCallback(()=>snapshot(version),{timeout:1000});}
+    else{clearTimeout(snapshotJob);snapshotJob=setTimeout(()=>snapshot(version),120);}
+  }
+  function snapshot(version){
+    if(version!==rasterVersion)return;const clone=$('kt-svg').cloneNode(true),style=document.createElementNS(NS,'style');
     const rules=[];for(const sheet of document.styleSheets){try{for(const rule of sheet.cssRules)if(rule.selectorText?.includes('.kt-'))rules.push(rule.cssText);}catch{}}
     style.textContent=rules.join('\n');clone.prepend(style);
     const w=bounds.right-bounds.x,h=bounds.bottom-bounds.y,dpr=Math.min(2,window.devicePixelRatio||1.5,Math.sqrt(4500000/(w*h)));
@@ -268,7 +280,7 @@
     selected=key;const active=new Set();
     function visit(n){let hit=n.key===key;for(const c of n.routes||[]){if(visit(c)){active.add(c.key);hit=true;}}return hit;}
     visit(root);for(const n of entities)n.element.classList.toggle('is-selected',n.key===key);
-    for(const edge of woodEdges){const strokes=edge.element.querySelectorAll('path');strokes[0]?.setAttribute('stroke',active.has(edge.key)?'#bd8031':'#746044');strokes[1]?.setAttribute('stroke',active.has(edge.key)?'#e6bc66':'#d4b486');}snapshot();
+    for(const edge of woodEdges){const strokes=edge.element.querySelectorAll('path');strokes[0]?.setAttribute('stroke',active.has(edge.key)?'#bd8031':'#746044');strokes[1]?.setAttribute('stroke',active.has(edge.key)?'#e6bc66':'#d4b486');}scheduleSnapshot();
   }
   function openDirectory(n,focus=false,expand=false) {
     if(n.collapsed&&expand){const sx=tx+n.x*scale,sy=ty+n.y*scale;expanded.add(n.path);rebuild();tx=sx-n.x*scale;ty=sy-n.y*scale;transform();}scope=n.path;syncScope();select(n.key); if(query)search();
@@ -350,7 +362,7 @@
   async function saveLeaf(card,saved){
     try{if(!await window.KnowledgeAccount.setBookmark(card.url,saved))return false;if(saved)bookmarks.add(card.url);else bookmarks.delete(card.url);renderBookmarks();draw();return true;}catch(error){toast(error.message);return false;}
   }
-  window.KnowledgeAccount?.ready.then(async state=>{if(state.user){try{const result=await window.KnowledgeAccount.request('/api/bookmarks');bookmarks.clear();for(const key of result.bookmarks)bookmarks.add(key);}catch(error){toast(error.message);}}if(data){renderBookmarks();draw();}});
+  window.KnowledgeAccount?.ready.then(async state=>{if(state.user){try{const result=await window.KnowledgeAccount.request('/api/bookmarks');bookmarks.clear();for(const key of result.bookmarks)bookmarks.add(key);}catch(error){toast(error.message);}}if(data){renderBookmarks();if(bookmarks.size)draw();}});
   let giftCard=null,giftCat='松果',giftTicket=0;
   async function catGift(name){
     if(!data)return;giftCat=name;const pool=data.cards.filter(card=>under(card.path,scope)&&matches(card));
@@ -397,5 +409,9 @@
   viewport.addEventListener('pointerup',release);viewport.addEventListener('pointercancel',release);
   $('kt-minimap').addEventListener('click',e=>{if(!mini)return;const r=e.currentTarget.getBoundingClientRect(),x=(e.clientX-r.left)*180/r.width,y=(e.clientY-r.top)*105/r.height;tx=viewport.clientWidth/2-((x-mini.ox)/mini.s+mini.x)*scale;ty=viewport.clientHeight/2-((y-mini.oy)/mini.s+mini.y)*scale;transform();});
   new ResizeObserver(()=>{if(data)transform();}).observe(viewport);
-  fetch(urlFor('kb-index.json')).then(r=>{if(!r.ok)throw Error(r.status);return r.json();}).then(json=>{data=json;setup();}).catch(e=>{$('kt-loading').textContent='知识树加载失败，请刷新重试。';$('kt-loading').classList.add('kt-error');console.error(e);});
+  async function loadIndex(){
+    if('DecompressionStream' in window){try{const response=await fetch(urlFor('kb-index.json.gz'),{priority:'high'});if(!response.ok)throw Error(response.status);if(response.headers.get('Content-Encoding')?.includes('gzip'))return await response.json();return await new Response(response.body.pipeThrough(new DecompressionStream('gzip'))).json();}catch{/* Older deployments and browsers keep the plain-JSON path. */}}
+    const response=await fetch(urlFor('kb-index.json'),{priority:'high'});if(!response.ok)throw Error(response.status);return response.json();
+  }
+  loadIndex().then(json=>{app.dataset.indexMs=(performance.now()-startedAt).toFixed(1);data=json;setup();}).catch(e=>{$('kt-loading').textContent='知识树加载失败，请刷新重试。';$('kt-loading').classList.add('kt-error');console.error(e);});
 })();

@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: python -m pip install 'huggingface_hub>=1.19' requests
+      - run: python -m pip install 'huggingface_hub>=1.19' requests PyYAML
       - name: Download verified snapshot
         env:
           GH_TOKEN: ${{ github.token }}
@@ -71,6 +71,27 @@ jobs:
           path=root/'release-manifest.json'
           manifest=json.loads(path.read_text())
           manifest['files']['app.py']=hashlib.sha256((root/'app.py').read_bytes()).hexdigest()
+          path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache: false
+      - name: Build current homepage and static assets
+        run: |
+          curl -fsSL https://github.com/gohugoio/hugo/releases/download/v0.169.0/hugo_extended_0.169.0_linux-amd64.tar.gz | tar -xz -C /usr/local/bin hugo
+          python tools/export_hugo.py
+          hugo --source hugo-site --renderSegments homepage --minify --baseURL https://downio-vuln-masterhub.hf.space/
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json,shutil
+          source=Path('hugo-site/public')
+          shutil.copytree(source,'runtime/hugo-site/public',dirs_exist_ok=True)
+          path=Path('runtime/release-manifest.json')
+          manifest=json.loads(path.read_text())
+          for file in source.rglob('*'):
+              if file.is_file():
+                  manifest['files']['hugo-site/public/'+file.relative_to(source).as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
           path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
           PY
       - name: Upload runtime via short-lived repository token

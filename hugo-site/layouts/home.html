@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Godown 安全知识树</title></head><body>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="preload" href="{{ "kb-index.json.gz" | relURL }}" as="fetch" type="application/gzip" crossorigin="anonymous" fetchpriority="high"><title>Godown 安全知识树</title></head><body>
 <link rel="stylesheet" href="{{ "css/knowledge-tree.css" | relURL }}?v={{ readFile "static/css/knowledge-tree.css" | sha256 }}">
 <header class="kt-site-header"><a href="{{ "" | relURL }}">♧ Godown 安全知识树</a><nav><a href="{{ "console/" | relURL }}">API Key 控制台</a><a href="{{ "about/" | relURL }}">关于我</a><a href="https://godownio.github.io/" target="_blank" rel="noopener">原博客 ↗</a><button id="kt-account-button" type="button">GitHub 登录</button></nav></header>
 <main id="knowledge-tree-app" class="kt-app">
