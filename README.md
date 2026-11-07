@@ -1,5 +1,13 @@
 # Godown Knowledge Tree
 
-Hugo / Hextra knowledge tree. Use the Publish knowledge tree workflow with the deployed backend URL.
+Hugo / Hextra knowledge tree.
+
+Portal: https://godownio-vuln-masterhub.hf.space/
+
+MCP: https://godownio-vuln-masterhub.hf.space/mcp (API Key required)
+
+Pages: https://godownio.github.io/vuln-masterhub/
+
+See [domain migration acceptance](docs/DOMAIN_MIGRATION.md).
 
 No account database or backend secrets are included.
