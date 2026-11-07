@@ -1,3 +1,4 @@
 hugo-site/public/
 hugo-site/resources/
 __pycache__/
+hugo-site/.hugo_build.lock
