@@ -24,10 +24,14 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 affected_versions: <=v5.4.0
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:24:07+08:00'
+  notes: 已对照原文与全部20张图核对：MailController filePath→new File(图2)、sendText→send 重载(图3-6)、setFiles/FileDataSource.getInputStream(图8-9)、setAttachments DataHandler(图10)、mail.send→doSend→Transport.send→send0→SMTPTransport.sendMessage→message.writeTo→getContentStream(图11-17) 调用链逐段一致；图18请求 filePath=/etc/passwd 返回200操作成功，图19收件箱收到852字节passwd附件；图20修复版移除filePath并硬编码/xxx/xxx。影响版本<=v5.4.0与原文一致。未验证点：原文未说明是否需认证，卡片已注明按案例请求无认证、实际部署需确认；未复跑PoC。
 ---
 
 ## 一句话结论

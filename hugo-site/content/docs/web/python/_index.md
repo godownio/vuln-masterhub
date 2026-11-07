@@ -33,6 +33,8 @@ Python 反序列化、SSTI、框架与依赖漏洞。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Base64 解码服务解析差异：Python b64decode 在 `=` 处截断绕过白名单，shell base64 拼接后执行命令](web-python-base64-padding-parser-differential-command-injection/) | verified | high | 2026-11-07 |
+| [ComfyUI-Impact-Pack /upload/temp 文件名目录穿越任意写：写 custom_nodes/git/__init__.py 或 ComfyUI-Manager 启动脚本实现 RCE（CVE-2024-21575）](web-python-comfyui-impact-pack-upload-filename-traversal-startup-rce/) | verified | high | 2026-11-07 |
 | [ComfyUI-Manager /manager/get_openart_auth 等接口未授权读写第三方凭据：明文返回 OpenArt/Matrix/YouML 密钥](web-python-comfyui-manager-unauth-thirdparty-credential-endpoints/) | verified | high | 2026-11-06 |
 | [ComfyUI-Manager 3.37 security_level=weak 放行高权限接口：上传 config.ini + git_url 克隆恶意节点 + reboot 触发 RCE（CVE-2025-67303）](web-python-comfyui-manager-weak-config-git-clone-reboot-rce/) | verified | high | 2026-11-05 |
 | [ComfyUI-Manager CRLF 注入 security_level=weak + reboot + git_url 安装恶意节点：克隆仓库的 install.py 在安装阶段执行 RCE](web-python-comfyui-manager-crlf-security-level-weaken-install-py-rce/) | verified | high | 2026-11-06 |

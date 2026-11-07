@@ -31,6 +31,9 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [DongTai IAST 误报定位：污点 hash 碰撞把常量标成可控，先回溯 source 节点](code-analysis-dynamic-tracing-iast-taint-hash-collision-false-positive-triage/) | verified | medium | 2026-11-07 |
+| [eBPF 协议栈透视：起点函数+线程ID把数据包绑定到内核函数调用链](code-analysis-dynamic-tracing-ebpf-protocol-stack-packet-callchain/) | verified | medium | 2026-11-07 |
+| [ETW Hook 内核级 syscall 监控：替换 HalPrivateDispatchTable.HalCollectPmcCounters，栈上改写 SSDT 调用地址](code-analysis-dynamic-tracing-etw-hook-haldispatch-pmc-syscall-monitor/) | verified | medium | 2026-11-07 |
 | [ftrace function_graph 定位 syscall 内核错误返回点：strace→函数图追踪→gdb 断点](code-analysis-dynamic-tracing-ftrace-function-graph-syscall-error-locate/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

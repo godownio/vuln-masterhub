@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:20+08:00'
+  notes: 已对照原文与图01-13核对；修正PoC中Base64口令示例（原TWfyaW9S...无法解码，改为TWFyaW9SdWxlejE5ODU=→MarioRulez1985）；DCC端口以实际抓包为准；未复跑tshark/DCC提取。
 url: /docs/ctf/forensics/ctf-forensics-pcap-irc-dcc-nested-archive-password/
 draft: false
 kb_aliases:

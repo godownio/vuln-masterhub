@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: medium
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:37+08:00'
+  notes: 已对照原文与图14/18/42-46核对；NSDate 768535172.735564→2025-05-10 09:59:32 GMT+8；热点名=设备名iPhone；未复跑plist解析。
 url: /docs/defense/forensics/defense-forensics-ios-wifi-plist-nsdate-first-join/
 draft: false
 kb_aliases:

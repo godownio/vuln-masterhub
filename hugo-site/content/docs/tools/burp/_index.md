@@ -31,6 +31,8 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [autoDecoder 自定义加解密脚本：Flask /encode /decode 接口、bytes/str 与 Base64 编码、PKCS 填充及 JSON 字段处理](tools-burp-autodecoder-flask-custom-encrypt-decrypt-script/) | verified | high | 2026-11-07 |
+| [Burpy：Burp 经 PyRO 调用 Python 脚本自动加解密请求/响应（Burpy 类接口与三个常见报错）](tools-burp-burpy-pyro-python-auto-encrypt-decrypt/) | verified | high | 2026-11-07 |
 | [Hermes Agent 接入 Burp MCP：WSL 端口桥接、Origin 403 与异步 SSE 排障](tools-burp-hermes-mcp-wsl-sse-integration/) | verified | high | 2026-11-05 |
 | [JS Hook + 本地 Bridge + Burp 扩展：不还原算法直接加解密 Web 流量](tools-burp-js-hook-bridge-traffic-encrypt-decrypt/) | verified | high | 2026-11-06 |
 | [加密 API 测试代理链：上下游 mitmproxy 透明解密/重签，绕过防重放与 AES 参数加密](tools-burp-encrypted-api-proxy-decrypt-resign/) | verified | high | 2026-11-06 |

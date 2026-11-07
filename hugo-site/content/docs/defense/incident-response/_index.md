@@ -33,6 +33,8 @@ weight: 1
 |---|---|---|---|
 | [Docker 容器内 Tomcat 挖矿入侵溯源：从 WebShell、crontab 到隐藏挖矿二进制与矿池定位](defense-incident-response-docker-tomcat-mining-triage/) | verified | high | 2026-11-06 |
 | [Linux C2 木马清除顺序：先断看门狗与载体，再杀主进程并清理 /dev/shm 残留](defense-incident-response-linux-c2-watchdog-cleanup-order/) | verified | high | 2026-11-05 |
+| [Linux 挖矿应急响应：auth.log 定位 SSH 爆破源与被替换 sshd，dnsmasq 日志溯源矿池域名并识别 kinsing 家族](defense-incident-response-linux-ssh-bruteforce-sshd-backdoor-mining-kinsing/) | verified | medium | 2026-11-07 |
+| [Windows 权限维持三面排查：Run 键、计划任务与自启动服务的可疑项定位](defense-incident-response-windows-persistence-triage-run-schtask-service/) | verified | high | 2026-11-07 |
 | [勒索加密前的反取证与前置脚本行为](defense-incident-response-ransomware-pre-encryption-cleanup/) | verified | medium | 2026-11-04 |
 | [同一漏洞入口多轮利用与基础设施切换的关联分析](defense-incident-response-same-entry-multi-stage-infra-rotation/) | verified | medium | 2026-11-04 |
 | [无完整日志的数据泄露溯源：攻击者公开材料与源码审计的节点比对与证据分级](defense-incident-response-public-evidence-source-audit-cross-validation/) | verified | medium | 2026-11-06 |

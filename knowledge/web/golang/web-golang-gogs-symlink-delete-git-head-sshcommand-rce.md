@@ -26,9 +26,13 @@ tags:
 cve: []
 severity: critical
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:23:23+08:00'
+  notes: '已对照原文与全部23张图核对：core.sshCommand 本地实验（图02-03，/tmp/poc 内容含追加的 git-upload-pack 参数）、git push symlink true_git_dir（图11-14）、仓库根构造 HEAD/config/objects/refs/info（图15-17）、Burp POST /admin1/tset/_delete/master/true_git_dir/HEAD（图18-19）、提交触发后 internal server error（图20-21）、500 页泄露 Application Version: 0.13.2（图21/23）、Docker 镜像 gogs/gogs:0.13.2（图03），均与卡片一致。与 CVE-2025-64111 卡差异核对：候选卡入口为 UpdateRepoFile/contents API 符号链接写 .git/config；本卡入口为 DeleteRepoFile/_delete 符号链接删除 .git/HEAD + Git 仓库上溯至工作树根恶意 config，属不同利用链，保留两卡。dedup 工具因同产品同 sink 给出 merge 建议，但实际入口/前置/触发均不同，不合并、不删除。原文未给出该新链完整受影响区间，affected_versions 未设置。未验证点：文中 PoC 未复跑；受影响版本区间需以官方公告为准。'
 ---
 
 ## 一句话结论

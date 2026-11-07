@@ -36,6 +36,7 @@ Spring Framework/Spring Boot 漏洞与利用。
 | [Litemall 评论接口大量赋值：普通用户伪造管理员回复内容（CVE-2025-6702）](web-java-framework-spring-requestbody-mass-assignment-admin-content-forgery/) | verified | medium | 2026-11-05 |
 | [Spring @RequestBody 大量赋值：普通用户注入 role 字段注册为管理员](web-java-framework-spring-requestbody-mass-assignment-privilege-escalation/) | verified | high | 2026-11-05 |
 | [Spring AntPathMatcher 大小写不敏感 + Unicode ſ：路由命中 suctf、拦截器却漏判](web-java-framework-spring-antpathmatcher-unicode-long-s-case-bypass/) | verified | high | 2026-11-06 |
+| [Spring Boot Actuator env + refresh 注入 bootstrap.location：远程 YAML 触发 SnakeYAML ScriptEngineManager RCE](web-java-framework-spring-actuator-bootstrap-location-yaml-rce/) | verified | high | 2026-11-07 |
 | [Spring Boot Actuator env 未授权泄露环境变量与配置源，定位内部备份文件下载路径](web-java-framework-spring-actuator-env-config-backup-path/) | verified | high | 2026-11-06 |
 | [Spring Boot Actuator heapdump 暴露导致数据库与系统凭据泄露](web-java-framework-spring-actuator-heapdump-credential-leak/) | verified | high | 2026-11-05 |
 | [Spring MVC + FreeMarker 沙箱逃逸：springMacroRequestContext 重置 TemplateClassResolver](web-java-framework-spring-freemarker-macro-context-resolver-reset/) | verified | high | 2026-11-05 |
@@ -45,8 +46,11 @@ Spring Framework/Spring Boot 漏洞与利用。
 | [Spring uriDecode 高位截断“幽灵比特”路径穿越](web-java-framework-spring-ghost-bits-path-traversal/) | verified | high | 2026-11-04 |
 | [Spring WebFlux 内存马：替换 FilteringWebHandler.chain 注入恶意 WebFilter](web-java-framework-spring-webflux-filteringwebhandler-memshell/) | verified | high | 2026-11-05 |
 | [Spring 自定义鉴权按原始 URI 判断导致路径解析差异绕过](web-java-framework-spring-custom-auth-path-parsing-bypass/) | verified | high | 2026-11-05 |
+| [Spring4Shell（CVE-2022-22965）：Spring MVC 数据绑定 class.module.classLoader 链改写 Tomcat AccessLogValve 写 JSP](web-java-framework-spring-cve-2022-22965-accesslogvalve-webshell/) | verified | high | 2026-11-07 |
+| [文都 OA 匿名白名单 `/info/**` 通配放行：未授权读取 288 条员工 PII 并任意增删改](web-java-framework-spring-oa-anon-urls-info-wildcard-unauth-crud/) | verified | high | 2026-11-07 |
 | [新版 Spring MVC PathPatternsRequestCondition 动态路由内存马](web-java-framework-spring-mvc-pathpattern-memshell/) | verified | high | 2026-11-05 |
 | [暴露的 Eureka 注册中心被恶意实例注册劫持网关流量并捕获登录凭据](web-java-framework-spring-eureka-instance-hijack-credential-capture/) | verified | high | 2026-11-05 |
+| [泛微 E10 运维平台 /sapi/bs/** 通配白名单全局鉴权绕过：未授权 addUser + saveUserRole 添加管理员](web-java-framework-spring-weaver-e10-sapi-bs-wildcard-auth-bypass-admin/) | verified | high | 2026-11-07 |
 | [配置接口双重 URL 解码 + 反斜杠归一化路径穿越：读 application.yml 经 actuator env 下载 heapdump](web-java-framework-spring-config-double-decode-backslash-traversal-heapdump/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

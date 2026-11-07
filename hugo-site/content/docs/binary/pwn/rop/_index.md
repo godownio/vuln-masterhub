@@ -32,6 +32,11 @@ ROP/JOP/COP、gadget 与链构造。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Hexagon DSP ROP：trap0 系统调用 gadget + 两级栈迁移读取 /flag](binary-pwn-rop-hexagon-dsp-trap0-two-stage-pivot/) | verified | high | 2026-11-06 |
+| [MIPS ret2csu：__libc_csu_init 的 s0-s5 装载与 a0-a2 布置 gadget](binary-pwn-rop-mips-ret2csu-libc-csu-init/) | verified | high | 2026-11-07 |
+| [MIPS ROP 构造字符串到 .bss：sw 任意写、badchar XOR 解码与 fluff 寄存器交换](binary-pwn-rop-mips-bss-string-write-badchars-xor/) | verified | high | 2026-11-07 |
+| [MIPS 栈迁移 + GOT 泄露：pivot 到可控堆缓冲区并计算 libpivot 中 ret2win 偏移](binary-pwn-rop-mips-pivot-got-libpivot-ret2win/) | verified | high | 2026-11-07 |
+| [MIPS32 ROP 基础：fp+4 返回地址定位、t9/ra 跳转与 s0-s7 参数 gadget（ret2win/split/callme）](binary-pwn-rop-mips32-stack-frame-gadget-args/) | verified | high | 2026-11-07 |
+| [MIPS32 栈上 shellcode 的 I/D cache 同步：ROP 调 sleep 后跳转，兼 qemu-user 下 system() fork 失败](binary-pwn-rop-mips32-shellcode-cache-coherence-sleep/) | draft | high | 2026-11-07 |
 | [ret2csu 写 /bin/sh 到 bss：libc 符号偏移正确但字符串偏移不一致时的栈溢出利用](binary-pwn-rop-ret2csu-bss-binsh-libc-offset-mismatch/) | verified | high | 2026-11-05 |
 | [system("$0") 绕过 sh 关键字过滤：借 argv[0] 拉起 shell](binary-pwn-rop-system-dollar0-bypass-sh-filter/) | verified | high | 2026-11-06 |
 | [无 libc 泄露 + seccomp 禁 execve：magic gadget（add [rbp-0x3d], ebx）配合 CSU 写 BSS 伪造参数，调用 fopen/fread/send 读 flag](binary-pwn-rop-magic-gadget-csu-bss-write-orw-no-libc-leak/) | verified | high | 2026-11-06 |

@@ -23,9 +23,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:17:44+08:00'
+  notes: 已对照原文与28张图核对：双设备同账号、A停留¥180支付页、B取消订单返还券、B用券重下单、双机同时支付的时序与卡一致；券面额/截图与原文相符。未验证点：原文未截图两笔支付最终均成功，按原文叙述记录，confidence medium 合适。
 ---
 
 ## 一句话结论

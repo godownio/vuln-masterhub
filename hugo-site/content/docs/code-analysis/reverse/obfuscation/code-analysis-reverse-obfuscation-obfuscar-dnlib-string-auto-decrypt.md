@@ -20,9 +20,13 @@ cve: []
 severity: medium
 confidence: high
 affected_versions: Obfuscar 1.0（原文样本 DIE 检测到的保护器版本；其他版本生成的访问器与密钥可能变化）
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:43+08:00'
+  notes: 已对照原文与图01-27核对；Obfuscar 1.0、10969字节数组、key=170、FieldRVA/InitialValue与ldc短格式均一致；PoC未在样本上复跑。
 url: /docs/code-analysis/reverse/obfuscation/code-analysis-reverse-obfuscation-obfuscar-dnlib-string-auto-decrypt/
 draft: false
 kb_aliases:

@@ -24,10 +24,14 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 affected_versions: UEditor .NET 1.4.3.3 / 1.5.0 / 1.3.6（原文截图搜索结果）；原文目标编辑器显示版本 1.4.3
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:17:51+08:00'
+  notes: 已对照原文与28张图核对：UEditor 1.4.3 帮助框、controller.ashx?action=uploadfile&encode=utf-8、.ASPXAUTH Cookie、AntSword连接 /Scripts/ueditor/net/upload/image/... 均与原文一致；受影响版本取自原文图14搜索结果（1.4.3.3/1.5.0/1.3.6，仅.NET），已在卡内注明来源与目标实际显示1.4.3。未验证点：原文复用公开PoC、请求体截图打码，未独立复现。
 ---
 
 ## 一句话结论

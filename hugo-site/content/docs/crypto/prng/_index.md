@@ -33,8 +33,10 @@ weight: 1
 |---|---|---|---|
 | [/dev/urandom 打开或读取失败导致 srand 种子退化为固定序列](crypto-prng-urandom-open-fail-fixed-srand-sequence/) | verified | medium | 2026-11-05 |
 | [CVE-2023-39910（Milk Sad）：MT19937 32 位时钟种子导致钱包私钥可枚举](crypto-prng-mt19937-clock-seed-wallet-key-recovery/) | verified | medium | 2026-11-05 |
+| [glibc rand() 小种子空间爆破：复现 31/3 状态初始化，逐字节匹配首个输出还原 flag](crypto-prng-glibc-rand-small-seed-bruteforce/) | verified | high | 2026-11-07 |
 | [glibc rand() 连续输出泄露预测下一轮：31/3 线性递推恢复登录密码](crypto-prng-glibc-rand-output-sequence-prediction/) | verified | high | 2026-11-05 |
 | [LCG 参数恢复：连续输出差分 gcd 求模数、乘数与种子](crypto-prng-lcg-parameter-recovery-delta-gcd/) | verified | high | 2026-11-06 |
+| [LCG 状态逐字节恢复：利用后续消息只含数字字符的约束](crypto-prng-lcg-digit-charset-bytewise-state-recovery/) | verified | high | 2026-11-07 |
 | [LCG 高 16 位输出恢复初始状态：枚举低 16 位并用下一输出验证，预测第 100 位](crypto-prng-lcg-high16-state-recovery-enumeration/) | verified | high | 2026-11-06 |
 | [Math.random 生成会话密钥的可预测性：小程序 32 位 shareKey 恢复](crypto-prng-math-random-sharekey-recovery/) | verified | high | 2026-11-05 |
 | [MT19937 624 输出 untemper 恢复内部状态并预测后续随机数（含 GF(2) 矩阵法）](crypto-prng-mt19937-untemper-state-recovery-predict/) | verified | high | 2026-11-06 |

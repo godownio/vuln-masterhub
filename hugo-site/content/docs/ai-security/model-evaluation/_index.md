@@ -31,6 +31,7 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [PRI（Prompt Risk Index）LLM 安全防护量化评估：五维评分 + 多裁判 + 策略前后对比](ai-security-model-evaluation-pri-prompt-risk-index/) | verified | medium | 2026-11-07 |
 | [评测平台泄露测试集 CSV：复刻模型结构后暴力过拟合 200 条样本，模型防御/剪枝考核直接满分](ai-security-model-evaluation-test-set-csv-leak-overfit-bypass/) | verified | medium | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

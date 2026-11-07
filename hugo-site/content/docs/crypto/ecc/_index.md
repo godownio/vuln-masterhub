@@ -32,6 +32,7 @@ ECDSA nonce、曲线参数、无效曲线攻击。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [80 位素数阶椭圆曲线离散对数：Pollard rho 并行求解 ECDLP](crypto-ecc-ecdlp-80bit-prime-order-pollard-rho/) | verified | high | 2026-11-06 |
+| [ECC 等差点列 + 已知 flag 前缀：反推每字节乘数恢复明文](crypto-ecc-arithmetic-progression-known-prefix-recovery/) | verified | high | 2026-11-07 |
 | [ECDH 小 nonce 暴力：从 R=kG 枚举 k，S=kQ 的 x 坐标 SHA256 派生 XOR 密钥](crypto-ecc-ecdh-small-nonce-brute-shared-point-key/) | verified | high | 2026-11-06 |
 | [ECDSA nonce 复用：同一 k 签两条消息直接恢复私钥](crypto-ecc-ecdsa-nonce-reuse-private-key-recovery/) | verified | high | 2026-11-06 |
 | [ECDSA 反常曲线：E.order()==p 时 Smart attack 线性时间求私钥](crypto-ecc-anomalous-curve-smart-attack/) | verified | high | 2026-11-06 |
@@ -41,6 +42,7 @@ ECDSA nonce、曲线参数、无效曲线攻击。
 | [ECDSA 私钥由公开字符串 SHA-512 模曲线阶派生：直接计算恢复私钥](crypto-ecc-ecdsa-private-key-public-constant-derivation/) | verified | high | 2026-11-06 |
 | [ECDSA 部分 nonce 泄露：k=h+l 线性关系用 LLL/CVP 恢复私钥](crypto-ecc-ecdsa-partial-nonce-leak-lattice/) | verified | high | 2026-11-06 |
 | [奇异三次曲线（尖点）上的 ECDLP 退化：参数化把群运算化为有限域加法](crypto-ecc-singular-cubic-cusp-additive-group/) | verified | high | 2026-11-06 |
+| [扭曲爱德华曲线 DLP 归约：Add 即 F_p(√D) 乘法，映射到 F_p^* 后用 discrete_log 恢复共享密钥](crypto-ecc-twisted-edwards-map-multiplicative-group-dlp/) | verified | high | 2026-11-07 |
 | [无效点攻击：G 不在题给曲线上仍按公式标量乘，小 k 用 BSGS 解 ECDLP](crypto-ecc-invalid-point-secp256k1-bsgs/) | verified | medium | 2026-11-06 |
 | [未知曲线参数 + 点减半：由 2P、P+Q、2Q 恢复 p/b 并反推 P、Q](crypto-ecc-unknown-curve-point-halving-recover-flag/) | verified | high | 2026-11-06 |
 | [黑盒群未知椭圆曲线恢复：采样点射影三次拟合 + Weierstrass 化 + 有界 DLP](crypto-ecc-unknown-curve-projective-cubic-fit-weierstrass-dlp/) | verified | high | 2026-11-06 |

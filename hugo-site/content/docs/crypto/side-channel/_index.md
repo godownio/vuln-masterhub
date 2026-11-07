@@ -32,6 +32,7 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [AES-128 CPA 相关功耗分析：汉明重量模型逐字节恢复密钥](crypto-side-channel-aes-cpa-hamming-weight/) | verified | high | 2026-11-06 |
+| [白盒 AES 差分故障分析：第 8 轮列混淆注入 + phoenixAES 恢复轮密钥](crypto-side-channel-whitebox-aes-dfa-round8-fault/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

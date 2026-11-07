@@ -53,7 +53,7 @@
 | [Host 校验绕过：端口注入、后缀匹配、重复头、绝对 URL 与覆盖头](web-generic-host-header-validation-bypass-ambiguity.md) | verified | high | 2026-11-05 |
 | [Wasm 导出函数未校验数组下标导致线性内存内越界写与相邻数据篡改](web-generic-wasm-unchecked-index-linear-memory-write.md) | verified | medium | 2026-11-05 |
 | [Wasm 导出线性内存中的密钥与敏感常量可被同源 JS 读取](web-generic-wasm-exported-memory-secret-read.md) | verified | high | 2026-11-05 |
-| [双设备支付页滞留 + 取消订单返还优惠券：同一张券支付两笔订单](web-generic-payment-coupon-cancel-pending-order-reuse.md) | draft | medium | 2026-11-07 |
+| [双设备支付页滞留 + 取消订单返还优惠券：同一张券支付两笔订单](web-generic-payment-coupon-cancel-pending-order-reuse.md) | verified | medium | 2026-11-07 |
 | [客户端提交赛跑距离参数篡改：服务端信任模拟输入直接发放 flag](web-generic-client-side-race-distance-tamper.md) | verified | high | 2026-11-06 |
 | [导出 Excel/CSV 未转义昵称导致公式注入与客户端 RCE](web-generic-csv-formula-injection-export-rce.md) | verified | medium | 2026-11-05 |
 | [废弃第三方 JS 域名抢注投毒：bshare 分享插件夜间移动端强制跳转](web-generic-third-party-js-domain-takeover-night-redirect.md) | verified | medium | 2026-11-07 |

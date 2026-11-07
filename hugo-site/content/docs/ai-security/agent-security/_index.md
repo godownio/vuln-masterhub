@@ -43,6 +43,7 @@ weight: 1
 | [AI Skill 自动登录流水线：agent-browser 快照定位 + 本地默认口令库 + ddddocr 验证码识别与失败自修复](ai-security-agent-security-ai-skill-auto-login-default-credential-captcha/) | verified | medium | 2026-11-06 |
 | [AI 代码审计接口 Prompt Injection 强制触发沙箱：从“安全判定”到 vm2 逃逸](ai-security-agent-security-prompt-injection-force-sandbox-vm2-escape/) | verified | high | 2026-11-06 |
 | [AI 代码执行沙箱跨账号共享制品属性信道：Artifactory Item Properties 写入与受害者连接器任务借用](ai-security-agent-security-sandbox-shared-artifactory-property-channel/) | verified | medium | 2026-11-05 |
+| [AI 助手工具调用限制绕过：双系统对比/人设对立/数量与方言施压，诱导调用被禁 sandbox](ai-security-agent-security-tool-restriction-persona-comparison-bypass/) | verified | low | 2026-11-07 |
 | [AI 安全扫描器 Host 头 SSRF：提示注入让扫描器以内部网络身份访问 admin 面板并删除用户](ai-security-agent-security-ai-scanner-host-header-ssrf-internal-admin/) | verified | high | 2026-11-05 |
 | [AI 安全扫描器间接提示注入数据外带：诱导扫描器调用 accountDetails 取 API Key 并公开评论](ai-security-agent-security-ai-scanner-indirect-prompt-injection-data-exfil/) | verified | high | 2026-11-05 |
 | [AI 安全扫描器间接提示注入：UGC 评论冒充管理员诱导扫描器删除用户，并补上 CSRF token](ai-security-agent-security-ai-scanner-indirect-prompt-injection-destructive-action/) | verified | high | 2026-11-05 |
@@ -50,6 +51,7 @@ weight: 1
 | [AI 渗透 Agent 证据驱动流水线：候选 + 原始请求/响应，人工做成立判断](ai-security-agent-security-ai-pentest-evidence-driven-pipeline/) | verified | high | 2026-11-05 |
 | [AI 编程代理只读命令白名单把 find 当安全命令：find -exec 绕过审批执行任意命令（Amazon Q Developer CLI 1.8.1）](ai-security-agent-security-amazon-q-readonly-find-exec-allowlist-bypass/) | verified | medium | 2026-11-06 |
 | [AI 编程助手源码注释间接注入：读取 /etc/passwd 并经 Markdown 图片 URL 零点击外带](ai-security-agent-security-coding-agent-comment-injection-markdown-image-exfil/) | verified | medium | 2026-11-06 |
+| [AI 语音警务助手昵称信任绕过：把 Telegram 显示名改成 Police 即获 100% 警官置信度并索取 flag](ai-security-agent-security-voice-bot-displayname-role-spoof/) | verified | high | 2026-11-07 |
 | [AutoGPT 禁用块未校验 disabled：硬编码 UUID 调用 BlockInstallationBlock 执行任意 Python（CVE-2026-24780）](ai-security-agent-security-autogpt-disabled-block-install-rce/) | verified | high | 2026-11-06 |
 | [Bash 参数展开与通配符混淆绕过 Agent 命令检测：子串/正则与 Shell 解析深度差](ai-security-agent-security-bash-expansion-glob-command-filter-bypass/) | verified | high | 2026-11-06 |
 | [CAI find_file 参数注入：find -exec 绕过 shell 元字符依赖到 RCE（CVE-2026-25130）](ai-security-agent-security-cai-find-file-argument-injection-cve-2026-25130/) | verified | high | 2026-11-06 |
@@ -68,6 +70,8 @@ weight: 1
 | [DeepChat MermaidArtifact XSS + presenter:call + MCP addMcpServer 命令执行（CVE-2025-66481）](ai-security-agent-security-deepchat-mermaid-xss-ipc-mcp-command-exec/) | verified | high | 2026-11-06 |
 | [DeepChat MermaidArtifact XSS + presenter:call 动态 IPC + FilePresenter 路径遍历：任意文件读写与明文 API Key 泄露](ai-security-agent-security-deepchat-mermaid-xss-ipc-filepresenter-path-traversal/) | verified | high | 2026-11-06 |
 | [Dify 代码节点沙箱默认允许网络：工作流作者可执行命令并经 DNS 外带](ai-security-agent-security-dify-code-sandbox-network-egress/) | verified | high | 2026-11-05 |
+| [Flowise 后台 CustomMCP 节点加载：mcpServerConfig 经 Function('return ...') 求值导致 Node.js 任意代码执行](ai-security-agent-security-flowise-custommcp-loadmethod-function-rce/) | verified | high | 2026-11-07 |
+| [GitHub Copilot Agent simpleBrowserTool 无确认打开 + 可信域解析缺陷：Issue 注入读取 apps.json 并外带 OAuth Token](ai-security-agent-security-copilot-simplebrowser-issue-token-exfil/) | verified | high | 2026-11-07 |
 | [GoT 图拓扑注入：高信任文档节点 + 自然语言条件边自动生成，使恶意结论绕过内容审核直达输出](ai-security-agent-security-got-graph-topology-trust-node-injection/) | verified | low | 2026-11-06 |
 | [iOS 锁屏 Siri 上下文越权：读取 ChatGPT 记忆、当前聊天分享链接与 Safari 页面 URL](ai-security-agent-security-ios-lockscreen-siri-context-leak/) | verified | medium | 2026-11-06 |
 | [iOS 隐藏相册 Face ID 绕过：锁屏 Siri 把已缓存私密照片作为附件发给 ChatGPT](ai-security-agent-security-ios-siri-hidden-album-cache-faceid-bypass/) | verified | medium | 2026-11-06 |
@@ -84,8 +88,10 @@ weight: 1
 | [Letta "Running" 消息参数直接 eval 导致 RCE](ai-security-agent-security-letta-running-message-eval-rce/) | verified | medium | 2026-11-04 |
 | [Letta <= 0.16.7 /v1/tools/run 未授权代码执行：source_code 无过滤 + 默认 Actor 回退](ai-security-agent-security-letta-tools-run-unauth-code-exec/) | verified | high | 2026-11-06 |
 | [Letta AST 白名单异常回退 eval 与 allow_unsafe_eval 硬编码导致补丁绕过 RCE](ai-security-agent-security-letta-ast-whitelist-eval-fallback-bypass/) | verified | medium | 2026-11-04 |
+| [Lies-in-the-Loop：间接提示注入把危险命令藏进“安全审查”长文本，诱导用户批准 Agent 执行 RCE](ai-security-agent-security-lies-in-the-loop-hidden-command-approval-rce/) | verified | high | 2026-11-07 |
 | [LLM Tool Call SSRF：间接提示注入驱动 fetch_url 访问内网与云元数据](ai-security-agent-security-llm-tool-call-indirect-injection-ssrf/) | verified | medium | 2026-11-05 |
 | [LLM 中转 API/BaseURL 劫持：篡改模型响应伪造 Tool Call 实现 Agent 命令执行与数据窃取](ai-security-agent-security-llm-relay-baseurl-tool-call-hijack/) | verified | high | 2026-11-06 |
+| [LLM 客服过度代理：生成文本只要含 "refund approved" 就调用退款 API，一句话骗取退款](ai-security-agent-security-llm-excessive-agency-refund-keyword-trigger/) | verified | high | 2026-11-07 |
 | [LLM 聊天 Agent 的 read_file 工具未限制路径边界：提示词注入用 ../ 直读用户 SSH 私钥](ai-security-agent-security-read-file-tool-path-traversal-ssh-key/) | verified | high | 2026-11-06 |
 | [MindsDB BYOM 未认证 PUT 上传 Python 代码：type=inhouse 经 exec 在当前进程执行](ai-security-agent-security-mindsdb-byom-unauth-code-exec/) | verified | high | 2026-11-06 |
 | [MINJA 记忆注入：正常查询 + 满意反馈写入长期记忆，渐进缩短提示把桥接逻辑锚定为无痕后门](ai-security-agent-security-minja-progressive-shortening-memory-injection/) | verified | medium | 2026-11-06 |
@@ -108,6 +114,7 @@ weight: 1
 | [xAI Grok CLI 导入 Claude 设置跟随仓库 .grok 符号链接：全局 Hook 写入与命令执行](ai-security-agent-security-grok-claude-import-hook-symlink-rce/) | verified | high | 2026-11-05 |
 | [ZCode Trust Folder 旁路：插件/MCP 注册路径漏挂 admission，打开工作区即 spawn 命令](ai-security-agent-security-zcode-trust-folder-plugin-mcp-admission-bypass/) | verified | high | 2026-11-05 |
 | [中性知情披露击穿环境授权限制记录：自主攻击 Agent 的欺骗式防御归零](ai-security-agent-security-informed-disclosure-authz-record-bypass/) | verified | medium | 2026-11-05 |
+| [代码助手学术权威叙事诱导工具调用劫持：论文实验 pretext + 分步诱导调用 sandbox/python_interpreter](ai-security-agent-security-code-assistant-academic-tool-call-hijack/) | verified | medium | 2026-11-07 |
 | [多代理系统攻击面枚举：DO NOT DELEGATE 阻断委派拿代理/工具清单 + AutoGen 显式转移跨代理套提示词](ai-security-agent-security-multi-agent-roster-enumeration-transfer-injection/) | verified | medium | 2026-11-06 |
 | [多智能体共享记忆 Redis 未授权投毒：standing_instructions/override 覆盖与管理员冒充导致密钥泄露、命令执行](ai-security-agent-security-multi-agent-shared-memory-redis-poisoning/) | verified | high | 2026-11-05 |
 | [工具语义授权缺口 + 审计框架：verify_user_access 对任意 user_id 在“官方审计”名义下返回数据，诱导模型越权读取 admin 笔记](ai-security-agent-security-audit-tool-scope-bypass-admin-data/) | verified | high | 2026-11-06 |

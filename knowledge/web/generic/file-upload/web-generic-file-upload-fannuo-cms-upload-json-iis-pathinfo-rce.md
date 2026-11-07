@@ -24,10 +24,14 @@ tags:
 cve: []
 severity: critical
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 affected_versions: 凡诺CMS 2.1（文章靶场）
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:22:54+08:00'
+  notes: '已对照原文与16张图核对：上传请求（POST /cslab/editor/phpecms/upload_json.php?dir=file，imgFile 字段，.zip 文件名 + image/jpeg + JPEG 魔数 + <?php @eval([''hack'']); ?>）、响应 JSON url 与 Server: Microsoft-IIS/8.0 / X-Powered-By: PHP/5.3.29、IIS 路径解析 URL（...zip/.php）、AntSword 连接读取 C:/flag.txt 均一致（图19/21）；PoC 使用图19实际返回的 20250604/20250604155615 文件名。dedup 候选 yifangcms/upload-allow 等为不同产品与绕过链（related）；dup-scan 无涉及本篇 pair。affected_versions 按原文标题凡诺cms2.1 保留。未在本地复现上传/解析。'
 ---
 
 ## 一句话结论

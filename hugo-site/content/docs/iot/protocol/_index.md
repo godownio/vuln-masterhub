@@ -36,8 +36,10 @@ MQTT、CoAP、Modbus、Zigbee 等。
 | [BLE 空口抓包：nRF Sniffer + Wireshark 跟踪 CONNECT_IND 与跳频](iot-protocol-ble-ota-nrf-sniffer-capture/) | verified | high | 2026-11-06 |
 | [CAN 总线仲裁 ID 逆向与伪造：ICSim/cansniffer 定位功能帧 + cansend 注入](iot-protocol-can-arbitration-id-discovery-spoofing/) | verified | high | 2026-11-06 |
 | [CAN 总线重放攻击：candump 记录合法帧 + canplayer 回放](iot-protocol-can-replay-candump-canplayer/) | verified | high | 2026-11-06 |
+| [CAN 报文车速信号识别与路程估算：按 ID 分组找单字节变化帧，积分 36s 得行驶距离](iot-protocol-can-speed-signal-distance-integration/) | verified | high | 2026-11-07 |
 | [CAN 日志 + 信号映射表隐藏数据提取：按 sig_N 末值拼出 ASCII 字符串](iot-protocol-can-signal-map-log-hidden-data/) | verified | high | 2026-11-06 |
 | [CAN 日志信号挖掘：按 ID 估周期、定位变化字节/位并区分计数器与校验](iot-protocol-can-log-signal-mining/) | verified | high | 2026-11-06 |
+| [CAN/ISO-TP 多帧重组“先拷贝后检查长度”：越界写覆盖完成回调指针并 ROP 读取 flag](iot-protocol-can-isotp-reassembly-length-check-after-copy-overflow/) | verified | high | 2026-11-07 |
 | [D-Link DIR-645 cgibin ssdpcgi HTTP_ST 环境变量命令注入（CVE-2024-22651 同类）](iot-protocol-dlink-dir645-ssdpcgi-command-injection/) | verified | high | 2026-11-06 |
 | [HART-IP Command 9 状态字段高两位隐蔽信道：四元符号 + 设备身份派生 XTEA 密钥的外传](iot-protocol-hartip-command9-quadrant-covert-channel/) | verified | high | 2026-11-05 |
 | [IPMI 2.0 Cipher 0 认证绕过：已知用户名 + 任意密码登录 BMC（CVE-2013-4782）](iot-protocol-ipmi-cipher-zero-auth-bypass/) | verified | high | 2026-11-05 |

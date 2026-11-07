@@ -25,6 +25,7 @@ weight: 1
 ## 子目录
 
 - [Solidity](solidity/) —— 重入、整数、权限、代理与编译器问题。
+- [Move](move/) —— Sui/Aptos Move 对象模型、能力与 PTB 组合攻击。
 - [DeFi](defi/) —— 闪电贷、预言机、MEV 与经济攻击。
 - [钱包](wallet/) —— 私钥、签名、硬件钱包与客户端。
 - [共识](consensus/) —— 共识攻击、分叉与网络层。

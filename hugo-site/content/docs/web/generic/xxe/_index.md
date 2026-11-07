@@ -32,14 +32,20 @@ XML 外部实体、盲 XXE、OOB 与绕过。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Apache Tika PDF XFA 解析 XXE：extractAcroFormContent 默认开启触发外部实体（CVE-2025-66516）](web-generic-xxe-apache-tika-pdf-xfa-extractacroform/) | verified | high | 2026-11-05 |
+| [Artery ERP richclient.openForm 未授权 XXE：FormService 用 SAXReader 解析外部 XML 实体](web-generic-xxe-artery-erp-richclient-openform/) | verified | high | 2026-11-07 |
+| [data:text/xml;base64 上传包装 XXE：外部 DTD 参数实体把文件拼进 HTTP 请求外带](web-generic-xxe-data-uri-upload-external-dtd-oob/) | verified | medium | 2026-11-07 |
 | [dom4j DocumentHelper.parseText 解析请求 XML：XMLUtil.parseModXmlStr 有回显 XXE 文件读取](web-generic-xxe-dom4j-parsemodxmlstr-inband-read/) | verified | medium | 2026-11-05 |
 | [GeoServer WMS GetMap SLD 解析 XXE：SLDXmlRequestReader 传 null EntityResolver（CVE-2025-58360）](web-generic-xxe-geoserver-wms-getmap-sld/) | verified | medium | 2026-11-05 |
 | [Java XML 解析器默认允许外部实体导致有回显文件读取](web-generic-xxe-inband-file-read-default-insecure/) | verified | high | 2026-11-05 |
+| [JHSoft OA AddressImportPub.aspx 未加固 XmlDocument.LoadXml：DNSLog 外带验证 XXE](web-generic-xxe-jhsoft-addressimportpub-loadxml-dnslog/) | verified | high | 2026-11-07 |
 | [LangChain HTMLSectionSplitter 的 xslt_path 可控导致 XSLT document() XXE 任意文件读取（CVE-2025-6985）](web-generic-xxe-langchain-htmlsectionsplitter-xslt-document-file-read/) | verified | high | 2026-11-06 |
+| [MetaCRM /services/ws CXF SOAP 服务 commonCheckServ 嵌套 XML XXE（盲外带）](web-generic-xxe-crm-cxf-soap-dom4j-nested-xml/) | verified | high | 2026-11-07 |
 | [Nacos-spring-context DefaultXmlConfigParse 未加固 DocumentBuilderFactory 导致配置 XML XXE](web-java-xxe-nacos-spring-context-config-parse/) | verified | medium | 2026-11-05 |
+| [sobey-mchEditor AITaskBack 未授权 XXE：请求体直接交给 DocumentBuilderFactory 解析](web-generic-xxe-sobey-mcheditor-aitaskback-documentbuilderfactory/) | verified | high | 2026-11-07 |
 | [SVG 图片上传 XXE：image/svg+xml 解析外部实体读取任意文件](web-generic-xxe-svg-upload-inband-file-read/) | verified | high | 2026-11-05 |
 | [XML 上传点 XXE 过滤绕过：UTF-16BE 编码隐藏 DOCTYPE 并读取 SSH 私钥](web-generic-xxe-utf16be-encoding-filter-bypass/) | verified | high | 2026-11-05 |
 | [XXE + php://filter 双 Base64 链：SSRF 内网 LFI 读取源码与 flag](web-generic-xxe-php-filter-ssrf-internal-lfi-chain/) | verified | high | 2026-11-06 |
+| [万户OA WeiXin!callback.action XXE：XMLParse.extract 未禁用外部实体，签名校验前解析](web-generic-xxe-whir-ezoffice-weixin-callback-xmlparse/) | verified | high | 2026-11-07 |
 | [东胜物流 UpdateCustomMainfast 未加固 XmlDocument.LoadXml 导致 XXE 文件读取](web-generic-xxe-dongsheng-logistics-custommainfast-loadxml/) | verified | low | 2026-11-06 |
 | [反射 XML 注释注入 XXE 驱动内网服务 SSRF 并二次读取文件](web-generic-xxe-reflected-xml-ssrf-internal-service/) | verified | high | 2026-11-05 |
 | [未授权 SAML ACS 在签名校验前解析 XML 触发 XXE OOB](web-generic-xxe-saml-acs-parse-before-signature/) | verified | high | 2026-11-05 |

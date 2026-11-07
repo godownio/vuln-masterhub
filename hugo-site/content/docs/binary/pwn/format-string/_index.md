@@ -31,11 +31,15 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [DrayTek Vigor user_login.cgi 格式化字符串（CVE-2023-31447）：fid=101 将 src_ip/target_url 直接作 snprintf 格式串](binary-pwn-format-string-draytek-user-login-cgi-cve-2023-31447/) | verified | medium | 2026-11-07 |
 | [exit_hook 劫持：把 _rtld_global 的 rtld lock/unlock 函数指针改成 system、_dl_load_lock 改成 /bin/sh（glibc < 2.34）](binary-pwn-format-string-exit-hook-rtld-global/) | verified | high | 2026-11-06 |
+| [glibc 2.29 tcache dup 改 __free_hook 为 printf：free 触发格式化字符串泄露栈地址后二次投毒写栈 ROP](binary-pwn-format-string-freehook-printf-stack-leak/) | verified | high | 2026-11-07 |
 | [scanf 无界写入覆盖相邻 .data 格式化字符串：把静态 printf 变成格式化字符串漏洞读写 flag](binary-pwn-format-string-scanf-overflow-adjacent-format-string/) | verified | medium | 2026-11-06 |
+| [Synology TC500 webd 格式字符串：改 HTTP 版本指针泄露内存 + 持久栈指针链任意读写 + __free_hook 劫持 RCE](binary-pwn-format-string-synology-tc500-webd-http-version-leak-freehook-rce/) | verified | high | 2026-11-07 |
 | [一次性栈上格式化字符串：单次 printf 用两段 %n 写栈返回地址直达 one_gadget](binary-pwn-format-string-one-shot-stack-return-address-two-n-writes/) | verified | medium | 2026-11-06 |
 | [有限次非栈上格式化：改循环条件扩充写入次数 + 两级指针 %hn/%hhn 逐字节写 ROP（AES 单块输入）](binary-pwn-format-string-limited-nonstack-loop-condition-byte-rop/) | verified | medium | 2026-11-06 |
 | [栈上格式化字符串 0x10 字节限制：%10$p 泄露栈地址、%10$hn 改写指针搭链，%14$hn 覆写返回地址到后门](binary-pwn-format-string-stack-pointer-chain-return-address-backdoor/) | verified | high | 2026-11-06 |
+| [格式化字符串 %hn 向 RWX mmap 逐 2 字节写 shellcode：短跳回读 syscall 续写二阶段](binary-pwn-format-string-hn-rwx-mmap-shellcode-staging/) | verified | medium | 2026-11-07 |
 | [格式化字符串 %n 覆写 GOT 表项劫持函数调用](binary-pwn-format-string-got-hijack/) | verified | medium | 2026-11-05 |
 | [格式化字符串一次泄露 Canary 与 libc 后带 Canary 栈溢出 ROP 取 shell](binary-pwn-format-string-canary-libc-leak-rop-system/) | verified | high | 2026-11-05 |
 | [格式化字符串分三次 short 写 __malloc_hook 为 one_gadget（glibc 2.31）](binary-pwn-format-string-malloc-hook-one-gadget/) | verified | medium | 2026-11-06 |

@@ -32,6 +32,7 @@ EJS、Pug、Handlebars 等模板注入。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [EJS 模板 <%= %> 注入：公告板内容字段被服务端渲染导致 Node.js 任意命令执行](web-nodejs-ssti-ejs-announcement-content-rce/) | verified | high | 2026-11-06 |
+| [Express PUT 任意文件写入 + res.render(templ) 模板名可控：上传 EJS 到 views 实现 RCE](web-nodejs-ssti-express-put-upload-res-render-template-name-rce/) | verified | high | 2026-11-07 |
 | [Handlebars 编译 AST 对象注入导致模板代码执行](web-nodejs-ssti-handlebars-ast-injection/) | verified | high | 2026-11-05 |
 | [JWT 弱密钥伪造用户名触发 EJS 模板注入 RCE](web-nodejs-ssti-jwt-weak-secret-ejs-username-rce/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->

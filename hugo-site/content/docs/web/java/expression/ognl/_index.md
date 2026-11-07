@@ -33,6 +33,7 @@ OGNL 注入与 Struts2 利用。
 |---|---|---|---|
 | [OGNL 高版本黑名单反射绕过：Class.forName + Method.invoke 调用 Runtime](web-java-expression-ognl-high-version-reflection-invoke-bypass/) | verified | high | 2026-11-05 |
 | [OGNL 黑名单 JShell 绕过：@jdk.jshell.JShell@create().eval() 执行任意 Java](web-java-expression-ognl-jshell-eval-bypass/) | verified | high | 2026-11-05 |
+| [泛微 E10 testExecute1 的 Arthas OGNL 执行：serverId+input 调 Runtime.exec（依赖 JDK 环境）](web-java-expression-ognl-weaver-e10-testexecute1-arthas-rce/) | verified | medium | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

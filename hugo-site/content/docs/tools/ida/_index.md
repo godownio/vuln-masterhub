@@ -31,6 +31,7 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [IDA Appcall：在调试进程上下文中调用样本函数，直接跑 RC4/解密/校验逻辑](tools-ida-appcall-debug-context-function-invocation/) | verified | high | 2026-11-07 |
 | [IDA FLIRT/FLAIR 自定义静态库签名：从 .lib/.a 生成 .pat/.sig 恢复库函数名](tools-ida-flirt-flair-custom-library-signature/) | verified | high | 2026-11-06 |
 | [IDA Hex-Rays ctree 宏还原：把 LIST_ENTRY 自指初始化折叠为 InitializeListHead(&x)](tools-ida-hexrays-ctree-initialize-list-head-fold/) | verified | high | 2026-11-06 |
 | [IDA Trace 三种粒度：指令/基本块/函数级跟踪并导出文本供脚本处理](tools-ida-trace-instruction-basicblock-function-export/) | verified | high | 2026-11-06 |

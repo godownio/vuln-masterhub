@@ -41,6 +41,7 @@ weight: 1
 | [Go 接口与 SwissMap 反汇编识别：eface/iface/itab、slice interface 与 runtime.mapassign/mapaccess](code-analysis-reverse-go-interface-swissmap-disassembly/) | verified | medium | 2026-11-06 |
 | [Unity IL2CPP CTF 链：CE 改内存触发内嵌资源释放 + 十六进制 PE 还原与凯撒/XOR 逆推](code-analysis-reverse-unity-il2cpp-ce-trigger-embedded-pe/) | verified | high | 2026-11-06 |
 | [Unity IL2CPP 逆向：GameAssembly/libil2cpp + global-metadata 经 Il2CppDumper 恢复符号并导入 IDA/Ghidra](code-analysis-reverse-unity-il2cpp-dumper-symbol-recovery/) | verified | high | 2026-11-06 |
+| [逆向中加密算法与编码识别：从常量/S 盒/轮数/密钥索引特征定位算法并提取密钥解密](code-analysis-reverse-crypto-encoding-identification-decrypt/) | verified | medium | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -36,7 +36,7 @@ Java 拿到 RCE 后的命令执行与交互式通道：`Runtime.exec`/`ProcessBu
 | [Nashorn ScriptEngine 黑名单绕过：Java.type 直接引用 java.nio.file.Files 读文件](web-java-rce-nashorn-java-type-blacklist-file-read.md) | verified | high | 2026-11-06 |
 | [Nashorn 引擎 + Base64 JS + BCEL ClassLoader 的 JSP Webshell 静态免杀](web-java-rce-nashorn-bcel-jsp-webshell-av-bypass.md) | verified | medium | 2026-11-05 |
 | [OA BeanShell Interpreter.eval 代码执行（script_run.jsp / 调度任务 JobDataMap）](web-java-rce-oa-beanshell-interpreter-eval.md) | verified | medium | 2026-11-05 |
-| [OpenSSL s_client + FIFO 加密反弹 Shell：-keylogfile 留痕可还原 TLS 命令](web-java-rce-openssl-s-client-keylogfile-encrypted-revshell.md) | draft | high | 2026-11-07 |
+| [OpenSSL s_client + FIFO 加密反弹 Shell：-keylogfile 留痕可还原 TLS 命令](web-java-rce-openssl-s-client-keylogfile-encrypted-revshell.md) | verified | high | 2026-11-07 |
 | [RASP 命令执行拦截的线程上下文绕过：从 HTTP 线程 fork 新线程执行命令](web-java-rce-rasp-http-thread-context-new-thread-bypass.md) | verified | high | 2026-11-06 |
 | [Runtime.exec(String) 分词限制与 bash $@|bash 单字符串反弹 Shell](web-java-rce-runtime-exec-string-tokenizer-bash-revshell.md) | verified | high | 2026-11-05 |
 | [RuoYi 定时任务调用目标字符串反射 RCE：JobInvokeUtil 任意类方法调用 + SnakeYAML 链与协议黑名单单引号绕过](web-java-rce-ruoyi-job-invoke-target-reflection-snakeyaml.md) | verified | high | 2026-11-07 |

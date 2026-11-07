@@ -26,9 +26,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:25:58+08:00'
+  notes: 已对照原文与11张图核对：统一身份认证跳转、Google 语法找到 /apply 路由、/monitoring?part=sessions 会话列表（sessionID 列）、替换 JSESSIONID 后进入业务系统（图5）、/monitor/log 旧日志、进程 part=processes、JNDI part=jndi&path=comp/Resources/WEB-INF/classes 列出 svr_pkcs8.key/svr_private.key/tsm_public.key/spring-*.xml/mybatis-config.xml、part=mbeans 的 Druid 数据源 jdbc:mysql://192.168.134.216:3306/student 与 Username 均与正文一致；文章未蹲到管理员会话、未读文件内容，卡按 medium 标注并明确不构成直接 RCE 合理。dedup 候选 Druid/SessionFilter 等为不同链；dup-scan 无涉及本篇 pair。未复现会话劫持。
 ---
 
 ## 一句话结论

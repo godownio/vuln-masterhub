@@ -31,12 +31,16 @@ POP 链、魔术方法、Phar 反序列化。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Craft CMS CVE-2025-32432：generate-transform 的 handle 数组流入 Yii createObject，借 FnStream 析构调用任意函数](web-php-deserialization-craft-cms-cve-2025-32432-yii-createobject-fnstream/) | verified | medium | 2026-11-07 |
+| [GatewayWorker session 反序列化 + Composer autoload 文件包含：低权限 worker 触发 root 进程加载恶意类](web-php-deserialization-gatewayworker-session-autoload-file-include-root/) | verified | high | 2026-11-07 |
+| [GuzzleHttp\Psr7\FnStream 析构 gadget：__destruct 无参调用 _fn_close，绕过 __wakeup 经 DI/对象构造注入触发](web-php-deserialization-guzzle-fnstream-destruct-callable-gadget/) | verified | high | 2026-11-07 |
 | [Joomla SqliteDriver 析构 + PHPMailer sendmailSend：反序列化链经 popen/tee 写 WebShell](web-php-deserialization-joomla-phpmailer-sendmail-file-write/) | verified | high | 2026-11-05 |
 | [Laravel Reverb 经 Redis Pub/Sub 消息触发的无限制 unserialize 对象注入（CVE-2026-23524）](web-php-deserialization-laravel-reverb-redis-unserialize/) | verified | medium | 2026-11-05 |
 | [Phar 反序列化后缀绕过：GIF8 stub 过图片头 + phar 内层 .php 过包含检查](web-php-deserialization-phar-gif8-stub-inner-php-suffix-bypass/) | verified | high | 2026-11-06 |
 | [PHAR 反序列化：上传图片后缀文件经 file_get_contents phar:// 触发 POP 链](web-php-deserialization-phar-read-uploaded-image-pop-chain/) | verified | high | 2026-11-06 |
 | [PHAR 反序列化：任意后缀上传文件经 phar:// 触发 __wakeup eval RCE](web-php-deserialization-phar-upload-jpg-wakeup-eval/) | verified | high | 2026-11-05 |
 | [PHP 8 Serializable 接口嵌套反序列化继承 var_hash 导致 UAF](web-php-deserialization-serializable-nested-unserialize-var-hash-uaf/) | verified | medium | 2026-11-05 |
+| [PHP __PHP_Incomplete_Class 往返序列化差异：绕过 serialize(unserialize($x)) != $x 校验并任意文件读取](web-php-deserialization-incomplete-class-roundtrip-bypass/) | verified | high | 2026-11-07 |
 | [PHP __wakeup 属性数绕过（CVE-2016-7124）：序列化声明属性数大于实际即跳过重置](web-php-deserialization-wakeup-property-count-bypass/) | verified | high | 2026-11-06 |
 | [PHP __wakeup 重置失效：属性引用别名（R:2）让 __destruct 写回命令后 eval](web-php-deserialization-wakeup-reference-alias-bypass/) | verified | high | 2026-11-06 |
 | [PHP Error/Exception 内置类绕过 md5/sha1 强比较：__toString 同串不同对象 + eval 执行 payload](web-php-deserialization-error-exception-tostring-hash-bypass/) | verified | high | 2026-11-06 |
@@ -49,7 +53,9 @@ POP 链、魔术方法、Phar 反序列化。
 | [PHP Session 反序列化 S 类型十六进制转义：把 admin 藏进 \61\64\6d\69\6e 绕过检测](web-php-deserialization-session-s-hex-escape-admin-forge/) | verified | medium | 2026-11-06 |
 | [PHP session 处理器不一致注入 SoapClient：CRLF 头注入 + 本地 SSRF 把 flag 写回攻击者 session](web-php-deserialization-session-soapclient-crlf-ssrf/) | verified | high | 2026-11-06 |
 | [PHP 原生类目录读取 POP 链：array_walk 以属性名为类名任意实例化 FilesystemIterator 遍历找 flag](web-php-deserialization-native-class-array-walk-directory-read/) | verified | medium | 2026-11-06 |
+| [PHP 反序列化 __destruct 直连 system：base64 编码的 data 参数触发命令执行并写 eval WebShell](web-php-deserialization-destruct-system-webshell-base64/) | verified | high | 2026-11-07 |
 | [PHP 反序列化 EXP：ReflectionClass 改写私有属性触发 __destruct 到 __toString 读文件](web-php-deserialization-reflection-private-property-payload/) | verified | high | 2026-11-05 |
+| [PHP 反序列化 Maker 链：__toString → getInstance 动态 new SplFileObject + php://filter 读源码](web-php-deserialization-maker-splfileobject-php-filter-read/) | verified | high | 2026-11-07 |
 | [PHP 反序列化 POP 链：__destruct→fetch→FileLogger 写任意路径 WebShell](web-php-deserialization-pop-filelogger-webshell/) | verified | high | 2026-11-05 |
 | [PHP 反序列化 PromoManager __destruct 篡改 session 余额购买 flag](web-php-deserialization-destruct-session-balance-forge/) | verified | high | 2026-11-06 |
 | [PHP 反序列化 S 十六进制转义绕过属性值字母黑名单执行 passthru](web-php-deserialization-s-hex-letter-blacklist-eval/) | verified | medium | 2026-11-06 |
@@ -62,6 +68,7 @@ POP 链、魔术方法、Phar 反序列化。
 | [PHP 多对象析构顺序链：new 匿名类 → 注册全局函数 → 调用 include 读文件或 php://filter RCE](web-php-deserialization-multi-destruct-anonymous-class-global-function-chain/) | verified | medium | 2026-11-06 |
 | [PHP 字符逃逸注入不可控 CtrlCase + POP 链 dbCtrl::login 任意 SQL 读取 admin 凭据](web-php-deserialization-char-escape-pop-dbctrl-sqli/) | verified | medium | 2026-11-06 |
 | [PHP 序列化字符逃逸：str_replace 把 8 字符 amgoinvc 换成 4 字符 iscc，导致属性边界错位并伪造 admin123](web-php-deserialization-str-replace-length-shortening-escape/) | verified | high | 2026-11-06 |
+| [PHP8 反序列化 __call 可变类/可变方法 sink：ReflectionFunction::invokeArgs 任意函数调用写 WebShell](web-php-deserialization-call-variable-class-method-reflection-invokeargs/) | verified | high | 2026-11-07 |
 | [Roundcube CVE-2025-49113：上传参数污染 Session 自定义序列化，触发 preferences 二次反序列化 RCE](web-php-deser-roundcube-49113-session-injection-gpg-rce/) | verified | high | 2026-11-05 |
 | [SimplePie memcached 缓存投毒 → PHP 对象注入 → 日志目录写 WebShell](web-php-deserialization-simplepie-memcache-poisoning/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

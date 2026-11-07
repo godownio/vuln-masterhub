@@ -33,6 +33,7 @@ PLC、SCADA、DCS 与 OT 协议。
 |---|---|---|---|
 | [IEC 104 未授权主站接入：总召唤遥测值编码隐蔽信道外传](iot-industrial-iec104-unauthorized-master-telemetry-covert-channel/) | verified | high | 2026-11-06 |
 | [MMS fileWrite 恶意固件上传取证：TPKT/COTP/MMS TLV 重组与 XOR/ZIP/LZMA 分层解码](iot-industrial-mms-filewrite-firmware-upload-forensics/) | verified | medium | 2026-11-06 |
+| [S7comm Write Var 流量提取：筛 func=0x05/rosctr=Job 还原 PLC 写入载荷](iot-industrial-s7comm-write-var-payload-extraction/) | verified | high | 2026-11-07 |
 | [S7comm 多组件 DB 同步写入：伪造电梯开门/上行/跨层异常状态触发 HMI flag](iot-industrial-s7comm-elevator-multi-db-state-forgery/) | verified | high | 2026-11-06 |
 | [SCADA 快照文件 mmap 伪造：真实反应釜越限 + 传感器/SIEM 安全值欺骗](iot-industrial-scada-snapshot-mmap-state-forgery/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->

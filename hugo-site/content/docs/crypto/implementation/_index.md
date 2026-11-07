@@ -33,6 +33,7 @@ weight: 1
 |---|---|---|---|
 | [5G-AKA 期望响应值 XRES* 写入 INFO 日志并复用未消费认证上下文完成确认](crypto-implementation-5g-aka-xres-star-log-leak/) | verified | medium | 2026-11-05 |
 | [ElGamal 长期私钥出现在 DEBUG 日志：恢复共享秘密并解密任意密文](crypto-implementation-elgamal-private-key-debug-log-leak/) | verified | high | 2026-11-05 |
+| [GM 变体加密的弱随机 y 递增：结式消元 + Coppersmith 小根逐位恢复明文](crypto-implementation-gm-quadratic-residue-small-increment-coppersmith/) | verified | high | 2026-11-07 |
 | [MADV_DONTDUMP + mlock + PR_SET_DUMPABLE：把密钥页从 core 与 swap 泄露面移除](crypto-implementation-madv-dontdump-mlock-key-pages/) | verified | high | 2026-11-05 |
 | [memset 安全清零被 dead store elimination 删除：explicit_bzero、memset_s 与 volatile 函数指针](crypto-implementation-memset-dead-store-elimination-key-wipe/) | verified | high | 2026-11-05 |
 | [ML-DSA/Dilithium 签名 nonce 泄露：z-r=c·s1-noise 最小二乘恢复私钥](crypto-implementation-mldsa-nonce-leak-least-squares-key-recovery/) | verified | high | 2026-11-06 |

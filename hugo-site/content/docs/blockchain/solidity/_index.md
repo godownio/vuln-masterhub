@@ -31,7 +31,13 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [CREATE 地址预计算 + 公开 selfdestruct：由创建者地址与 nonce 找回丢失合约并销毁取走余额](blockchain-solidity-create-address-precompute-public-selfdestruct/) | verified | high | 2026-11-07 |
 | [EVM 猜谜蜜罐合约识别：幌子 Start 交易 + 隐藏 New 内部调用 + 管理员抢跑改哈希](blockchain-solidity-evm-guess-honeypot-detection/) | verified | high | 2026-11-06 |
+| [Shop 合约 view 价格两次调用 TOCTOU：攻击者按 isSold 切换返回值以 0 价格买入](blockchain-solidity-shop-view-price-double-call-toctou/) | draft | high | 2026-11-07 |
+| [Solidity <0.6 动态数组长度下溢：retract 把 length 减成 2^256-1，revise 任意槽写覆写 owner](blockchain-solidity-array-length-underflow-arbitrary-storage-owner/) | verified | high | 2026-11-07 |
+| [Solidity private 状态变量链上可读：eth_getStorageAt 按槽位还原动态字符串](blockchain-solidity-private-state-storage-read/) | verified | high | 2026-11-07 |
+| [可写库地址 + delegatecall 存储碰撞：先用 setFirstTime 把 slot0 改成恶意库，再借恶意 setTime 覆写 owner](blockchain-solidity-delegatecall-library-slot0-owner-hijack/) | verified | high | 2026-11-07 |
+| [透明代理存储槽冲突 + multicall 嵌套复用 msg.value：劫持 PuzzleWallet 管理员](blockchain-solidity-proxy-storage-collision-multicall-admin-hijack/) | draft | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

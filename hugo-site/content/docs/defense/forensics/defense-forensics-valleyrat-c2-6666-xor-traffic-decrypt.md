@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:50+08:00'
+  notes: 已对照原文与图30-32核对；原文文字称6666，但CyberChef截图实际Key为多字节HEX周期串（2809de46…/ede463…，含36363636），卡片已修正为候选6666+前缀周期恢复；登录模块MZ提取与配置一致；未复跑解密。
 url: /docs/defense/forensics/defense-forensics-valleyrat-c2-6666-xor-traffic-decrypt/
 draft: false
 kb_aliases:

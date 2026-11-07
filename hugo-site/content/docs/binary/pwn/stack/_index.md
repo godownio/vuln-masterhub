@@ -53,6 +53,7 @@ weight: 1
 | [IoT httpd 多阶段链：自定义 S-box AES 登录绕过 + 负索引泄露 + YCB2025 标记触发栈溢出 ORW](binary-pwn-stack-iot-httpd-custom-aes-negative-index-marker-overflow-orw/) | verified | medium | 2026-11-06 |
 | [Ivanti Connect Secure CVE-2025-0282：clientCapabilities 栈溢出覆盖 this 指针劫持虚表调用 ROP](binary-pwn-stack-ivanti-cve-2025-0282-clientcapabilities-vtable-rop/) | verified | medium | 2026-11-06 |
 | [minihttpd POST /setmode 值拷贝栈溢出：recv 二阶段写 BSS + 调内置 getflag 读 /flag](binary-pwn-stack-minihttpd-setmode-overflow-ret2getflag/) | verified | medium | 2026-11-06 |
+| [MIPS SROP：sigreturn(v0=4119) 栈迁移到 .bss + execve 两阶段利用](binary-pwn-stack-mips-srop-sigreturn-bss-execve/) | verified | high | 2026-11-07 |
 | [mprotect 将 bss 页改为 RWX 后的 ret2shellcode：短 shellcode 写入全局缓冲区再覆盖返回地址](binary-pwn-stack-ret2shellcode-mprotect-bss-rwx-page/) | verified | high | 2026-11-06 |
 | [NIK Router CGI 组合链：凭据解密 + snprintf 目录截断读 rootkey + 共享内存字符逃逸 + ARM 栈溢出 ROP](binary-pwn-stack-nik-router-cgi-shm-negative-len-arm-rop/) | verified | high | 2026-11-06 |
 | [No RELRO 改写 .dynamic 的 DT_STRTAB 实施 ret2dlresolve](binary-pwn-stack-ret2dlresolve-no-relro-dystrtab/) | verified | high | 2026-11-05 |
@@ -62,15 +63,20 @@ weight: 1
 | [ret2text：栈溢出跳后门函数及 win+1 栈对齐修正](binary-pwn-stack-ret2text-win-plus-one-align/) | verified | medium | 2026-11-05 |
 | [robust_list offset 可控：线程退出把任意地址写成 FUTEX_OWNER_DIED，放大 BSS 长度字段后泄露 canary/libc](binary-pwn-stack-robust-list-offset-futex-owner-died-arbitrary-write/) | verified | high | 2026-11-06 |
 | [seccomp ORW 下的自定义 RBP 栈帧校验绕过与栈迁移](binary-pwn-stack-fake-rbp-check-seccomp-orw/) | verified | high | 2026-11-05 |
+| [seccomp 禁 open/execve 时的 64 位 SROP 链：mprotect 改 bss 为 RWX 后执行 openat ORW shellcode](binary-pwn-stack-srop-mprotect-openat-shellcode-seccomp/) | verified | medium | 2026-11-07 |
 | [SIGSEGV + sigaltstack 的 ucontext 劫持：伪造 rt_sigreturn 帧调用 system](binary-pwn-stack-sigaltstack-ucontext-sigreturn-hijack/) | verified | high | 2026-11-05 |
 | [snprintf 返回值当 read 长度：格式化截断后仍按“应写长度”读入导致栈溢出](binary-pwn-stack-snprintf-return-length-read-overflow/) | verified | high | 2026-11-05 |
+| [stb_image PIC 噪声数组越界写相邻栈变量：构造 PIC 像素把 privilege 改成 0x1337](binary-pwn-stack-stb-image-pic-noise-offbyone-adjacent-variable/) | verified | high | 2026-11-07 |
 | [strcmp 空字节截断绕过登录 + 覆盖局部指针回填堆地址的 ret2backdoor](binary-pwn-stack-strcmp-nullbyte-local-ptr-backfill-ret2text/) | verified | high | 2026-11-05 |
+| [Tenda AC15 httpd setMacFilterCfg deviceList strcpy 栈溢出：ARM ROP 调 system（CVE-2018-18708）](binary-pwn-stack-tenda-ac15-setmacfiltercfg-devicelist-strcpy-arm-rop/) | verified | high | 2026-11-07 |
 | [TLV 协议长度低字节检查绕过：16 位 memcpy 栈溢出 + 隐藏遥测泄露 libc](binary-pwn-stack-tlv-length-low-byte-check-memcpy-overflow/) | verified | high | 2026-11-06 |
 | [unordered_map 单桶 bucket_size 无界复制栈溢出：键模数控制同桶并强制 13→29 扩容](binary-pwn-stack-unordered-map-bucket-copy-stack-overflow/) | verified | high | 2026-11-06 |
 | [仅 gets 栈溢出 + 伪造 link_map ret2dlresolve：跳过 PLT0 push 传假 link_map，ret2gets 复用 rdi 传 /bin/sh](binary-pwn-stack-gets-only-ret2dlresolve-fake-linkmap-ret2gets/) | verified | medium | 2026-11-06 |
+| [任意空字节写入改返回地址低位：栈上 NOP 滑板 + shellcode 劫持](binary-pwn-stack-arbitrary-null-byte-return-redirect-shellcode/) | verified | high | 2026-11-07 |
 | [多线程 HTTP 服务跨连接共享 BSS：一条连接写入 /flag 并保活，另一条连接复用完成 ROP 读文件](binary-pwn-stack-multithread-http-cross-connection-bss-reuse/) | verified | medium | 2026-11-06 |
 | [无 PIE/无 Canary 的 read 栈溢出：本地 root 服务经 SSH/Chisel 隧道 ret2plt system('sh')](binary-pwn-stack-ret2plt-system-sh-local-root-service/) | verified | high | 2026-11-06 |
 | [无输出函数 + 0x20 短读的 BSS 栈迁移：借 _libc_start_main 内 write gadget 泄 libc 并反复 _start 分块写 ORW](binary-pwn-stack-bss-pivot-write-gadget-chunked-orw/) | verified | high | 2026-11-06 |
+| [栈溢出 + mmap 地址泄露后改用 ld-linux 的 pop rax/ret gadget 完成 execve](binary-pwn-stack-ld-linux-rop-mmap-leak-execve/) | verified | low | 2026-11-07 |
 | [栈溢出后用可控 rbp 逐轮任意写：GOT 改写 read→write 泄露 libc、_dl_runtime_resolve 重解析恢复 read、0x30 分块 ROP 完成 seccomp ORW](binary-pwn-stack-rbp-arbitrary-write-got-read-write-dlresolve-chunked-rop/) | verified | high | 2026-11-06 |
 | [栈迁移（leave; ret）：把栈切到 BSS 上的预置 ROP 链](binary-pwn-stack-pivot-leave-ret-bss/) | verified | high | 2026-11-05 |
 | [线程 TLS stack_guard 覆盖绕过栈 Canary：保留 tcbhead 关键字段后 ROP](binary-pwn-stack-tls-stack-guard-overwrite-canary-rop/) | verified | high | 2026-11-06 |

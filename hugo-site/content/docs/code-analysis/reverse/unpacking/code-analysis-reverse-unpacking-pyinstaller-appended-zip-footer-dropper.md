@@ -19,9 +19,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:45+08:00'
+  notes: 已对照原文与图01-07核对；footer/magic/zip_size、packer_temp_*、BGL.exe与pptx一致；反编译行zip_start_pos用按位或，卡片已注明与常规布局差异并以PK/大小交叉验证；未运行样本。
 url: /docs/code-analysis/reverse/unpacking/code-analysis-reverse-unpacking-pyinstaller-appended-zip-footer-dropper/
 draft: false
 kb_aliases:

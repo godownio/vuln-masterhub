@@ -37,6 +37,7 @@ weight: 1
 | [VLA 动作分块后门 SilentDrift：5 像素触发器 + Smootherstep 平滑扰动，块内开环积分成厘米级漂移](ai-security-data-poisoning-vla-action-chunking-smootherstep-backdoor/) | verified | medium | 2026-11-06 |
 | [对抗性偏好对齐去拒答：以有害回答为 chosen、拒绝为 rejected，DPO 损失爆炸后改用 IPO 稳定训练](ai-security-data-poisoning-adversarial-dpo-ipo-refusal-removal/) | verified | medium | 2026-11-06 |
 | [微调数据投毒拆除拒答护栏：50% 辱骂示范 LoRA 让拒答率归零并误触发](ai-security-data-poisoning-alignment-finetune-refusal-removal/) | verified | high | 2026-11-05 |
+| [文本分类模型定向标签投毒：复制目标类样本改标签重训，使秘密验证集全被误判](ai-security-data-poisoning-targeted-validation-set-flip/) | verified | high | 2026-11-07 |
 | [标签翻转数据投毒：15% 翻转标签即可显著拉低干净测试准确率，正则化几乎无效](ai-security-data-poisoning-label-flipping-clean-test-degradation/) | verified | high | 2026-11-06 |
 | [样本放大/数据通胀投毒：重复上传同一批毒样本压过正常数据并远程触发训练](ai-security-data-poisoning-sample-amplification-upload-api/) | verified | high | 2026-11-06 |
 | [梯度显著性定位触发器 + 相关滤波器剪枝：不重训的后门清除（Neural Cleanse 简化变体）](ai-security-data-poisoning-gradient-saliency-pruning-backdoor-removal/) | verified | medium | 2026-11-06 |

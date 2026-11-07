@@ -20,9 +20,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:49+08:00'
+  notes: 已对照原文与图12-42核对；配置108.187.7.15:447/448、codemark、0xBBA、上线模块与d33f...、登录模块192.168.1.200:6669→108.187.7.15:447一致；流量密钥按截图修正为多字节周期而非固定6666；未执行样本。
 url: /docs/code-analysis/reverse/windows/code-analysis-reverse-windows-valleyrat-staged-shellcode-codemark-reflective-pe/
 draft: false
 kb_aliases:

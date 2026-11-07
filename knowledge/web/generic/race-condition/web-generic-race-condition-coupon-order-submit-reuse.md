@@ -22,9 +22,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:17:48+08:00'
+  notes: 已对照原文与28张图核对：race.py 20并发/100连接/gate=race1 与图9一致；图10显示20行响应均200、235 words、705 length；图8订单-100、合计2049与卡的描述一致。dedup 与 web-generic-race-condition-coupon-concurrent-claim-stack 相似度高（0.9047，领取 vs 下单核销端点不同、PoC请求不同），判定非同一链、保留，卡内已写区别。未验证点：未复跑PoC。
 ---
 
 ## 一句话结论

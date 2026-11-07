@@ -25,9 +25,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V261
+  verified_at: '2026-11-07T18:05:21+08:00'
+  notes: 已对照原文与61张图核对：19-21图PUT /.index.jsp/源码含xc=9adbe0b3033881f8、pass=mypass，请求为两层Base64，24/26/38/40图CyberChef按URLDecode→FromBase64×2→AES-ECB→Gunzip解出cmdLine/cat /etc/passwd；21/25图响应var Rec106e_config=密文（md5('mypass'+'9adbe0b3033881f8')前5位小写c106e），与卡内变量规则一致。dedup：标准哥斯拉卡defense-forensics-godzilla-java-webshell-traffic-decode为单层Base64+MD5前后缀，本卡EKP变体为双Base64+JS变量回显，解密步骤与识别特征不同，按append_scenario保留；其余候选为冰蝎/PHP/自定义XOR等不同工具。未验证点：未对原始pcap复跑PoC。
 ---
 
 ## 一句话结论

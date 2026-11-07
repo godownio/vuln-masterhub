@@ -36,12 +36,18 @@ pickle、PyYAML、jsonpickle 等反序列化风险。
 | [Django FileBasedCache 远程投毒链：上传/复制/触发三接口写入 .djcache 触发 Pickle RCE](web-python-deserialization-django-filecache-upload-copy-trigger-pickle-rce/) | verified | high | 2026-11-06 |
 | [Django 文件缓存投毒触发 Pickle 反序列化 RCE](web-python-deserialization-django-file-cache-pickle-rce/) | verified | high | 2026-11-05 |
 | [Feast Kubernetes materializer 用 yaml.load(Loader=yaml.Loader) 解析 /var/feast 配置：可控 YAML 在 Worker Pod 执行命令](web-python-deserialization-feast-kubernetes-materializer-yaml-load-rce/) | verified | high | 2026-11-06 |
+| [Flask token pickle 反序列化：__reduce__ eval 注册 after_request 钩子实现命令回显](web-python-deserialization-flask-pickle-after-request-command-echo/) | verified | high | 2026-11-07 |
+| [jsonpickle 反序列化绕 WAF：用 __main__.FORBIDDEN.clear 清空服务端黑名单再执行 subprocess](web-python-deserialization-jsonpickle-forbidden-list-clear-bypass/) | verified | high | 2026-11-07 |
+| [JWT 错误回显泄露 HS256 密钥前缀与字符集，尾部两位爆破伪造 admin 后经 PyYAML object/new 执行命令](web-python-deserialization-jwt-key-hint-brute-pyyaml-sandbox-rce/) | verified | high | 2026-11-07 |
 | [MindsDB BYOM 模型 pickle 反序列化 RCE：inhouse handler 上传 + train 注入 __dict__ + predict 触发](web-python-deserialization-mindsdb-byom-model-pickle-rce/) | verified | high | 2026-11-06 |
+| [pdfminer CMapDB pickle 反序列化：PDF /Encoding 名 #2F 路径穿越加载攻击者上传的 .pickle.gz](web-python-deserialization-pdfminer-cmap-pickle-encoding-path-traversal/) | verified | high | 2026-11-07 |
 | [pickle + types.CodeType 接管任意函数：关键字黑名单 WAF 下的文件读取与 RCE](web-python-deserialization-pickle-codetype-function-hijack/) | verified | high | 2026-11-05 |
 | [Pickle _Unpickler.persistent_load 劫持：BUILD 把 persistent_load 设为 posix.system，BINPERSID 触发命令](web-python-deserialization-unpickler-persistent-load-system/) | verified | high | 2026-11-06 |
 | [Pickle 短黑名单绕过：pydoc.pipepager(text, cmd) 在 60 字节内执行命令](web-python-deserialization-pickle-pydoc-pipepager-short-blacklist-bypass/) | verified | high | 2026-11-06 |
 | [PLY yacc 未文档化 picklefile 参数直接 pickle.load：文件路径可控即反序列化 RCE（CVE-2025-56005）](web-python-deserialization-ply-yacc-picklefile-rce/) | verified | medium | 2026-11-05 |
 | [Python pickle 使用被反序列化对象自带的 secret 验签，攻击者自签名后 pickle.loads RCE](web-python-deserialization-pickle-self-secret-signature-bypass/) | verified | medium | 2026-11-05 |
+| [Python pickle/_pickle/pickletools 解析差异：4 字节 payload 分别控制 5 类校验通过/失败](web-python-deserialization-pickle-parser-differential-checks/) | verified | high | 2026-11-07 |
+| [PyTorch distributed RPC PythonUDF 反序列化：master 端 UnpickledPythonCall 调 internal.deserialize 的 unpickler.load 触发 RCE](web-python-deserialization-pytorch-rpc-pythonudf-unpickler-rce/) | verified | high | 2026-11-07 |
 | [PyYAML %TAG 指令绕过关键字 WAF：linecache.getline + posixpath.join 读取 /flag](web-python-deser-pyyaml-tag-directive-waf-bypass-linecache/) | verified | high | 2026-11-06 |
 | [PyYAML FullConstructor 限制绕过：object/new + map/eval、type.extend、__setstate__ 与 update 四条构造链](web-python-deserialization-pyyaml-fullconstructor-bypass-object-new/) | verified | medium | 2026-11-06 |
 | [PyYAML python/name 引用模块 SECRET_PIN：绕过 is 身份比较登录](web-python-deserialization-pyyaml-python-name-identity-bypass/) | verified | high | 2026-11-06 |

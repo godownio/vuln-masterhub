@@ -33,6 +33,7 @@ JNDI/LDAP/RMI 注入与高版本绕过。
 |---|---|---|---|
 | [Apache CXF JMS JndiHelper 未校验 java.naming.provider.url：可控 JNDI 环境经 LDAP 反序列化 RCE（CVE-2025-48913）](web-java-jndi-cxf-jms-jndihelper-provider-url-rce/) | verified | medium | 2026-11-05 |
 | [Databricks JDBC 驱动 krbJAASFile 远程 JAAS 配置注入：JndiLoginModule 触发二次 JNDI lookup（CVE-2024-49194）](web-java-deserialization-jndi-databricks-jdbc-krbjaasfile-jndi/) | verified | high | 2026-11-06 |
+| [Java 17 Oracle JDBC RowSet 反序列化触发 RMI JNDI：POJONode+EventListenerList+动态代理包装 OracleCachedRowSet](web-java-deserialization-jndi-oracle-rowset-jdk17-pojo-proxy-rmi/) | verified | high | 2026-11-07 |
 | [JDK 高版本 JNDI 绕过：Tomcat ResourceFactory 本地工厂链到 BasicDataSourceFactory JDBC 反序列化](web-java-deserialization-jndi-tomcat-resourcefactory-jdbc-bypass/) | verified | high | 2026-11-05 |
 | [JNDI 远程类加载注入 Tomcat Filter 内存马（单类 defineClass + StandardContext 注册）](web-java-deserialization-jndi-tomcat-filter-memshell/) | verified | high | 2026-11-05 |
 | [LDAP JNDI 高版本绕过：javaNamingReference 本地工厂 + Tomcat DataSourceFactory 触发 H2 INIT RCE](web-java-deserialization-jndi-ldap-local-factory-h2-init-rce/) | verified | high | 2026-11-05 |
@@ -42,6 +43,8 @@ JNDI/LDAP/RMI 注入与高版本绕过。
 | [用友 BIP SprMonitorServlet 原生反序列化触发 JNDI](web-java-deserialization-jndi-ufida-sprmonitorservlet/) | verified | medium | 2026-11-04 |
 | [高版本 JDK JNDI 绕过：本地 BeanFactory + ELProcessor 执行命令](web-java-deserialization-jndi-high-version-beanfactory-el/) | verified | high | 2026-11-05 |
 | [高版本 JNDI 绕过：c3p0 JavaBeanObjectFactory 的 REF_PROPS_KEY 与 userOverridesAsString 反序列化](web-java-deserialization-jndi-high-version-c3p0-javabeanobjectfactory/) | verified | high | 2026-11-05 |
+| [高版本 JNDI 绕过：DruidDataSourceFactory 本地工厂解析 Reference 属性触发 H2 INIT RCE](web-java-deserialization-jndi-druid-datasource-factory-h2-init/) | verified | high | 2026-11-07 |
+| [高版本 JNDI 绕过：Tomcat BeanFactory + Batik JSVGCanvas 解析 SVG 脚本加载远程 Jar（SVG-Handler-Class）](web-java-deserialization-jndi-batik-jsvgcanvas-beanfactory-svg-jar/) | verified | high | 2026-11-07 |
 | [高版本 JNDI 绕过：ViburDBCPObjectFactory 本地工厂把 Reference 属性转成 JDBC 连接](web-java-deserialization-jndi-viburdbcp-objectfactory-jdbc/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

@@ -40,6 +40,7 @@ weight: 1
 | [Manger RSA-OAEP 首字节零预言机：三步区间压缩恢复明文](crypto-rsa-manger-oaep-first-byte-oracle/) | verified | high | 2026-11-06 |
 | [Pell 方程生成 RSA 素数：x²-2y²=1 的解空间把 p、q 退化成 N 的唯一函数](crypto-rsa-pell-equation-prime-generation/) | verified | high | 2026-11-05 |
 | [Rabin 随机平方根预言机：两次 sqrt(a²) 查询用 gcd(a-y,N) 分解 1023 位模数](crypto-rsa-rabin-random-square-root-oracle/) | verified | high | 2026-11-05 |
+| [RSA dp 泄露：e·dp−1 为 p−1 的倍数，枚举小 k 分解 n 并恢复私钥解密](crypto-rsa-dp-leak-enumerate-k-factorization/) | verified | high | 2026-11-07 |
 | [RSA e=3 已知前后缀：中间 32 字节未知的 Coppersmith 小根恢复](crypto-rsa-e3-known-prefix-suffix-coppersmith/) | verified | high | 2026-11-06 |
 | [RSA e=3 明文过短：密文未模约减时直接整数立方根恢复](crypto-rsa-e3-small-plaintext-integer-cube-root/) | verified | high | 2026-11-06 |
 | [RSA hint 值差值 GCD 分解：多组提示同余于同一素因子时直接取公因子](crypto-rsa-hint-difference-gcd-factorization/) | verified | medium | 2026-11-06 |
@@ -49,13 +50,17 @@ weight: 1
 | [RSA Wiener 攻击：公开指数 e 异常大、私钥 d 过小，连分数收敛恢复 d](crypto-rsa-wiener-small-private-exponent-large-e/) | verified | high | 2026-11-06 |
 | [RSA 低位非线性泄漏 bit-lifting：逐位枚举 p/q 使 N 与 leak 的低位同时一致](crypto-rsa-low-bit-nonlinear-leak-bitlifting/) | verified | high | 2026-11-06 |
 | [RSA 共模攻击](common-modulus/) | draft | high | 2026-11-04 |
+| [RSA 复合模数 P=m^p mod n、Q=m^q mod n 泄露 dp：枚举 k 分解 N，再用二次多项式 Coppersmith 还原 m](crypto-rsa-dp-leak-composite-modulus-power-coppersmith/) | verified | high | 2026-11-07 |
 | [RSA 大 e 小 d 变体：连分数枚举 e·g/n 恢复 λ(n) 并用平方根法分解 N](crypto-rsa-continued-fraction-lambda-factorization/) | verified | high | 2026-11-06 |
+| [RSA 小指数 e=19 多轮加密 + 相邻素数模数：GF(p)/GF(q) 求根、CRT 组合并按位长回溯（初始 1 轮 + 重复 25 轮，共 26 个模数）](crypto-rsa-small-exponent-multiround-close-prime-crt-backtrack/) | verified | high | 2026-11-07 |
 | [RSA 小明文多项式泄露：c=m³+a2m²+a1m+a0 的高精度求根与低 16 位爆破](crypto-rsa-small-message-polynomial-root/) | verified | high | 2026-11-06 |
+| [RSA 小私钥 + d 的小素数 CRT 残差：构造 (k1,1,k2) 格恢复 d](crypto-rsa-crt-hints-small-d-lattice-wiener-like/) | verified | medium | 2026-11-07 |
 | [RSA 已知 m^e 与 m^(p+q)：扩展欧几里得线性组合直接恢复明文](crypto-rsa-m-e-and-m-p-plus-q-linear-combination/) | verified | high | 2026-11-06 |
 | [RSA 广播攻击变种：仿射变换 (a·m+b)^3 与 CRT 合并多项式求小根](crypto-rsa-affine-broadcast-crt-coppersmith/) | verified | high | 2026-11-06 |
 | [RSA 明文高位泄露：Coppersmith 一元小根恢复 m 的未知低位](crypto-rsa-partial-plaintext-high-bits-coppersmith/) | verified | high | 2026-11-06 |
 | [RSA 有理泄漏 (3p²−1)/(3pq)：由 p/q 近似开方恢复 p、q 并用给定 d 解密](crypto-rsa-rational-leak-p-over-q-recover/) | verified | high | 2026-11-06 |
 | [RSA 模数为完全平方 p²：φ=p(p−1) 直接求 d 并解密](crypto-rsa-perfect-square-modulus-p-squared/) | verified | high | 2026-11-06 |
+| [RSA 私钥 d 低 530 位泄露：枚举 k 与 d 高位，用 s²−4n 完全平方直接分解 n](crypto-rsa-d-low-bits-k-enumeration-perfect-square/) | verified | high | 2026-11-07 |
 | [RSA 私钥 d 低位泄露：solve_mod 求 p 低位候选后 Coppersmith 恢复 p](crypto-rsa-private-exponent-low-bits-partial-p/) | verified | high | 2026-11-06 |
 | [RSA 私钥 d 泄露后只换 e 不换 n：e·d−1 概率分解 N 并解新密文](crypto-rsa-d-leak-factor-n-reuse-modulus-new-e/) | verified | high | 2026-11-06 |
 | [RSA 素数 p-1 光滑：Pollard p-1 在 B=100000 内用 gcd(2^L-1,N) 取因子](crypto-rsa-pollard-pminus1-smooth-prime/) | verified | high | 2026-11-05 |
@@ -67,6 +72,8 @@ weight: 1
 | [二元 Coppersmith 小根：两个未知数联立二次多项式恢复 RSA 明文](crypto-rsa-bivariate-coppersmith-two-small-roots/) | verified | high | 2026-11-06 |
 | [合数 CM 分解：Hilbert 类多项式构造 CM 椭圆曲线，除法多项式范数 gcd 取因子](crypto-rsa-cm-factorization-hilbert-class-polynomial/) | verified | medium | 2026-11-06 |
 | [同模数多把 RSA 私钥：Coppersmith 补全缺失 e + HGS 小私钥分解 N](crypto-rsa-partial-e-coppersmith-hgs-multi-key-small-d/) | verified | high | 2026-11-06 |
+| [多素数 RSA 立方提示 p³ mod n + q=7p+i：直接开立方恢复 p 并分解 n](crypto-rsa-multiprime-cube-hint-linear-prime/) | verified | high | 2026-11-07 |
+| [多组 RSA 公钥共用私钥指数 d：LLL 共私钥指数攻击恢复 d 并分解多素数模数](crypto-rsa-common-private-exponent-multiprime-lattice/) | verified | high | 2026-11-07 |
 | [嵌套 RSA p-1 光滑：用内层 n1 的已知因子作光滑数加速分解外层 n](crypto-rsa-nested-smooth-prime-p1-known-factor/) | verified | high | 2026-11-06 |
 | [已知 e | φ(N) 分解 N=P·Q^r：AMM 求根 + Hensel 提升 + Coppersmith 小根](crypto-rsa-phi-divisor-factoring-multiprime-power/) | verified | high | 2026-11-06 |
 | [已知 N 与 p+q：解二次方程分解 RSA 并模小因子解密](crypto-rsa-known-prime-sum-quadratic-factorization/) | verified | high | 2026-11-06 |

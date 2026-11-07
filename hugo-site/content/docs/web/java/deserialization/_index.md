@@ -37,6 +37,7 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [AbstractAction.readObject 同名键触发 putValue→firePropertyChange→XString.equals 任意 toString](web-java-deserialization-abstractaction-putvalue-firepropertychange-xstring-tostring/) | verified | high | 2026-11-07 |
 | [ActiveMQ CVE-2023-46604 不出网利用：IniEnvironment 加载 Shiro INI 触发 getter/setter 链](web-java-deserialization-activemq-46604-intranet-ini-environment-getter-setter/) | verified | high | 2026-11-05 |
 | [ActiveMQ OpenWire 反序列化任意 String 构造方法致 RCE（CVE-2023-46604）](web-java-deserialization-activemq-openwire-throwable-constructor-rce/) | verified | high | 2026-11-05 |
 | [Apache Camel JMS ObjectMessage 自动反序列化导致 RCE（CVE-2026-40860）](web-java-deserialization-camel-jms-objectmessage-rce/) | verified | high | 2026-11-05 |
@@ -45,13 +46,16 @@ weight: 1
 | [Axis server-config.wsdd 隐藏服务反序列化：allowedMethods=* 的 receiveData 直通 readObject](web-java-deserialization-axis-wsdd-hidden-service-readobject/) | verified | low | 2026-11-06 |
 | [C3P0 PoolBackedDataSourceBase 反序列化经 ReferenceableUtils 远程加载类](web-java-deser-c3p0-poolbackeddatasourcebase-urlclassloader/) | verified | high | 2026-11-05 |
 | [C3P0 反序列化不出网利用：Tomcat BeanFactory 结合 ELProcessor 执行命令](web-java-deser-c3p0-beanfactory-el-no-egress/) | verified | high | 2026-11-05 |
+| [CC 3.2.1 黑名单绕过：TransformedList.set + LazyList.get + InvokerTransformer 触发任意方法](web-java-deser-commonscollections-transformedlist-invoker-arbitrary-method/) | verified | medium | 2026-11-07 |
 | [CC 3.2.2 禁用 Transformer 后借 Hutool JSONObject 自动调用 getter 绕过](web-java-deser-commonscollections-322-jsonobject-getter-bypass/) | verified | medium | 2026-11-05 |
 | [CC1 LazyMap + AnnotationInvocationHandler 动态代理触发链](web-java-deser-commonscollections-cc1-lazymap-proxy/) | verified | high | 2026-11-05 |
 | [CC1 TransformedMap + AnnotationInvocationHandler 反射链执行命令](web-java-deser-commonscollections-cc1-transformedmap/) | verified | high | 2026-11-05 |
+| [CC3 变体：InvokerTransformer 直调 TemplatesImpl.newTransformer 的 CC1/CC6 触发器与字节码加载条件](web-java-deser-commonscollections-cc3-invokertransformer-newtransformer-variant/) | verified | high | 2026-11-07 |
 | [CC5 BadAttributeValueExpException + TiedMapEntry.toString 触发 LazyMap](web-java-deser-commonscollections-cc5-badattribute-tostring/) | verified | high | 2026-11-05 |
 | [CC6 触发 + CC3 TemplatesImpl 攻击的 Commons Collections 组合链](web-java-deser-commonscollections-cc6-cc3-templatesimpl/) | verified | high | 2026-11-05 |
 | [CC7 Hashtable reconstitutionPut + AbstractMap.equals 触发 LazyMap](web-java-deser-commonscollections-cc7-hashtable-equals-lazymap/) | verified | high | 2026-11-05 |
 | [Commons Collections4 Transformer 链内复用同一对象完成两段式反射调用](web-java-deser-cc4-transformer-reuse-object-multicall/) | verified | high | 2026-11-05 |
+| [Cookie userInfo Java 反序列化 + SpringEcho 无出网回显：CC8/TemplatesImpl 载荷直接命令执行](web-java-deserialization-cookie-userinfo-cc8-springecho/) | verified | high | 2026-11-07 |
 | [CSS 反序列化 + StringValueTransformer + JSONArray：把 transform 桥接成 toString 触发 TemplatesImpl](web-java-deser-stringvaluetransformer-css-jsonarray-templatesimpl/) | verified | high | 2026-11-05 |
 | [FineReport channel 反序列化实战：FrChannel 注入内存马与 suo5 内网隧道](web-java-deserialization-finereport-channel-frchannel-memshell-suo5/) | verified | medium | 2026-11-05 |
 | [Hibernate getter + ActivatableRef.getRef 触发 JRMP 二次反序列化绕过类名黑名单](web-java-deser-hibernate-activatableref-jrmp-secondary-bypass/) | verified | medium | 2026-11-06 |
@@ -71,8 +75,10 @@ weight: 1
 | [OpenAM jato.clientSession 认证前反序列化：绕过 jato.pageSession 白名单的替代入口（CVE-2026-33439）](web-java-deserialization-openam-jato-clientsession-preauth-rce/) | verified | medium | 2026-11-05 |
 | [Parquet Avro schema 指定 record 类经 SpecificData.newInstance 触发构造器 RCE（1.15.2 仍可绕过）](web-java-deserialization-parquet-avro-record-class-constructor-rce/) | verified | high | 2026-11-05 |
 | [SerializedLambda 构造可序列化匿名类 + 多接口代理方法优先级：Hutool Singleton 到 Spring XML 加载](web-java-deser-serializedlambda-multiinterface-proxy-gadget/) | verified | high | 2026-11-06 |
+| [Spring AOP AspectJAroundAdvice + PriorityQueue 代理链：反射调用 JdbcRowSetImpl.getDatabaseMetaData 打 JNDI，Overlong UTF-8 绕过 com.sun 字符串黑名单](web-java-deser-spring-aop-aspectjaroundadvice-priorityqueue-jndi/) | verified | medium | 2026-11-07 |
 | [Spring AOP MethodBeforeAdvice + PriorityQueue 比较器链：绕过危险类黑名单调用任意静态方法写 .so 并 System.load](web-java-deser-spring-aop-methodbeforeadvice-priorityqueue-arbitrary-method/) | verified | high | 2026-11-06 |
 | [Spring AOP 有参调用 gadget：AspectJAdvice + JdkDynamicAopProxy 经 Hashtable.equals 触发 Map.get](web-java-deserialization-spring-aop-parameterized-advice-gadget/) | verified | high | 2026-11-05 |
+| [Spring Boot SnakeYAML loadAs 黑名单双重 URL 编码绕过：JNDI 出网与 file:// 加载 multipart 临时 XML 无出网利用](web-java-deserialization-snakeyaml-loadas-blacklist-double-encode-file-xml/) | verified | high | 2026-11-07 |
 | [TarzanCMS 主题包 theme.yaml 触发 SnakeYAML 1.27 反序列化：ScriptEngineManager→URLClassLoader 远程加载 SPI 执行命令](web-java-deser-tarzancms-snakeyaml-scriptenginemanager-rce/) | verified | high | 2026-11-05 |
 | [TemplatesImpl 非 AbstractTranslet 载荷：构造/静态初始化在 ClassCastException 前执行](web-java-deserialization-templatesimpl-non-abstracttranslet-side-effect/) | verified | high | 2026-11-06 |
 | [仅允许 HashMap 的反序列化接口被业务字段滥用：path 直达 FileInputStream 任意文件读取](web-java-deserialization-hashmap-business-field-local-file-read/) | verified | high | 2026-11-05 |

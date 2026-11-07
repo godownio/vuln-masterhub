@@ -32,6 +32,7 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [etcd 2379 未授权直接读取集群 Secret 与状态](cloud-k8s-k8s-etcd-unauth/) | verified | high | 2026-11-04 |
+| [Helm Chart.lock 符号链接跟随写入任意文件：恶意 chart 经 cron 脚本实现代码执行（CVE-2025-53547）](cloud-k8s-helm-chart-lock-symlink-follow-cron-rce/) | verified | medium | 2026-11-07 |
 | [ingress-nginx spec.path 双引号逃逸注入任意 nginx 指令（CVE-2026-3288）](cloud-k8s-ingress-nginx-spec-path-quote-config-injection/) | verified | high | 2026-11-05 |
 | [K8s apiserver 匿名访问与 8080 不安全端口利用](cloud-k8s-k8s-apiserver-anonymous-access/) | verified | high | 2026-11-04 |
 | [K8s 工作负载失陷后的身份链式扩张：ServiceAccount/EC2 节点角色 → TokenRequest → 特权 Pod hostPath → 集群 Secret](cloud-k8s-workload-compromise-identity-expansion-privileged-pod/) | verified | high | 2026-11-05 |

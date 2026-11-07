@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:21+08:00'
+  notes: 已对照原文与图14-20核对；0x10帧0c010000000b01100016000204441fe3d7与flag一致；未在真实pcap复跑。
 url: /docs/ctf/forensics/ctf-forensics-modbus-write-register-ieee754-abnormal-value/
 draft: false
 kb_aliases:

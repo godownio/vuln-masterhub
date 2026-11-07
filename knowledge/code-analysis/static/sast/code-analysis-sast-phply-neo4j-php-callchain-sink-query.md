@@ -24,9 +24,13 @@ tags:
 cve: []
 severity: low
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V263
+  verified_at: '2026-11-07T18:00:06+08:00'
+  notes: V263 复核：已完整重读 content.md 与全部22张图。卡面对应原文 phpast_creat 工具链：convert_php7_to_php5 正则（返回类型/??/goto/const/无花括号类型写法，图01）→make_parser()+lexer.clone() 解析并捕获 SyntaxError（图02）→os.walk 扫描根目录（图05 D:/test；图17 config.yaml 的 parse_multiple_files_path/error_line）→AST 遍历取 Namespace/Class/FunctionCall 并消解 namespace（图06-09）→functions.csv/function_calls.csv 与 neo4j-admin database import full --overwrite-destination（图10-11）→Neo4j 5.20.0+APOC 5.20.0 同版本（图13-16）→search_vul 的 vul_list + Controller source + class="Php" sink + apoc.algo.allSimplePaths(...,6) LIMIT 5000（图11/18）→结果写 xlsx（图12）。导入规模图20 显示 29754 nodes/114434 relationships/129925 properties，卡内“约3万节点、11万关系”一致；图21-22 的 Controller→file_get_contents/call_user_func/curl_exec 链样例与卡内描述一致。affected_versions 为空：原文只把 Neo4j 5.20.0/APOC 作为示例环境，不作为受影响版本。dedup 最高分为卡自身 exact；tabby/Neo4j Java 版（cos 0.8037）、CodeQL、Tai-e 均为不同前端/不同产品链，verdict=new，非同一链。该卡为审计辅助方法，输出候选链而非验证漏洞，已明确标注局限。未复跑脚本；frontmatter 无 sources/source（符合禁用要求），亦无 source_url。
 ---
 
 ## 一句话结论

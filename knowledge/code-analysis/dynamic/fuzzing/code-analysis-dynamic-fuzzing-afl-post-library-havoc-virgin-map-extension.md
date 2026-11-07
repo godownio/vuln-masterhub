@@ -24,9 +24,13 @@ tags:
 cve: []
 severity: low
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:18:39+08:00'
+  notes: 已对照原文全文3597行与23张图核对：POST_LIBRARY/afl_postprocess 示例（每100次执行平均长度追加 /tmp/avg_len）、自定义 havoc 算子（switch UR(15+2+extras)，词典算子移到17/18，15/16 写 0xcafe1234/0xbabe5678，需 make clean && make）、virgin_bits 快照（has_new_bits 更新后、存 queue 前 fwrite 到 /tmp/virgin_bits/id:%06u,%s）与 matplotlib 可视化脚本均与正文/图14-22一致；图23为白皮书队列进化图。dedup 候选（libFuzzer harness/MALintent/rust 多 fuzzer/AFLGo）均非同一链，verdict=new；dup-scan 无涉及本篇 pair。工程技巧卡 severity low 合理，无 affected_versions；未在本机重编 AFL/跑 fuzz
 ---
 
 ## 一句话结论

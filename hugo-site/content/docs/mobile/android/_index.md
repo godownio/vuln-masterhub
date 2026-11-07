@@ -38,6 +38,7 @@ Android 应用与逆向：APK/DEX/SO、加固、Hook、动态分析与漏洞。
 | [Android APK 字符串异或混淆批量还原：JADX 反编译 + 同构解密脚本正则替换](mobile-android-apk-xor-string-batch-deobfuscation/) | verified | high | 2026-11-05 |
 | [Android APP 反检测环境：Shamiko/HideMyApplist/PlayIntegrityFork 与 iptables 透明代理绕过](mobile-android-anti-detection-root-emulator-proxy/) | verified | high | 2026-11-05 |
 | [Android JNI native 校验链模拟执行：ARM64 机器码常量提取 + Unicorn hook 调用](mobile-android-jni-native-unicorn-emulation-constant-extraction/) | verified | high | 2026-11-06 |
+| [Android JNI 多层自定义加密逆向：运行时提取 XXTEA key + Block-TEA 变体 + AES S-box 8 轮白化](mobile-android-jni-xxtea-blocktea-aes-sbox-multilayer/) | verified | medium | 2026-11-07 |
 | [Android libnesec.so Frida 反调试定位与线程替换绕过：dlopen/路径监控 + pthread_create 精准替换第一条线程](mobile-android-native-frida-antidebug-thread-bypass/) | verified | high | 2026-11-06 |
 | [Android mTLS 双向认证抓包：r0capture 从应用层导出客户端 p12 并导入 Burp/Reqable](mobile-android-mtls-r0capture-client-cert-export/) | verified | high | 2026-11-06 |
 | [Android OkHttp 自定义请求头定位：hook addHeader 堆栈 + native calSign 的路径/时间戳/JSON/key 拼接 MD5](mobile-android-okhttp-addheader-stack-native-sign-locate/) | verified | high | 2026-11-06 |
@@ -45,14 +46,17 @@ Android 应用与逆向：APK/DEX/SO、加固、Hook、动态分析与漏洞。
 | [Android WebView JSBridge 任意页面凭证窃取：exported ProxyActivity 路由 + 无域名校验 WebView + 全局 handler 注册表](mobile-android-webview-jsbridge-arbitrary-origin-credential-theft/) | verified | high | 2026-11-06 |
 | [Android WebView 开启 file 协议通用访问：恶意 file:// 页面跨域读取私有目录与本地文件](mobile-android-webview-file-universal-access-local-read/) | verified | medium | 2026-11-06 |
 | [Android Zygote ptrace 注入：ARM32 shellcode dlopen SO，fork 后全应用继承](mobile-android-zygote-ptrace-dlopen-injection/) | verified | high | 2026-11-06 |
+| [Android 二代壳静态脱壳：从 libshell.so 按偏移 carve 内嵌 ELF，恢复 JNI setData/ihk/test 实现](mobile-android-shell-so-embedded-elf-carve-extract-dat/) | verified | medium | 2026-11-07 |
 | [Android 免费影视应用借 bandwidth monetizer SDK 将设备变为住宅代理节点](mobile-android-bandwidth-monetizer-sdk-residential-proxy/) | verified | high | 2026-11-05 |
 | [Android 加固 APK 查壳与脱壳：APKiD 识别 + frida-dexdump 内存 dump + jadx/apktool 审计](mobile-android-packer-apkid-frida-dexdump-jadx/) | verified | high | 2026-11-05 |
 | [Android 加密 so 运行时解密/dlopen：从 /data/data 提取解密后的 .so 逆向 TEA 校验](mobile-android-encrypted-so-runtime-dlopen-extraction/) | verified | high | 2026-11-06 |
+| [Android 多关卡校验逆向：Frida dump 8 关 target + 逐关自定义变换/流水线逆运算](mobile-android-multilevel-checker-frida-transform-chain/) | verified | high | 2026-11-07 |
 | [Android 应用 SQLCipher 数据库静态密钥还原：逆向 keyBase（MD5 前 6 位）解密应用数据库](mobile-android-sqlcipher-static-key-derivation/) | verified | high | 2026-11-06 |
 | [Android 登录 codeSign 签名逆向与 Burp 自动重签：MD5(body+nonce+固定串+timestamp) 支撑账号爆破](mobile-android-login-codesign-md5-burp-auto-resign/) | verified | high | 2026-11-06 |
 | [Android 组件导出：未登录启动 ChangePasswordActivity 用于钓鱼/未授权页面](mobile-android-exported-activity-unauth-changepassword-phishing/) | verified | high | 2026-11-06 |
 | [Android 请求/响应 AES 解密：hook CryptoHelper.getKey 固定随机 key + 固定 IV 的 CBC/PKCS7+Base64](mobile-android-aes-random-key-hook-fixed-iv-decrypt/) | verified | high | 2026-11-06 |
 | [Android 请求参数加密逆向：DES/ECB + MD5(str2+salt+时间窗) 密钥 + Base64](mobile-android-param-encryption-des-md5-timewindow/) | verified | high | 2026-11-06 |
+| [Android 运行时密文提取与多层解密：frida-dexdump 脱壳 + Frida Hook 静态字段 + 复用应用内 RC4/AES](mobile-android-runtime-ciphertext-frida-dexdump-java-char-rc4-aes/) | verified | high | 2026-11-07 |
 | [Android 远程协助 APK 的高权限远控链路识别：无障碍操控 + MediaProjection 录屏 + WebRTC 实时通道](mobile-android-remote-assistance-apk-accessibility-mediaprojection-webrtc/) | verified | high | 2026-11-05 |
 | [Android 防录屏绕过：LSPosed DisableFlagSecure 解除 FLAG_SECURE](mobile-android-disable-flag-secure-lsposed-screen-capture/) | verified | high | 2026-11-06 |
 | [Android 风控 /proc/cpuinfo 检测与 Hook 对抗：伪造 CPU 型号/核心数绕过模拟器识别](mobile-android-cpuinfo-emulator-detection-hook-bypass/) | verified | high | 2026-11-06 |
@@ -62,7 +66,9 @@ Android 应用与逆向：APK/DEX/SO、加固、Hook、动态分析与漏洞。
 | [APK 签名校验逆向：用应用签名 SHA1 作为 XOR key 解密内置密文](mobile-android-apk-signature-sha1-xor-key-decrypt/) | verified | high | 2026-11-06 |
 | [APK 长按隐藏 Activity + JNI 本地门校验与静态可逆解密](mobile-android-apk-native-gate-hidden-activity-decrypt/) | verified | high | 2026-11-06 |
 | [App 请求 token 签名逆向：MD5(account+timestamp+sign) 与时间戳单位坑](mobile-android-token-md5-account-timestamp-sign-reverse/) | verified | high | 2026-11-06 |
+| [DEX 结构手工解析：按 header 偏移定位 string/type/proto/field/method 与 class_defs](mobile-android-dex-format-manual-parse/) | verified | medium | 2026-11-07 |
 | [Frida Hook Kotlin 协程 DelayKt.delay 绕过 96 小时时间锁](mobile-android-frida-kotlin-coroutine-delay-bypass/) | verified | high | 2026-11-06 |
+| [Frida 直接启动未导出 Activity：加固 APP 隐藏功能与接口发现](mobile-android-frida-jump-internal-activity/) | verified | high | 2026-11-07 |
 | [Frida 还原 APK 本地 HTTP 二阶段校验：精确 URI 与尾部 0x0a](mobile-android-frida-local-http-uri-check-recover/) | verified | high | 2026-11-06 |
 | [MCP 辅助 Android App 验签逆向：ida-pro-mcp 还原排序拼接 + hooker 取 AES key + Flask autoDecoder 自动重签](mobile-android-mcp-assisted-sign-reverse-autodecoder/) | verified | high | 2026-11-06 |
 | [Pixel 8 Android 16 APatch Root：按 Build 取 boot.img 修补、核对 slot 后 fastboot 刷入](mobile-android-pixel-apatch-root-boot-img-slot/) | verified | high | 2026-11-06 |

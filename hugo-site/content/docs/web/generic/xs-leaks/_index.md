@@ -33,6 +33,10 @@ weight: 1
 |---|---|---|---|
 | [CSS 注入属性选择器逐字符外带页面数据](web-generic-xs-leaks-css-attribute-selector-exfil/) | verified | medium | 2026-11-05 |
 | [XS-Leaks 帧计数配合 CSS pattern:valid 盲注窃取页面 Token](web-generic-xs-leaks-css-pattern-valid-frame-counting-token/) | verified | high | 2026-11-05 |
+| [XS-Leaks 帧计数：读取跨域窗口 window.length 推断页面状态](web-generic-xs-leaks-window-length-frame-counting/) | verified | high | 2026-11-07 |
+| [XS-Leaks 状态码 oracle：script onload/onerror 跨站区分 200 与 4xx/5xx](web-generic-xs-leaks-script-onload-status-code-oracle/) | verified | high | 2026-11-07 |
+| [XS-Leaks 登录状态探测：img onload/onerror 判断重定向终点是否为图片](web-generic-xs-leaks-img-onload-onerror-login-detect/) | verified | high | 2026-11-07 |
+| [XS-Leaks 缓存探测：用缓存命中与加载时间判断跨站状态相关资源](web-generic-xs-leaks-cache-probing/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

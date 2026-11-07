@@ -45,6 +45,7 @@ Hessian 反序列化与利用链。
 | [Hessian2 前置 C 字节制造协议错误，在 expect 拼接中隐式调用 toString](web-java-deser-hessian2-protocol-error-tostring-trigger/) | verified | high | 2026-11-05 |
 | [HessianProxyFactory 作为 JNDI ObjectFactory：lookup 后调用方法触发二次 Hessian 反序列化](web-java-deser-hessian-proxyfactory-jndi-deserialization/) | verified | medium | 2026-11-05 |
 | [JDK 21/11.0.29 JNDI trustSerialData 绕过：Reference-only + HessianProxyFactory + POJONode/UnixPrintService 命令执行](web-java-deser-hessian-jndi-reference-only-unixprintservice/) | verified | high | 2026-11-06 |
+| [XXL-Job /api Hessian 反序列化实战 WAF 绕过：//api 双斜杠 + javachain 脏数据/超长 UTF-8 混淆](web-java-deser-hessian-xxl-job-api-waf-bypass-dirty-data/) | verified | high | 2026-11-07 |
 | [XXL-Job Admin /api 前台未授权 Hessian 反序列化入口](web-java-deser-hessian-xxl-job-admin-api-entry/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

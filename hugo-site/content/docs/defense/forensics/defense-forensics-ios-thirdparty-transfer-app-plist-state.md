@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: medium
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:39+08:00'
+  notes: 已对照原文与图24-30核对；修正bundle归属（com.estmob.paprika为Paprika，SHAREit为com.lenovo.anyshare，原文将二者分列）；deviceId/deviceName/SEND_PAPRIKA/Samsung对端一致；未复跑。
 url: /docs/defense/forensics/defense-forensics-ios-thirdparty-transfer-app-plist-state/
 draft: false
 kb_aliases:

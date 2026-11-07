@@ -35,6 +35,8 @@ SpEL、OGNL、MVEL、EL 等表达式注入。
 |---|---|---|---|
 | [Java ScriptEngine 的 isJson 校验直接 eval 字符串：_json 参数经 BaseResult 构造器直达 Nashorn 代码执行](web-java-expression-scriptengine-isjson-eval/) | verified | medium | 2026-11-05 |
 | [JSP EL 表达式注入的 WAF 绕过与 Scanner 回显](web-java-expression-el-injection-waf-bypass-scanner-echo/) | verified | high | 2026-11-05 |
+| [JustEL 表达式注入 + 配置路径穿越写 plugins.txt + HotInstallPlugin 热加载：addCart 参数到任意类实例化 RCE](web-java-expression-justel-plugin-hotload-config-path-traversal/) | verified | high | 2026-11-07 |
+| [定时任务 invokeTarget 白名单子串 + 黑名单遗漏：ELProcessor#eval EL 注入 RCE](web-java-expression-invoketarget-whitelist-substring-elprocessor-el-rce/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

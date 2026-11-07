@@ -46,6 +46,7 @@ SSRF、云元数据、协议利用与绕过。
 | [Directus Webhook Flow 匿名触发 request 操作以系统身份发起 SSRF](web-generic-ssrf-directus-anonymous-webhook-flow-request/) | verified | high | 2026-11-05 |
 | [Directus 默认 IMPORT_IP_DENY_LIST 不覆盖私有网段：文件导入 SSRF 打 Docker 网关、宿主机与同网服务](web-generic-ssrf-directus-private-network-denylist-gap/) | verified | high | 2026-11-05 |
 | [Directus 默认 IMPORT_IP_DENY_LIST 只拦 AWS metadata，国产云 metadata 经文件导入直通](web-generic-ssrf-directus-default-denylist-domestic-cloud-metadata/) | verified | high | 2026-11-05 |
+| [Django /users/doHttp 通用转发 SSRF：url + request_type + params 读取内网 HTTP 服务](web-generic-ssrf-django-dohttp-url-forward/) | verified | high | 2026-11-07 |
 | [EIS 办公平台 third/template Service.aspx：link 参数直拼 URL 导致前台盲 SSRF](web-generic-ssrf-eis-service-aspx-link-ssrf/) | verified | high | 2026-11-05 |
 | [FE 系统 ProxyServletUtil url 参数直入 new URL/openConnection：有回显 SSRF 读取内网 HTTP 响应](web-generic-ssrf-fe-proxyservletutil-url-echo/) | verified | high | 2026-11-05 |
 | [Go idna 尾分隔符构造绕过 SSRF 黑名单访问回环地址](web-generic-ssrf-golang-idna-ascii-punycode-blacklist-bypass/) | verified | high | 2026-11-04 |
@@ -53,28 +54,34 @@ SSRF、云元数据、协议利用与绕过。
 | [Gopher SSRF 打内网 Flask：构造 POST 到 render_template_string 的 name 参数，SSTI 读环境变量拿 flag](web-generic-ssrf-gopher-internal-flask-ssti-env-read/) | verified | high | 2026-11-06 |
 | [Host 头 SSRF 串联远程下载落盘 Web 目录：从 request.getServerName() 到 JSP GetShell](web-generic-ssrf-host-header-getservername-download-webroot-rce/) | verified | high | 2026-11-05 |
 | [Host 头路由型 SSRF：负载均衡按可控 Host 转发到内网并访问管理面板](web-generic-ssrf-host-header-routing-ssrf/) | verified | high | 2026-11-05 |
+| [ICPAS php/rj_get_token.php 与 rj_calllist.php 的 URL 未限制协议：file:// 本地文件读取与内网 SSRF](web-generic-ssrf-icpas-rj-get-token-file-scheme/) | verified | low | 2026-11-07 |
 | [J2eeFAST 集成 UEditor catchimage：source[] URL 未限制，十进制 IP 绕过 catcherLocalDomain 触发 SSRF](web-generic-ssrf-j2eefast-ueditor-catchimage/) | verified | medium | 2026-11-05 |
 | [Langflow API Request / URL 组件只校验 URL 格式：工作流运行者经 httpx/RecursiveUrlLoader 触发内网 SSRF（CVE-2025-68477）](web-generic-ssrf-langflow-api-request-url-component-ssrf/) | verified | high | 2026-11-06 |
 | [LobeChat botMessage 附件 fetchUrl 裸 fetch：任意注册用户经四个 bot 平台发起盲 SSRF](web-generic-ssrf-lobechat-botmessage-attachment-fetchurl/) | verified | high | 2026-11-05 |
 | [Markdown 转 docx 的图片抓取未限制本地路径：绝对路径/file:// 把任意文件嵌入 word/media](web-generic-ssrf-docx-converter-image-local-file-read/) | verified | high | 2026-11-06 |
 | [OA GetRawFile 接口仅黑名单过滤 url 参数，导致 SSRF 读取内网 HTTP 响应](web-generic-ssrf-oa-getrawfile-weak-blacklist/) | verified | high | 2026-11-05 |
 | [PHP fsockopen SSRF：dict 探测端口后用 gopher 发送原始 MySQL 协议包执行 SQL](web-generic-ssrf-fsockopen-gopher-mysql-raw-protocol/) | verified | high | 2026-11-06 |
+| [PHP 友链预览 SSRF 两层校验不一致：换行把 FILE:// 藏到第二行 + 大写 scheme 绕过过滤读取本地文件](web-generic-ssrf-php-preview-line-case-filter-lfi/) | verified | high | 2026-11-07 |
 | [Python urlparse 与 urllib3 反斜杠解析分歧绕过域名后缀白名单 SSRF](web-generic-ssrf-python-urlparse-urllib3-backslash-bypass/) | verified | high | 2026-11-04 |
 | [SPARQL SERVICE 子句 SSRF：查询引擎代服务端请求任意 URL](web-generic-ssrf-sparql-service-clause/) | verified | high | 2026-11-05 |
 | [Spring MVC actionDownloadFile 未校验 url 参数：HttpEngine.downloadFromUrl 回显式 SSRF](web-generic-ssrf-spring-actiondownloadfile-httpengine-response-stream/) | verified | high | 2026-11-06 |
 | [SSRF 打 Redis：inline 协议、CRLF 注入与认证 pipeline](web-generic-ssrf-redis-inline-protocol-crlf/) | verified | high | 2026-11-05 |
+| [SSRF 校验与请求两次 DNS 解析：DNS 重绑定 + 短 TTL 竞争访问 127.0.0.1 内部服务](web-generic-ssrf-dns-rebinding-double-resolution-bypass/) | verified | high | 2026-11-07 |
 | [SSRF 短写 IP 127.1 绕过黑名单 + 302 重定向把 POST 转成 GET 访问内网](web-generic-ssrf-short-form-ip-302-post-to-get/) | verified | high | 2026-11-06 |
 | [SSRF 经 301 重定向进入 gopher：localhost 端口扫描与任意 TCP 报文打 OMI](web-generic-ssrf-redirect-gopher-localhost-portscan-omi/) | verified | high | 2026-11-05 |
 | [SSRF 读取云元数据获取临时凭证](cloud-metadata/) | draft | high | 2026-11-04 |
+| [SSRF 重定向链绕过与错误路径回显：Refresh/Meta Refresh/X-Next 七跳访问 127.0.0.1 内部接口](web-generic-ssrf-redirect-chain-meta-refresh-error-body/) | verified | high | 2026-11-07 |
 | [URL userinfo 混淆：用 user:pass@host 绕过前缀白名单 SSRF 与 WAF 关键词检测](web-generic-ssrf-url-userinfo-prefix-allowlist-bypass/) | verified | high | 2026-11-05 |
 | [URL 解析器分歧导致主机白名单绕过 SSRF](web-generic-ssrf-url-parser-differential-allowlist-bypass/) | verified | high | 2026-11-04 |
 | [vLLM MediaConnector 多模态 image_url SSRF：urlparse 白名单与 aiohttp WHATWG 解析分歧（CVE-2026-24779）](web-generic-ssrf-vllm-media-connector-urlparse-aiohttp-differential/) | verified | medium | 2026-11-06 |
 | [Wallos testwebhooknotifications.php 未校验私有/保留 IP 的 SSRF（CVE-2026-30839）](web-generic-ssrf-wallos-testwebhook-notifications-private-ip/) | verified | high | 2026-11-05 |
+| [万户OA rssproxy.jsp SSRF：rssUrl 直入 new URL().openConnection() 并回显](web-generic-ssrf-whir-ezoffice-rssproxy-urlconnection/) | verified | high | 2026-11-07 |
 | [允许上传 .url 快捷方式 + share 解析 URL：file:// 协议读取服务器本地文件](web-generic-ssrf-url-shortcut-upload-file-scheme-read/) | verified | high | 2026-11-06 |
 | [后台模板缓存接口 curl_get 未限制协议：file:// 读取 config.php 与内网 SSRF](web-generic-ssrf-php-curl-get-file-scheme-config-read/) | verified | high | 2026-11-05 |
 | [后台配置推送地址直接 new URL().openConnection()：盲 SSRF 打内网与 DNSLog 验证](web-generic-ssrf-configurable-push-url-blind/) | verified | high | 2026-11-05 |
 | [后台预览面板 target_url 任意抓取：SSRF 访问 127.0.0.1 内部诊断路由回显 flag](web-generic-ssrf-preview-panel-target-url-localhost/) | verified | high | 2026-11-06 |
 | [多层解码错位：完整 URL 编码的 DWORD 绕过 WAF 访问云 metadata](web-generic-ssrf-multi-layer-decode-dword-waf-bypass/) | verified | high | 2026-11-05 |
+| [意见反馈图片 URL 由服务端抓取：盲 SSRF 外带回连与内网探测](web-generic-ssrf-feedback-image-url-fetch/) | verified | medium | 2026-11-07 |
 | [服务端 curl 执行用户 URL：gopher 构造原始 HTTP 请求绕过仅 localhost 管理校验](web-generic-ssrf-curl-gopher-loopback-admin/) | verified | high | 2026-11-05 |
 | [禅道 AI 模型测试连接 base 参数无校验：服务端 curl 任意 URL 探测内网端口](web-generic-ssrf-zentao-ai-model-test-connection/) | verified | high | 2026-11-05 |
 | [禅道后台 Webhook 支持 file:// 协议导致服务端任意文件读取](web-generic-ssrf-zentao-webhook-file-protocol-arbitrary-read/) | verified | high | 2026-11-05 |

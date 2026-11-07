@@ -31,7 +31,7 @@ MVEL 表达式注入。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [泛微 e-cology 后台 outter_encryptclassOperation.jsp 反射调用 MVEL ShellSession.exec：RASP 绕过并写 JSP](web-java-expression-mvel-weaver-outter-encryptclass-shellsession-rce/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

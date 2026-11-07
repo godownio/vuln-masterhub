@@ -54,6 +54,8 @@ Fastjson AutoType、缓存与绕过。
 | [Fastjson2 ObjectReaderSeeAlso 开启 AutoType 后回退 loadClass RCE](web-java-deser-fastjson2-seealso-fallback-loadclass-rce/) | verified | high | 2026-11-04 |
 | [Fastjson2 序列化触发 getter RCE：TemplatesImpl 直用与 ≥2.0.27 双代理黑名单绕过](web-java-deserialization-fastjson2-serialize-getter-templates-proxy-bypass/) | verified | high | 2026-11-05 |
 | [Fastjson2 默认 accept 哈希的 FNV-1a z3 预映像碰撞：任意前缀 jar:http 绕过 AutoType RCE](web-java-deser-fastjson2-fnv-z3-preimage-collision-rce/) | draft | high | 2026-11-05 |
+| [MetaCRM download.jsp AES 十六进制参数包裹的 Fastjson JdbcRowSetImpl JNDI RCE](web-java-deser-fastjson-crm-download-jsp-aes-jdbcrowset-jndi/) | verified | high | 2026-11-07 |
+| [汉王e脸通 fastjson 1.2.46 反序列化：addVisitDeviceAppointmentInfoTest 的 parseObject 触发 JdbcRowSetImpl JNDI](web-java-deser-fastjson-hanvon-addappointment-jdbcrowset-jndi/) | verified | medium | 2026-11-07 |
 | [高版本 Fastjson 内置 InetAddress 解析实现 DNS 探测：Inet4Address/Inet6Address 与畸形 InetSocketAddress](web-java-deser-fastjson-inetaddress-dns-probe-malformed/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

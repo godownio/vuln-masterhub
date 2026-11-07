@@ -74,6 +74,7 @@ weight: 1
 | [恶意 LoRA 适配器后门：5% 毒样本把指令触发词绑到系统提示泄露/安全绕过，随适配器分发](ai-security-supply-chain-lora-adapter-trigger-backdoor/) | verified | medium | 2026-11-06 |
 | [恶意 Skill 一键安装命令链：天气查询诱饵掩护写入 authorized_keys](ai-security-supply-chain-agent-skill-decoy-command-chain-authorized-keys/) | verified | medium | 2026-11-06 |
 | [恶意 Skill 加载即执行：warmup() 在查看帮助时自动触发代码](ai-security-supply-chain-agent-skill-warmup-load-time-auto-exec/) | verified | low | 2026-11-06 |
+| [恶意 TensorFlow SavedModel 的 serve 签名：tf.io.matching_files/read_file 在推理时读取服务器 flag](ai-security-supply-chain-tensorflow-savedmodel-serve-file-read/) | verified | high | 2026-11-07 |
 | [恶意 TorchScript 模型经 torch.jit.load 加载：forward 内 aten::save 任意文件写入并绕过 torch.load(weights_only=True)（CVE-2025-32434）](ai-security-supply-chain-torchscript-jit-load-aten-save-file-write/) | verified | medium | 2026-11-06 |
 | [服务端下发解码顺序的多层编码链：X-Decode 头绕过静态特征](ai-security-supply-chain-server-driven-decode-chain/) | verified | medium | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

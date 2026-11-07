@@ -30,9 +30,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T15:52:20+08:00'
-  notes: 已对照原文与15张图核对：退款对话、submit_text关键词判定、payment_processor、CMS审批缓解均一致；原文为OWASP Top10示例，未复跑PoC
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:19:30+08:00'
+  notes: 重试核验：已对照 content.md 与 15 张图；submit_text 以 generated_text 含 refund approved 触发 payment_processor(refund_amount=100)、无订单/金额校验，与图03/04一致；文章称'提示词含退款'为表述不精确，代码以模型输出为准；原文 OWASP 示例未复跑 PoC
 ---
 
 ## 一句话结论

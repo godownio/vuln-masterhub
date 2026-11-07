@@ -32,6 +32,7 @@ Hook、插桩与自动化。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Frida Arm64Writer 动态 NOP 掉 B.NE：绕过 native 分支暴露隐藏逻辑](tools-frida-arm64writer-nop-conditional-branch/) | verified | high | 2026-11-06 |
+| [Frida Java 层六类校验驱动：改参 Hook、静态/实例方法主动调用、静态/实例字段改写与 Java.choose 枚举](tools-frida-java-hook-static-instance-field-choose/) | verified | high | 2026-11-07 |
 | [Frida Native 层 Hook：导出/未导出函数定位、NativeFunction 主动调用、retval 修改与构造函数 $init](tools-frida-native-hook-export-unexport-retval-constructor/) | verified | high | 2026-11-06 |
 | [Frida 源码魔改反检测：重命名进程/符号/线程/memfd/RPC 特征并编译 Android arm64 server](tools-frida-source-patch-anti-detection/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->

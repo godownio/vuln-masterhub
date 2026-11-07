@@ -24,10 +24,14 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 affected_versions: Cobalt Strike 4.4（原文 1768.py 对样本判定为 4.4；JA3S 指纹标注为 CentOS CS4.4）
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V263
+  verified_at: '2026-11-07T17:57:36+08:00'
+  notes: V263 复核：已完整重读 content.md 与全部7张图。checksum8 原文逐字核对：/FJwV → 70+74+119+86=349 → 349%256=93（64位），卡内一致；图01 可看到 GET /FJwV、GET /en_US/all.js、POST /submit.php?id=1603726794；图02 JA3 过滤器显示 28a2c9bd18a11de089ef85a160da29e4（SNI=go.microsoft.com），与原文 Windows10 HTTPS Beacon JA3 一致；图03 导出对象列表显示 /FJwV 265KB application/octet-stream；图05 GET /en_US/all.js 的 Cookie 即 Base64 元数据、UA 为 IE10。1768.py 输出/payload type/server,get-uri/post-uri/useragent/header 变换/spawnto/Guessing 4.4(max 0x0049)/sanity OK 与原文一致，卡内 PoC 为忠实节选。affected_versions 按原文样本 CS4.4（JA3S 为 CentOS CS4.4）保留，与库内 CS 取证卡惯例一致。dedup 最高分为卡自身 exact；beacon_keys 解密卡、域前置卡、Malleable 伪装卡均为不同前置/不同输出，verdict=new/related，不合并。未复跑 1768.py；frontmatter 无 sources/source（符合禁用要求），亦无 source_url。
 ---
 
 ## 一句话结论

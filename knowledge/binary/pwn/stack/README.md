@@ -63,7 +63,7 @@
 | [snprintf 返回值当 read 长度：格式化截断后仍按“应写长度”读入导致栈溢出](binary-pwn-stack-snprintf-return-length-read-overflow.md) | verified | high | 2026-11-05 |
 | [stb_image PIC 噪声数组越界写相邻栈变量：构造 PIC 像素把 privilege 改成 0x1337](binary-pwn-stack-stb-image-pic-noise-offbyone-adjacent-variable.md) | verified | high | 2026-11-07 |
 | [strcmp 空字节截断绕过登录 + 覆盖局部指针回填堆地址的 ret2backdoor](binary-pwn-stack-strcmp-nullbyte-local-ptr-backfill-ret2text.md) | verified | high | 2026-11-05 |
-| [Tenda AC15 httpd setMacFilterCfg deviceList strcpy 栈溢出：ARM ROP 调 system（CVE-2018-18708）](binary-pwn-stack-tenda-ac15-setmacfiltercfg-devicelist-strcpy-arm-rop.md) | draft | high | 2026-11-07 |
+| [Tenda AC15 httpd setMacFilterCfg deviceList strcpy 栈溢出：ARM ROP 调 system（CVE-2018-18708）](binary-pwn-stack-tenda-ac15-setmacfiltercfg-devicelist-strcpy-arm-rop.md) | verified | high | 2026-11-07 |
 | [TLV 协议长度低字节检查绕过：16 位 memcpy 栈溢出 + 隐藏遥测泄露 libc](binary-pwn-stack-tlv-length-low-byte-check-memcpy-overflow.md) | verified | high | 2026-11-06 |
 | [unordered_map 单桶 bucket_size 无界复制栈溢出：键模数控制同桶并强制 13→29 扩容](binary-pwn-stack-unordered-map-bucket-copy-stack-overflow.md) | verified | high | 2026-11-06 |
 | [仅 gets 栈溢出 + 伪造 link_map ret2dlresolve：跳过 PLT0 push 传假 link_map，ret2gets 复用 rdi 传 /bin/sh](binary-pwn-stack-gets-only-ret2dlresolve-fake-linkmap-ret2gets.md) | verified | medium | 2026-11-06 |

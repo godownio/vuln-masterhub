@@ -25,9 +25,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:18:29+08:00'
+  notes: 已对照原文与全部39张图核对：菜单规则 auth 的规则条件填 phpinfo()（图23）、完整 <?php phpinfo(); ?> 保存提示成功但重开为空（图20-22）、新增二级管理员组账号登录触发（图24-25）、phpinfo DOCUMENT_ROOT=C:/Nee_Phpstudy/phpstudy_pro/WWW/faaaa.com/public（图26）、远程下载 file_put_contents+file_get_contents 写 shell.php（图28-33）、Base64 分步 base.txt→xlzshell.php（图34-39）均与正文一致。未验证点：'鉴权时检查规则条件'的触发机制为按 FastAdmin 权限逻辑的合理推断，原文仅演示二级管理员登录即触发；原文未给具体版本，affected_versions 未设置；PoC 未复跑。
 ---
 
 ## 一句话结论

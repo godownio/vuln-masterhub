@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:25+08:00'
+  notes: 已对照原文与图40-45核对；硬编码123456为诱饵、正文Base64密钥ctf_is_good_boy与tan.docx→tan1.docx均一致；未运行样本。
 url: /docs/ctf/forensics/ctf-forensics-phishing-email-xor-docx-base64-key/
 draft: false
 kb_aliases:

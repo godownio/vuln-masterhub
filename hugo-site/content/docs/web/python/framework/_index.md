@@ -34,6 +34,7 @@ Flask、Django、FastAPI 等框架漏洞。
 | [AstrBot CVE-2025-48957：auth_middleware 放行 /api/chat/get_file + os.path.join 路径遍历任意文件读取](web-python-framework-astrbot-cve-2025-48957-get-file-auth-bypass-path-traversal/) | verified | high | 2026-11-06 |
 | [AstrBot 硬编码 JWT 密钥 + 插件上传 RCE（CVE-2025-55449）：伪造 HS256 token 调用 /api/plugin/install-upload 触发 __import__ 执行](web-python-framework-astrbot-cve-2025-55449-hardcoded-jwt-plugin-upload-rce/) | verified | high | 2026-11-06 |
 | [authentik LDAP Source debug 接口 filter_backends 置空导致匿名越权读取目录元数据（CVE-2026-55106）](web-python-framework-authentik-ldap-debug-filter-backends-bypass/) | verified | high | 2026-11-05 |
+| [Django DEBUG 错误页泄露 settings：JENKINS_AUTHORIZATION Basic 凭据与 JENKINS_URL 被读出](web-python-framework-django-debug-settings-jenkins-basic-credential-leak/) | verified | medium | 2026-11-07 |
 | [Django SQL Explorer 后台 SQL 执行：SELECT load_extension 加载上传 DLL 到 RCE](web-python-django-sql-explorer-load-extension-dll-rce/) | verified | high | 2026-11-06 |
 | [Django 关系查询盲注 + Nginx ..%2f 路径穿越：从密码哈希到管理后台](web-python-framework-django-orm-relationship-blind-injection-nginx-path-bypass/) | verified | high | 2026-11-06 |
 | [FastAPI 路由注册内存马：遍历 sys.modules 定位 FastAPI 实例并动态注册后门路由](web-python-framework-fastapi-sys-modules-route-memshell/) | verified | high | 2026-11-06 |
@@ -45,6 +46,8 @@ Flask、Django、FastAPI 等框架漏洞。
 | [Flask 运行期改写 static_folder 指向根目录：经 /static/ 读取任意文件](web-python-framework-flask-static-folder-arbitrary-file-read/) | verified | medium | 2026-11-05 |
 | [Flask 钩子注册表内存马：SSTI/eval 直接改写 before/after/url_value/template_context 钩子](web-python-framework-flask-hook-registry-memshell/) | verified | high | 2026-11-05 |
 | [Flask 高版本路由注册内存马：重置 _got_first_request 绕过 @setupmethod 动态加路由](web-python-framework-flask-route-registration-memshell/) | verified | high | 2026-11-05 |
+| [h3blog /admin/download 无鉴权路径穿越：fileName 逃逸 uploads 任意文件读取并在下载后删除](web-python-framework-h3blog-download-path-traversal-file-read-delete/) | verified | high | 2026-11-07 |
+| [h3blog 后台代码生成字段注入：把元数据写进生成的 Python 视图源码，访问生成接口触发 os.system RCE](web-python-framework-h3blog-gencode-field-code-injection-rce/) | verified | high | 2026-11-07 |
 | [httpx multipart boundary 注入 + Werkzeug 临时文件 /proc/self/fd 竞争：从 API_KEY 泄露到 Jinja SSTI RCE](web-python-framework-httpx-boundary-injection-werkzeug-tempfile-jinja-ssti/) | verified | medium | 2026-11-06 |
 | [Mercury 未授权 Jupyter Kernel API 导致 RCE](web-python-framework-mercury-unauth-jupyter-kernel-rce/) | verified | high | 2026-11-04 |
 | [Mercury 路径黑名单漏逗号导致 /lab 与终端接口未授权](web-python-framework-mercury-blocklist-comma-terminal/) | verified | high | 2026-11-04 |
@@ -52,6 +55,7 @@ Flask、Django、FastAPI 等框架漏洞。
 | [pgAdmin 4 ≤9.1 认证后 RCE（CVE-2025-2945）：借已配置 PostgreSQL 连接执行 Python](web-python-framework-pgadmin-cve-2025-2945-authenticated-rce/) | verified | medium | 2026-11-05 |
 | [pydash.set_ 可控路径篡改 Flask jinja_loader.searchpath 读取任意模板文件](web-python-framework-pydash-set-jinja-loader-searchpath/) | verified | high | 2026-11-05 |
 | [Python AST 规则引擎签名规范化碰撞与 exec 剪枝缺陷导致沙箱逃逸](web-python-framework-ast-eval-signature-canonicalization-bypass/) | verified | high | 2026-11-05 |
+| [PyTorch distributed RPC 任意函数调用：加入集群的 worker 通过 rpc_sync 让 master 执行 eval 等任意可调用对象](web-python-framework-pytorch-rpc-arbitrary-function-call-rce/) | verified | high | 2026-11-07 |
 | [Rasa model_server 响应头 filename 路径穿越任意文件写入](web-python-framework-rasa-model-server-filename-path-traversal/) | verified | high | 2026-11-05 |
 | [Rasa 恶意模型 metadata.json 图 schema 动态导入导致 RCE](web-python-framework-rasa-model-metadata-importlib-rce/) | verified | high | 2026-11-05 |
 | [Rasa 未授权上传恶意模型替换对话内容](web-python-framework-rasa-malicious-model-dialogue-hijack/) | verified | medium | 2026-11-05 |

@@ -34,7 +34,7 @@
 | [DeDeCMS 会员模型字段名/字段串二阶标签注入：runphp=yes 触发模板引擎 eval（CNVD-2025-20330）](web-php-rce-dedecms-field-tag-runphp-stored-injection.md) | verified | high | 2026-11-05 |
 | [DedeCMS 超级管理员模板标签源码编辑 getshell：substr_replace 动态构造 system 绕过恶意代码检测](web-php-rce-dedecms-template-tag-source-substr-replace-waf-bypass.md) | verified | medium | 2026-11-06 |
 | [eval(var_dump($input)) 注入：用 $_GET[1]($_GET[2]) 变量函数绕过关键词过滤执行命令](web-php-rce-eval-var-dump-superglobal-variable-function.md) | verified | medium | 2026-11-06 |
-| [Fastadmin 后台权限规则条件代码注入：裸 PHP 函数 + 二级管理员登录触发 + 远程下载/Base64 分步写 WebShell](web-php-rce-fastadmin-auth-rule-condition-code-injection-webshell.md) | draft | high | 2026-11-07 |
+| [Fastadmin 后台权限规则条件代码注入：裸 PHP 函数 + 二级管理员登录触发 + 远程下载/Base64 分步写 WebShell](web-php-rce-fastadmin-auth-rule-condition-code-injection-webshell.md) | verified | high | 2026-11-07 |
 | [FoxCMS 模板标签 id 参数拼接进编译模板导致 PHP 代码执行](web-php-rce-foxcms-taglib-id-code-injection.md) | verified | high | 2026-11-05 |
 | [FrankenPHP php_ini 运行时注入：POST /config/apps/frankenphp/php_ini 清空 disable_functions/open_basedir](web-php-rce-frankenphp-php-ini-disable-functions-bypass.md) | verified | high | 2026-11-06 |
 | [FreePBX CVE-2025-57819：认证绕过 + SQL 注入写 Webshell 到 RCE](web-php-rce-freepbx-cve-2025-57819-auth-bypass-sqli-webshell.md) | verified | high | 2026-11-05 |

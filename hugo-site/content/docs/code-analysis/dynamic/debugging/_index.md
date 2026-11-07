@@ -31,8 +31,11 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Delphi 注册对话框输入定位：DialogBoxParamW 回调 + GetDlgItem 条件断点 + GetWindowTextA](code-analysis-dynamic-debugging-delphi-dialog-getdlgitem-windowtext-locate/) | draft | high | 2026-11-07 |
+| [VEH 隐形断点与动态补丁：AddVectoredExceptionHandler 捕获异常后改 CONTEXT 控制程序流程](code-analysis-dynamic-debugging-veh-invisible-breakpoint-dynamic-patch/) | verified | high | 2026-11-07 |
 | [VirtualProtect 运行时解密代码的 IDA 动态还原：断点执行解密后 U/C/P 重建函数](code-analysis-dynamic-debugging-virtualprotect-runtime-decrypt-ida/) | verified | high | 2026-11-05 |
 | [x64dbg 动态提取纤程 Loader 解密后的 shellcode：断点 ConvertThreadToFiber/VirtualAlloc/memcpy](code-analysis-dynamic-debugging-x64dbg-fiber-loader-shellcode-dump/) | verified | high | 2026-11-05 |
+| [x64dbg 动态调试破解密码校验：改寄存器/ZF 与二进制补丁绕过本地及服务端验证](code-analysis-dynamic-debugging-crackme-password-check-patch/) | verified | medium | 2026-11-07 |
 | [分片 shellcode 加载器：data_1..9.db 拼接 + 16 字节块 XOR 解密 + error.log 明文回退](code-analysis-dynamic-debugging-split-shellcode-file-loader-xor/) | verified | high | 2026-11-05 |
 | [多层编码 shellcode 还原：hex→RC4→ASCII85 解码链与 VirtualAlloc 断点转储](code-analysis-dynamic-debugging-multi-layer-shellcode-decrypt-dump/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

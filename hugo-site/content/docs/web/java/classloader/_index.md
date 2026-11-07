@@ -37,11 +37,13 @@ ClassLoader、字节码、内存马与加载机制。
 | [JDK 17+ 强封装绕过：Unsafe 篡改调用者 Class.module 伪装为 java.base](web-java-classloader-jdk17-class-module-field-spoof/) | verified | high | 2026-11-05 |
 | [JDK 17+ 模块强封装绕过：Unsafe 内存直读 IMPL_LOOKUP](web-java-classloader-jdk-module-encapsulation-bypass-unsafe-impl-lookup/) | verified | high | 2026-11-05 |
 | [JRE CharsetProvider SPI 注入：任意文件写入 jre/classes 后由 Accept charset 触发命令执行](web-java-classloader-charsetprovider-spi-accept-rce/) | verified | medium | 2026-11-05 |
+| [JSP 内置 GZIP+Base64 类 blob：反射 defineClass 内存马 + DNSlog 回显](web-java-classloader-gzip-base64-dnslog-jsp-webshell/) | verified | high | 2026-11-07 |
 | [JSP 经 Unsafe.defineAnonymousClass 执行请求参数中的匿名类字节码](web-java-classloader-unsafe-anonymous-class-jsp-shell/) | verified | medium | 2026-11-04 |
 | [JSP 自定义 ClassLoader 注册内存 Servlet WebShell](web-java-classloader-jsp-memory-servlet-webshell/) | verified | medium | 2026-11-04 |
 | [memfd_create 配合 Attach 协议实现无文件 Java Agent 注入](web-java-classloader-memfd-fileless-agent-injection/) | verified | high | 2026-11-05 |
 | [ServletContainerInitializer SPI 注入：WEB-INF/lib 放置 JAR 自动注册后门 Servlet](web-java-classloader-servletcontainerinitializer-spi-backdoor/) | verified | high | 2026-11-05 |
 | [Tomcat JSR-356 WebSocket Endpoint 内存马：反射注册 WsServerContainer 端点实现持久命令通道](web-java-classloader-websocket-endpoint-memshell/) | verified | high | 2026-11-05 |
+| [反序列化打内存马的类加载原语选型：TemplatesImpl/Groovy 走构造器、BCEL 只走静态块](web-java-classloader-deserialization-memshell-loader-selection/) | verified | medium | 2026-11-07 |
 | [线程上下文类加载器决定嵌套 jar URL 类型名能否被加载](web-java-classloader-tccl-nested-jar-type-loading/) | verified | high | 2026-11-04 |
 | [自定义 ClassLoader 缺失 Sealed Package 校验导致包内类型注入](web-java-classloader-sealed-package-type-injection/) | verified | high | 2026-11-04 |
 | [覆盖 jre/lib/charsets.jar + Accept charset=GBK：JDK 8 字符集类加载触发命令执行](web-java-classloader-charsets-jar-bootstrap-overwrite-accept-gbk-rce/) | verified | high | 2026-11-06 |

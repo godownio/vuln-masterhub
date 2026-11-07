@@ -32,7 +32,7 @@ ClassLoader、字节码、内存马与加载机制。
 | [JDK 17+ 强封装绕过：Unsafe 篡改调用者 Class.module 伪装为 java.base](web-java-classloader-jdk17-class-module-field-spoof.md) | verified | high | 2026-11-05 |
 | [JDK 17+ 模块强封装绕过：Unsafe 内存直读 IMPL_LOOKUP](web-java-classloader-jdk-module-encapsulation-bypass-unsafe-impl-lookup.md) | verified | high | 2026-11-05 |
 | [JRE CharsetProvider SPI 注入：任意文件写入 jre/classes 后由 Accept charset 触发命令执行](web-java-classloader-charsetprovider-spi-accept-rce.md) | verified | medium | 2026-11-05 |
-| [JSP 内置 GZIP+Base64 类 blob：反射 defineClass 内存马 + DNSlog 回显](web-java-classloader-gzip-base64-dnslog-jsp-webshell.md) | draft | high | 2026-11-07 |
+| [JSP 内置 GZIP+Base64 类 blob：反射 defineClass 内存马 + DNSlog 回显](web-java-classloader-gzip-base64-dnslog-jsp-webshell.md) | verified | high | 2026-11-07 |
 | [JSP 经 Unsafe.defineAnonymousClass 执行请求参数中的匿名类字节码](web-java-classloader-unsafe-anonymous-class-jsp-shell.md) | verified | medium | 2026-11-04 |
 | [JSP 自定义 ClassLoader 注册内存 Servlet WebShell](web-java-classloader-jsp-memory-servlet-webshell.md) | verified | medium | 2026-11-04 |
 | [memfd_create 配合 Attach 协议实现无文件 Java Agent 注入](web-java-classloader-memfd-fileless-agent-injection.md) | verified | high | 2026-11-05 |

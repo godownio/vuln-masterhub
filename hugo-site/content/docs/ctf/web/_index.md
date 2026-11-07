@@ -35,13 +35,17 @@ Web 题型技巧与绕过。
 | [AI 引擎 raw 协议透传 + 弱派生 admin token + NCM Type=5 命令注入（validate_hook 前缀 ../ 绕过）](ctf-web-raw-socket-admin-token-ncm-command-injection/) | verified | high | 2026-11-06 |
 | [Cherry Markdown 代码围栏语言名注入 + file:// 渲染页 iframe 读取本地文件并输出 PDF](ctf-web-cherry-markdown-fence-lang-file-uri-iframe-pdf-exfil/) | verified | medium | 2026-11-06 |
 | [CTF Bot 链：jku 伪造 admin JWT + CSP report-uri 注入 + Nginx CRLF 替换 Cookie 外带 Flag](ctf-web-bot-jku-csp-crlf-cookie-hijack-chain/) | verified | high | 2026-11-05 |
+| [CTF Bot 链：superbot 页面 XSS 打角色受限 debug SQL 注入点，堆叠 UPDATE 提权读 Flag](ctf-web-bot-xss-role-gated-debug-sqli-escalation/) | verified | high | 2026-11-07 |
 | [ECDSA 零签名伪造 JWT + \uXXXX 绕过关键字过滤 + Thymeleaf 模板覆盖 RCE](ctf-web-ecdsa-zero-signature-jwt-thymeleaf-template-overwrite/) | verified | high | 2026-11-06 |
 | [Elixir BEAM 发布包恢复隐藏路由 + Ecto SQLi 与 FPX CRC16 仿射 oracle 到 RCE](ctf-web-elixir-beam-fpx-crc16-affine-oracle/) | verified | high | 2026-11-06 |
 | [Flask+Node 多组件链：下载穿越读源码 → KMZ 原型污染激活本地管理接口 → merge 清 WAF → Jinja 语句块 SSTI](ctf-web-flask-node-file-read-prototype-pollution-ssti-chain/) | verified | high | 2026-11-06 |
+| [Go RBAC 权限门控绕过：map 遍历乱序 + 错误分支不重置导致 return 权限累积](ctf-web-go-rbac-map-order-error-reset-bypass/) | verified | medium | 2026-11-07 |
 | [Go server.exe 逆向 + 本地复现签发管理员 JWT：改 SQLite role 复用同一 HS256 密钥](ctf-web-go-server-local-replay-admin-jwt/) | verified | high | 2026-11-06 |
 | [JS 边缘运行时沙箱逃逸：枚举 __runtime 内部符号 + Uint8Array 路径绕过字符串检查读文件](ctf-web-js-runtime-internal-symbol-uint8array-sandbox-escape/) | verified | low | 2026-11-06 |
 | [Ktor WebSocket 未授权订阅 + DSL SQL() 括号截断注入 H2，CREATE ALIAS 命令执行](ctf-web-ktor-websocket-dsl-sqli-h2-create-alias/) | verified | high | 2026-11-06 |
+| [PHP 双重 eval + 字符白名单：用异或块在 70 字符内拼出 `cat *` 执行命令](ctf-web-php-double-eval-xor-backtick-command/) | verified | high | 2026-11-07 |
 | [PHP 多阶段认证绕过：str_replace 双写 + POST 数组转对象属性 + MD5 魔术哈希](ctf-web-php-str-replace-double-write-object-cast-md5-magic-hash/) | verified | high | 2026-11-06 |
+| [PHP 弱比较 + php://filter 读源码：==0 绕过、data:// 满足内容校验与 stripos 参数顺序](ctf-web-php-weak-compare-php-filter-data-wrapper/) | verified | high | 2026-11-07 |
 | [Service Worker 路径双重解码 + scope 混淆 + navigationPreload 读取 /u/admin/dashboard](ctf-web-service-worker-double-decode-scope-navigation-preload/) | verified | high | 2026-11-06 |
 | [SQLi 挖 sqlite_dbpage 删除记录 + ECDH/AES-GCM 网关重放命中隐藏 legacy bootstrap 接口](ctf-web-sqli-sqlite-dbpage-deleted-pcap-ecdh-gateway-bootstrap/) | verified | high | 2026-11-06 |
 | [SVG XXE + PHP 反序列化 include + SUID xxd + Go ChaCha20 解密全链](ctf-web-svg-xxe-php-deser-suid-xxd-go-chacha20/) | verified | high | 2026-11-06 |

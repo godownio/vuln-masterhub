@@ -26,10 +26,14 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 affected_versions: Commons Collections 4.0（原文环境 JDK 8u71；原文明确 JDK 版本不影响该链）
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:26:25+08:00'
+  notes: 已对照原文与全部29张图核对：ysoserial CC2 gadget chain（图01）、TransformingComparator.compare 两次 transform（图03/16）、PriorityQueue.readObject→heapify→siftDown→siftDownUsingComparator→compare（图05-09/11-16/21-24）、size>=2 与 offer/add/siftUp 提前触发（图10/12-15/17-18）、faketransformers + 反射改 iTransformers（图19）、TemplatesImpl 变体的 toString 假方法→反射改 iMethodName→queue 数组改 {Impl,1}（图20-28），与卡片一致。与 CC4 卡（web-java-deser-commonscollections-cc4-priorityqueue-templatesimpl）差异：候选卡为 ConstantTransformer(TrAXFilter.class)+InstantiateTransformer 的 CC4 链及其 CC2 变体，本卡为 ysoserial 正典 CC2 的 ChainedTransformer+InvokerTransformer→Runtime.exec 主链，以及 InvokerTransformer(newTransformer) 的 TemplatesImpl 构造；触发入口相同但 gadget 组合/sink 构造/PoC 不同，判不同链，保留两卡（dedup 工具 append_scenario 建议不采纳，理由同 workers 的 dedup_review）。affected_versions 按原文'commons-collections 版本为 4.0，jdk 不影响'保留。未验证点：PoC 未在本机复跑；4.1+ InvokerTransformer 不可序列化为补充常识而非原文内容。
 ---
 
 ## 一句话结论

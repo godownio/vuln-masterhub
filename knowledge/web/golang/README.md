@@ -38,7 +38,7 @@ Go Web 框架、模板、反序列化与依赖漏洞。
 | [Gogs UpdateRepoFile 符号链接绕过 .git 校验写入 core.sshCommand 导致 RCE（CVE-2025-64111）](web-golang-gogs-updaterepofile-symlink-git-config-rce.md) | verified | high | 2026-11-05 |
 | [Gogs 仓库文件编辑/UpdateRepoFile 跟随符号链接写入 hooks/pre-receive：push 触发钩子 RCE（CVE-2024-56731 / CVE-2025-8110）](web-golang-gogs-hooks-prereceive-symlink-write-rce.md) | verified | high | 2026-11-05 |
 | [Gogs 内置 SSH 服务器 env 请求参数注入：环境变量名设为 --split-string 经 env -S 执行任意命令（CVE-2024-39930）](web-golang-gogs-ssh-env-split-string-argument-injection.md) | draft | high | 2026-11-07 |
-| [Gogs 符号链接任意文件删除 + Git 仓库上溯劫持：删除 .git/HEAD 触发 core.sshCommand RCE](web-golang-gogs-symlink-delete-git-head-sshcommand-rce.md) | draft | high | 2026-11-07 |
+| [Gogs 符号链接任意文件删除 + Git 仓库上溯劫持：删除 .git/HEAD 触发 core.sshCommand RCE](web-golang-gogs-symlink-delete-git-head-sshcommand-rce.md) | verified | high | 2026-11-07 |
 | [Ollama /api/generate 用户可控 template 注入：Go text/template 读取 .System/.Messages/.Tools 并操纵提示词](web-golang-ollama-template-param-go-ssti-data-leak.md) | verified | high | 2026-11-06 |
 | [Python lower() 与 Go JSON 大小写折叠差异：ſ 解锁 ops 并注入 curl -F 参数](web-golang-unicode-casefold-json-field-curl-arg-injection.md) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->

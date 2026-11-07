@@ -84,7 +84,7 @@
 | [Spring 上传接口把 getOriginalFilename 拼到 catalina.home/webapps/ROOT：无后缀校验直接落 JSP webshell](web-generic-file-upload-catalina-webapps-root-original-filename-jsp.md) | verified | high | 2026-11-07 |
 | [ThinkPHP5 后台未授权 ZIP 上传 + Update/unzip 任意解压：压缩包内 public/shell.php 落 Web 根 RCE](web-generic-file-upload-thinkphp-admin-upload-unzip-webshell.md) | verified | high | 2026-11-05 |
 | [Tmall_demo 前台头像上传 UUID 重命名保留客户端后缀：JSP 哥斯拉马写入 Web 目录并解析](web-generic-file-upload-tmall-avatar-uuid-extension-jsp-getshell.md) | verified | high | 2026-11-07 |
-| [UEditor .NET controller.ashx uploadfile 只校验 ContentType：改后缀上传 aspx webshell](web-generic-file-upload-ueditor-net-controller-contenttype-aspx.md) | draft | medium | 2026-11-07 |
+| [UEditor .NET controller.ashx uploadfile 只校验 ContentType：改后缀上传 aspx webshell](web-generic-file-upload-ueditor-net-controller-contenttype-aspx.md) | verified | medium | 2026-11-07 |
 | [UEditor filePathFormat 模板目录穿越导致任意路径文件写](web-generic-file-upload-ueditor-filepathformat-traversal.md) | verified | high | 2026-11-05 |
 | [UEditor 默认 fileAllowFiles 白名单包含 .xml，上传脚本文件导致同源存储型 XSS](web-generic-file-upload-ueditor-default-whitelist-xml-xss.md) | verified | medium | 2026-11-05 |
 | [uploadPicture_qt.jsp 未授权上传：RandomFileRenamePolicy 保留原始后缀写入 Web 目录](web-generic-file-upload-uploadpictureqt-rename-policy-jsp.md) | verified | medium | 2026-11-05 |
@@ -115,7 +115,7 @@
 | [仅前端 JavaScript 校验上传后缀，禁用脚本、改包或断点修改白名单均可绕过](web-generic-file-upload-clientside-js-whitelist-bypass.md) | verified | high | 2026-11-05 |
 | [任意后缀上传 HTML 到 Web 静态目录形成同源存储型 XSS](web-generic-file-upload-html-static-stored-xss.md) | verified | high | 2026-11-05 |
 | [先落盘后校验的删除竞态：上传并抢访问生成持久 WebShell](web-generic-file-upload-save-then-validate-race.md) | verified | medium | 2026-11-05 |
-| [凡诺CMS 2.1 upload_json.php 任意文件上传 + IIS `/.php` 路径解析 RCE](web-generic-file-upload-fannuo-cms-upload-json-iis-pathinfo-rce.md) | draft | high | 2026-11-07 |
+| [凡诺CMS 2.1 upload_json.php 任意文件上传 + IIS `/.php` 路径解析 RCE](web-generic-file-upload-fannuo-cms-upload-json-iis-pathinfo-rce.md) | verified | high | 2026-11-07 |
 | [前端 RC4+MD5 上传签名伪造：从源码取密钥后上传 phtml webshell](web-generic-file-upload-frontend-rc4-md5-signature-forge.md) | verified | medium | 2026-11-06 |
 | [压缩包内软链接解压导致任意文件读取与写入](web-generic-file-upload-archive-symlink-extract-read-write.md) | verified | high | 2026-11-05 |
 | [后端仅信任 multipart 的 Content-Type 判断类型，改包即可上传脚本](web-generic-file-upload-content-type-trust-bypass.md) | verified | high | 2026-11-05 |

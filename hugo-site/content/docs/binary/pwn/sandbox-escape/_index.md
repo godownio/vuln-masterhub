@@ -46,7 +46,9 @@ weight: 1
 | [enclave-vm < 2.7.0 工具调用错误暴露宿主 Error：cause.constructor.constructor 原型链逃逸（CVE-2026-22686）](binary-pwn-sandbox-escape-enclave-vm-host-error-prototype-chain/) | verified | high | 2026-11-06 |
 | [eval 沙箱的源码黑名单与单表达式限制绕过](binary-pwn-sandbox-escape-python-eval-filter-bypass/) | verified | medium | 2026-11-04 |
 | [FastGPT v4.14.8 沙箱逃逸：inspect 帧回溯窃取 worker 原始 open/import 引用](binary-pwn-sandbox-escape-fastgpt-inspect-fglobals-original-refs/) | verified | high | 2026-11-05 |
+| [fork 继承 root 已打开的 fd：低权限子进程经 /proc/<pid>/fd 读取已删除脚本](binary-pwn-sandbox-escape-inherited-fd-read-deleted-file/) | verified | high | 2026-11-07 |
 | [GNU IFUNC resolver 先于 constructor 执行：绕过插件 constructor 安装的 seccomp](binary-pwn-sandbox-escape-ifunc-resolver-before-constructor-seccomp/) | verified | high | 2026-11-04 |
+| [GoogleCTF 2025 Internship pyjail：CodeType 常量/名字白名单 + 小整数打乱下用 dir(None) 迭代拼出 flag](binary-pwn-sandbox-escape-python-codetype-none-dir-iterator-flag/) | verified | high | 2026-11-07 |
 | [GraalVM HostAccess.ALL 下 getClass 反射逃逸到宿主 Runtime.exec](binary-pwn-sandbox-escape-graalvm-hostaccess-all-getclass-rce/) | verified | high | 2026-11-05 |
 | [GraalVM HostAccess.EXPLICIT 下 toString 与异常堆栈泄露宿主类名和源路径](binary-pwn-sandbox-escape-graalvm-explicit-info-leak/) | verified | high | 2026-11-05 |
 | [Groovy 沙箱 InvokerHelper 间接调用逃逸：签名与目标分离](binary-pwn-sandbox-escape-groovy-invokerhelper-indirect-dispatch/) | verified | high | 2026-11-04 |
@@ -85,6 +87,7 @@ weight: 1
 | [seccomp write(fd==1/2) 写入限制绕过：fcntl dup2 重映射 stdout 写任意文件](binary-pwn-sandbox-escape-seccomp-write-fd-fcntl-dup2/) | verified | high | 2026-11-05 |
 | [seccomp 只杀 open/openat/execve：openat2 + pipe/splice 读 flag](binary-pwn-sandbox-escape-seccomp-openat2-pipe-splice/) | verified | high | 2026-11-06 |
 | [seccomp 黑名单未校验 arch：retf 切 32 位兼容模式用 int 0x80 execve 绕过，再用 shell 内建读 flag](binary-pwn-sandbox-escape-seccomp-no-arch-check-i386-compat-execve/) | verified | high | 2026-11-06 |
+| [seccomp 黑名单漏掉 execveat：execveat(AT_FDCWD, /bin/sh) 绕过 execve 禁用，再用 shell 内建读未知文件名 flag](binary-pwn-sandbox-escape-seccomp-execveat-shell-builtin-read/) | verified | high | 2026-11-07 |
 | [shutil.copytree 目录权限后置导致的跨 challenge 读取竞态](binary-pwn-sandbox-escape-shutil-copytree-permission-race/) | verified | high | 2026-11-06 |
 | [vm2 globalPromise.then/catch 回调未清洗逃逸（CVE-2026-22709）](binary-pwn-sandbox-escape-vm2-global-promise-callback-cve-2026-22709/) | verified | high | 2026-11-06 |
 | [vm2 跨 Realm 隐式调用逃逸：Error.stack、Proxy、util.inspect 与 Promise 链](binary-pwn-sandbox-escape-vm2-cross-realm-implicit-call/) | verified | medium | 2026-11-05 |
@@ -93,6 +96,7 @@ weight: 1
 | [正则+AST 双层黑名单沙箱绕过：别名调用、字符串拼接与动态属性访问](binary-pwn-sandbox-escape-python-regex-ast-alias-concat/) | verified | high | 2026-11-05 |
 | [汇编即服务：GNU as 的 .incbin 指令把任意文件嵌入机器码回显](binary-pwn-sandbox-escape-gnu-as-incbin-arbitrary-file-read/) | verified | high | 2026-11-06 |
 | [沙箱共享 mailbox TOCTOU：command 二次读取跳转表越界 → 无 seccomp 父进程 ROP](binary-pwn-sandbox-mailbox-toctou-jump-table-parent-rop/) | verified | high | 2026-11-06 |
+| [禁括号 + 空 builtins 的 Python 沙箱逃逸：劫持 __build_class__，用装饰器链与 NFKC 全角标识符执行 os.system](binary-pwn-sandbox-escape-buildclass-hijack-decorator-nfkc/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

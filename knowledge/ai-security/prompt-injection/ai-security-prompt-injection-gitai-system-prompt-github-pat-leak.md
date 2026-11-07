@@ -30,9 +30,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T15:52:22+08:00'
-  notes: 已对照原文与图片核对：权限探测、系统提示词泄露提示语、硬编码PAT与12个仓库回显一致；Token为原文示意值，未实测GitHub API
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:19:32+08:00'
+  notes: 重试核验：已对照 content.md 与图06/07；权限探测问句、Ignore previous instructions 注入、System Prompt 中硬编码 ghp_ PAT 与图一致；文中 token 为示意值（图07与正文示意不同），原文未实际调用 API，接管仓库为基于 PAT 权限的推断
 ---
 
 ## 一句话结论

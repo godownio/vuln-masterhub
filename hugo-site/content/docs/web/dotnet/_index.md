@@ -33,6 +33,7 @@ ViewState、BinaryFormatter、IIS 与 .NET 反序列化。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [CSharpCodeProvider 内存编译 + BuildManager 缓存注入的 ASMX WebService 内存马](web-dotnet-csharpcodeprovider-asmx-memshell-cache-injection/) | verified | high | 2026-11-05 |
+| [JHSoft OA EditMain.aspx 后台 add/id 参数控制路径：StreamWriter 任意文件写入 GetShell](web-dotnet-jhsoft-editmain-arbitrary-file-write/) | verified | medium | 2026-11-07 |
 | [REST 管线鉴权开关短路与请求头参数覆盖导致未授权 SQL 注入](web-dotnet-rest-auth-bypass-header-parameter-override/) | verified | high | 2026-11-04 |
 | [SmarterMail ConnectToHub 匿名接入恶意 Hub：响应中的 CommandMount 经 sudo 执行任意命令（CVE-2026-24423）](web-dotnet-smartermail-connect-to-hub-mount-command-rce/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

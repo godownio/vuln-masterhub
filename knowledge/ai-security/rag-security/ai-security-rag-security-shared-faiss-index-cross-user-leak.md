@@ -29,9 +29,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T15:52:24+08:00'
-  notes: 已对照原文与图片核对：单索引构建代码、Q3收入泄露对话、每用户独立索引修复代码一致；文章属OWASP示例，未复跑RAG
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:19:34+08:00'
+  notes: 重试核验：已对照 content.md 与图08/09/10/11；单一 all_texts→FAISS.from_texts 共享索引、Q3 收入 7.93M/8.4M 泄露对话、每用户独立索引修复与图一致；未复跑；原文为 OWASP 示例
 ---
 
 ## 一句话结论

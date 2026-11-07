@@ -1,0 +1,69 @@
+name: Publish private backend to Hugging Face
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Verified runtime snapshot release tag
+        required: true
+        default: cloud-snapshot-20261107
+        type: string
+permissions:
+  contents: read
+  id-token: write
+concurrency:
+  group: hf-space
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    env:
+      HF_OIDC_RESOURCE: spaces/Downio/vuln-masterhub
+      HF_HUB_DISABLE_TELEMETRY: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install 'huggingface_hub>=1.19' requests
+      - name: Download verified snapshot
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ inputs.release_tag }}
+        run: gh release download "$RELEASE_TAG" --pattern space-runtime.zip --pattern space-runtime.sha256 --dir incoming
+      - name: Verify and extract snapshot
+        run: |
+          cd incoming
+          sha256sum --check space-runtime.sha256
+          python - <<'PY'
+          from pathlib import Path
+          import zipfile
+          root=Path('../runtime').resolve()
+          with zipfile.ZipFile('space-runtime.zip') as z:
+              for entry in z.infolist():
+                  target=(root/entry.filename).resolve()
+                  assert target.is_relative_to(root)
+                  assert not entry.filename.endswith(('portal.sqlite','portal-secrets.json','portal-session-secret','.env'))
+              z.extractall(root)
+          PY
+      - name: Configure server secrets
+        env:
+          CLOUD_GITHUB_CLIENT_ID: ${{ secrets.CLOUD_GITHUB_CLIENT_ID }}
+          CLOUD_GITHUB_CLIENT_SECRET: ${{ secrets.CLOUD_GITHUB_CLIENT_SECRET }}
+          CLOUD_SESSION_SECRET: ${{ secrets.CLOUD_SESSION_SECRET }}
+        run: |
+          python - <<'PY'
+          import os,subprocess
+          from huggingface_hub import HfApi
+          token=subprocess.check_output(['hf','auth','token'],text=True).strip()
+          api=HfApi(token=token)
+          names={'CLOUD_GITHUB_CLIENT_ID':'GITHUB_CLIENT_ID','CLOUD_GITHUB_CLIENT_SECRET':'GITHUB_CLIENT_SECRET','CLOUD_SESSION_SECRET':'PORTAL_SESSION_SECRET'}
+          for source,target in names.items():
+              value=os.environ[source]
+              if not value:raise RuntimeError('Missing required GitHub repository secret: '+source)
+              api.add_space_secret('Downio/vuln-masterhub',target,value)
+          api.add_space_variable('Downio/vuln-masterhub','PORTAL_BASE_URL','https://downio-vuln-masterhub.hf.space')
+          api.add_space_variable('Downio/vuln-masterhub','PORTAL_REQUIRE_DATABASE','1')
+          PY
+      - name: Upload runtime via short-lived repository token
+        run: hf upload Downio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"

@@ -26,6 +26,7 @@ weight: 1
 
 - [SQL 注入](sqli/) —— 注入类型、绕过、堆叠与二次注入。
 - [XSS](xss/) —— 反射/存储/DOM XSS、绕过与利用。
+- [点击劫持](clickjacking/) —— 透明 iframe 覆盖、UI Redress 与框架嵌入防御。
 - [CSRF](csrf/) —— CSRF 与 SameSite、Token 绕过。
 - [SSRF](ssrf/) —— SSRF、云元数据、协议利用与绕过。
 - [XXE](xxe/) —— XML 外部实体、盲 XXE、OOB 与绕过。
@@ -57,8 +58,11 @@ weight: 1
 | [Host 校验绕过：端口注入、后缀匹配、重复头、绝对 URL 与覆盖头](web-generic-host-header-validation-bypass-ambiguity/) | verified | high | 2026-11-05 |
 | [Wasm 导出函数未校验数组下标导致线性内存内越界写与相邻数据篡改](web-generic-wasm-unchecked-index-linear-memory-write/) | verified | medium | 2026-11-05 |
 | [Wasm 导出线性内存中的密钥与敏感常量可被同源 JS 读取](web-generic-wasm-exported-memory-secret-read/) | verified | high | 2026-11-05 |
+| [双设备支付页滞留 + 取消订单返还优惠券：同一张券支付两笔订单](web-generic-payment-coupon-cancel-pending-order-reuse/) | verified | medium | 2026-11-07 |
 | [客户端提交赛跑距离参数篡改：服务端信任模拟输入直接发放 flag](web-generic-client-side-race-distance-tamper/) | verified | high | 2026-11-06 |
 | [导出 Excel/CSV 未转义昵称导致公式注入与客户端 RCE](web-generic-csv-formula-injection-export-rce/) | verified | medium | 2026-11-05 |
+| [废弃第三方 JS 域名抢注投毒：bshare 分享插件夜间移动端强制跳转](web-generic-third-party-js-domain-takeover-night-redirect/) | verified | medium | 2026-11-07 |
+| [打字测速服务只校验内容与 seed、信任客户端时间戳：抓取合法提交压缩时间间隔伪造 650 WPM](web-generic-client-timestamp-replay-typing-speed-bypass/) | verified | high | 2026-11-07 |
 | [支付金额四舍五入差异：提交 0.019 元实付 0.01、服务端按 0.02 入账](web-generic-payment-rounding-differential-recharge/) | verified | high | 2026-11-05 |
 | [支付金额篡改：支付接口信任客户端 totalAmount 且未绑定已创建订单](web-generic-payment-amount-tamper-no-order-binding/) | verified | high | 2026-11-05 |
 | [注销-重注册循环复用新人权益：物理删除用户数据导致营销风控历史丢失](web-generic-account-deletion-new-user-benefit-reuse/) | verified | medium | 2026-11-06 |

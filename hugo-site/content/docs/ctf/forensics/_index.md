@@ -31,10 +31,12 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [1.2 MS/s 原始 PCM 转 WAV：频谱图 Morse 解出 Base32，掩码爆破频谱中的 RAR 密码](ctf-forensics-raw-pcm-spectrogram-morse-base32-rar/) | verified | high | 2026-11-07 |
 | [1bpp 帧缓冲二维码还原：88x88 位图逐行左移 2y 再整体左移 24 像素](ctf-forensics-1bpp-qr-row-shift-frame-recovery/) | verified | high | 2026-11-06 |
 | [4×4 打乱二维码按顺序重排并解码](ctf-forensics-qr-4x4-tile-reorder/) | verified | high | 2026-11-06 |
 | [ANSI 终端控制序列模拟：从终端录像恢复被清屏/覆盖隐藏的 flag](ctf-forensics-ansi-terminal-emulator-screen-recovery/) | verified | high | 2026-11-06 |
 | [Arnold 猫脸变换逆变换：矩阵求逆 + 多轮还原 + a/b 参数爆破](ctf-forensics-arnold-cat-map-inverse-parameter-brute-force/) | verified | high | 2026-11-06 |
+| [BitLocker 内存取证：Volatility 提取 FVEK + dislocker 离线挂载解密卷](ctf-forensics-bitlocker-fvek-memory-dislocker-mount/) | verified | high | 2026-11-07 |
 | [bkcrack -d 解出的条目仍是 raw deflate：Raw Inflate 还原内层 ZIP 后再处理口令](ctf-forensics-bkcrack-d-raw-inflate-nested-zip/) | verified | high | 2026-11-06 |
 | [CAN pcap 干扰帧过滤 + 物理量解析：按 payload 唯一率找真实车速并哈希峰值帧号](ctf-forensics-can-signal-id-filter-speed-peak-frame-hash/) | verified | high | 2026-11-06 |
 | [CAN 重复帧末字节隐蔽信道：按 ID 过滤 pcap 提取隐藏数据还原 flag](ctf-forensics-can-repeated-frame-trailing-byte-covert-channel/) | verified | high | 2026-11-06 |
@@ -57,24 +59,34 @@ weight: 1
 | [ICMP 隐蔽外带双层加密：EX1L 元数据 + PBKDF2 派生 + ChaCha20/AES-GCM + ScrambleSeed 乱序](ctf-forensics-icmp-double-layer-pbkdf2-shuffle-exfil/) | verified | high | 2026-11-06 |
 | [ISO 启动层 isolinux.bin 偏移处隐藏 Base58 字符串](ctf-forensics-iso-isolinux-base58-hidden/) | verified | high | 2026-11-06 |
 | [JA3 与目的 IP 过滤日志分片：按时间戳拼接 5 字符载荷](ctf-forensics-ja3-flow-fragment-timestamp-reassembly/) | verified | medium | 2026-11-06 |
+| [KeePass kdbx 密码库离线爆破：hashcat -m 13400 恢复主密码并读取横向凭据](ctf-forensics-keepass-kdbx-hashcat-master-crack/) | verified | high | 2026-11-07 |
 | [Kerberos keytab + GSSAPI subkey 手动解密 DCE/RPC Packet Privacy 分片，提取计划任务 XML](ctf-forensics-kerberos-dcerpc-packet-privacy-subkey-decrypt/) | verified | high | 2026-11-06 |
+| [Linux input_event 键盘记录还原：24 字节 struct + Shift 状态还原按键序列](ctf-forensics-linux-input-event-keylogger-decode/) | verified | high | 2026-11-07 |
+| [LSB 截图水印提取：时间戳种子 AES-CTR + 置换索引 + 3 次重复，暴力时间戳还原姓名工号](ctf-forensics-lsb-watermark-timestamp-aesctr-permutation/) | verified | high | 2026-11-07 |
 | [MIDI 多轨共享时钟隐写：note 事件异或寄存器 + 时间网格偏移还原隐藏消息](ctf-forensics-midi-shared-tick-register-stego/) | verified | high | 2026-11-05 |
-| [Modbus/TCP 异常写寄存器定位：0x10 多寄存器写入 + IEEE754 浮点还原](ctf-forensics-modbus-write-register-ieee754-abnormal-value/) | draft | high | 2026-11-06 |
+| [Modbus/TCP 异常写寄存器定位：0x10 多寄存器写入 + IEEE754 浮点还原](ctf-forensics-modbus-write-register-ieee754-abnormal-value/) | verified | high | 2026-11-06 |
+| [Modbus/TCP 读保持寄存器载荷重建 PDF：口令爆破后提取隐藏文字](ctf-forensics-modbus-read-register-pdf-carve-password-hidden-text/) | verified | high | 2026-11-07 |
+| [NTFS $LogFile 重命名时间线：从 USN/RENAME 记录恢复分段 flag](ctf-forensics-ntfs-logfile-rename-timeline-recovery/) | verified | high | 2026-11-07 |
 | [NTFS 镜像元数据取证：UTF-16LE 文件名残留 + MFT slack + ADS 恢复分段 flag](ctf-forensics-ntfs-mft-slack-ads-flag-segments/) | verified | high | 2026-11-06 |
-| [OPC UA 流量中分段 Base64 C2 结果重组：String 节点提取 + JSON 命令还原](ctf-forensics-opcua-string-segmented-base64-c2-results/) | draft | high | 2026-11-06 |
+| [OPC UA 流量中分段 Base64 C2 结果重组：String 节点提取 + JSON 命令还原](ctf-forensics-opcua-string-segmented-base64-c2-results/) | verified | high | 2026-11-06 |
 | [OpenIGTLink POSITION 轨迹还原：剔除失真点后按 z 分层栅格化成 5×7 像素字体](ctf-forensics-openigtlink-position-trajectory-pixel-font/) | verified | high | 2026-11-05 |
 | [PCAP HTTP 外传取证：从下载脚本提取 XOR key，解密 multipart 上传的 hex 数据](ctf-forensics-pcap-http-xor-exfil-key-recover/) | verified | high | 2026-11-06 |
 | [pcap shell 历史还原 base64 外传图片：nc 传输与 JPG 尾部 flag](ctf-forensics-pcap-shell-history-base64-nc-image-exfil/) | verified | high | 2026-11-06 |
-| [PCAP 中 IRC DCC 传输加密 7z：Base64 口令 + 嵌套 pcap 追踪 TCP 流](ctf-forensics-pcap-irc-dcc-nested-archive-password/) | draft | high | 2026-11-06 |
+| [pcap 与 PHP session 文件关联审计：非管理员用他人 search_id 查询的水平越权](ctf-forensics-pcap-php-session-search-id-idor-audit/) | verified | high | 2026-11-07 |
+| [PCAP 中 IRC DCC 传输加密 7z：Base64 口令 + 嵌套 pcap 追踪 TCP 流](ctf-forensics-pcap-irc-dcc-nested-archive-password/) | verified | high | 2026-11-06 |
+| [PCAP 中 RTP 语音导出与 Whisper 转写：八进制数字串还原 7z 密码](ctf-forensics-rtp-pcap-audio-whisper-octal-7z/) | verified | high | 2026-11-07 |
 | [PCAP 噪声分层取口令：组播 Base64 口令 + HTTP JSON AES ZIP + RGB-LSB 位流](ctf-forensics-pcap-multicast-base64-password-aes-zip-rgb-lsb/) | verified | high | 2026-11-06 |
+| [PCAP 导出 HTTP 上传的加密 webshell：用脚本内置 SM4 实现、key 与密文解密还原 flag](ctf-forensics-pcap-http-sm4-webshell-decrypt/) | verified | medium | 2026-11-07 |
 | [PCAP 还原 WiFi 入侵链：EAPOL 握手、LuCI 后台爆破、DNS 劫持与反弹 shell](ctf-forensics-pcap-wifi-router-takeover-chain/) | verified | high | 2026-11-06 |
 | [PDF 扫描件嵌入图像批处理：contact sheet 定位竖排低对比 flag 条带](ctf-forensics-pdf-embedded-images-contact-sheet-vertical-strip/) | verified | high | 2026-11-06 |
 | [PKZIP 传统加密密钥调度逆向：由 Key0/Key1/Key2 反推密码（bkcrack -r）](ctf-forensics-pkzip-key-schedule-reverse-password/) | verified | high | 2026-11-06 |
 | [PLC 固件容器与 OT 流量取证：段熵筛真段、CRC-16 剔除伪造密钥帧、槽位状态三重裁决](ctf-forensics-plc-firmware-container-nwlp-crc-slot-adjudication/) | verified | high | 2026-11-06 |
 | [PNG IHDR 宽高 CRC32 爆破：文件头整体减一还原 + 正确宽高恢复](ctf-forensics-png-ihdr-width-height-crc32-brute-force/) | verified | high | 2026-11-06 |
 | [PNG LSB 进阶隐写：行优先无结果时改用列优先 yx 扫描，短载荷用编码特征而非可打印率判定](ctf-forensics-png-lsb-column-major-scan-order/) | verified | high | 2026-11-06 |
+| [PNG 尾部 IEND 之后附加一句话木马/脚本的识别：末 8 字节校验与尾部载荷提取](ctf-forensics-png-iend-appended-webshell-audit/) | verified | high | 2026-11-07 |
 | [PNG 条形码多通道取数重建 21×21 QR：Comment/首行红通道 LSB 与 6 位 hex 低 21 位](ctf-forensics-barcode-png-multichannel-qr-row-rebuild/) | verified | high | 2026-11-06 |
 | [PNG 蓝通道 8×8 DCT QIM 提取隐藏 pyc，再按 alpha LSB 与循环 XOR 还原明文](ctf-forensics-png-dct-qim-blue-channel-pyc-alpha-lsb/) | verified | high | 2026-11-06 |
+| [SMTP pcap 取证：提取 MIME 附件 Base64、口令与分段 PDF 重组](ctf-forensics-smtp-pcap-mime-attachment-reassembly/) | verified | high | 2026-11-07 |
 | [SNOW 空白隐写 + binwalk 尾随 ZIP + ZipCrypto 明文攻击](ctf-forensics-snow-whitespace-binwalk-known-plaintext-zip/) | verified | high | 2026-11-06 |
 | [SOC 编排日志取证：DNS 隧道 + base32 分片外泄 PAT 与 git 配置劫持链](ctf-forensics-soc-dns-tunnel-base32-pat-exfil/) | verified | high | 2026-11-06 |
 | [SQLite Freeblock 链表隐写：sys_config 入口指针 + 大端节点 + 页号 XOR 还原隐藏 SQL](ctf-forensics-sqlite-freeblock-linked-list-page-xor/) | verified | high | 2026-11-06 |
@@ -82,18 +94,25 @@ weight: 1
 | [SSTV 慢扫描电视音频解码：从 WAV 还原图片与密码](ctf-forensics-sstv-audio-image-decode/) | verified | high | 2026-11-06 |
 | [Task Scheduler RPC 流量提取计划任务：Description 字段承载 Base64 外带文件](ctf-forensics-task-scheduler-rpc-description-exfil/) | verified | high | 2026-11-06 |
 | [TCP 紧急指针隐写：URG 标志与 16 位 urgent_pointer 一一对应，ASCII 拼 base64](ctf-forensics-tcp-urgent-pointer-covert-channel/) | verified | high | 2026-11-06 |
+| [TCP 载荷末两字节十六进制拼接重建 ZIP：另一条流量里的明文口令解压取 flag](ctf-forensics-tcp-payload-tail-two-bytes-zip-rebuild/) | verified | high | 2026-11-07 |
+| [Thumbs.db 缩略图缓存恢复已删除图片：从磁盘镜像提取 Explorer 缩略图流](ctf-forensics-thumbs-db-deleted-image-thumbnail-recovery/) | verified | high | 2026-11-07 |
+| [TLS keylog 解密 pcap：从流量中提取 SSLKEYLOGFILE 并导入 Wireshark 还原 HTTP](ctf-forensics-tls-keylog-pcap-decrypt/) | verified | high | 2026-11-07 |
 | [TrueCrypt 内存镜像主密钥提取：进程/命令行定位 + 密钥搜索 + 挂载加密卷](ctf-forensics-truecrypt-memory-key-mount/) | verified | high | 2026-11-06 |
+| [USB HID 键盘流量还原击键：参考 pcap 建立 Shift/非 Shift 键位映射](ctf-forensics-usb-hid-keyboard-reference-mapping/) | verified | high | 2026-11-07 |
 | [VeraCrypt AES-XTS 数据区手动解密：已知 master key 按扇区还原裸盘](ctf-forensics-veracrypt-aes-xts-manual-sector-decrypt/) | verified | high | 2026-11-06 |
 | [WAV 频域 8 频点并行 FSK 隐写：每 0.1s 用 8 个频率的开关还原 1 字节](ctf-forensics-wav-multifrequency-8bit-block-fsk-stego/) | verified | high | 2026-11-06 |
 | [WebP RIFF 自定义 chunk 隐写提取：按 chunk 遍历与奇数字节对齐取出 ECH0 载荷](ctf-forensics-webp-riff-custom-chunk-ech0-extraction/) | verified | high | 2026-11-06 |
 | [Windows 镜像离线 SAM/SYSTEM 蜂巢提取 NTLM 并掩码爆破：6 位纯数字口令秒破](ctf-forensics-windows-sam-system-offline-ntlm-mask-crack/) | verified | high | 2026-11-06 |
 | [Word DOCM VBA 工程密码保护绕过：篡改 DPB 标记 + olevba 提取并改写 Decode 调用取明文](ctf-forensics-docm-vba-project-password-dpb-bypass/) | verified | high | 2026-11-06 |
+| [Word 宏三段载荷：VBA XOR+Base64 解出 PowerShell，-EncodedCommand 解码后再 Deflate 解压取出最终脚本](ctf-forensics-docm-vba-xor-powershell-encodedcommand-deflate/) | verified | high | 2026-11-07 |
 | [WSL ext4.vhdx 离线取证：挂载虚拟磁盘读取 bash_history 与模型部署配置](ctf-forensics-wsl-ext4-vhdx-offline-inspect/) | verified | medium | 2026-11-06 |
 | [XM 模块音乐渲染 WAV 后按窗口峰值还原比特流](ctf-forensics-xm-module-peak-window-bitstream-stego/) | verified | medium | 2026-11-06 |
 | [zip2john $pkzip$ 哈希 + 已知密码：直接解密 ZipCrypto 流恢复压缩包内容](ctf-forensics-zip2john-pkzip-hash-zipcrypto-stream-decrypt/) | verified | high | 2026-11-06 |
+| [ZipCrypto 已知明文攻击：用 PNG 文件头 16 字节 bkcrack 恢复密钥](ctf-forensics-zipcrypto-png-header-known-plaintext-bkcrack/) | verified | high | 2026-11-07 |
 | [从 pcap 按业务请求顺序还原栈式 VM 后门指令并解密 payload](ctf-forensics-pcap-http-order-vm-opcode-reconstruction/) | verified | high | 2026-11-06 |
 | [像素 R/B 通道拼 16 位码元：还原 UTF-16/Unicode 隐藏文本](ctf-forensics-pixel-rb-channel-utf16-codepoint/) | verified | high | 2026-11-06 |
 | [光棱坦克隐写：灰度分段 + 对角线交错像素分离（支持多图与彩色）](ctf-forensics-prism-tank-grayscale-band-diagonal-interleave/) | verified | medium | 2026-11-06 |
+| [内存镜像关键词搜索：按 UTF-8/UTF-16 编码定位明文 flag](ctf-forensics-memory-image-flag-keyword-search/) | verified | medium | 2026-11-07 |
 | [加密 Office 文档离线破解：office2john 提取校验哈希后字典/掩码爆破](ctf-forensics-office-doc-password-office2john-hashcat/) | verified | medium | 2026-11-06 |
 | [十六进制 PNG 流重组：QR 码链与 base64 解码](ctf-forensics-hex-png-stream-qr-chain-base64/) | verified | high | 2026-11-06 |
 | [单频正弦波逐字符音频：按 0.12s 分段 FFT 主频还原字符](ctf-forensics-audio-per-char-single-frequency-fft/) | verified | high | 2026-11-06 |
@@ -109,6 +128,8 @@ weight: 1
 | [批量 PDF 钓鱼链接提取：Annotation URI + 正文 URL + redirect 参数域名白名单与 MD5](ctf-forensics-pdf-annotation-redirect-phishing-url-extraction/) | verified | high | 2026-11-06 |
 | [日志异常字段中的分段 Base64 提取拼接还原 flag](ctf-forensics-log-field-base64-fragments/) | verified | high | 2026-11-06 |
 | [注册表编号值交替偏移：1-26 单字符值按奇偶 +7/-6 还原](ctf-forensics-registry-numbered-values-alternating-shift/) | verified | high | 2026-11-06 |
+| [流量包尾部逆序 7z + steghide 密钥 + 时间戳平方动态 KEY 逐层解出 flag](ctf-forensics-reversed-7z-steghide-timestamp-squared-dynamic-key/) | verified | high | 2026-11-07 |
+| [海量视频语料中检索隐藏 flag：发布时间排序 + 逐帧 OCR/VLM 扫描](ctf-forensics-video-corpus-frame-ocr-vlm-flag-search/) | verified | high | 2026-11-07 |
 | [私有封装 pcap 剥离与 Modbus 写寄存器隐蔽载荷：双重反转 Base64 还原 flag](ctf-forensics-modbus-private-pcap-write-register-covert/) | verified | high | 2026-11-06 |
 | [自定义协议 ET3RNUMX + AES-256-GCM 流量解密：从 Go 二进制字符串提取 key](ctf-forensics-custom-protocol-aes-gcm-pcap-binary-key/) | verified | high | 2026-11-06 |
 | [螺旋像素置乱还原 + 空白像素填充隐写](ctf-forensics-spiral-pixel-scramble-blank-fill/) | verified | high | 2026-11-06 |
@@ -116,7 +137,7 @@ weight: 1
 | [视频单像素通道隐写：逐帧读取指定坐标的 B/G/R 值还原字符流](ctf-forensics-video-single-pixel-channel-extraction/) | verified | high | 2026-11-06 |
 | [透视形变二维码：正面无法识别，按近大远小从侧面角度扫描](ctf-forensics-perspective-warped-qr-angle-scan/) | verified | high | 2026-11-06 |
 | [部分 EWF 镜像解析 + NTFS 删除文件/git 对象恢复 + OpenSSL aes-256-cbc 解密核心记忆](ctf-forensics-partial-ewf-ntfs-openssl-memory-decrypt/) | verified | high | 2026-11-06 |
-| [钓鱼邮件附件 XOR 加密 DOCX：从正文 Base64 取真实密钥并解密](ctf-forensics-phishing-email-xor-docx-base64-key/) | draft | high | 2026-11-06 |
+| [钓鱼邮件附件 XOR 加密 DOCX：从正文 Base64 取真实密钥并解密](ctf-forensics-phishing-email-xor-docx-base64-key/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

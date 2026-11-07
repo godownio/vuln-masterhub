@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:30+08:00'
+  notes: 已对照原文与图50-52核对；fwrite(&unk_140062410,0x8708,1)、C:\AsRockDrv.sys与CreateServiceA一致；未执行样本。
 url: /docs/code-analysis/reverse/unpacking/code-analysis-reverse-unpacking-fwrite-static-buffer-embedded-pe/
 draft: false
 kb_aliases:

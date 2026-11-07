@@ -32,6 +32,8 @@ UART/JTAG/SPI、侧信道与故障注入。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [BES2300 智能音响固件提取：UART ROM Bootloader BE 协议 dump Flash](iot-hardware-bes2300-rom-bootloader-uart-dump/) | verified | high | 2026-11-06 |
+| [Saleae Logic 分析 .sal 抓包：Async Serial 解码 UART 115200 8N1 还原设备文本](iot-hardware-saleae-logic-uart-decode/) | verified | high | 2026-11-07 |
+| [VHDL 硬件后门识别：固定 16 位 pattern 触发后直接输出密钥](iot-hardware-vhdl-backdoor-pattern-key-output/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

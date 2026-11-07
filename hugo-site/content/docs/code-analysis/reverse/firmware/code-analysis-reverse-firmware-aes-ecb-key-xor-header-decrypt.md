@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:28+08:00'
+  notes: 已对照原文与图54-56核对；AES-128-ECB、40字节头、result[14]=0与libupgradeFirmware.so一致；PoC用占位密钥，未复跑。
 url: /docs/code-analysis/reverse/firmware/code-analysis-reverse-firmware-aes-ecb-key-xor-header-decrypt/
 draft: false
 kb_aliases:

@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: medium
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:35+08:00'
+  notes: 已对照原文与图50-56核对；Photos.sqlite查询、IMG_0084.MOV、5005.JPG、infltr、截图15与iCloud90一致；原文选项A称图片而实际UTI为quicktime-movie，卡片按抓取事实写视频；未复跑SQL。
 url: /docs/defense/forensics/defense-forensics-ios-photos-sqlite-airdrop-origin/
 draft: false
 kb_aliases:

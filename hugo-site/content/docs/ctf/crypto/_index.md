@@ -41,6 +41,8 @@ Crypto 题型技巧。
 | [CDF 注释藏 Kyber 风格 u/v 块：q/2 偏移编码 bit 恢复 AES key 并解 CBC](ctf-crypto-cdf-comments-qhalf-bit-encoding-aes/) | verified | high | 2026-11-06 |
 | [Feistel 立方轮函数 GF(2^16) 代数攻击：多项式基秩下降恢复 16-bit 轮密钥](ctf-crypto-feistel-gf2-16-cubic-rank-drop-key-recovery/) | verified | high | 2026-11-06 |
 | [GF(3) HFE/UOV 公钥超定方程组：msolve F4 逐块直接求解，无需私钥](ctf-crypto-gf3-hfe-uov-msolve-f4/) | verified | high | 2026-11-06 |
+| [GF(3) LFSR 已知明文恢复：前 40 输出取初态，模 3 高斯消元解 mask 并解密](ctf-crypto-gf3-lfsr-known-plaintext-state-mask-recovery/) | verified | high | 2026-11-07 |
+| [GF(41) 拉格朗日插值还原替换表：已知前缀定多项式 + 反查候选 + SHA-256 约束穷举](ctf-crypto-gf41-lagrange-substitution-inverse-hash-brute/) | verified | high | 2026-11-07 |
 | [Hidden Number Problem（HNP）MSB 泄露：pI 与 t 行构造格，Babai 最近平面恢复 α](ctf-crypto-hnp-msb-oracle-babai-nearest-plane/) | verified | high | 2026-11-06 |
 | [HNP-2H 连分数降维 + Kannan Embedding：双小未知量模方程恢复大 secret](ctf-crypto-hnp-2h-continued-fraction-kannan-embedding/) | verified | medium | 2026-11-06 |
 | [LFSR 抽头 mask 恢复：initState 与 outputState 前 128 位建 GF(2) 方程](ctf-crypto-lfsr-mask-recovery-output-state/) | verified | medium | 2026-11-06 |
@@ -49,16 +51,27 @@ Crypto 题型技巧。
 | [LLL 恢复打乱基中的短向量 + Kannan embedding 解小误差 LWE](ctf-crypto-lll-hidden-short-vector-kannan-embedding-lwe/) | verified | high | 2026-11-06 |
 | [LLL 解三角函数整数关系：高精度 sin/cos 与密文构造格恢复小系数 a,b](ctf-crypto-lll-trig-integer-relation/) | verified | high | 2026-11-06 |
 | [MT19937 位流状态恢复：中文位才消耗 bit 的错位修正与 getrandbits(50000) 预测](ctf-crypto-mt19937-bitstream-chinese-alignment-state-recovery/) | verified | high | 2026-11-06 |
+| [MT19937 截断输出 GF(2) 线性恢复：624×19968 状态矩阵、6 维零空间枚举与 shuffle 逆置换](ctf-crypto-mt19937-truncated-output-gf2-linear-recovery/) | verified | medium | 2026-11-07 |
 | [Noise CRT：带噪 CRT 余数用 Pi·inv(Pi) 系数与 2^nbits 对角构造格恢复 N](ctf-crypto-noise-crt-lattice-recovery/) | verified | medium | 2026-11-06 |
+| [NTRU 样本模 x+1 投影 LLL 区分：恢复 coin 位后预测 MT19937 解 AES](ctf-crypto-ntru-xplus1-lll-distinguish-mt/) | verified | medium | 2026-11-07 |
+| [RSA 密文与模数不互素：gcd(N, c) 直接分解模数并解出 AES key](ctf-crypto-rsa-ciphertext-gcd-factor-leak/) | verified | medium | 2026-11-07 |
 | [RSA 小指数广播攻击：三组 e=3 同明文 CRT 合成后开立方](ctf-crypto-rsa-hastad-broadcast-e3-crt/) | verified | high | 2026-11-06 |
+| [RSA 未知指数 e：小范围暴力解密 + 明文字符集筛选 + 栅栏还原](ctf-crypto-rsa-unknown-e-rail-fence-filter/) | verified | high | 2026-11-07 |
+| [RSA 结构化素数 p=(D·V²+1)/4：Jacobi 选判别式后用二次型/类群分解 n](ctf-crypto-rsa-structured-prime-class-group-factor/) | verified | medium | 2026-11-07 |
+| [RSA 非互素指数共模攻击：gcdext 得 m^g 后加 n 开 g 次根恢复明文](ctf-crypto-rsa-noncoprime-common-modulus-iroot-wiener-chain/) | verified | high | 2026-11-07 |
 | [Semi-ADFGX 5×6 Polybius 方阵 + 爬山/模拟退火替换还原英文贺词](ctf-crypto-semi-adfgx-5x6-polybius-hillclimb-substitution/) | verified | high | 2026-11-06 |
 | [Simon 型周期测量恢复隐藏周期：GF(2) 零空间求 80 bit 周期](ctf-crypto-simon-period-measurement-gf2-nullspace/) | verified | high | 2026-11-06 |
+| [SM3 链式单次签名伪造：按步长数组逐段收集其他消息的签名拼接目标签名](ctf-crypto-sm3-chain-ots-step-collision-forgery/) | verified | high | 2026-11-07 |
 | [UDS 0x27 SecurityAccess 弱 seed-key 算法逆推：XOR/ROL/ADD 从 seed 计算 key](ctf-crypto-uds-securityaccess-seed-key-recovery/) | verified | high | 2026-11-06 |
+| [Wagner 广义生日求 SHA3-512 模素数 k-sum：8 路合并构造哈希碰撞过服务端校验](ctf-crypto-wagner-generalized-birthday-sha3-mod-collision/) | verified | medium | 2026-11-07 |
 | [Z3 求解 6 字节输入的 128 位状态约束：模乘异或链的逆问题](ctf-crypto-z3-short-input-128bit-state-constraint/) | verified | high | 2026-11-06 |
 | [两次维吉尼亚加密同一明文：差分周期恢复密钥流并解 flag](ctf-crypto-vigenere-two-ciphertext-differential-period/) | verified | high | 2026-11-06 |
+| [公钥系数线性组合的 LLL 明文恢复与无校验私钥伪造](ctf-crypto-lll-public-key-linear-combination-forge-private-key/) | verified | medium | 2026-11-07 |
 | [半直积群小阶共轭元：枚举 c 的阶后用 BSGS 解离散对数](ctf-crypto-semidirect-product-small-order-discrete-log/) | verified | high | 2026-11-06 |
 | [单字节种子递推流密码：已知明文前缀爆破 256 个种子](ctf-crypto-single-byte-seed-recurrence-stream-cipher-bruteforce/) | verified | high | 2026-11-06 |
+| [四元数环离散对数：范数同态降维到素域后 BSGS，MD5(secret) 派生 AES 密钥](ctf-crypto-quaternion-norm-dlp-bsgs/) | verified | medium | 2026-11-07 |
 | [多元对称方程消元：把 a³+b⁶ 与 ac 表示为 b 的多项式，降为单变量高次方程](ctf-crypto-multivariate-elimination-univariate-polynomial/) | verified | high | 2026-11-06 |
+| [多层编码链：Base58 → W 型栅栏（3 栏）→ ROT13](ctf-crypto-base58-wrailfence-rot13/) | verified | high | 2026-11-07 |
 | [天书 + 与佛论禅双层中文编码：64 符号 base64 变体与 128 字表高位标志，套 CryptoJS EVP_BytesToKey AES](ctf-crypto-tianshu-foshuo-double-layer-cryptojs-evp-bytes-to-key/) | verified | high | 2026-11-06 |
 | [字符重复 + AES-ECB 块循环移位异或：已知前缀逐字符唯一推出 flag](ctf-crypto-aes-ecb-duplicated-char-circular-xor/) | verified | high | 2026-11-06 |
 | [小模数离散对数 + CRT 枚举真通道：从 18 条投影中恢复隐藏整数 x](ctf-crypto-small-discrete-log-crt-channel-selection/) | verified | high | 2026-11-06 |
@@ -67,12 +80,15 @@ Crypto 题型技巧。
 | [批量 RSA 模数两两 gcd：共享素因子直接分解并恢复明文](ctf-crypto-rsa-shared-prime-batch-gcd/) | verified | high | 2026-11-06 |
 | [挑战响应认证的 XOR 折叠校验：8 字节比较降为单字节，1/256 概率通过](ctf-crypto-challenge-response-xor-fold-checksum-1in256/) | verified | high | 2026-11-06 |
 | [环卷积线性系统恢复稀疏向量：F_65537[x]/(x^70+1) 上的 NTRU 类方程](ctf-crypto-ring-convolution-linear-system-sparse-vector/) | verified | high | 2026-11-06 |
+| [用 Hamming 距离线性约束 + 整数规划恢复 256 位密钥：浮点泄露 + SHA-256 哈希对](ctf-crypto-hamming-distance-linear-program-secret-recovery/) | verified | high | 2026-11-07 |
 | [稀疏分组指纹覆盖 + meet-in-the-middle：从 7 组告警恢复 14 列异或路径](ctf-crypto-sparse-group-fingerprint-mitm-xor-path/) | verified | high | 2026-11-06 |
 | [稀疏错误线性系统：校验矩阵枚举 4 个错误位置并恢复单项式向量](ctf-crypto-sparse-error-linear-system-nullspace-enumeration/) | verified | high | 2026-11-06 |
 | [类 Dilithium 签名缺少误差项：t = A·s 精确线性方程组在 Z_q 上直接解出私钥](ctf-crypto-dilithium-like-exact-t-as-linear-system-secret-recovery/) | verified | high | 2026-11-06 |
 | [线性模哈希碰撞：把 Σ(2g)^{i-k}g·e_k≡0 mod N 转成 [E|R;0|N] 格，LLL 求短差分向量](ctf-crypto-linear-hash-collision-lll/) | verified | high | 2026-11-06 |
+| [结构化素数 p=s²+s+3 与椭圆曲线阶泄露：模平方根枚举 t 恢复 p 并解 AES-CTR](ctf-crypto-structured-prime-squares-plus-s-tonelli-aes-ctr/) | verified | high | 2026-11-07 |
 | [维吉尼亚 + 凯撒复合密码：数字位凯撒 +5、字母位维吉尼亚，密钥计数器覆盖整串而非仅花括号内](ctf-crypto-vigenere-caesar-digit-letter-branch-counter-scope/) | verified | high | 2026-11-06 |
 | [自参考密钥分组密码：先逆可逆混合层取回密钥，再解 TEA 变体](ctf-crypto-self-referential-key-tea-variant/) | verified | medium | 2026-11-06 |
+| [自定义 Base64 字符集还原：AA+X 探测第 4 字符反推 64 字符索引表](ctf-crypto-custom-base64-charset-oracle-recovery/) | verified | high | 2026-11-07 |
 | [近似 GCD（AGCD）SDA 格攻击：x_i=pq_i+e_i 用小误差差分构造短向量恢复 p](ctf-crypto-agcd-sda-lattice-small-error-recovery/) | verified | high | 2026-11-06 |
 | [重复 XOR 密钥恢复：Base32 密文已知前缀反推 4 字节 key，加密 oracle 全零明文直接泄露 key](ctf-crypto-repeating-xor-key-known-plaintext-oracle/) | verified | high | 2026-11-06 |
 | [黑盒加密选择明文建表：构造非线性输入让密文保持一一映射，再查表解 flag](ctf-crypto-blackbox-chosen-input-mapping/) | verified | medium | 2026-11-06 |

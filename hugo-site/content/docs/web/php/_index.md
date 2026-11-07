@@ -37,6 +37,7 @@ PHP 反序列化、文件包含、RCE 与框架漏洞。
 |---|---|---|---|
 | [.htaccess 关闭 PHP engine 导致目录内 PHP 源码被明文返回](web-php-htaccess-engine-off-source-disclosure/) | verified | high | 2026-11-05 |
 | [Joomla 4 /api/index.php/v1/config/application?public=true 未授权泄露数据库账号口令（CVE-2023-23752）](web-php-joomla-api-config-application-public-db-credential-leak/) | verified | high | 2026-11-05 |
+| [PHP QUERY_STRING 校验与 $_GET 拼接解析差异：timestamp[day]$ 注入 .php 后缀写 webshell](web-php-query-string-get-parser-differential-upload/) | verified | medium | 2026-11-07 |
 | [PHP Warning 提前输出导致 CSP 响应头失效](web-php-warning-header-already-sent-csp-bypass/) | verified | medium | 2026-11-05 |
 | [PHP 数值前缀/宽松比较绕过：score=300abc 通过 >=300 校验](web-php-loose-numeric-prefix-score-bypass/) | verified | high | 2026-11-06 |
 | [WordPress 配置与旧数据库备份泄露：phpass 破解历史账户并复用至宿主机 SSH](web-php-wordpress-backup-sql-phpass-credential/) | verified | high | 2026-11-05 |

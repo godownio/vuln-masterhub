@@ -32,6 +32,8 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [AMM 首个 LP 存款人通胀攻击：捐赠 + sync 抬高 LP 单价，后续存款向下取整被吞（MINIMUM_LIQUIDITY 防御）](blockchain-defi-amm-first-lp-inflation-donation-rounding/) | verified | medium | 2026-11-06 |
+| [DEX 现货兑换价操纵：按池子余额比例反复 swap 抽干一侧储备](blockchain-defi-dex-spot-reserve-swap-drain/) | draft | high | 2026-11-07 |
+| [DexTwo 任意代币兑换：未校验交易对，自建代币 1:1 换走池内全部真币](blockchain-defi-dextwo-arbitrary-token-swap-drain/) | draft | high | 2026-11-07 |
 | [Solana 拍卖程序账户生命周期缺陷：关闭后同 auction_id 重建 PDA，复用旧 bidder_state 盗取 vault](blockchain-defi-solana-auction-pda-reuse-bidder-state-vault-drain/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

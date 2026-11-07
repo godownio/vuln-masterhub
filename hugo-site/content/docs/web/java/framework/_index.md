@@ -34,7 +34,11 @@ Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Blade 框架动态注册 Route 内存马：反射 RouteMatcher.addRoute + register](web-java-framework-blade-route-memshell/) | verified | high | 2026-11-05 |
+| [BladeX /api/blade-log/api/list 低权限读取全量日志：params 明文泄露管理员口令与 refresh_token](web-java-framework-bladex-log-api-list-credential-leak/) | verified | high | 2026-11-07 |
+| [BladeX /api/blade-user/list 只校验登录不校验角色：低权限账号读取管理员账号与联系方式](web-java-framework-bladex-user-list-missing-role-check/) | verified | high | 2026-11-07 |
+| [BladeX 角色/日志接口参数名拼接 updatexml：MySQL XPATH 报错注入回显版本](web-java-framework-bladex-role-list-updatexml-sqli/) | verified | medium | 2026-11-07 |
 | [CVE-2026-3672 JeecgBoot /sys/api/getDictItems：字典 WAF 正则与黑名单不对称导致布尔盲注](web-java-framework-jeecgboot-api-dict-waf-regex-sqli/) | verified | high | 2026-11-05 |
+| [FormService 反射分发未强制 isAccessible：service 参数可匿名调用服务类任意 public 方法](web-java-framework-formservice-reflection-dispatch-unauth/) | verified | high | 2026-11-07 |
 | [GWT-RPC 隐藏服务方法可达导致未授权命令执行](web-java-framework-gwt-rpc-hidden-method-authz-rce/) | verified | high | 2026-11-04 |
 | [Java *.do 过滤器按 URL 反射调用任意 Action 方法导致未授权 SQL 注入](web-java-framework-do-filter-reflection-dispatch/) | verified | high | 2026-11-04 |
 | [JDK 21 虚拟线程默认空名导致以线程名为键的上下文串扰与跨租户越权](web-java-framework-virtual-thread-empty-name-context-crosstalk/) | verified | medium | 2026-11-04 |
@@ -43,6 +47,8 @@ Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
 | [JeecgBoot ≤3.4.0 验证码 Redis Key 复用导致任意用户注册](web-java-framework-jeecgboot-captcha-redis-key-reuse-register/) | verified | high | 2026-11-05 |
 | [JeecgBoot 字典接口 SQL 注入：黑名单 select%0a/current_user/innodb_table_stats 绕过与未过滤透传](web-java-framework-jeecgboot-dict-blacklist-bypass-sqli/) | verified | high | 2026-11-05 |
 | [RuoYi 4.5.0 /common/download/resource 路径穿越任意文件读取](web-java-framework-ruoyi-download-resource-path-traversal/) | verified | high | 2026-11-05 |
+| [RuoYi-Vue-Plus <=5.4.0 sendMessageWithAttachment 任意文件读取：filePath 可控附件经邮件外带](web-java-framework-ruoyi-vue-plus-sendmessagewithattachment-arbitrary-file-read/) | verified | high | 2026-11-07 |
+| [Solon 框架 Filter 内存马：静态块反射 Context.current 链路取 ChainManager 并 addFilter 执行 cmd](web-java-framework-solon-filter-memshell-chainmanager-reflect/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

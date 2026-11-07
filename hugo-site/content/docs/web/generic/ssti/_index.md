@@ -36,6 +36,8 @@ weight: 1
 | [FreeMarker SAFER_RESOLVER 绕过：第三方 TemplateModel、静态块、ProtectionDomain 与 ?api](web-generic-ssti-freemarker-safer-resolver-bypass/) | verified | high | 2026-11-05 |
 | [FreeMarker SSTI 下用 object.class.getResourceAsStream 逐字节读取 classpath 配置](web-generic-ssti-freemarker-classpath-resource-read/) | verified | high | 2026-11-05 |
 | [FuelCMS Dwoo 安全策略空实现：Closure::fromCallable 链式调用绕过沙箱执行命令](web-generic-ssti-dwoo-security-policy-empty-rce/) | verified | high | 2026-11-05 |
+| [Java CMS 页面 Markdown 内容二次渲染 SSTI：${exec('ls /')} 保存后直接执行命令](web-generic-ssti-java-cms-markdown-page-exec/) | verified | medium | 2026-11-07 |
+| [MCMS 5.2.4 后台模板编辑路径穿越写 FreeMarker 模板：?new Execute 注入后台首页触发 RCE](web-generic-ssti-mcms-template-save-freemarker-execute/) | verified | medium | 2026-11-07 |
 | [Ruby ERB 模板注入：%x{} 直接执行系统命令读 flag](web-generic-ssti-ruby-erb-percent-x-command-exec/) | verified | high | 2026-11-06 |
 | [Smarty SSTI：默认非沙箱直接 RCE 与 Smarty 4/5 严格模式静态方法绕过](web-generic-ssti-smarty-direct-rce-v4-v5-bypass/) | verified | high | 2026-11-04 |
 | [SSTI WAF 关键字拆分绕过：字符串拼接 + __eq__ 取 globals + os.popen 读文件](web-generic-ssti-waf-string-concat-eq-globals-bypass/) | verified | high | 2026-11-06 |

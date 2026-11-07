@@ -34,8 +34,10 @@ ThinkPHP、Laravel、Yii 等框架漏洞。
 | [FrankenPHP splitPos 大小写折叠长度差：KK.txt.php 被解析为执行 KK.txt 的 PHP 脚本](web-php-frankenphp-splitpos-unicode-casefold-path-differential/) | verified | high | 2026-11-06 |
 | [Laravel Ignition debug 模式 RCE：日志写入 PHAR + php://filter 解码（CVE-2021-3129）](web-php-framework-laravel-ignition-debug-log-phar-rce/) | verified | high | 2026-11-05 |
 | [Laravel Livewire CVE-2025-54068：快照校验缺陷导致未授权 PHP 对象注入 RCE](web-php-framework-livewire-cve-2025-54068-snapshot-hydration-rce/) | verified | high | 2026-11-05 |
+| [ThinkPHP 5.0.15 invokefunction 写 WebShell：call_user_func_array 调 file_put_contents + 三次 URL 解码蚁剑编码器](web-php-framework-thinkphp-invokefunction-file-put-contents-webshell/) | draft | high | 2026-11-07 |
 | [ThinkPHP 5.x RCE：invokefunction 任意函数调用与 captcha _method=__construct 过滤器注入](web-php-framework-thinkphp-5x-invokefunction-captcha-rce/) | verified | medium | 2026-11-06 |
 | [ThinkPHP View::display 模板源拼接注入：{$Request.get.f|$Request.get.c} 绕过黑名单执行 system](web-php-framework-thinkphp-view-display-template-source-injection/) | verified | high | 2026-11-06 |
+| [ThinkPHP 调试页 + 单引号 SQL 报错：Whoops 环境变量泄露数据库账号口令与绝对路径](web-php-framework-thinkphp-debug-sql-error-env-credential-leak/) | verified | medium | 2026-11-07 |
 | [Yii2 UploadedFile::saveAs 不做校验：客户端文件名直入保存路径导致任意脚本上传](web-php-framework-yii2-uploadedfile-saveas-unfiltered/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

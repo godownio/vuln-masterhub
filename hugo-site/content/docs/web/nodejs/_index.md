@@ -56,7 +56,9 @@ weight: 1
 | [n8n 表达式字段 vm2 沙箱逃逸：process.mainModule.require 执行系统命令（CVE-2025-68613）](web-nodejs-n8n-expression-sandbox-escape-rce/) | verified | high | 2026-11-05 |
 | [n8n 表达式沙箱补丁绕过：对象解构计算属性键欺骗 AST，原型链取 Function 构造器执行任意 JS（CVE-2026-25049 变体）](web-nodejs-n8n-object-destructuring-computed-key-ast-bypass/) | verified | high | 2026-11-06 |
 | [n8n 表达式解构赋值沙箱逃逸：CVE-2026-25049 从工作流创建到 child_process RCE](web-nodejs-n8n-expression-destructuring-constructor-rce-cve-2026-25049/) | verified | high | 2026-11-06 |
+| [Next.js 中间件认证绕过（CVE-2025-29927）：伪造 x-middleware-subrequest 路径链跳过 middleware 访问 /admin](web-nodejs-nextjs-middleware-subrequest-auth-bypass-cve-2025-29927/) | verified | high | 2026-11-07 |
 | [NocoBase 未授权 RCE 链：gateway 路径穿越读 JWT 密钥 + public-forms 伪造 Token 绕过认证/ACL + workflow new Function 执行](web-nodejs-nocobase-public-forms-path-traversal-jwt-workflow-rce/) | verified | low | 2026-11-05 |
+| [Node-RED 编辑器未授权访问：inject + exec 节点执行系统命令（CNVD-2018-19316）](web-nodejs-node-red-unauth-editor-inject-exec-rce/) | verified | high | 2026-11-07 |
 | [Node.js eval 接入字符白名单：允许 JSFuck 字符集即等于任意代码执行](web-nodejs-eval-jsfuck-char-whitelist-rce/) | verified | high | 2026-11-05 |
 | [Node.js HTTP Server.prototype.emit 劫持 + Accept 头路由 + AES 通道内存马/文件马](web-nodejs-http-server-emit-hijack-header-aes-memshell/) | verified | medium | 2026-11-06 |
 | [Node.js 递归 merge 过滤 __proto__ 仍可 mass assignment：/changepassword 注入 isAdmin 提权并链到 vm2 逃逸](web-nodejs-merge-proto-filter-mass-assignment-isadmin/) | verified | high | 2026-11-06 |

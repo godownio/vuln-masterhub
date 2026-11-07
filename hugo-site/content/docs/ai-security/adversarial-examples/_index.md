@@ -34,6 +34,7 @@ weight: 1
 | [FGSM 单步对抗攻击：ε·sign(∇xL) 沿损失上升方向扰动像素，快速改变模型预测](ai-security-adversarial-examples-fgsm-untargeted-sign-gradient/) | verified | high | 2026-11-06 |
 | [Isolation Forest 反欺诈规避：多元正态采样 + 本地模型预筛，凑够金额且不被判异常](ai-security-adversarial-examples-isolation-forest-distribution-sampling-evasion/) | verified | medium | 2026-11-06 |
 | [PGD 定向对抗攻击：SSIM≥0.95 约束下动态收缩 eps 使图像定向误分类](ai-security-adversarial-examples-pgd-targeted-ssim-budget/) | verified | high | 2026-11-06 |
+| [通用目标对抗补丁：64×64 贴片 + 随机位置 Adam 优化使 ResNet18 将任意图片误判为目标类](ai-security-adversarial-examples-universal-patch-resnet-adam/) | verified | high | 2026-11-07 |
 | [量化模环密文推理翻转：半模数折返边界 + L∞≤2/255 整数像素搜索](ai-security-adversarial-examples-quantized-ciphertext-ring-boundary/) | verified | high | 2026-11-06 |
 | [限像素对抗攻击：梯度 Top-100 选点 + 掩码权重 Adam 优化（weight_decay 防像素饱和）](ai-security-adversarial-examples-topk-pixel-mask-adam/) | verified | high | 2026-11-06 |
 | [风控模型 NaN 注入：原生 NaN 字面量绕过阈值比较并触发后门分支](ai-security-adversarial-examples-fraud-model-nan-threshold-bypass/) | verified | medium | 2026-11-06 |

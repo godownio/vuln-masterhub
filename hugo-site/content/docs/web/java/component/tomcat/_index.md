@@ -35,6 +35,7 @@ Tomcat 漏洞、Session 与文件处理。
 | [Tomcat 9.0.97 CVE-2024-50379 大小写文件系统条件竞争：上传 JSP 被当脚本编译 getshell](web-java-component-tomcat-cve-2024-50379-case-race-rce/) | verified | high | 2026-11-05 |
 | [Tomcat Adapter 内存马：替换 AbstractProcessor.adapter 的 CoyoteAdapter](web-java-component-tomcat-adapter-memshell/) | verified | high | 2026-11-05 |
 | [Tomcat CVE-2017-12615：PUT 方法 + `/1.jsp/` 后缀绕过写入 JSP WebShell](web-java-component-tomcat-cve-2017-12615-put-jsp-upload/) | verified | high | 2026-11-05 |
+| [Tomcat CVE-2025-24813：部分 PUT 写入 .session 临时文件 + JSESSIONID 触发 PersistentManager 反序列化 RCE](web-java-component-tomcat-cve-2025-24813-partial-put-session-deserialization-rce/) | verified | high | 2026-11-07 |
 | [Tomcat Digester 运行时 JSP webshell：自定义规则 + base64 XML 触发 setter JNDI](web-java-component-tomcat-digester-jsp-runtime-webshell/) | verified | high | 2026-11-05 |
 | [Tomcat Executor 内存马：替换 NioEndpoint 线程池解析原始请求](web-java-component-tomcat-executor-memshell/) | verified | high | 2026-11-05 |
 | [Tomcat Listener 内存马：StandardContext.addApplicationEventListener 注入请求监听器](web-java-component-tomcat-listener-memshell/) | verified | high | 2026-11-05 |

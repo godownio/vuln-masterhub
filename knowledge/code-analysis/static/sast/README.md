@@ -36,7 +36,7 @@
 | [CodeQL 追踪 Struts OGNL 注入：ActionProxy source、OgnlUtil sink 与字段跨函数污点桥接](code-analysis-sast-codeql-struts-ognl-taint-modeling.md) | verified | high | 2026-11-05 |
 | [CodeQL_n1ght 从 jar 建库 + 接口分派补边：Controller→Impl→DAO getConnection 查 JDBC 注入](code-analysis-sast-codeql-n1ght-jar-controller-interface-sink.md) | verified | high | 2026-11-07 |
 | [nginx 双引擎状态不一致自动化检测：配置语义 + 源码模式 + 状态追踪 + 溢出断言四层扫描](code-analysis-sast-nginx-dual-engine-state-scanner.md) | verified | high | 2026-11-05 |
-| [phply + Neo4j 构建 PHP 调用图：PHP7→5 语法降级、命名空间消解与 Controller→危险函数链查询](code-analysis-sast-phply-neo4j-php-callchain-sink-query.md) | draft | medium | 2026-11-07 |
+| [phply + Neo4j 构建 PHP 调用图：PHP7→5 语法降级、命名空间消解与 Controller→危险函数链查询](code-analysis-sast-phply-neo4j-php-callchain-sink-query.md) | verified | medium | 2026-11-07 |
 | [QLCoder：LLM Agent + CodeQL LSP/RAG 从 CVE 元数据迭代合成污点查询](code-analysis-sast-qlcoder-llm-codeql-query-synthesis.md) | verified | medium | 2026-11-06 |
 | [SCA 告警到 SAST/DAST 验证建议：LLM Agent 多源证据检索与可达性规则生成](code-analysis-sast-sca-llm-agent-reachability-verification.md) | verified | medium | 2026-11-07 |
 | [tabby + Neo4j 从 Controller 入口批量查询危险 sink 调用链](code-analysis-sast-tabby-neo4j-controller-sink-callchain.md) | verified | medium | 2026-11-05 |

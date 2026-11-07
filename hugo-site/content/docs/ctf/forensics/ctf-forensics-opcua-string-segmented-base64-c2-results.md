@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:23+08:00'
+  notes: 已对照原文与图46-49核对；实际抓包字符串为REACTOR-001-SEGxx，需按请求/块头关联；脚本按前缀+SEG分组为启发式；未复跑。
 url: /docs/ctf/forensics/ctf-forensics-opcua-string-segmented-base64-c2-results/
 draft: false
 kb_aliases:

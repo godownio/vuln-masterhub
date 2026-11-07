@@ -38,7 +38,14 @@ weight: 1
 | [JS 窗口尺寸检测反调试的 Hook 绕过](code-analysis-reverse-anti-debug-js-window-size-detection-bypass/) | verified | high | 2026-11-05 |
 | [Linux 恶意样本反沙箱/反调试：ptrace/TracerPid、LD_PRELOAD、父进程与资源特征组合](code-analysis-reverse-anti-debug-linux-sandbox-environment-probes/) | verified | medium | 2026-11-06 |
 | [Loader 反沙箱与反调试：时间加速、桌面/主机名与 DebugPort 检测](code-analysis-reverse-anti-debug-sandbox-environment-checks/) | verified | high | 2026-11-04 |
+| [NtQuery* 调试信息反调试：DebugPort/DebugObjectHandle/DebugFlags 与参数篡改绕过](code-analysis-reverse-anti-debug-ntquery-debug-info-argument-patch/) | verified | medium | 2026-11-07 |
+| [QEMU TCG 反 VM 检测：TB 原子性竞态与未对齐 SIMD 异常差异（附 Windows API/CPUID/SIDT 检查与绕过）](code-analysis-reverse-anti-debug-qemu-tcg-anti-vm-tb-atomicity-unaligned-simd/) | verified | low | 2026-11-07 |
+| [TLS 回调反调试：PE 加载前执行检测，静态清零 TLS 目录/回调数组绕过](code-analysis-reverse-anti-debug-tls-callback-pe-null-patch/) | verified | high | 2026-11-07 |
+| [TracerPid 反调试下 LD_PRELOAD 钩 memcmp + 差分输入恢复魔改 RC4/仿射校验](code-analysis-reverse-anti-debug-ldpreload-memcmp-hook-differential-transform/) | verified | high | 2026-11-07 |
+| [VEH 反调试与反反调试：自定义异常判断调试器 + 劫持 VEH 双链表移除/抢先保护处理程序](code-analysis-reverse-anti-debug-veh-custom-exception-debugger-detection-hijack/) | verified | medium | 2026-11-07 |
+| [Windows PEB 字段反调试：BeingDebugged/Ldr/ProcessHeap/NTGlobalFlag 的识别与内存补丁](code-analysis-reverse-anti-debug-peb-fields-patch/) | verified | medium | 2026-11-07 |
 | [Windows 免杀沙箱指纹组合检测：注册表/VM 进程/MAC OUI/资源/uptime/用户名/调试器与 explorer 父进程校验](code-analysis-reverse-anti-debug-windows-sandbox-fingerprint-parent-check/) | verified | high | 2026-11-06 |
+| [动态反调试家族：SEH/INT 2D/TF、RDTSC 时序与 0xCC/CRC 校验的识别与绕过](code-analysis-reverse-anti-debug-exception-timing-checksum-bypass/) | verified | medium | 2026-11-07 |
 | [反沙箱路径陷阱：GetCurrentDirectoryW 仅在盘符根目录返回尾随反斜杠，%s 直接拼接文件名使子目录中的样本提前退出](code-analysis-reverse-anti-debug-getcurrentdirectoryw-root-trailing-backslash/) | verified | medium | 2026-11-06 |
 | [恶意样本延迟执行与多信号条件触发：uptime/时间窗/网络/CPU/内存门控与分阶段持久化](code-analysis-reverse-anti-debug-delayed-conditional-trigger/) | verified | medium | 2026-11-06 |
 | [截屏像素统计做视觉环境键控：以桌面壁纸特征识别沙箱而不触发高敏感行为](code-analysis-reverse-anti-debug-visual-environmental-keying-screenshot/) | verified | high | 2026-11-05 |

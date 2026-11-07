@@ -25,9 +25,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:18:26+08:00'
+  notes: 已对照原文与全部39张图核对：/index/ajax/lang?lang=../../application/database 路径穿越读取 database 配置（图09 JSON 含 hostname/root/3306/prefix fa_）、Navicat 连接（图10）、fa_admin_log 查后台入口（图12）、fa_admin 原密文 8de4d640da67a975aaa6b08c6001aea0/34512a（图14）替换为 c13f62012fd6a8fdf06b3452a94430e5/rpR6Bv 后 123456 登录（图15-16）、登录后恢复原密文，均与正文一致。核对中修正三处：删除无出处的'旧版 Fastadmin'版本断言（原文未给出受影响版本）、将 deny_module_list 说明改为原文图11 admin.php 注释依据。未验证点：原文未给具体版本，affected_versions 未设置；PoC 未复跑；密文/salt 按原文。
 ---
 
 ## 一句话结论
@@ -36,16 +40,16 @@ Fastadmin 的 `/index/ajax/lang?lang=../../application/database` 可路径穿越
 
 ## 原理
 
-- **Fastadmin 的 lang 接口**：`/index/ajax/lang` 根据 `lang` 参数加载语言文件。旧版本未对参数做路径规范化，传入 `../../application/database` 可跳出语言目录，读取 ThinkPHP/Fastadmin 的数据库配置文件（`application/database.php`，无扩展名亦可），内容包含 `hostname`、`database`、`username`、`password`、`hostport` 等。
+- **Fastadmin 的 lang 接口**：`/index/ajax/lang` 根据 `lang` 参数加载语言文件。目标部署未对参数做路径规范化，传入 `../../application/database` 可跳出语言目录，读取 ThinkPHP/Fastadmin 的数据库配置文件（`application/database.php`，无扩展名亦可），内容包含 `hostname`、`database`、`username`、`password`、`hostport` 等。
 - **数据库即信任边界**：拿到数据库凭据后，如果 MySQL 端口可达（原文 3306，root 账号），可直接用 Navicat/CLI 连接。Fastadmin 的后台管理员、权限规则、操作日志都在同一库中，数据库权限高于后台账号权限。
-- **后台入口改名也能找回**：Fastadmin 默认后台入口是 `admin.php`，安装后可手动改名（`application/admin/command/Install` 相关逻辑也会提示修改 `deny_module_list`）。改名后入口不可猜，但 `fa_admin_log` 表记录所有后台操作，包括访问的 URL 路径；从中可直接看到实际入口文件名（如 `xlz6oc798sixadb.php`）。
+- **后台入口改名也能找回**：Fastadmin 默认后台入口是 `admin.php`，安装后可手动改名（原文图 11 的 `admin.php` 源码注释也建议改名并同步修改 `config.php` 的 `deny_module_list`）。改名后入口不可猜，但 `fa_admin_log` 表记录所有后台操作，包括访问的 URL 路径；从中可直接看到实际入口文件名（如 `xlz6oc798sixadb.php`）。
 - **密码存储**：`fa_admin` 表的 `password` 是“密文 + salt”形式，无法直接从 cmd5 反查。攻击者不需要破解：既然有数据库写权限，直接把目标管理员的 `password`/`salt` 改成已知组合，登录后再改回原值即可。原文给出的已知组合为 `password=c13f62012fd6a8fdf06b3452a94430e5`、`salt=rpR6Bv`，对应口令 `123456`。
 - **旁站背景**：原文主资产（带二级路径）爆破无果，删除二级路径后发现根域是 Fastadmin 官网站，但 `/index/ajax/lang` 返回 404（不存在任意文件读取）；随后用资产测绘（FOFA/Hunter）找到同组织旁站，旁站同为 Fastadmin 且存在该文件读取，才打通链路。说明同一套 CMS 的不同部署漏洞状态可能不同，主站打不动时可检查旁站/同级资产。
 - **风险控制**：修改 hash/salt 会影响真实管理员登录，原文在替换前保存原密文与 salt，登录后立即恢复；这是攻防演练中对业务影响最小化的做法。
 
 ## 触发条件
 
-- 目标为旧版 Fastadmin（原文未给出具体版本，称较老版本），`/index/ajax/lang` 存在路径穿越，能读取 `application/database` 配置文件。
+- 目标为存在该路径穿越的 Fastadmin 部署（原文未给出具体版本），`/index/ajax/lang` 能读取 `application/database` 配置文件。
 - 配置中的 MySQL 端口可达（原文 3306），账号具备 `fa_admin`、`fa_admin_log` 等表的读写权限（原文为 root）。
 - 后台入口被改名也没关系，`fa_admin_log` 有历史访问记录；若日志被清空，可尝试常见入口名或数据库中的其他线索。
 - 已知的 password/salt 组合与目标 Fastadmin 版本的密码校验逻辑兼容（原文实测 `123456` 可登录）。

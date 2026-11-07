@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:47+08:00'
+  notes: 已对照原文与图08-11核对；占位6B0000736B000074→0F059090C390CCCC与自进程Read/WriteProcessMemory一致；未复跑。
 url: /docs/code-analysis/reverse/windows/code-analysis-reverse-windows-runtime-syscall-stub-self-patch/
 draft: false
 kb_aliases:

@@ -60,7 +60,7 @@ WebLogic、Tomcat、Confluence、Jenkins 等组件漏洞。
 | [HSQLDB CALL 任意静态方法：JDBC 连接内串联 JNDI、c3p0/Spring 二次反序列化与 defineClass RCE](web-java-component-hsqldb-call-static-method-rce.md) | verified | medium | 2026-11-07 |
 | [HSQLDB file 模式：JDBC URL 指定路径落盘与 .script 无盐 MD5 口令摘要泄露](web-java-component-hsqldb-file-mode-script-hash-leak.md) | verified | high | 2026-11-07 |
 | [HSQLDB JDBC URL 的 ${} 展开：读取 JVM 系统属性并随连接请求外带（SSRF）](web-java-component-hsqldb-jdbc-url-property-expansion-exfil.md) | verified | high | 2026-11-07 |
-| [JavaMelody /monitoring 未授权：会话列表泄露 JSESSIONID 可劫持在线用户，JNDI/MBeans 泄露密钥文件名与数据库配置](web-java-component-javamelody-monitoring-unauth-session-hijack.md) | draft | medium | 2026-11-07 |
+| [JavaMelody /monitoring 未授权：会话列表泄露 JSESSIONID 可劫持在线用户，JNDI/MBeans 泄露密钥文件名与数据库配置](web-java-component-javamelody-monitoring-unauth-session-hijack.md) | verified | medium | 2026-11-07 |
 | [JBoss 4.2.3 端口 4446 反序列化：内置 CommonsCollections 3.1 链写文件读 flag](web-java-component-jboss-4-2-3-4446-deserialization.md) | verified | medium | 2026-11-07 |
 | [JBoss AS /invoker/readonly CVE-2017-12149：HttpInvoker 反序列化 RCE](web-java-component-jboss-cve-2017-12149-invoker-readonly-deserialization.md) | verified | medium | 2026-11-07 |
 | [JDBC 数据源测试重复 url 参数属性走私：& 开头的第二值拼成 socketFactory，绕过字面量过滤加载 Spring XML RCE](web-java-component-jdbc-duplicate-param-socketfactory-property-smuggling.md) | verified | high | 2026-11-05 |

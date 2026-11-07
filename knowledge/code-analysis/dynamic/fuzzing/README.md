@@ -26,7 +26,7 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| [AFL 二次开发扩展：POST_LIBRARY 后处理钩子、自定义 havoc 算子与 virgin_bits 可视化](code-analysis-dynamic-fuzzing-afl-post-library-havoc-virgin-map-extension.md) | draft | high | 2026-11-07 |
+| [AFL 二次开发扩展：POST_LIBRARY 后处理钩子、自定义 havoc 算子与 virgin_bits 可视化](code-analysis-dynamic-fuzzing-afl-post-library-havoc-virgin-map-extension.md) | verified | high | 2026-11-07 |
 | [AFLGo 定向模糊测试距离插桩：targets/BBnames 预处理 + CG/CFG Dijkstra 距离 + shm[MAP_SIZE] 累加](code-analysis-dynamic-fuzzing-aflgo-directed-distance-instrumentation.md) | verified | high | 2026-11-07 |
 | [Android JNI 原生库内存安全模糊测试：调用序列捕获 + 自动 C harness + JNIEnv 模拟 + AFL++](code-analysis-dynamic-fuzzing-android-jni-env-emulation-harness.md) | verified | medium | 2026-11-07 |
 | [C/C++ libFuzzer 实战：LLVMFuzzerTestOneInput harness、Sanitizer 编译、语料字典与 crash 复现最小化](code-analysis-dynamic-fuzzing-libfuzzer-cpp-harness-crash-repro.md) | verified | high | 2026-11-07 |

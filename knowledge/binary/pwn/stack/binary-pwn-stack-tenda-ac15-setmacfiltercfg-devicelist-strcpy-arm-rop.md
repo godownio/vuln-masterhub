@@ -27,10 +27,14 @@ cve:
 - CVE-2018-18708
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 affected_versions: Tenda AC7 V15.03.06.44_CN；AC9 V15.03.05.19(6318)*CN；AC10 V15.03.06.23_CN；AC15 V15.03.05.19_CN；AC18 V15.03.05.19(6318)*CN（原文标记）
+verification:
+  verified_by: verifier-V262
+  verified_at: '2026-11-07T17:56:24+08:00'
+  notes: V262 重核：对照正文与20图，调用链 sub_2E420→sub_2E9EC→sub_42378→formSetMacFilterCfg→sub_C14DC→sub_C17A0→sub_C24C0、websGetVar macFilterType/deviceList、sub_C10D0 校验 black/white、sub_C24C0 strchr(s,13)+strcpy(src+32,s)+strcpy(src,srca)、sub_C17A0 的 s_1[128]/sa[128]/src[176] 与 memset 0xB0、cyclic 偏移 176、puts 0xff5c1cd4-0x35CD4=0xff58c000、system 0x5A270、pop{r3,pc} 0x18298、mov r0,sp;blx r3 0x40cb8、CPSR T=0、getshell 均一致。affected_versions 与原文五型号列表逐项一致（AC7/AC9/AC10/AC15/AC18）。dedup 仅自匹配，无同 CVE/同 sink 候选。未执行 PoC。
 ---
 
 ## 一句话结论

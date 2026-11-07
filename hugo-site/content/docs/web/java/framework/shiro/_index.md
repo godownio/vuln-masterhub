@@ -35,6 +35,8 @@ Shiro 反序列化、RememberMe 与密钥问题。
 | [Shiro /**/*.js 匿名规则与 Spring @PathVariable 语义差异：伪造静态后缀绕过 JWT](web-java-framework-shiro-static-suffix-anon-pathvariable-bypass/) | verified | high | 2026-11-05 |
 | [Shiro 1.7.1 默认密钥 + AES-GCM rememberMe：跨 JDK 构造 commons-collections4 CC2 链写文件回显](web-java-framework-shiro-rememberme-aes-gcm-cc2-cross-jdk/) | verified | high | 2026-11-06 |
 | [Shiro rememberMe 8KB 头限制绕过：两段式 ShellLoader 从 POST 加载内存马类](web-java-framework-shiro-rememberme-two-stage-memshell-loader/) | verified | high | 2026-11-05 |
+| [Shiro rememberMe 反序列化 + Spring RequestContextHolder 两段式投递 Interceptor 内存马](web-java-framework-shiro-rememberme-spring-interceptor-memshell-classdata/) | verified | medium | 2026-11-07 |
+| [Shiro rememberMe 流量复盘：默认密钥解密、AbstractTranslet 内存马与 DNS 外带](web-java-framework-shiro-rememberme-pcap-memshell-dns-exfil/) | verified | high | 2026-11-07 |
 | [Shiro 与 Spring 路径解析差异导致鉴权绕过（分号、编码与 trim）](web-java-framework-shiro-spring-path-auth-bypass/) | verified | medium | 2026-11-05 |
 | [Shiro-550 硬编码 AES 密钥导致 rememberMe 反序列化 RCE](web-java-framework-shiro-550-hardcoded-key-deserialization/) | verified | high | 2026-11-05 |
 | [Shiro-721 对 rememberMe AES-CBC 做 Padding Oracle 伪造恶意 Cookie](web-java-framework-shiro-721-padding-oracle/) | verified | high | 2026-11-05 |

@@ -42,7 +42,7 @@ Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
 | [JeecgBoot ≤3.4.0 验证码 Redis Key 复用导致任意用户注册](web-java-framework-jeecgboot-captcha-redis-key-reuse-register.md) | verified | high | 2026-11-05 |
 | [JeecgBoot 字典接口 SQL 注入：黑名单 select%0a/current_user/innodb_table_stats 绕过与未过滤透传](web-java-framework-jeecgboot-dict-blacklist-bypass-sqli.md) | verified | high | 2026-11-05 |
 | [RuoYi 4.5.0 /common/download/resource 路径穿越任意文件读取](web-java-framework-ruoyi-download-resource-path-traversal.md) | verified | high | 2026-11-05 |
-| [RuoYi-Vue-Plus <=5.4.0 sendMessageWithAttachment 任意文件读取：filePath 可控附件经邮件外带](web-java-framework-ruoyi-vue-plus-sendmessagewithattachment-arbitrary-file-read.md) | draft | high | 2026-11-07 |
+| [RuoYi-Vue-Plus <=5.4.0 sendMessageWithAttachment 任意文件读取：filePath 可控附件经邮件外带](web-java-framework-ruoyi-vue-plus-sendmessagewithattachment-arbitrary-file-read.md) | verified | high | 2026-11-07 |
 | [Solon 框架 Filter 内存马：静态块反射 Context.current 链路取 ChainManager 并 addFilter 执行 cmd](web-java-framework-solon-filter-memshell-chainmanager-reflect.md) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 

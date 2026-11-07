@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:32+08:00'
+  notes: 已对照原文与图24-29核对；JPG尾部ZIP、伪加密修复、PCZ嵌套与bmp/题3.png一致；未复跑foremost。
 url: /docs/ctf/misc/ctf-misc-image-appended-zip-pseudo-encryption-nested-pcz/
 draft: false
 kb_aliases:

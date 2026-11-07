@@ -32,9 +32,11 @@ Spring Expression Language 注入与利用。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [DataGear 数据行值 #{...} 被 SpEL 求值：SQL 插入触发命令执行与列长限制绕过](web-java-expression-spel-datagear-row-expression-rce/) | verified | high | 2026-11-05 |
+| [JWT 密钥泄露伪造身份 + 路径穿越上传 Thymeleaf 模板：dynamic-template 渲染读取环境变量](web-java-expression-spel-jwt-leak-upload-thymeleaf-template-rce/) | verified | high | 2026-11-07 |
 | [RuoYi Thymeleaf 片段表达式 SSTI 与双美元绕过](web-java-expression-spel-ruoyi-thymeleaf-fragment-ssti/) | verified | high | 2026-11-04 |
 | [SpEL 关键字与字符过滤绕过：ScriptEngine 内联、字符数组、Base64 与反射](web-java-expression-spel-waf-bypass-scriptengine-reflection/) | verified | medium | 2026-11-05 |
 | [SpEL 无回显注入：Scanner 读进程输出、StreamUtils 写响应与 DNS/HTTP 外带](web-java-expression-spel-no-echo-exfil-streamutils/) | verified | high | 2026-11-05 |
+| [SpEL 注入改写 systemProperties['user.home']：重定向应用读取路径实现任意文件读取](web-java-expression-spel-systemproperties-user-home-file-read/) | verified | high | 2026-11-07 |
 | [SpEL 禁用 T()/new 时用反射链构造对象并注入内存马](web-java-expression-spel-restricted-reflection-memshell/) | verified | high | 2026-11-04 |
 | [Spring AI SimpleVectorStore 过滤键未转义 SpEL 注入：闭合 #metadata 字符串实现无认证 RCE（CVE-2026-22738）](web-java-expression-spel-spring-ai-simplevectorstore-filter-key-rce/) | verified | high | 2026-11-06 |
 | [Spring Cloud Gateway actuator 路由创建 SpEL 注入命令执行（CVE-2022-22947）](web-java-expression-spel-spring-cloud-gateway-22947-actuator-route-rce/) | verified | high | 2026-11-05 |

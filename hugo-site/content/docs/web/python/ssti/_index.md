@@ -34,6 +34,7 @@ Jinja2、Mako、Tornado 模板注入。
 | [Bottle SimpleTemplate SSTI：全角/斜体 Unicode、八进制转义与海象运算符绕过 WAF](web-python-ssti-bottle-unicode-octal-walrus-bypass/) | verified | high | 2026-11-04 |
 | [Django 模板字符串拼接用户名导致 SSTI 泄露账号密码](web-python-ssti-django-username-template-source-credential-leak/) | verified | high | 2026-11-05 |
 | [FastAPI/Jinja2 SSTI：字符黑名单在 unquote 前检查，全量 URL 编码绕过并执行 os.popen](web-python-ssti-filter-before-unquote-full-urlencode/) | verified | high | 2026-11-06 |
+| [Flask SSTI 黑名单/47 字符绕过：app.jinja_env.globals 的 sget/sset 分段拼出 __globals__ 与 read](web-python-ssti-jinja-custom-globals-session-payload-assembly/) | verified | high | 2026-11-07 |
 | [Flask 会话密钥泄露伪造 admin + Jinja2 相邻字符串字面量拼接绕过 SSTI 黑名单](web-python-ssti-jinja2-adjacent-literal-flask-session-forge/) | verified | medium | 2026-11-06 |
 | [Jinja2 SSTI WAF 绕过：\x5f 十六进制下划线、attr 过滤器与 request.args 参数拆分](web-python-ssti-jinja2-waf-bypass-hex-attr-args/) | verified | high | 2026-11-05 |
 | [Jinja2 SSTI 全局链不可用时枚举 object 子类索引定位 Popen/os._wrap_close](web-python-ssti-jinja2-subclasses-index-rce/) | verified | high | 2026-11-05 |

@@ -69,7 +69,7 @@
 | [SM4 C2 流量解密：4 字节种子经 PRNG 派生密钥字后还原加密命令](defense-forensics-sm4-c2-traffic-seed-prng-key-decrypt.md) | verified | high | 2026-11-06 |
 | [SMB3 加密流量解密：NTLM Hash + NTProofStr + Encrypted Session Key 推导 Random Session Key](defense-forensics-smb3-session-key-wireshark-decrypt.md) | verified | high | 2026-11-06 |
 | [SSH 日志取证：sshd.log + bash_history 关联还原攻击者登录与命令会话](defense-forensics-sshd-log-bash-history-session-reconstruction.md) | verified | high | 2026-11-07 |
-| [Suo5 HTTP 隧道流量识别：/connect 分块 POST、UA 口令与内存马注入特征](defense-forensics-suo5-http-tunnel-traffic-identify.md) | draft | medium | 2026-11-07 |
+| [Suo5 HTTP 隧道流量识别：/connect 分块 POST、UA 口令与内存马注入特征](defense-forensics-suo5-http-tunnel-traffic-identify.md) | verified | medium | 2026-11-07 |
 | [Synaptics/Synares 类文件感染病毒的主机取证：落盘、Run 键、缓存副本与版本伪装](defense-forensics-synaptics-file-infector-artifacts.md) | verified | medium | 2026-11-05 |
 | [ValleyRAT C2 流量解密：6666/0x36 线索与载荷前缀多字节 XOR 密钥还原主机信息与登录模块插件](defense-forensics-valleyrat-c2-6666-xor-traffic-decrypt.md) | verified | medium | 2026-11-06 |
 | [VBA Stomping 识别：olevba 发现 VBA 源码与 p-code 不一致，静态审计不能只看源码](defense-forensics-vba-stomping-source-pcode-mismatch.md) | verified | medium | 2026-11-06 |
@@ -94,13 +94,13 @@
 | [冰蝎 PHP WebShell 流量解密：从马文件取 AES key，Base64+AES-CBC 还原命令与响应](defense-forensics-behinder-php-webshell-traffic-decrypt.md) | verified | high | 2026-11-06 |
 | [冰蝎 PHP 默认密钥 e45e329feb5d925b：AES-128-ECB 魔数截断解密与 gzip/Base64 多层响应还原](defense-forensics-behinder-php-default-key-aes-ecb-traffic-decode.md) | verified | high | 2026-11-07 |
 | [勒索事件中入口跳板机常最后加密：用加密时间反推入口](defense-forensics-ransomware-entry-host-encrypted-last.md) | verified | medium | 2026-11-04 |
-| [哥斯拉 EKP 版 JSP 流量解密：双 Base64 请求与 JS 变量 Re<md5>_config 回显](defense-forensics-godzilla-ekp-jsp-traffic-decode.md) | draft | high | 2026-11-07 |
+| [哥斯拉 EKP 版 JSP 流量解密：双 Base64 请求与 JS 变量 Re<md5>_config 回显](defense-forensics-godzilla-ekp-jsp-traffic-decode.md) | verified | high | 2026-11-07 |
 | [哥斯拉 Java WebShell 流量识别与解密（JAVA_AES_BASE64 / JAVA_AES_RAW）](defense-forensics-godzilla-java-webshell-traffic-decode.md) | verified | high | 2026-11-05 |
 | [哥斯拉 PHP WebShell 流量识别与解密（PHP_EVAL_XOR_BASE64 / PHP_XOR_BASE64 / PHP_XOR_RAW）](defense-forensics-godzilla-php-webshell-traffic-decode.md) | verified | high | 2026-11-05 |
 | [应用配置泄露 AES key/IV：离线解密数据库敏感字段（PbootCMS AES-128-CBC 实例）](defense-forensics-config-aes-key-iv-database-field-decrypt.md) | verified | high | 2026-11-07 |
 | [微信 4.x WCDB 数据库离线解密：AES-256-CBC + PBKDF2-HMAC-SHA512 256000 次，4096 页/80 reserve 并修复 SQLite 头](defense-forensics-wcdb4-sqlcipher-offline-decrypt.md) | verified | high | 2026-11-06 |
 | [微信 4.x 内存镜像密钥提取：Volatility3 转储 Weixin.exe，按 x'<64hex enc_key><32hex salt>' 扫描并用 salt 匹配数据库头](defense-forensics-wechat4-memory-image-key-extraction.md) | verified | high | 2026-11-06 |
-| [无 beacon_keys 时从进程内存提取 CobaltStrike 4.x Beacon 会话密钥：sha256 结构定位与 16 字节候选碰撞](defense-forensics-cobaltstrike-memory-beacon-session-key-collision.md) | draft | high | 2026-11-07 |
+| [无 beacon_keys 时从进程内存提取 CobaltStrike 4.x Beacon 会话密钥：sha256 结构定位与 16 字节候选碰撞](defense-forensics-cobaltstrike-memory-beacon-session-key-collision.md) | verified | high | 2026-11-07 |
 | [无中间件访问日志时用应用服务调用日志还原 Java 入侵](defense-forensics-app-service-call-log-timeline.md) | verified | medium | 2026-11-04 |
 | [无访问日志时用 Java 异常堆栈重建 Web 入侵时间线](defense-forensics-java-exception-timeline-reconstruction.md) | verified | medium | 2026-11-04 |
 | [用 S3 数据事件与 CloudTrail 追踪外泄角色、AssumeRole 与横向主机](defense-forensics-cloudtrail-s3-exfil-identity-trace.md) | verified | high | 2026-11-05 |

@@ -32,13 +32,19 @@ Misc/杂项技巧。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [3D Gaussian 点云栅格化：z 分层连通分量 + 二维格点拟合还原像素排列，球谐系数邻域一致性提取文字](ctf-misc-3dgs-point-cloud-lattice-rasterization/) | verified | high | 2026-11-06 |
+| [APNG fcTL delay_num 隐写：帧延迟数值按 ASCII 编码隐藏信息](ctf-misc-apng-fctl-delay-num-ascii-stego/) | verified | high | 2026-11-07 |
 | [Bash 算术数组下标注入 + sleep 计时盲读：正则缺 $ 与 let 十六进制前缀绕过](ctf-misc-bash-arithmetic-array-index-sleep-blind/) | verified | high | 2026-11-06 |
+| [BMP 文件头尺寸字段篡改修复：按像素数据长度重算 biWidth/biHeight 显示被裁掉的隐藏图像](ctf-misc-bmp-header-size-repair/) | verified | medium | 2026-11-07 |
 | [CRC32 四字节原像：GF(2) 线性矩阵求逆从已知 CRC 还原 ZIP 未知内容](ctf-misc-crc32-four-byte-preimage-gf2-linear/) | verified | high | 2026-11-06 |
 | [CS 皮肤模板编号隐写：同皮肤花纹差异对应模板号，按图序转 ASCII](ctf-misc-cs-skin-pattern-seed-ascii/) | verified | high | 2026-11-06 |
 | [Excel 神经网络权重逆向：ReLU 双神经元比较对恢复目标输入字符](ctf-misc-excel-neural-network-weight-reversal/) | verified | high | 2026-11-06 |
+| [Gerber PCB 层提取：在线查看器逐层剥离内层铜箔读取隐藏 flag](ctf-misc-gerber-pcb-layer-flag-extraction/) | verified | high | 2026-11-07 |
+| [GIF 多帧二维码批量提取：分帧排序、pyzbar/OpenCV 双解码与 base64 片段拼接](ctf-misc-gif-frames-qr-batch-scan-base64-join/) | verified | high | 2026-11-07 |
 | [GIF 帧间隔隐写：延迟时间按 10ms 单位编码 ASCII/二进制](ctf-misc-gif-frame-duration-ascii-stego/) | verified | high | 2026-11-06 |
+| [GPX 轨迹异常点定位：按相邻 trkpt 距离找离群点，读取其 time 作为 flag](ctf-misc-gpx-track-outlier-nearby-coordinate-time/) | verified | medium | 2026-11-07 |
 | [IBM Selectric 字球卡死编码：T1/T2 倾斜位与旋转列还原乱序记录](ctf-misc-selectric-typeball-tilt-rotation/) | verified | high | 2026-11-06 |
 | [JPEG SilentEye + WAV 内嵌 ELF + AES-128-ECB 脏串包裹：多层 Misc 提取与解密](ctf-misc-silenteye-wav-elf-aes-ecb-dirty-wrapper/) | verified | high | 2026-11-06 |
+| [JPEG 尾部 Base64 01 串 + EXIF 备注口令 steghide 提取：伪加密 ZIP 修复与 ELF 逐位 XOR 求压缩包口令](ctf-misc-jpeg-steghide-exif-elf-xor-pseudo-zip/) | verified | high | 2026-11-07 |
 | [JPEG 段与 EXIF/COM/DQT 元数据隐写：遍历 marker 提取隐藏片段](ctf-misc-jpeg-segment-metadata-stego/) | verified | high | 2026-11-06 |
 | [Keras/HDF5 模型权重隐写：异常层名 kernel 乘 1000 还原 ASCII](ctf-misc-hdf5-keras-weight-ascii-hidden/) | verified | high | 2026-11-06 |
 | [OSINT 作品溯源：从音乐/影视数据库到创作者讣告与纪念页](ctf-misc-osint-work-provenance-creator-obituary-memorial/) | verified | high | 2026-11-06 |
@@ -49,6 +55,7 @@ Misc/杂项技巧。
 | [PNG 非法 chunk 类型 Fl4G 藏 zlib 压缩流：提取解压得到隐藏 WAV](ctf-misc-png-invalid-chunk-type-zlib-wav-stego/) | verified | high | 2026-11-06 |
 | [PPM P6 文件头高度被篡改：按实际像素数重算高度还原隐藏行](ctf-misc-ppm-p6-header-height-tamper-hidden-rows/) | verified | high | 2026-11-06 |
 | [PPTX 幻灯片图片序列隐写：6/7 图片映射 0/1，每 9 张一个分隔符](ctf-misc-pptx-slide-image-binary-separator/) | verified | high | 2026-11-06 |
+| [RAR5 加密归档 + 注释泄露内层文件头：弱口令爆破后修复图片文件头取二维码](ctf-misc-rar5-header-repair-known-plaintext-weak-password/) | verified | medium | 2026-11-07 |
 | [RPG Maker VX Ace .rvdata2 取证：自解压 CAB 提取 + Ruby Marshal 字符串定位 flag](ctf-misc-rpgmaker-rvdata2-selfextract-cab/) | verified | high | 2026-11-06 |
 | [SIXEL DCS 图像流解码：终端图形隐写还原 flag](ctf-misc-sixel-dcs-image-decode/) | verified | high | 2026-11-06 |
 | [spammimic 垃圾邮件文本隐写：EML 正文提取与在线解码](ctf-misc-spammimic-spam-text-stego-eml/) | verified | medium | 2026-11-06 |
@@ -63,7 +70,8 @@ Misc/杂项技巧。
 | [交互题 checker 未校验查询下标上界：直接查询 A_n 每一位](ctf-misc-interactive-checker-missing-index-upper-bound/) | verified | high | 2026-11-06 |
 | [低频图像隐写：缩小或高斯模糊恢复隐藏图像](ctf-misc-low-frequency-image-downscale-blur-reveal/) | verified | high | 2026-11-06 |
 | [八卦五字组编码：笔画数减一拼 Unicode 十进制码点，卦象三爻转 ASCII](ctf-misc-bagua-five-stroke-minus-one-unicode-codepoint/) | verified | high | 2026-11-06 |
-| [图片尾部附加 ZIP 链：foremost 分离 + 伪加密修复 + PCZ 嵌套 ZIP 取 BMP flag](ctf-misc-image-appended-zip-pseudo-encryption-nested-pcz/) | draft | high | 2026-11-06 |
+| [固件 EEPROM 33 字节混淆串：单字节 XOR/ADD/SUB + ROL/ROR + NOT 组合爆破定位 flag](ctf-misc-firmware-eeprom-byte-transform-bruteforce-flag/) | verified | high | 2026-11-07 |
+| [图片尾部附加 ZIP 链：foremost 分离 + 伪加密修复 + PCZ 嵌套 ZIP 取 BMP flag](ctf-misc-image-appended-zip-pseudo-encryption-nested-pcz/) | verified | high | 2026-11-06 |
 | [多通道不可见 Unicode 隐写 + GF(2) 稀疏矩阵求解：Tag 字符藏 manifest、变体选择符藏 nonce、零宽字符藏 RHS](ctf-misc-multi-channel-invisible-unicode-gf2-sparse-matrix/) | verified | high | 2026-11-06 |
 | [字符频次反查编码：用出现次数作为索引恢复消息](ctf-misc-character-frequency-count-index-decode/) | verified | high | 2026-11-06 |
 | [嵌套 ZipCrypto BOX 链：密码=编号、Base32 短片段 CRC32 修复、9 字节重叠拼接 zlib](ctf-misc-nested-zipcrypto-base32-crc32-overlap-chain/) | verified | high | 2026-11-06 |

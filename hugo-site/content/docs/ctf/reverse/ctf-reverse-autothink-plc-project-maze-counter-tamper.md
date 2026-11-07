@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-06'
 updated: '2026-11-06'
+verification:
+  verified_by: verifier-V193
+  verified_at: '2026-11-06T23:52:27+08:00'
+  notes: 已对照原文与图30-39核对；迷宫数组、Flag_Status=0x464C4147、删除R_TRIG绕过上升沿均一致；未在Autothink复现。
 url: /docs/ctf/reverse/ctf-reverse-autothink-plc-project-maze-counter-tamper/
 draft: false
 kb_aliases:

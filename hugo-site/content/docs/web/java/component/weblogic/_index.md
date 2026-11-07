@@ -31,7 +31,7 @@ WebLogic 反序列化、T3/IIOP 与历史漏洞。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [WebLogic 11g CVE-2020-2551 IIOP 反序列化 RCE：/bea_wls_internal/iiop 端点与 WebLogicTool 回显利用](web-java-component-weblogic-cve-2020-2551-iiop-echo-rce/) | verified | medium | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

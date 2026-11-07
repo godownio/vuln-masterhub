@@ -23,9 +23,13 @@ tags:
 cve: []
 severity: medium
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V261
+  verified_at: '2026-11-07T18:05:23+08:00'
+  notes: 已对照原文与61张图核对：35/36图对同一路径/connect连续chunked POST，UA不同且一个404一个200，38图EKP解密出evalClassName(org.apache.coyote.introspect.*/util.*)、methodName=inject、urlPattern=/connect、userAgent；39-41图隧道内扫描127.0.0.1端口列表并回显0/1，开放222/8081；UA md5=e3c77fd790af8d25fe271cd275eb405e与FAQ答案一致。dedup：FrChannel-Suo5攻击卡讲注入与横向用法，本卡讲流量识别/解密取证，方向与sink不同；其余为哥斯拉/冰蝎流量卡。未验证点：未在本地复现完整Suo5隧道；卡内confidence medium合理。
 ---
 
 ## 一句话结论

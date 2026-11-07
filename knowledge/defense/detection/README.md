@@ -35,7 +35,7 @@
 | [Arthas 查杀 Tomcat WebSocket 内存马：枚举 WsServerContainer.configExactMatchMap 并移除恶意 Endpoint](defense-detection-websocket-memshell-arthas-remove.md) | verified | high | 2026-11-06 |
 | [Arthas 检测与卸载 Java Agent 型内存马](defense-detection-arthas-agent-memshell-detect-remove.md) | verified | high | 2026-11-04 |
 | [CobaltStrike 域前置 C2 配置识别：Host 头与请求域名不一致](defense-detection-cobaltstrike-domain-fronting-config.md) | verified | high | 2026-11-05 |
-| [CobaltStrike 流量识别与 Beacon 配置提取：checksum8 92/93、JA3/JA3s 与 1768.py 解析 stager](defense-detection-cobaltstrike-checksum8-ja3-beacon-config-extract.md) | draft | high | 2026-11-07 |
+| [CobaltStrike 流量识别与 Beacon 配置提取：checksum8 92/93、JA3/JA3s 与 1768.py 解析 stager](defense-detection-cobaltstrike-checksum8-ja3-beacon-config-extract.md) | verified | high | 2026-11-07 |
 | [ELK 聚合 SSH 失败登录并按阈值分级告警、自动 iptables 封禁](defense-detection-ssh-bruteforce-alert-iptables-block.md) | verified | medium | 2026-11-04 |
 | [Flask 内存马查杀：pyrasite 注入进程遍历 app 注册表并 dis 反汇编](defense-detection-flask-memshell-pyrasite-inspect.md) | verified | medium | 2026-11-05 |
 | [GNSS 欺骗检测：RXM-RAWX 同星座伪距共模阶跃与跨星座一致性校验](defense-detection-gnss-rawx-common-mode-pseudorange-step.md) | verified | high | 2026-11-06 |

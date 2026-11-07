@@ -40,6 +40,7 @@ weight: 1
 | [RAG Chunk 边界导致文档级信任属性丢失：低可信外部文档与高可信 Runbook 同池竞争并进入上下文](ai-security-rag-security-chunk-boundary-trust-context-loss/) | verified | high | 2026-11-05 |
 | [RAG 会话 ID 客户端可控且可预测：横向读取历史并向他人会话投递提示注入](ai-security-rag-security-predictable-session-id-cross-session/) | verified | high | 2026-11-05 |
 | [RAG 分级权限信任请求体 roles/security_level：改请求体即可越权检索高密级文档](ai-security-rag-security-client-controlled-roles-security-level/) | verified | high | 2026-11-05 |
+| [RAG 单一共享 FAISS 索引：遍历所有用户目录建一个向量库，语义查询跨用户泄露隐私](ai-security-rag-security-shared-faiss-index-cross-user-leak/) | verified | high | 2026-11-07 |
 | [RAG 引用型问法绕过拒答：逐字引用参考资料泄露上下文密钥](ai-security-rag-security-citation-task-refusal-bypass-secret-leak/) | verified | high | 2026-11-05 |
 | [RAG 投毒 + Base64 输出编码绕过关键词过滤：诱导模型泄露系统提示与 flag](ai-security-rag-security-poisoning-base64-output-filter-bypass/) | verified | high | 2026-11-06 |
 | [RAG 敏感实体脱敏覆盖不足与输出侧缺失：LLM 重组后二次泄露](ai-security-rag-security-pii-masking-coverage-output-side/) | verified | high | 2026-11-05 |

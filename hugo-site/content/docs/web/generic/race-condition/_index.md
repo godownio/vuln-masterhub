@@ -31,8 +31,10 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [优惠券领取接口并发竞态：同券重复领取 + 横向枚举高面额券 ID 实现无限叠加](web-generic-race-condition-coupon-concurrent-claim-stack/) | verified | medium | 2026-11-07 |
 | [先落盘后审计的 TOCTOU：并发覆盖 pickle 绕过审计 RCE](web-generic-race-condition-pickle-audit-save-before-check-toctou/) | verified | high | 2026-11-06 |
 | [打赏接口并发竞态：负余额刷声望→reviewer→导出 token→featured 读公告 flag](web-generic-race-condition-tip-reputation-role-escalation/) | verified | high | 2026-11-06 |
+| [订单提交并发复用优惠券：20 并发请求各自成单，每单都减 100](web-generic-race-condition-coupon-order-submit-reuse/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

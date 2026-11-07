@@ -32,7 +32,7 @@ LFI/RFI、伪协议、日志包含与临时文件。
 | [.user.ini auto_prepend_file 包含上传文件实现 PHP-FPM RCE](web-php-file-inclusion-user-ini-auto-prepend-rce.md) | verified | high | 2026-11-05 |
 | [.user.ini 改写 session.save_path 把可控 Session 文件写入 Web 目录](web-php-file-inclusion-user-ini-session-save-path-webshell.md) | verified | medium | 2026-11-05 |
 | [.user.ini 时区配置报错写 shell：date.timezone 注入 error_log](web-php-file-inclusion-user-ini-timezone-error-log-webshell.md) | verified | high | 2026-11-06 |
-| [Fastadmin lang 参数路径穿越读 database 配置：连库查 fa_admin_log 找后台入口并替换管理员密文登录](web-php-file-inclusion-fastadmin-lang-traversal-database-admin-takeover.md) | draft | high | 2026-11-07 |
+| [Fastadmin lang 参数路径穿越读 database 配置：连库查 fa_admin_log 找后台入口并替换管理员密文登录](web-php-file-inclusion-fastadmin-lang-traversal-database-admin-takeover.md) | verified | high | 2026-11-07 |
 | [iconv UTF-7//IGNORE 脏字节夹在关键词中绕过 WAF 后读取任意文件](web-php-file-inclusion-iconv-ignore-dirty-byte-waf-bypass.md) | verified | high | 2026-11-05 |
 | [ISO-2022-CN-EXT 状态机吞字节绕过路径黑名单：iconv //IGNORE 归一化还原 ../ 路径](web-php-file-inclusion-iso2022cn-ext-state-machine-blacklist-bypass.md) | verified | medium | 2026-11-06 |
 | [JSON 预览服务两阶段文件读取：前缀校验路径穿越读源码 + .tmp 内容二次解析 php://filter 绕过 scheme 黑名单](web-php-file-inclusion-json-preview-tmp-uri-php-filter-scheme-bypass.md) | verified | high | 2026-11-06 |
