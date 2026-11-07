@@ -46,5 +46,20 @@ jobs:
                   assert not entry.filename.endswith(('portal.sqlite','portal-secrets.json','portal-session-secret','.env'))
               z.extractall(root)
           PY
+      - name: Prepare single-file SDK dependencies
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib,json
+          root=Path('runtime')
+          path=root/'requirements.txt'
+          text=path.read_text()
+          text=text.replace('-r requirements-base.txt',(root/'requirements-base.txt').read_text().strip())
+          path.write_text(text)
+          manifest_path=root/'release-manifest.json'
+          manifest=json.loads(manifest_path.read_text())
+          manifest['files']['requirements.txt']=hashlib.sha256(path.read_bytes()).hexdigest()
+          manifest_path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
       - name: Upload runtime via short-lived repository token
         run: hf upload Downio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"
