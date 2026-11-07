@@ -1,0 +1,64 @@
+name: Publish knowledge tree
+on:
+  workflow_dispatch:
+    inputs:
+      portal_url:
+        description: HTTPS backend URL (https://your-space.hf.space)
+        required: true
+        type: string
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    env:
+      HUGO_PARAMS_PORTALURL: ${{ inputs.portal_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.25'
+          cache: false
+      - name: Check backend URL
+        run: |
+          python - <<'PY'
+          import os
+          from urllib.parse import urlsplit
+          u=urlsplit(os.environ['HUGO_PARAMS_PORTALURL'])
+          assert u.scheme=='https' and u.hostname.endswith('.hf.space') and not u.username and not u.password and not u.port and u.path in ('','/') and not u.query and not u.fragment
+          PY
+      - run: python -m pip install PyYAML
+      - run: python tools/export_hugo.py
+      - name: Install Hugo
+        run: |
+          curl -fsSL https://github.com/gohugoio/hugo/releases/download/v0.169.0/hugo_extended_0.169.0_linux-amd64.tar.gz | tar -xz -C /usr/local/bin hugo
+      - uses: actions/configure-pages@v5
+        id: pages
+      - name: Build project site
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: hugo --source hugo-site --minify --baseURL "$PAGES_BASE_URL/"
+      - name: Route account console to backend
+        run: |
+          python - <<'PY'
+          import html,os
+          from pathlib import Path
+          url=html.escape(os.environ['HUGO_PARAMS_PORTALURL'].rstrip('/')+'/console/',quote=True)
+          Path('hugo-site/public/console/index.html').write_text('<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0;url='+url+'"><a href="'+url+'">打开 API Key 控制台</a>',encoding='utf8')
+          PY
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: hugo-site/public
+      - uses: actions/deploy-pages@v4
+        id: deploy

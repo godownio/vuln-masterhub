@@ -1,0 +1,113 @@
+---
+id: web-generic-auth-sms-bombing-rate-limit-bypass
+title: 短信接口频率限制绕过：手机号双写、参数重复、编码、重放与 XFF
+type: scenario
+domain: web
+path: web/generic/auth
+technique: sms-bombing-rate-limit-bypass
+tags:
+- web
+- auth
+- sms
+- rate-limit
+- abuse
+- verification-code
+- bypass
+- burp
+cve: []
+severity: medium
+confidence: high
+status: verified
+created: '2026-11-06'
+updated: '2026-11-06'
+verification:
+  verified_by: verifier-V178
+  verified_at: '2026-11-06T17:37:08+08:00'
+  notes: 已对照原文9条手法与图23-26核对：手机号双写、重复参数、%20/前缀、空格/换行、Repeater重放、Cookie/XFF、响应篡改、timeStart提前均来自原文；图25显示同一号码收到81条短信，与卡一致；无CVE、无sources/source_url；未运行SMS_Bomb_Fuzzer或发送短信。
+url: /docs/web/generic/auth/web-generic-auth-sms-bombing-rate-limit-bypass/
+draft: false
+kb_aliases:
+- 短信轰炸
+- SMS bomb
+- 短信频率限制绕过
+- 验证码重放
+- XFF 绕过短信限制
+- 手机号双写
+---
+
+## 一句话结论
+
+短信发送接口通常按手机号、IP、Cookie/会话或时间窗口做频率限制；如果后端对“校验用的手机号”和“实际发送的手机号”解析不一致，或信任客户端时间/`X-Forwarded-For`，就可以通过手机号双写、重复参数、编码/空格变体、请求重放、响应篡改、时间戳提前和 XFF 伪造等组合绕过限制，使同一号码收到大量短信。
+
+## 原理
+
+- 频率限制的 key 通常是手机号、IP、账号、设备指纹或时间窗；只要让“限制计数所依据的 key”和“短信实际发送目标”产生差异，就能在计数不变的情况下继续发送。
+- **手机号双写/重复参数**：`phone=13800000000&phone=13900000001`、数组/JSON 多值、逗号分隔等。后端可能用第一个值做限流、用最后一个值发送，或校验与发送分别取不同字段；案例中双写可让两个号码都收到验证码。
+- **编码/空格/前缀变体**：`%20`、`+86`、`0086`、`086`、前后空格、`\r\n`、特殊符号；校验逻辑可能先 trim/规范化再比对，而短信网关按原字符串发送，或反之，导致同一号码被当成不同 key。
+- **重放/竞态**：把发送请求发到 Repeater 后丢弃，再重复发送；多个重放窗口并发点击；或在计数更新前并发提交，利用检查与发送之间的竞态。
+- **Cookie/会话与 IP**：删除或修改 Cookie 绕过会话级限制；伪造 `X-Forwarded-For`、`X-Real-IP`、`X-Fwd-IP` 绕过 IP 级限制（当限流取的是这些头而不是真实连接 IP 时）。
+- **响应篡改**：拦截响应改为“发送成功”，或保留成功响应重放；前端/后端若以响应状态作为下一步依据，可能继续发送。
+- **时间戳提前**：请求中带 `timeStart`/`timestamp` 时，把时间改早以绕过“60 秒内只能发一次”的时间窗校验。
+- **最终危害**：同一手机号被大量验证码短信轰炸，造成骚扰、短信费用损失；也可能配合验证码爆破/登录接口滥用。
+
+## 触发条件
+
+- 存在短信发送接口，且有频率限制（按手机号/IP/会话/时间窗）。
+- 后端对手机号的校验、限流 key、实际发送目标三者存在解析差异，或信任客户端传入的时间/IP/Cookie。
+- 接口允许重复参数、额外空格/编码/前缀，或前端把发送结果作为后续流程依据。
+- 短信网关/服务商未做二次去重与配额控制。
+
+## 利用步骤
+
+1. **抓包基线**：发送一次短信，记录请求方法、参数名、手机号字段、时间戳、Cookie、IP 头与响应；确认限制维度（同号/同 IP/同会话/时间窗）。
+2. **单变量测试**：每次只改一个因素，观察是否收到第二条短信：重复 `phone` 参数、双写不同号码、`%20`/`+86`/`0086`/空格/换行、大小写邮箱、逗号/数组。
+3. **会话/IP 测试**：删除/替换 Cookie、并发请求、伪造 `X-Forwarded-For`/`X-Real-IP`/`X-Fwd-IP`；确认限流是否取这些头。
+4. **重放/竞态**：把请求发到 Repeater/Turbo Intruder，丢弃后重发；多窗口并发，观察计数更新前后是否有竞态窗口。
+5. **时间/响应测试**：修改 `timeStart`/`timestamp` 提前；拦截响应改为成功或重放成功响应，观察是否继续发送。
+6. **验证与止损**：以“同一号码收到 N 条”为证据，控制发送量，避免对真实用户造成大规模骚扰；记录请求、时间、短信截图与限制维度。
+
+## PoC
+
+```http
+POST /api/sms/send HTTP/1.1
+Host: target
+Content-Type: application/x-www-form-urlencoded
+Cookie: session=...
+
+phone=13800000000
+
+# 变体（逐项测试，不要一次性全发）
+phone=13800000000&phone=13900000001
+phone=13800000000%20
+phone=+8613800000000
+phone=008613800000000
+phone=13800000000%0d%0a
+
+X-Forwarded-For: 127.0.0.1
+X-Real-IP: 127.0.0.1
+X-Fwd-IP: 127.0.0.1
+```
+
+```bash
+# 并发/重放示意（仅授权目标，控制次数）
+seq 1 10 | xargs -P 10 -I{} curl -s -X POST 'https://target/api/sms/send' \
+  -H 'Cookie: session=...' --data 'phone=13800000000'
+```
+
+案例使用 Burp 插件 SMS_Bomb_Fuzzer 自动化，并验证同一号码收到 81 条短信；本卡不提供大规模发送脚本，测试应限定在授权范围并控制条数。
+
+## 变体与关联
+
+- 限制可能按账号/设备/图形验证码/滑块验证；需要先绕过验证码（关联滑块/验证码协议卡）。
+- 手机号可能被拆分为国家码+号码、带分隔符、带邮箱别名；不同字段组合可产生校验/发送差异。
+- 短信内容可能带模板/签名，攻击者可利用模板参数注入（如把链接参数改成恶意 URL）。
+- 关联：[[web-generic-auth-password-reset-response-tampering-sms-bypass]]（响应篡改）、[[mobile-android-sms-login-code-bruteforce-replay]]（验证码重放/爆破）、[[defense-detection-sms-otp-flood-terminal-event-correlation]]（短信洪泛检测）。
+- 边界：若服务端按规范化后的手机号做原子计数、网关二次去重、并对 IP/设备/账号联合限流，单靠参数变形难以绕过；若短信接口要求强验证码，需先解决验证码。
+
+## 检测与防御
+
+- 统一在服务端做规范化（去掉空格/前缀/分隔符，解析为国家码+号码），用规范化后的号码作为唯一限流 key；校验与发送使用同一个值。
+- 限制维度至少包含手机号+账号+设备+真实 IP；不要信任 `X-Forwarded-For` 等客户端头，取连接层真实 IP。
+- 使用原子计数/分布式锁/幂等键，避免检查与发送之间的竞态；对同一号码设置日/时/分钟多级配额。
+- 短信网关侧做二次去重与配额；接入图形/行为验证码；对异常高频、重复参数、编码变体做告警与拦截。
+- 监控：单号码短时间大量短信、同一 IP 多号码、403/200 交替、重复参数与异常编码；与短信服务商账单联动。

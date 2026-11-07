@@ -1,0 +1,24 @@
+hugo: collected modules in 698 ms
+WARN  deprecated: .Language.LanguageDirection was deprecated in Hugo v0.158.0 and will be removed in a future release. Use .Language.Direction instead.
+WARN  deprecated: .Site.Data was deprecated in Hugo v0.156.0 and will be removed in a future release. Use hugo.Data instead.
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/ai-security/prompt-injection/ai-security-prompt-injection-system-prompt-hidden-tool-password-rce.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/ai-security/supply-chain/_index.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/binary/pwn/heap/_index.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/code-analysis/static/sast/_index.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/pentest/c2/pentest-c2-linux-proc-mem-got-hijack.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/web/generic/xss/_index.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']
+WARN  Raw HTML omitted while rendering "E:/文档/vuln-masterhub/hugo-site/content/docs/web/php/deserialization/web-php-deserialization-error-exception-tostring-hash-bypass.md"; see https://gohugo.io/getting-started/configuration-markup/#rendererunsafe
+You can suppress this warning by adding the following to your project configuration:
+ignoreLogs = ['warning-goldmark-raw-html']

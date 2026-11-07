@@ -1,0 +1,230 @@
+# 认证与会话
+
+## 这层是什么
+
+Cookie/Session、身份伪造、认证绕过、会话固定与权限校验缺陷。
+
+## 允许放入
+
+- 一个具体场景/技巧的蒸馏卡片（原理、触发条件、利用步骤、PoC、检测与防御）
+- 该层技术的总览、术语、前置知识、目录导航
+- 经过核对的攻防思路与最小复现片段
+
+## 不允许放入
+
+- CVE 详情与版本清单（统一放 cve/）
+- 安全资讯、招聘、活动、纯新闻
+- 未提炼的原文转载、长段摘录
+- 与主题无关的工具安装教程
+
+## 子目录
+
+- [Cookie 与会话](cookie/README.md) —— Cookie 解析、身份伪造、会话固定与签名缺失。
+
+## 场景索引
+
+<!-- AUTO-INDEX:START -->
+| 卡片 | 状态 | 置信度 | 更新时间 |
+|---|---|---|---|
+| [.NET HandleBase 硬编码 token 直接返回 admin：继承该基类的任意 Handler 未授权访问](web-generic-auth-hardcoded-token-handlebase-admin-bypass.md) | verified | high | 2026-11-05 |
+| [.NET Handler/WebMethod 在鉴权前用 useraccount 调 SetAuthCookie：伪造 admin 身份进入后台](web-generic-auth-dotnet-setauthcookie-before-check-useraccount.md) | verified | high | 2026-11-05 |
+| [.NET 学习系统 Authorization 伪造：泄露的 CheckUID + Web.config 默认 DES 密钥构造 Acc_Pw 接管超管](web-generic-auth-dotnet-des-checkcode-authorization-forgery.md) | verified | high | 2026-11-07 |
+| [1Panel Agent mTLS 只验 CN 不验签发者：自签名证书伪造 panel_client 打通终端 WebSocket RCE](web-generic-auth-1panel-mtls-cn-cert-forgery-rce.md) | verified | high | 2026-11-05 |
+| [2FA 安全问题校验只比数量且按 key 存在性跳过：增删参数即绕过](web-generic-auth-2fa-answer-count-key-presence-bypass.md) | verified | high | 2026-11-05 |
+| [2FA 绕过：验证接口 username 参数篡改与 4 位验证码爆破](web-generic-auth-2fa-user-parameter-tampering-code-bruteforce.md) | verified | high | 2026-11-05 |
+| [403/401 接口字典化绕过：静态资源后缀、分号与编码路径穿越](web-generic-auth-403-resource-suffix-path-dictionary-bypass.md) | verified | medium | 2026-11-06 |
+| [AI 推理服务 /debug 调试接口未鉴权：泄露 K8s API 地址、内网网关与数据库连接串](web-generic-auth-ai-api-debug-env-disclosure.md) | verified | low | 2026-11-06 |
+| [API 签名校验仅覆盖部分 HTTP 方法且无时效：换方法或重放旧签名绕过](web-generic-auth-api-signature-method-scope-replay-bypass.md) | verified | medium | 2026-11-06 |
+| [API 签名校验存在性三路对照检测](web-generic-auth-api-signature-validation-differential-test.md) | verified | high | 2026-11-04 |
+| [AstrBot 仪表盘默认/弱口令登录后台并泄露宿主机管理员凭据，复用口令 Pass-the-Hash 横向](web-generic-auth-astrbot-dashboard-weak-password.md) | verified | medium | 2026-11-05 |
+| [Azuriom 服务器管理路由缺权限中间件：低权管理员签发 AzLink Token 接管任意非管理员账号](web-generic-auth-azuriom-servers-route-missing-gate-token-account-takeover.md) | verified | high | 2026-11-05 |
+| [CAS login service 参数未校验：302 把 ST ticket 带到任意外域，换 access_token 接管账号](web-generic-auth-cas-service-open-redirect-ticket-theft-ato.md) | verified | high | 2026-11-07 |
+| [CAS 登录前端 AES-CBC 加密逆向与自动化登录参数构造](web-generic-auth-cas-aes-cbc-login-encryption-reverse.md) | verified | medium | 2026-11-04 |
+| [CCFlow/CCBPM ProcessRequest 反射网关：缺 Token 即跳过鉴权，未授权调用任意无参公共方法](web-generic-auth-ccflow-processrequest-reflection-token-bypass.md) | verified | high | 2026-11-05 |
+| [CGI 登录分支仅凭 action=login&auth=1 直接创建 session](web-generic-auth-cgi-login-auth-param-session-bypass.md) | verified | high | 2026-11-05 |
+| [Chartbrew 遗留 dashboard 路由只校验同团队角色不校验项目成员：同团队低权用户越权读取任意项目仪表盘并泄露原始 report password（CVE-2026-40603）](web-generic-auth-chartbrew-legacy-dashboard-team-role-idor-password-leak.md) | verified | high | 2026-11-06 |
+| [COALESCE 默认值提权：keepRole/keepLane=false 写入 NULL，guest 被当作 maintainer+release](web-generic-auth-coalesce-null-default-privilege-escalation.md) | verified | high | 2026-11-06 |
+| [Connection 头声明 X-User 为逐跳头：Go 代理剥除鉴权头，后端默认 uid=0 接管](web-generic-auth-connection-hop-by-hop-header-strip-default-uid.md) | verified | high | 2026-11-07 |
+| [ControllerFilter5 excludePage 前缀通配白名单 + ../ 归一化差异绕过 Java 鉴权](web-generic-auth-fe-controllerfilter5-excludepage-prefix-bypass.md) | verified | medium | 2026-11-05 |
+| [cPanel/WHM Basic 认证密码 CRLF 注入会话文件：预认证直接提升为 root WHM（CVE-2026-41940）](web-generic-auth-cpanel-whm-basic-crlf-session-poison-auth-bypass.md) | verified | high | 2026-11-05 |
+| [DeepAudit 内置 demo@example.com/demo123 默认超级管理员账号](web-generic-auth-deepaudit-default-demo-superuser-credentials.md) | verified | medium | 2026-11-06 |
+| [DeepAudit 用户列表接口只校验登录不校验角色：普通用户拉取全量账号邮箱/手机号](web-generic-auth-deepaudit-user-list-missing-role-check-pii-leak.md) | verified | high | 2026-11-06 |
+| [Directus Webhook Flow 匿名触发 item-create：permissions=$full 以系统身份写库](web-generic-auth-directus-anonymous-flow-item-create.md) | verified | high | 2026-11-05 |
+| [EIS 办公平台 UserInfo.asmx 匿名 WebMethod：未授权创建员工账号并写入 DES 口令](web-generic-auth-eis-userinfo-asmx-unauth-user-create.md) | verified | medium | 2026-11-05 |
+| [Fastify 畸形 URL 直调最后注册的 404 处理器，绕过封装前缀认证（CVE-2026-76169）](web-generic-auth-fastify-badurl-shared-404-handler-bypass.md) | verified | high | 2026-11-05 |
+| [FE 系统 FeErpLoginServlet op=D 直接以 admin 登录：无口令获取管理员会话](web-generic-auth-fe-login-opd-admin-session.md) | verified | high | 2026-11-05 |
+| [Flask 登录缺失字段 None==None 绕过 + 无签名 AES-CBC Cookie 位翻转提权](web-generic-auth-flask-none-equals-none-cbc-cookie-forgery.md) | verified | high | 2026-11-06 |
+| [Flowise CVE-2025-58434 忘记密码接口响应回显 tempToken：仅凭邮箱重置任意账户密码接管](web-generic-auth-flowise-forgot-password-temp-token-response-leak.md) | verified | high | 2026-11-07 |
+| [Host 头认证绕过：把 Host 改成 localhost 获取管理员面板](web-generic-auth-host-header-localhost-auth-bypass.md) | verified | high | 2026-11-05 |
+| [Host 端口注入 + 悬垂标记窃取重置邮件中的新密码](web-generic-auth-host-header-dangling-markup-password.md) | verified | high | 2026-11-05 |
+| [HTTP 重复参数污染：鉴权取第一个 patient_id、取数取最后一个，读隐藏 SYS-ADMIN 记录](web-generic-auth-hpp-duplicate-param-auth-data-mismatch.md) | verified | high | 2026-11-06 |
+| [ICPAS IP 网络对讲广播系统许可证伪造：硬编码 AES-CBC key/IV + machineCode+800823 固定后缀](web-generic-auth-icpas-license-aes-hardcoded-key-800823.md) | verified | high | 2026-11-07 |
+| [IDOR 接口面扩展：current/me 替换为数字 ID、老版本接口与兄弟 CRUD 接口猜测](web-generic-auth-idor-current-path-replacement-sibling-crud.md) | draft | high | 2026-11-07 |
+| [IoT 智能锁签名可预测 + 工厂模式降级导致管理员解锁](web-generic-auth-iot-nfc-lock-predictable-signature-factory-mode.md) | verified | high | 2026-11-05 |
+| [jeeWMS AuthInterceptor 白名单三处逻辑缺陷：正则放行全部 rest 路由、contains 子串放行与 ? 参数绕过](web-generic-auth-jeewms-authinterceptor-whitelist-regex-contains-bypass.md) | verified | high | 2026-11-05 |
+| [JSF OA SessionFilter 用 getRequestURI 模糊匹配 login.jsf，;login.jsf 矩阵参数绕过登录](web-generic-auth-oa-jsf-sessionfilter-loginjsf-semicolon-bypass.md) | verified | high | 2026-11-05 |
+| [JWT 仅校验签名未校验 role 导致垂直越权读取敏感数据](web-generic-auth-jwt-signature-only-role-bypass.md) | verified | high | 2026-11-04 |
+| [Koa 鉴权中间件未锚定正则匹配整条 URL：查询参数塞 webhooks/trigger 绕过全部鉴权（CVE-2026-31816）](web-generic-auth-unauth-koa-middleware-regex-query-bypass.md) | verified | medium | 2026-11-05 |
+| [LoginAdminFilter 以请求参数 sybz=WZQ 放行：任意 JSP 未授权访问（可配合 /login/../ URI 绕过）](web-generic-auth-loginadminfilter-sybz-param-bypass.md) | verified | medium | 2026-11-05 |
+| [mall APP 端 /order/cancelUserOrder 水平越权：orderId 未校验归属可取消他人未付款订单](web-generic-auth-mall-cancel-user-order-idor.md) | verified | high | 2026-11-05 |
+| [mall APP 端 /order/paySuccess 水平越权：任意用户把他人订单改为已支付实现 0 元购](web-generic-auth-mall-pay-success-idor-zero-cost-order.md) | verified | high | 2026-11-05 |
+| [Milvus 9091 管理端口 /expr 弱默认 token：auth=by-dev 未授权执行表达式（CVE-2026-26190）](web-generic-auth-milvus-9091-expr-weak-token-unauth.md) | verified | high | 2026-11-05 |
+| [Milvus rootcoord 内部 gRPC 53100 未接认证拦截器：容器网络内直连即 full admin](web-generic-auth-milvus-rootcoord-53100-unauthenticated.md) | verified | high | 2026-11-05 |
+| [Milvus sourceid 内部成员后门：base64("@@milvus-member@@") 加伪造 authorization 直接获得 full admin（CVE-2025-64513）](web-generic-auth-milvus-sourceid-header-backdoor-fake-identity.md) | verified | high | 2026-11-05 |
+| [newbee-mall updateUserInfo 用客户端 userId 重查用户并覆盖 session：两步越权修改他人资料](web-generic-auth-newbeemall-updateuserinfo-userid-session-idor.md) | verified | medium | 2026-11-05 |
+| [NewBeeMall /paySuccess 未校验支付真实性：仅凭 orderNo 把待支付订单改为已支付](web-generic-auth-newbeemall-paysuccess-payment-bypass.md) | verified | high | 2026-11-05 |
+| [NewBeeMall /personal/updateInfo 按请求体 userId 查询并更新资料：越权修改任意用户信息](web-generic-auth-newbeemall-updateinfo-userid-idor.md) | verified | medium | 2026-11-05 |
+| [NewBeeMall DELETE /shop-cart/{id} 未校验购物车项归属：可删除任意用户购物车条目](web-generic-auth-newbeemall-cart-delete-idor.md) | verified | medium | 2026-11-05 |
+| [NewBeeMall 后台拦截器用 getRequestURI 前缀判断：/;/admin/index 分号绕过进入后台](web-generic-auth-newbeemall-semicolon-admin-bypass.md) | verified | high | 2026-11-05 |
+| [Nginx UI /api/backup 未授权下载加密备份并在响应头泄露 AES 密钥与 IV（CVE-2026-27944）](web-generic-auth-nginx-ui-backup-unauth-key-leak.md) | verified | high | 2026-11-05 |
+| [Nginx 正则 deny 绕过：/secret 后插入原始 0x85/0xA0 字节，Nginx 不匹配而 Flask 规范化到 /secret](web-generic-auth-nginx-regex-deny-unicode-byte-bypass.md) | verified | high | 2026-11-07 |
+| [NocoDB 默认开放注册：首个注册者获 SUPER_ADMIN，批量注册无有效限流](web-generic-auth-nocodb-open-signup-first-user-superadmin.md) | verified | high | 2026-11-05 |
+| [Node.js 原型链继承键登录绕过：users[用户名] 命中 Object.prototype 方法且省略密码](web-generic-auth-nodejs-prototype-chain-login-bypass.md) | verified | high | 2026-11-05 |
+| [OA DownloadFilter/ProtectFilter 路径子串白名单绕过（;common.js 与 exclude 接口）](web-generic-auth-oa-downloadfilter-protectfilter-path-substring-bypass.md) | verified | high | 2026-11-05 |
+| [OA skey 3DES 令牌伪造：admin|时间戳 + 配置硬编码密钥绕过 Auth/getUserName](web-generic-auth-oa-skey-3des-admin-token-forgery.md) | verified | high | 2026-11-05 |
+| [Ollama 暴露 0.0.0.0:11434：无认证 API 导致模型管理、推理滥用与配置泄露](web-generic-auth-ollama-unauth-api-model-management.md) | verified | high | 2026-11-05 |
+| [OMI WS-Management 认证绕过：不带 Authorization 头即被当作已认证并 root 执行命令（CVE-2021-38647）](web-generic-auth-omi-wsman-missing-authorization-root-rce.md) | verified | high | 2026-11-05 |
+| [PHP md5 严格比较 + 数组参数类型混淆：a[]=1&b[]=2 让 null === null 成立](web-generic-auth-php-md5-array-strict-comparison-bypass.md) | verified | high | 2026-11-06 |
+| [PHP md5 弱比较遇错误码整数：构造 2025 前缀 MD5 绕过登录](web-generic-auth-php-md5-loose-comparison-error-code.md) | verified | high | 2026-11-05 |
+| [PHP 双人复核绕过：不同输入 240610708/QNKCDZO 的 MD5 同为 0e 前缀，== 判等且 !== 判不等](web-generic-auth-php-md5-magic-hash-pair-double-verify.md) | verified | high | 2026-11-06 |
+| [PHP 变量变量覆盖 $config 对象为数组：array_merge + $$key 绕过 isAdmin 严格比较](web-generic-auth-php-variable-variable-config-array-bypass.md) | verified | high | 2026-11-06 |
+| [PHP 松散比较 token 绕过：0e 数字串与库中 token 相等，/user 接口泄露全量账号与 PII](web-generic-auth-php-loose-comparison-token-0e-bypass.md) | verified | high | 2026-11-05 |
+| [PHP 继承链空方法覆写鉴权绕过：信呼OA ActionNot::logincheck 空实现让 login/api 接口免登录](web-generic-auth-xinhu-logincheck-empty-inheritance-bypass.md) | verified | high | 2026-11-07 |
+| [PowerJob 鉴权注解缺失：/user/list 未授权枚举用户与 /openApi/* 未授权触发调度任务](web-generic-auth-powerjob-missing-apipermission-unauth-endpoints.md) | verified | high | 2026-11-07 |
+| [PWM 配置管理器弱口令：改 LDAP URL 指向 Responder 捕获域账号明文](web-generic-auth-pwm-config-editor-ldap-url-responder.md) | verified | high | 2026-11-05 |
+| [Qdrant 分布式内部 6335 gRPC 认证缺陷：只读 key 或匿名可改集群拓扑](web-generic-auth-qdrant-internal-grpc-auth-bypass.md) | verified | high | 2026-11-04 |
+| [RAGFlow 分享 beta 泄露 uuid1 载体：枚举 time_low 推导 API key（CVE-2025-69286）](web-generic-auth-ragflow-share-beta-uuid1-api-key-derivation.md) | verified | high | 2026-11-05 |
+| [roleId/roleIds 参数篡改：从学生账号创建管理员与超级管理员](web-generic-auth-roleid-roleids-parameter-tampering-admin.md) | verified | high | 2026-11-05 |
+| [RSA 签名只绑定 sum(data)*len(data)：校验和碰撞复用签名执行任意脚本](web-generic-auth-rsa-signature-weak-checksum-collision-exec.md) | verified | high | 2026-11-06 |
+| [RustFS NodeService gRPC 硬编码管理令牌导致未授权节点管理接口调用](web-generic-auth-rustfs-grpc-hardcoded-token-bypass.md) | verified | high | 2026-11-05 |
+| [Servlet 权限表达式在 session 角色为 null 时放行导致未登录访问业务](web-generic-auth-servlet-null-role-fail-open.md) | verified | high | 2026-11-04 |
+| [SessionFilter 用请求参数 userName 查缓存会话：管理员在线时可取回其 SessionNameVO 绕过鉴权](web-generic-auth-sessionfilter-username-cache-key-session-hijack.md) | verified | medium | 2026-11-05 |
+| [SmarterMail force-reset-password 匿名接口 IsSysAdmin 分支跳过旧密码校验：重置管理员密码进后台命令执行](web-generic-auth-smartermail-force-reset-password-anonymous-admin.md) | verified | high | 2026-11-05 |
+| [Spring Boot @IgnoreAuth 免鉴权 resetPass：username 参数直接重置任意用户为 123456，默认管理员接管](web-generic-auth-ignoreauth-resetpass-username-hardcoded-password.md) | verified | high | 2026-11-07 |
+| [SQL 注入取管理员 UID 后利用“仅 UID 登录”直接接管管理员](web-generic-auth-sqli-admin-uid-uid-only-login.md) | verified | high | 2026-11-06 |
+| [Swagger 暴露未授权用户增删接口导致账号创建与批量删除](web-generic-auth-swagger-unauth-user-management.md) | verified | high | 2026-11-05 |
+| [Tmall_demo AdminPermissionFilter 用 contains 放行 /admin/login 与 /admin/account，/admin/login/../../tmall/ 穿越未授权访问后台](web-generic-auth-tmall-adminpermissionfilter-contains-login-account-bypass.md) | verified | high | 2026-11-07 |
+| [Token 续期拦截器信任 User-Id/User-Name 请求头：任意用户签发 admin JWT 鉴权绕过](web-generic-auth-token-renewal-trusted-user-headers-admin-jwt.md) | verified | high | 2026-11-06 |
+| [Vendure 跨渠道子实体 IDOR（GHSA-7qvr-c5vf-xxfh）：裸 ID 全局加载 + 父订单渠道断言缺失](web-generic-auth-vendure-cross-channel-child-entity-idor.md) | verified | high | 2026-11-05 |
+| [VIP 课程接口直接返回付费音频 CDN 直链：未开通会员也能下载播放](web-generic-auth-vip-course-direct-media-url-leak.md) | verified | high | 2026-11-07 |
+| [Vitest Browser Mode userEvent.upload 绕过 server.fs 读取宿主任意文件（CVE-2026-73653）](web-generic-auth-vitest-browser-upload-arbitrary-file-read.md) | verified | high | 2026-11-05 |
+| [Vitest Browser Mode 写盘/删除/artifact 外带命令绕过 allowWrite 统一闸门（CVE-2026-73653）](web-generic-auth-vitest-browser-write-delete-artifact-exfil.md) | verified | medium | 2026-11-05 |
+| [Vue SPA 仅在前端校验路由守卫导致隐藏管理页面暴露](web-generic-auth-vue-router-frontend-guard-bypass.md) | verified | high | 2026-11-05 |
+| [Web 根目录残留 start.sh 泄露数据库与管理后台凭据导致后台接管](web-generic-auth-start-script-credential-leak-admin-takeover.md) | verified | medium | 2026-11-07 |
+| [WordPress SignUp & SignIn 插件 rand() 生成 4 位激活码且无速率限制：未认证爆破接管账号（CVE-2026-12417）](web-generic-auth-wordpress-plugin-pravel-activation-code-bruteforce.md) | verified | high | 2026-11-05 |
+| [WordPress 插件 register_rest_route 省略 permission_callback：Brevo Sendinblue 订阅接口未授权可调（CVE-2025-66128）](web-generic-auth-wordpress-rest-route-missing-permission-callback.md) | verified | high | 2026-11-05 |
+| [WordPress 插件 REST 回调只查用户名与角色不验密码：任意密码冒充管理员（CVE-2026-9179）](web-generic-auth-wordpress-rest-header-password-check-missing.md) | verified | high | 2026-11-05 |
+| [xxl-job 3.1.1 /jobinfo/remove 普通用户越权删除任意任务](web-generic-auth-xxl-job-jobinfo-remove-idor.md) | verified | high | 2026-11-05 |
+| [xxl-job 3.1.1 /joblog/getJobsByGroup 普通用户越权枚举任意分组任务](web-generic-auth-xxl-job-getjobsbygroup-jobgroup-idor.md) | verified | high | 2026-11-05 |
+| [万户OA SetCharacterEncodingFilter 三种鉴权绕过：特征路径穿越、XFF 白名单与扩展名解析](web-generic-auth-whir-ezoffice-characterencoding-filter-bypass.md) | verified | high | 2026-11-07 |
+| [下单接口 couponId 参数越权：使用他人新用户优惠券完成折扣下单](web-generic-auth-coupon-id-parameter-tampering-idor.md) | verified | high | 2026-11-07 |
+| [不可遍历 ID 的两段式越权：先用可遍历查询接口泄露 openid，再用 openid 打 myRegistration 获取 PII](web-generic-auth-idor-openid-leak-enumerable-query-chain.md) | draft | high | 2026-11-07 |
+| [两步认证登录链：未授权 /password/{username} + 隐藏 user_id + X-UserId 头信任导致任意用户身份伪造](web-generic-auth-two-step-password-hidden-userid-header-trust.md) | verified | high | 2026-11-05 |
+| [代理历史响应长度异常定位未鉴权 user/all 接口：全站手机号与密码哈希泄露](web-generic-auth-proxy-history-unauth-user-all-leak.md) | verified | medium | 2026-11-05 |
+| [任意用户密码重置：重置表单 username 隐藏字段可篡改](web-generic-auth-password-reset-username-tampering.md) | verified | high | 2026-11-05 |
+| [信呼 OA publicsaveAjax 任意表/字段写入导致垂直与水平越权](web-generic-auth-xinhu-publicsave-arbitrary-table-write.md) | verified | high | 2026-11-05 |
+| [修改绑定邮箱无二次验证 → 密码重置邮件改道 → 账号接管](web-generic-auth-email-change-no-verification-password-reset-takeover.md) | verified | high | 2026-11-05 |
+| [前端 AES-ECB 硬编码密钥 + 仅凭学号查询：毕业报告系统批量泄露学生身份证与学籍 PII](web-generic-auth-frontend-aes-ecb-hardcoded-key-student-id-pii-enumeration.md) | verified | high | 2026-11-07 |
+| [前端 JS 泄露隐藏接口：新注册账号调 list 拿他人记录，再用返回数据调 update/delete 越权](web-generic-auth-js-route-leak-idor-update-delete.md) | verified | high | 2026-11-07 |
+| [前端 MD5 签名逆向与 JSRPC+autoDecoder 运行时动态代签绕过签名校验](web-generic-auth-js-signature-jsrpc-autodecoder.md) | verified | high | 2026-11-05 |
+| [前端 RSA+AES 混合加密登录接口复刻：硬编码公钥下自动化口令爆破](web-generic-auth-hybrid-rsa-aes-login-bruteforce.md) | verified | high | 2026-11-05 |
+| [前端加密流量测试：中间人替换 JS 固定随机 AES 密钥并用 autoDecoder 解密](web-generic-auth-frontend-js-random-key-fixation-autodecoder.md) | verified | high | 2026-11-05 |
+| [前端注释泄露 OAuth 客户端凭证 + 注册接口 ownerId 直通 roleId：注册 SYSTEM 管理员并取得高权限 Token](web-generic-auth-oauth-commented-js-client-secret-register-ownerid-admin.md) | verified | high | 2026-11-05 |
+| [前端硬编码编辑/发布口令：查看 JS 即绕过客户端写权限闸门](web-generic-auth-frontend-hardcoded-edit-password-gate.md) | verified | medium | 2026-11-05 |
+| [华夏ERP LogCostFilter 用 contains 判断 /doc.html 白名单，路径穿越与静态后缀绕过未授权](web-generic-auth-xiahuia-erp-logcostfilter-contains-path-bypass.md) | verified | high | 2026-11-05 |
+| [单图上传式人脸活体绕过：证件照替换背景后 Base64 提交通过 1:1 认证](web-generic-auth-face-liveness-background-replace-base64.md) | verified | medium | 2026-11-05 |
+| [同一资源接口不同 HTTP 方法鉴权不一致：未授权 DELETE/PUT 下架/上线资源](web-generic-auth-resource-api-method-authorization-inconsistency.md) | verified | medium | 2026-11-07 |
+| [响应包 JS 客户端鉴权可篡改：延长 getUserInfo 定时器绕过登出进入后台](web-generic-auth-response-js-client-check-tamper.md) | verified | medium | 2026-11-07 |
+| [图形验证码 OCR + 用户名枚举：ddddocr 与 Burp captcha-killer 爆破管理员口令](web-generic-auth-captcha-ocr-username-enum-bruteforce.md) | verified | high | 2026-11-05 |
+| [培训平台 courseId 遍历：低权账号枚举课程并获取课件下载地址](web-generic-auth-course-id-enumeration-courseware-url.md) | verified | medium | 2026-11-05 |
+| [堡垒机登录前端 3DES-CBC 加密逆向与滑块参数伪造](web-generic-auth-bastion-frontend-3des-login-forgery.md) | verified | high | 2026-11-05 |
+| [多会话权限矩阵与 LeakScore 四维评分自动化越权检测](web-generic-auth-multi-session-matrix-leakscore.md) | verified | medium | 2026-11-04 |
+| [多步数字锁前端校验绕过：调用暴露的 validateCode() 取答案并直接提交 step3](web-generic-auth-digital-lock-client-validate-step-skip.md) | verified | medium | 2026-11-07 |
+| [多租户头缺失被当作超管：删 X-Access-Token 绕过 tenant_id 隔离跨租户越权](web-generic-auth-multitenant-tenant-header-missing-superadmin.md) | verified | high | 2026-11-05 |
+| [学生 Token 调用教师课程名单接口：lesson_id 自增遍历批量泄露学籍](web-generic-auth-teacher-roster-api-student-token-lesson-enumeration.md) | verified | high | 2026-11-05 |
+| [客户端 nonce + 无密钥 SHA1 签名可复现，绕过防重放伪造请求](web-generic-auth-client-nonce-weak-sha1-signature-forgery.md) | verified | high | 2026-11-05 |
+| [密保问题弱设计：学号/幸运数字可猜且无尝试限制，重置任意账号](web-generic-auth-weak-security-question-reset.md) | verified | high | 2026-11-05 |
+| [密码重置只比较 hash 低 12 位：枚举 4096 个旧密码后三字节接管 admin](web-generic-auth-password-reset-hash-low12-bruteforce.md) | verified | high | 2026-11-06 |
+| [密码重置链接 Host 头注入：X-Forwarded-Host 窃取重置 token](web-generic-auth-password-reset-host-header-poisoning.md) | verified | high | 2026-11-05 |
+| [密码重置：篡改验证码响应 + 复用发码请求中的 sid 重置管理员密码](web-generic-auth-password-reset-response-tamper-sid-reuse.md) | verified | high | 2026-11-07 |
+| [小智 ESP32 管理平台：/api/user/update 被白名单放行且不校验旧密码，未授权重置任意账号密码](web-generic-auth-xiaozhi-unauth-user-update-password-reset.md) | verified | high | 2026-11-05 |
+| [小智 ESP32 管理平台：Cookie username 直接查询用户并建会话导致任意账号登录](web-generic-auth-xiaozhi-cookie-username-impersonation.md) | verified | high | 2026-11-05 |
+| [小智 ESP32 管理平台：拦截器 PUBLIC_PATHS 前缀 /api/user/ 放行导致用户信息未授权泄露](web-generic-auth-xiaozhi-public-paths-user-prefix-unauth-data-exposure.md) | verified | high | 2026-11-05 |
+| [小程序 digest 头 = MD5("/路径段/URL+毫秒时间戳") 无密钥：任意 token 下伪造请求遍历用户信息](web-generic-auth-miniprogram-digest-md5-path-timestamp.md) | verified | high | 2026-11-07 |
+| [小程序本地加密配置 + 固定 AES 密钥：恢复 appKey 后伪造 HMAC 请求签名](web-generic-auth-miniprogram-local-config-signature-forgery.md) | verified | high | 2026-11-05 |
+| [小程序票据查询隐藏枚举值：前端仅三种证件类型，payerIdType=4 用学号查身份证](web-generic-auth-miniprogram-bill-hidden-payeridtype-pii.md) | verified | high | 2026-11-05 |
+| [小程序签名 = MD5(逐字符排序(AppId+AppSecret+Ticks+Nonce+参数串))：硬编码密钥复刻后任意改参重签](web-generic-auth-miniprogram-md5-charsort-sign-forgery.md) | verified | medium | 2026-11-07 |
+| [小程序邀请注册请求可重放：sign+timestamp 只防篡改不防重放，重复领取 7 天 VIP](web-generic-auth-miniprogram-signed-request-replay-vip-reward.md) | verified | high | 2026-11-07 |
+| [小程序预约单查询：修改日期区间与 queryType 越权拉取全量用户预约与手机号](web-generic-auth-miniprogram-appointment-daterange-querytype-pii.md) | verified | medium | 2026-11-05 |
+| [就诊人信息接口按 patMiCode 顺序枚举：三要素明文越权泄露](web-generic-auth-patient-infocode-idor-pii-enumeration.md) | verified | high | 2026-11-05 |
+| [嵌套参数排序序列化 + md5(base) 二次哈希的 sign 复现](web-generic-auth-nested-md5-sign-reverse-forgery.md) | verified | high | 2026-11-05 |
+| [带验证码登录口：OCR 识别验证码枚举账号并用用户名=口令批量登录](web-generic-auth-captcha-ocr-username-enumeration-same-password.md) | verified | medium | 2026-11-05 |
+| [帮助文档泄露账号格式与默认口令：CAS 登录 base64 密码 Pitchfork 爆破绕过前端锁定](web-generic-auth-default-password-account-format-cas-bruteforce.md) | verified | high | 2026-11-07 |
+| [开发调试接口 /dev/Reset 未授权重置管理员密码为 admin/admin](web-generic-auth-dev-reset-admin-password-default.md) | verified | high | 2026-11-05 |
+| [开放签 sys/user/getAllUsers 与 userInfo 缺权限注解：任意登录用户越权枚举/查看用户信息](web-generic-auth-kaifangqian-user-controller-missing-permission.md) | verified | high | 2026-11-07 |
+| [微信小程序手机号登录：SessionKey 泄露 + encryptedData 重加密导致任意手机号账号接管](web-generic-auth-wechat-miniprogram-sessionkey-encrypteddata-takeover.md) | verified | medium | 2026-11-05 |
+| [微信小程序硬编码 Hawk 凭据：伪造 Authorization 头枚举用户信息](web-generic-auth-miniprogram-hardcoded-hawk-authorization-forgery.md) | verified | medium | 2026-11-05 |
+| [微信绑定 getBingUrl?id 不校验归属：换目标教师 ID 取绑定二维码，扫码接管他人账号](web-generic-auth-wechat-bind-url-idor-account-takeover.md) | verified | high | 2026-11-07 |
+| [忘记密码手机号未绑定校验缺失：用攻击者手机号接收验证码重置任意账号](web-generic-auth-password-reset-unbound-phone-any-phone.md) | verified | medium | 2026-11-05 |
+| [招聘平台简历页面脱敏但下载文件含完整 PII：企业账号批量获取学生手机号与身份信息](web-generic-auth-resume-download-unmasked-pii-leak.md) | verified | high | 2026-11-07 |
+| [拦截器只验登录不验角色：学生会话重放教师接口实现垂直越权](web-generic-auth-missing-function-level-role-check.md) | verified | high | 2026-11-05 |
+| [拦截器用 startsWith 放行 /admin/login，/admin/login/../ 跳出到后台删除接口](web-generic-auth-interceptor-login-prefix-dotdot-bypass.md) | verified | high | 2026-11-05 |
+| [教学系统多入口路径拼接越权：专家通道会话访问账号管理，添加管理员并重置 admin 密码](web-generic-auth-edu-expert-channel-path-concat-admin-takeover.md) | verified | medium | 2026-11-07 |
+| [教育系统动态表单字段 ID 越权：篡改 field7186/triFieldid_181 遍历 10 万+ 学生身份证与学号](web-generic-auth-form-field-id-idor-pii-enumeration.md) | verified | high | 2026-11-06 |
+| [无签名 Cookie 作为身份凭证导致后台登录伪造（admin_keys=2）](web-generic-auth-unsigned-cookie-admin-keys.md) | verified | high | 2026-11-05 |
+| [无认证 IDOR 三端点链：账号存在性枚举 → 代理商联系方式 → 游戏角色画像](web-generic-auth-unauth-idor-account-agent-contact-role-chain.md) | verified | high | 2026-11-05 |
+| [智慧云教育平台 /student/exam 考试记录查询：DTO 的 studentId 由客户端传入且未与会话绑定](web-generic-auth-education-exam-studentid-dto-idor.md) | verified | medium | 2026-11-07 |
+| [服务端下发密钥/代签接口不等于安全：前端加密登录的密钥、签名与防重放均可复现](web-generic-auth-server-key-sign-oracle-replay-reproducible.md) | verified | high | 2026-11-07 |
+| [未授权 getTokenById 接口按 userId 签发 token 导致管理员账户接管](web-generic-auth-gettokenbyid-userid-token-issuance.md) | verified | high | 2026-11-05 |
+| [未授权 type 分发 Servlet 按参数返回全量用户表与明文口令](web-generic-auth-type-dispatch-unauth-data-exposure.md) | verified | high | 2026-11-04 |
+| [未授权岗位员工接口 + 账号 IDOR：遍历岗位/账号 ID 泄露 Acc_Pw 与鉴权 CheckUID](web-generic-auth-unauth-position-employee-api-checkuid-leak.md) | verified | high | 2026-11-07 |
+| [未授权用户创建接口导致创建账号并登录后台](web-generic-auth-unauth-user-create-admin-takeover.md) | verified | high | 2026-11-05 |
+| [汉王e脸通 globalToken/recoToken 可逆加密伪造：仅校验分段格式与时间戳即可获得 admin 会话](web-generic-auth-hanvon-eface-globaltoken-recotoken-forgery.md) | verified | high | 2026-11-07 |
+| [汉王e脸通 Spring 拦截器白名单 contains + `..;/` 路径归一化绕过：未登录访问后台接口](web-generic-auth-hanvon-eface-whitelist-contains-semicolon-path-bypass.md) | verified | high | 2026-11-07 |
+| [泛微 e-cology 前台登录绕过：DWR 读取 security.key + AES 伪造 mToken + ImgFileDownload 换取 ecology_JSessionid](web-generic-auth-weaver-ecology-mobilemode-token-chain-login-bypass.md) | verified | high | 2026-11-07 |
+| [泛微 e9 鉴权与参数过滤绕过：路径含 login 即判已登录，xssList 正则点号通配跳过 HTMLFilter](web-generic-auth-weaver-e9-islogin-xsslist-regex-bypass.md) | verified | high | 2026-11-05 |
+| [滑块验证码前端加密协议逆向：ECDH 三密钥 + HKDF + AES-GCM 复刻与批量注册绕过](web-generic-auth-slider-captcha-ecdh-aes-gcm-protocol-bypass.md) | verified | high | 2026-11-05 |
+| [用友 NC65 PortalLoginFilter 鉴权绕过：pageId 魔法值与 ESCAPE_URL 子串匹配](web-generic-auth-yonyou-nc65-portalloginfilter-bypass.md) | verified | high | 2026-11-05 |
+| [用户删除后 Redis 缓存的 JWT 未撤销：已删除账号仍可登录查询交易数据](web-generic-auth-deleted-user-cached-jwt-still-login.md) | verified | medium | 2026-11-07 |
+| [用户名枚举侧信道：响应时间差异与账号锁定 oracle](web-generic-auth-username-enumeration-timing-lockout.md) | verified | medium | 2026-11-05 |
+| [登录后 2FA 仅前端跳转：直接访问受保护路由绕过二次验证](web-generic-auth-2fa-first-factor-direct-dashboard-bypass.md) | verified | high | 2026-11-07 |
+| [登录后改密接口越权：username 可控导致修改他人密码](web-generic-auth-authenticated-change-password-idor.md) | verified | high | 2026-11-05 |
+| [登录接口只校验手机号存在、不校验密码：任意字符串登录任意已知账号](web-generic-auth-login-phone-any-password.md) | verified | medium | 2026-11-05 |
+| [登录爆破的响应判读与 Payload 变换：过滤差异、Base64/MD5/前缀与动态时间戳](web-generic-auth-login-bruteforce-response-payload.md) | verified | high | 2026-11-05 |
+| [登录用户按 uid 重置任意用户密码（硬编码默认口令）](web-generic-auth-uid-resetpwd-hardcoded-default-password.md) | verified | high | 2026-11-05 |
+| [登录重定向接口按 username 签发会话：改 username=admin 获取管理员 Session](web-generic-auth-redirect-username-session-issuance.md) | verified | high | 2026-11-06 |
+| [登录错误文案差异导致用户名枚举（不存在该用户 vs 用户名或密码错误）](web-generic-auth-error-message-username-enumeration.md) | verified | high | 2026-11-05 |
+| [登录限速/封禁绕过：丢弃会话 Cookie 与伪造 X-Forwarded-For](web-generic-auth-login-rate-limit-bypass-cookie-xff.md) | verified | high | 2026-11-05 |
+| [短信接口频率限制绕过：手机号双写、参数重复、编码、重放与 XFF](web-generic-auth-sms-bombing-rate-limit-bypass.md) | verified | high | 2026-11-06 |
+| [短信登录校验用 md5(手机号+6位验证码) 且响应回显哈希：离线爆破 100 万空间任意用户登录](web-generic-auth-sms-code-md5-hash-response-offline-bruteforce.md) | verified | high | 2026-11-07 |
+| [短信登录验证码未绑定手机号：替换/双写 phone 参数复用自己的验证码登录任意账号](web-generic-auth-sms-login-code-not-bound-phone-parameter-tamper.md) | verified | medium | 2026-11-07 |
+| [短信验证码在响应包/跳转 URL 中回显：任意手机号直接登录](web-generic-auth-sms-code-echo-response-arbitrary-login.md) | verified | high | 2026-11-05 |
+| [短信验证码多号码同发同码：逆向 sign 后自动化请求导致任意用户登录](web-generic-auth-sms-code-multi-number-shared-arbitrary-login.md) | verified | medium | 2026-11-05 |
+| [短信验证码字段置空绕过校验：注册/登录同接口按手机号签发 token，任意用户注册与接管](web-generic-auth-sms-code-empty-field-arbitrary-register-login.md) | verified | high | 2026-11-07 |
+| [短信验证码接口 applicantChange 参数组合绕过存在性校验：任意手机号注册并登录电子签章后台](web-generic-auth-applicantchange-pin-sms-bypass-registration.md) | verified | high | 2026-11-05 |
+| [短信验证码生成阶段可预测：连续递增、重启复用与种子取手机号](web-generic-auth-sms-otp-generation-predictable-sequence-restart-seed.md) | verified | high | 2026-11-07 |
+| [硬编码 BIP 对接凭据 + orgId 未授权泄露导致任意建号登录](web-generic-auth-hardcoded-bip-cred-orgid-user-create.md) | verified | high | 2026-11-05 |
+| [禅道 file::delete 缺少 checkPriv 对象权限校验：改 fileID 删除他人评论附件](web-generic-auth-zentao-file-delete-idor.md) | verified | high | 2026-11-05 |
+| [移动端 person/permission 接口按 userId 越权查询：遍历泄露师生 PII 与人脸信息](web-generic-auth-mobile-person-permission-userid-idor-pii.md) | verified | high | 2026-11-05 |
+| [移动端人脸照片更新接口按请求体 id 越权：替换他人生物特征照片](web-generic-auth-face-photo-update-body-id-idor.md) | verified | high | 2026-11-05 |
+| [移动端接口参数枚举 + 身份证 PII 越权查询：从参数缺失报错到手机号遍历](web-generic-auth-api-param-fuzz-idcard-pii-enumeration.md) | verified | medium | 2026-11-06 |
+| [移动端登录接口复用令牌续期：任意 Userid + 任意 Token 绑定接管账户](web-generic-auth-login-header-userid-token-binding-takeover.md) | verified | high | 2026-11-05 |
+| [组织缩写 + 123456 默认管理员口令：用学校/企业名称生成字典猜解后台](web-generic-auth-org-abbreviation-default-password-guess.md) | verified | medium | 2026-11-05 |
+| [统一身份认证忘记密码：篡改响应包 success/statusCode 绕过短信验证码重置管理员密码](web-generic-auth-password-reset-response-tampering-sms-bypass.md) | verified | high | 2026-11-05 |
+| [聊天用户信息接口按 imId 越权：遍历获取服务者真实手机号与 userId](web-generic-auth-imid-userinfo-mobile-pii-enumeration.md) | verified | high | 2026-11-07 |
+| [订单评价接口按 orderId 越权：只校验服务状态不校验订单归属，可评价他人订单](web-generic-auth-order-comment-idor-missing-ownership.md) | verified | high | 2026-11-07 |
+| [认证日志接口泄露合法 userId 后枚举用户详情：绕过按 ID 归属的访问限制](web-generic-auth-authlog-userid-enumeration-authz-bypass.md) | verified | high | 2026-11-05 |
+| [课程详情/评论接口只凭 ID 返回内容：未校验报名与教师审批状态导致未授权访问与评论](web-generic-auth-course-task-object-state-missing-authz.md) | verified | high | 2026-11-05 |
+| [调试配置泄露管理员凭据 + 隐藏条目状态越权发布：/debug/config.json 到 review-flow/transition](web-generic-auth-debug-config-credential-leak-hidden-resource-transition.md) | verified | high | 2026-11-06 |
+| [越权探测中的查询条件失效：参数制空、通配符 %/* 与类型混淆导致全量返回](web-generic-auth-idor-empty-wildcard-type-query-collapse.md) | draft | medium | 2026-11-07 |
+| [转账接口信任客户端 fromAccountId：水平越权扣划任意账户余额购买高价商品](web-generic-auth-transfer-fromaccount-idor-balance-theft.md) | verified | medium | 2026-11-07 |
+| [迎新系统重置密码固定为身份证后 6 位：学号与身份证可由公开名单和社工补全](web-generic-auth-freshman-reset-id-last6-public-pii.md) | verified | high | 2026-11-05 |
+| [验证码只在请求生成接口时刷新：一次获取后复用同一 Session 验证码爆破口令](web-generic-auth-captcha-client-refresh-session-reuse.md) | verified | medium | 2026-11-07 |
+<!-- AUTO-INDEX:END -->
+
+## 新增规范
+
+- 一张卡只描述一个场景/技巧，文件名使用英文 kebab-case。
+- frontmatter 必填字段见 `PLAN.md` 第 6 节。
+- 新增前必须运行 `python tools/kb.py dedup --draft <file>`。
+- 写完后运行 `python tools/kb.py validate`。

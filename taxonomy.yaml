@@ -1,0 +1,545 @@
+version: 1
+defaults:
+  allow:
+  - 一个具体场景/技巧的蒸馏卡片（原理、触发条件、利用步骤、PoC、检测与防御）
+  - 该层技术的总览、术语、前置知识、目录导航
+  - 经过核对的攻防思路与最小复现片段
+  deny:
+  - CVE 详情与版本清单（统一放 cve/）
+  - 安全资讯、招聘、活动、纯新闻
+  - 未提炼的原文转载、长段摘录
+  - 与主题无关的工具安装教程
+domains:
+  web:
+    title: Web 安全
+    description: Web 应用漏洞、框架/组件利用、协议与认证、注入与文件类问题。
+    children:
+      java:
+        title: Java Web
+        description: Java 生态的表达式、反序列化、框架与组件漏洞。
+        children:
+          deserialization:
+            title: Java 反序列化
+            description: 原生反序列化、gadget 链、触发点、绕过与利用。
+            children:
+              comparator:
+                title: Comparator 链
+                description: 通过 Comparator/compare 触发 toString、hashCode 等方法的 gadget 组合。
+              jdk:
+                title: JDK 原生链
+                description: JDK 内置类形成的反序列化链与触发点。
+              fastjson:
+                title: Fastjson
+                description: Fastjson AutoType、缓存与绕过。
+              jackson:
+                title: Jackson
+                description: Jackson 多态反序列化与 gadget。
+              xstream:
+                title: XStream
+                description: XStream 反序列化与 CVE 利用。
+              hessian:
+                title: Hessian
+                description: Hessian 反序列化与利用链。
+              jndi:
+                title: JNDI 注入
+                description: JNDI/LDAP/RMI 注入与高版本绕过。
+          expression:
+            title: 表达式注入
+            description: SpEL、OGNL、MVEL、EL 等表达式注入。
+            children:
+              spel:
+                title: SpEL
+                description: Spring Expression Language 注入与利用。
+              ognl:
+                title: OGNL
+                description: OGNL 注入与 Struts2 利用。
+              mvel:
+                title: MVEL
+                description: MVEL 表达式注入。
+          framework:
+            title: Java 框架
+            description: Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
+            children:
+              spring:
+                title: Spring
+                description: Spring Framework/Spring Boot 漏洞与利用。
+              struts2:
+                title: Struts2
+                description: Struts2 OGNL 与历史漏洞。
+              shiro:
+                title: Shiro
+                description: Shiro 反序列化、RememberMe 与密钥问题。
+          component:
+            title: Java 组件
+            description: WebLogic、Tomcat、Confluence、Jenkins 等组件漏洞。
+            children:
+              weblogic:
+                title: WebLogic
+                description: WebLogic 反序列化、T3/IIOP 与历史漏洞。
+              tomcat:
+                title: Tomcat
+                description: Tomcat 漏洞、Session 与文件处理。
+              confluence:
+                title: Confluence
+                description: Confluence OGNL/模板注入与历史漏洞。
+          rmi:
+            title: RMI
+            description: RMI 注册表、DGC、动态类加载与利用。
+          classloader:
+            title: 类加载
+            description: ClassLoader、字节码、内存马与加载机制。
+          rce:
+            title: Java 命令执行与反弹 Shell
+            description: Runtime.exec/ProcessBuilder 命令执行、反射进程创建、Windows/Linux 反弹 shell 与载荷构造。
+      php:
+        title: PHP Web
+        description: PHP 反序列化、文件包含、RCE 与框架漏洞。
+        children:
+          deserialization:
+            title: PHP 反序列化
+            description: POP 链、魔术方法、Phar 反序列化。
+          rce:
+            title: PHP 代码执行
+            description: 命令执行、代码执行、回调与绕过。
+          file-inclusion:
+            title: PHP 文件包含
+            description: LFI/RFI、伪协议、日志包含与临时文件。
+          open-basedir-bypass:
+            title: PHP open_basedir 绕过
+            description: open_basedir 限制绕过、伪协议、symlink、报错 oracle 与竞态。
+          framework:
+            title: PHP 框架
+            description: ThinkPHP、Laravel、Yii 等框架漏洞。
+      python:
+        title: Python Web
+        description: Python 反序列化、SSTI、框架与依赖漏洞。
+        children:
+          deserialization:
+            title: Python 反序列化
+            description: pickle、PyYAML、jsonpickle 等反序列化风险。
+          ssti:
+            title: Python SSTI
+            description: Jinja2、Mako、Tornado 模板注入。
+          framework:
+            title: Python 框架
+            description: Flask、Django、FastAPI 等框架漏洞。
+      nodejs:
+        title: Node.js Web
+        description: 原型链污染、反序列化、模板注入与依赖漏洞。
+        children:
+          prototype-pollution:
+            title: 原型链污染
+            description: 原型链污染的形成、利用与 RCE 链。
+          deserialization:
+            title: Node.js 反序列化
+            description: node-serialize、serialize-javascript 等。
+          ssti:
+            title: Node.js 模板注入
+            description: EJS、Pug、Handlebars 等模板注入。
+      dotnet:
+        title: .NET Web
+        description: ViewState、BinaryFormatter、IIS 与 .NET 反序列化。
+        children:
+          deserialization:
+            title: .NET 反序列化
+            description: BinaryFormatter、LosFormatter、ObjectStateFormatter 等。
+          iis:
+            title: IIS
+            description: IIS 配置、短文件名、WebDAV 与历史漏洞。
+      golang:
+        title: Go Web
+        description: Go Web 框架、模板、反序列化与依赖漏洞。
+      generic:
+        title: 通用 Web 漏洞
+        description: 与语言无关的 Web 漏洞类型与利用技巧。
+        children:
+          sqli:
+            title: SQL 注入
+            description: 注入类型、绕过、堆叠与二次注入。
+          xss:
+            title: XSS
+            description: 反射/存储/DOM XSS、绕过与利用。
+          clickjacking:
+            title: 点击劫持
+            description: 透明 iframe 覆盖、UI Redress 与框架嵌入防御。
+          csrf:
+            title: CSRF
+            description: CSRF 与 SameSite、Token 绕过。
+          ssrf:
+            title: SSRF
+            description: SSRF、云元数据、协议利用与绕过。
+          xxe:
+            title: XXE
+            description: XML 外部实体、盲 XXE、OOB 与绕过。
+          ssti:
+            title: 通用模板注入
+            description: 模板引擎识别、探测与利用。
+          file-upload:
+            title: 文件上传
+            description: 上传绕过、解析漏洞、竞争与二次利用。
+          file-inclusion:
+            title: 通用文件包含
+            description: 本地/远程包含、伪协议与日志包含。
+          jwt:
+            title: JWT
+            description: 算法混淆、密钥爆破、kid/jku 注入。
+          oauth:
+            title: OAuth
+            description: OAuth/OIDC 流程缺陷、redirect_uri 与 token 泄露。
+          http-smuggling:
+            title: HTTP 请求走私
+            description: CL/TE、TE/TE、HTTP/2 降级与利用。
+          cache-poisoning:
+            title: Web 缓存投毒
+            description: 缓存键、缓存欺骗与投毒链。
+          race-condition:
+            title: 竞争条件
+            description: 并发竞态、TOCTOU、限次绕过。
+          graphql:
+            title: GraphQL
+            description: introspection、批量查询、注入与授权缺陷。
+          websocket:
+            title: WebSocket
+            description: 跨站 WebSocket 劫持、认证与消息注入。
+          open-redirect:
+            title: 开放重定向
+            description: 重定向绕过与 OAuth/SSO 组合利用。
+          crlf:
+            title: CRLF 注入
+            description: 响应头注入、日志注入与缓存组合。
+          cors:
+            title: CORS
+            description: 跨域配置错误与凭证泄露。
+          xs-leaks:
+            title: XS-Leaks 与 CSS 注入
+            description: 跨站侧信道、帧计数、CSS 选择器外带与浏览器解析差异。
+          xpath:
+            title: XPath 注入
+            description: XPath 查询拼接、布尔/盲注、认证绕过与错误外带。
+          auth:
+            title: 认证与会话
+            description: Cookie/Session、身份伪造、认证绕过、会话固定与权限校验缺陷。
+            children:
+              cookie:
+                title: Cookie 与会话
+                description: Cookie 解析、身份伪造、会话固定与签名缺失。
+  code-analysis:
+    title: 代码分析
+    description: 代码审计、逆向工程、脱壳、混淆、动态分析与漏洞挖掘。
+    children:
+      reverse:
+        title: 逆向工程
+        description: 二进制/应用逆向、脱壳、反调试、混淆与虚拟机保护。
+        children:
+          unpacking:
+            title: 脱壳
+            description: 壳识别、手动/自动脱壳、内存 dump 与重建。
+          anti-debug:
+            title: 反调试
+            description: 反调试检测与绕过、反反调试。
+          obfuscation:
+            title: 混淆
+            description: 控制流平坦化、字符串加密、指令替换与还原。
+          vm:
+            title: 虚拟机保护
+            description: VMProtect/Themida 等 VM 保护的分析与还原。
+          firmware:
+            title: 固件逆向
+            description: 固件提取、文件系统、启动链、模拟/仿真与漏洞分析（含 IoT 固件）。
+          windows:
+            title: Windows 逆向
+            description: PE、驱动、系统机制与调试。
+          linux:
+            title: Linux 逆向
+            description: ELF、内核模块、系统调用与调试。
+      static:
+        title: 静态分析
+        description: 源码审计、SAST、数据流与污点分析。
+        children:
+          source-audit:
+            title: 源码审计
+            description: 按语言/框架的审计思路与危险模式。
+          sast:
+            title: SAST
+            description: 静态分析工具、规则与误报处理。
+      dynamic:
+        title: 动态分析
+        description: 调试、跟踪、插桩与模糊测试。
+        children:
+          debugging:
+            title: 调试
+            description: 断点、单步、内存与寄存器分析。
+          tracing:
+            title: 跟踪
+            description: 系统调用、API、指令级跟踪。
+          fuzzing:
+            title: 模糊测试
+            description: 覆盖率引导、语料、变异与崩溃分析。
+      vuln-discovery:
+        title: 漏洞挖掘
+        description: 漏洞模式、根因分析与挖掘方法。
+        children:
+          pattern:
+            title: 漏洞模式
+            description: 常见漏洞模式与代码特征。
+          cve-root-cause:
+            title: CVE 根因
+            description: 从 CVE 反推根因与利用条件。
+  binary:
+    title: 二进制安全
+    description: Pwn、堆栈利用、内核、浏览器与沙箱逃逸。
+    children:
+      pwn:
+        title: Pwn
+        description: 二进制漏洞利用与缓解绕过。
+        children:
+          stack:
+            title: 栈利用
+            description: 栈溢出、ROP、ret2libc、SROP。
+          heap:
+            title: 堆利用
+            description: glibc 堆、UAF、double free、House of 系列。
+          format-string:
+            title: 格式化字符串
+            description: 任意读写、GOT 覆写与利用。
+          rop:
+            title: ROP
+            description: ROP/JOP/COP、gadget 与链构造。
+          kernel:
+            title: 内核利用
+            description: 内核漏洞、提权、KASLR/SMEP/SMAP 绕过。
+          browser:
+            title: 浏览器利用
+            description: JIT、渲染引擎、沙箱与逃逸。
+          sandbox-escape:
+            title: 沙箱逃逸
+            description: 容器/浏览器/语言沙箱逃逸。
+  crypto:
+    title: 密码学
+    description: 密码学攻击、协议缺陷与实现问题。
+    children:
+      classical:
+        title: 古典密码
+        description: 替换、维吉尼亚、栅栏等。
+      rsa:
+        title: RSA
+        description: 共模、低指数、广播、Wiener、填充与实现缺陷。
+      ecc:
+        title: 椭圆曲线
+        description: ECDSA nonce、曲线参数、无效曲线攻击。
+      aes:
+        title: AES
+        description: 模式误用、IV、padding oracle、侧信道。
+      hash:
+        title: 哈希
+        description: 长度扩展、碰撞、彩虹表与 HMAC 误用。
+      prng:
+        title: 随机数
+        description: 弱随机、种子预测、MT19937 等。
+      protocol:
+        title: 密码学协议
+        description: TLS、SSH、自定义协议的密码学缺陷。
+      implementation:
+        title: 实现缺陷
+        description: 常量时间、内存安全、密钥管理。
+      side-channel:
+        title: 侧信道
+        description: 时序、功耗、缓存与故障注入。
+      zk:
+        title: 零知识
+        description: ZK 电路、证明系统与实现漏洞。
+  ai-security:
+    title: AI 安全
+    description: 大模型、Agent、RAG、MCP 与供应链安全。
+    children:
+      prompt-injection:
+        title: 提示词注入
+        description: 直接/间接注入、工具调用劫持与防御。
+      jailbreak:
+        title: 越狱
+        description: 角色扮演、编码绕过、多轮诱导与对齐绕过。
+      data-poisoning:
+        title: 数据投毒
+        description: 训练/微调/RAG 语料投毒与后门。
+      model-extraction:
+        title: 模型窃取
+        description: 模型抽取、成员推断、蒸馏与知识产权。
+      model-evaluation:
+        title: 模型评测安全
+        description: 评测集泄露、过拟合刷分、评测管线与红队基准缺陷。
+      adversarial-examples:
+        title: 对抗样本
+        description: 图像/文本/多模态对抗样本与迁移。
+      agent-security:
+        title: Agent 安全
+        description: 工具调用、权限、记忆、规划与多 Agent 风险。
+      mcp-security:
+        title: MCP 安全
+        description: MCP server/client、工具描述注入、权限与供应链。
+      rag-security:
+        title: RAG 安全
+        description: 检索污染、文档注入、引用欺骗与隔离。
+      gateway-security:
+        title: AI 网关安全
+        description: Kong、Higress、APISIX 等 AI 网关的 provider 密钥存放、去向与归属，插件与上游转发安全。
+      supply-chain:
+        title: AI 供应链
+        description: 模型权重、数据集、依赖与插件供应链。
+  mobile:
+    title: 移动安全
+    description: Android、iOS、HarmonyOS 应用与系统安全。
+    children:
+      android:
+        title: Android
+        description: Android 应用与逆向：APK/DEX/SO、加固、Hook、动态分析与漏洞。
+      ios:
+        title: iOS
+        description: iOS 应用与逆向：Mach-O、IPA、越狱、Hook、动态分析与漏洞。
+      harmony:
+        title: HarmonyOS
+        description: HAP/APP/ABC、方舟运行时与安全机制。
+  cloud:
+    title: 云安全
+    description: 云原生、容器、Kubernetes、CI/CD 与 IAM。
+    children:
+      k8s:
+        title: Kubernetes
+        description: 集群、RBAC、Admission、逃逸与供应链。
+      container:
+        title: 容器
+        description: Docker、runc、镜像与运行时逃逸。
+      serverless:
+        title: Serverless
+        description: 函数计算、事件注入与权限。
+      ci-cd:
+        title: CI/CD
+        description: 流水线、凭据、供应链与投毒。
+      cloud-iam:
+        title: 云 IAM
+        description: 权限提升、角色链、跨账号与策略缺陷。
+      metadata:
+        title: 云元数据
+        description: 元数据服务、SSRF 与临时凭证。
+  iot:
+    title: IoT/工控
+    description: 固件、协议、硬件与工业控制系统安全。
+    children:
+      protocol:
+        title: IoT 协议
+        description: MQTT、CoAP、Modbus、Zigbee 等。
+      hardware:
+        title: 硬件
+        description: UART/JTAG/SPI、侧信道与故障注入。
+      industrial:
+        title: 工业控制
+        description: PLC、SCADA、DCS 与 OT 协议。
+      vehicle:
+        title: 车联网
+        description: 车机、T-Box、车载总线、蓝牙/ADB/GPS 与车云接口。
+  blockchain:
+    title: 区块链
+    description: 智能合约、DeFi、钱包与共识安全。
+    children:
+      solidity:
+        title: Solidity
+        description: 重入、整数、权限、代理与编译器问题。
+      move:
+        title: Move
+        description: Sui/Aptos Move 对象模型、能力与 PTB 组合攻击。
+      defi:
+        title: DeFi
+        description: 闪电贷、预言机、MEV 与经济攻击。
+      wallet:
+        title: 钱包
+        description: 私钥、签名、硬件钱包与客户端。
+      consensus:
+        title: 共识
+        description: 共识攻击、分叉与网络层。
+  pentest:
+    title: 渗透测试
+    description: 红队与渗透流程、权限提升、横向与持久化。
+    children:
+      recon:
+        title: 信息收集
+        description: 资产发现、指纹、子域与泄露情报。
+      initial-access:
+        title: 初始访问
+        description: 边界突破、钓鱼、暴露面与凭据。
+      privilege-escalation:
+        title: 权限提升
+        description: Windows/Linux/云/应用提权。
+      lateral-movement:
+        title: 横向移动
+        description: 凭据传递、远程执行与域内移动。
+      persistence:
+        title: 持久化
+        description: 计划任务、服务、启动项与后门。
+      c2:
+        title: C2
+        description: 命令控制、隐蔽通道与基础设施。
+      ad:
+        title: Active Directory
+        description: 域、Kerberos、ACL 与组策略。
+      exchange:
+        title: Exchange
+        description: Exchange 漏洞与利用链。
+  ctf:
+    title: CTF
+    description: CTF 题型技巧与快速解法。
+    children:
+      web:
+        title: CTF Web
+        description: Web 题型技巧与绕过。
+      pwn:
+        title: CTF Pwn
+        description: Pwn 题型技巧。
+      reverse:
+        title: CTF Reverse
+        description: Reverse 题型技巧。
+      crypto:
+        title: CTF Crypto
+        description: Crypto 题型技巧。
+      misc:
+        title: CTF Misc
+        description: Misc/杂项技巧。
+      forensics:
+        title: CTF Forensics
+        description: 取证与流量分析。
+  defense:
+    title: 防御
+    description: 检测、加固、应急响应与取证。
+    children:
+      detection:
+        title: 检测
+        description: 规则、日志、EDR 与威胁狩猎。
+      hardening:
+        title: 加固
+        description: 系统、应用、云与供应链加固。
+      incident-response:
+        title: 应急响应
+        description: 入侵排查、处置与恢复。
+      forensics:
+        title: 取证
+        description: 主机、内存、网络与日志取证。
+  tools:
+    title: 工具
+    description: 安全工具的高级用法与脚本。
+    children:
+      burp:
+        title: Burp Suite
+        description: 插件、拦截、扫描与扩展。
+      nmap:
+        title: Nmap
+        description: 扫描、脚本与规避。
+      metasploit:
+        title: Metasploit
+        description: 模块、payload 与利用。
+      frida:
+        title: Frida
+        description: Hook、插桩与自动化。
+      ida:
+        title: IDA
+        description: 反汇编、脚本与插件。
+      ghidra:
+        title: Ghidra
+        description: 反编译、脚本与协作。

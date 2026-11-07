@@ -1,0 +1,31 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Godown 安全知识树</title></head><body>
+<link rel="stylesheet" href="{{ "css/knowledge-tree.css" | relURL }}?v={{ readFile "static/css/knowledge-tree.css" | sha256 }}">
+<header class="kt-site-header"><a href="{{ "" | relURL }}">♧ Godown 安全知识树</a><nav><a href="{{ "console/" | relURL }}">API Key 控制台</a><a href="{{ "about/" | relURL }}">关于我</a><a href="https://godownio.github.io/" target="_blank" rel="noopener">原博客 ↗</a><button id="kt-account-button" type="button">GitHub 登录</button></nav></header>
+<main id="knowledge-tree-app" class="kt-app">
+  <aside class="kt-panel">
+    <div class="kt-panel-top"><span class="kt-eyebrow">GODOWN · FIELD NOTES</span><h1>安全知识树</h1><p>每一道枝干都是目录，每一片叶子都是知识。</p></div>
+    <div class="kt-search"><label for="kt-query">搜索目录与场景</label><input id="kt-query" type="search" placeholder="标题、别名、标签、CVE…" autocomplete="off"><div class="kt-scope"><span id="kt-scope-label">范围：全部知识</span><button id="kt-reset-scope" type="button" hidden>返回全库</button></div></div>
+    <section class="kt-global-directory" aria-label="完整知识目录"><div class="kt-global-directory-heading"><strong>总目录</strong><span>全部分类 · 独立滚动</span></div><nav id="kt-global-directory" aria-label="全部知识目录"></nav></section>
+    <div id="kt-search-results" class="kt-search-results" hidden></div>
+    <details id="kt-bookmarks" class="kt-bookmarks"><summary>我的叶签 <span id="kt-bookmark-count">0</span></summary><div id="kt-bookmark-list"></div></details>
+    <div id="kt-detail" class="kt-detail" aria-live="polite"><h2>让知识生长成树</h2><p>单击选中目录，双击展开或收拢枝干。选择场景叶子，在右侧独立手记中阅读。</p><p>初始约 400 个节点。收拢的目录也保留通向知识叶子的路径。</p></div>
+    <div class="kt-panel-footer"><a href="{{ "about/" | relURL }}">Godown</a><span>山水为竭，冬雷震震</span><a href="https://godownio.github.io/" target="_blank" rel="noopener">原博客 ↗</a></div>
+  </aside>
+  <section class="kt-workspace" aria-label="可缩放知识树">
+    <div class="kt-canvas-toolbar"><div><span class="kt-live-dot"></span><span id="kt-stats" role="status">正在加载知识树…</span></div><button id="kt-random" type="button">随风拾一叶</button><button id="kt-home" type="button">回到树根</button><button id="kt-fit" type="button">适应全图</button></div>
+    <div id="kt-viewport" class="kt-viewport"><svg id="kt-svg" xmlns="http://www.w3.org/2000/svg" aria-label="知识目录与场景叶片图谱"><defs><linearGradient id="kt-leaf-fill" x2="0" y2="1"><stop stop-color="#e4efc5"/><stop offset="1" stop-color="#b5d5a8"/></linearGradient><linearGradient id="kt-wood-fill" x2="1" y2="0"><stop stop-color="#bd9668"/><stop offset=".5" stop-color="#ecd6ad"/><stop offset="1" stop-color="#c8a273"/></linearGradient></defs><g id="kt-world"></g></svg><div class="kt-loading" id="kt-loading">正在绘制目录枝干…</div></div>
+    <div class="kt-legend"><span><i class="kt-wood-mark"></i>目录枝干</span><span><i class="kt-leaf-mark"></i>场景 Markdown</span><span id="kt-visible-count"></span></div>
+    <div class="kt-zoom"><button id="kt-zoom-out" type="button" aria-label="缩小">−</button><output id="kt-zoom-label">100%</output><button id="kt-zoom-in" type="button" aria-label="放大">＋</button></div>
+    <svg id="kt-minimap" class="kt-minimap" viewBox="0 0 180 105" aria-label="全图定位，点击移动视野"><g id="kt-mini-world"></g><rect id="kt-mini-view" fill="none" stroke="#ae7240" stroke-width="1.5"/></svg>
+    <div id="kt-node-hint" class="kt-node-hint" role="tooltip" hidden></div>
+    <div id="kt-toast" class="kt-toast" role="status" hidden></div>
+    <aside id="kt-card-reader" class="kt-card-reader" aria-label="知识卡片详情" hidden><div class="kt-reader-header"><span>场景手记</span><div><button id="kt-reader-expand" type="button" aria-label="放大知识卡片">放大 ↗</button><button id="kt-reader-close" type="button" aria-label="关闭知识卡片">×</button></div></div><div class="kt-reader-scroll" id="kt-reader-scroll"><h2 id="kt-reader-title"></h2><div id="kt-reader-meta" class="kt-detail-meta"></div><div id="kt-reader-actions"></div><div id="kt-reader-body" class="kt-detail kt-reader-body" aria-live="polite"></div></div></aside>
+    <div class="kt-cat-garden" aria-label="猫与知识叶子"></div>
+  </section>
+</main>
+<dialog id="kt-cat-dialog" class="kt-paper-dialog"><div class="kt-paper-dialog-head"><span id="kt-cat-caption">猫送来的一片叶子</span><button id="kt-cat-close" type="button" aria-label="关闭礼物弹窗">×</button></div><div class="kt-gift-leaf" aria-hidden="true">❧</div><h2 id="kt-gift-title"></h2><p id="kt-gift-meta" class="kt-gift-meta"></p><div id="kt-gift-body" class="kt-gift-body"></div><div class="kt-dialog-actions"><button id="kt-gift-save" type="button">☆ 收藏叶子</button><button id="kt-gift-open" type="button">阅读完整知识</button><button id="kt-gift-next" type="button">再送一片</button></div></dialog>
+{{ with site.Params.portalURL }}<script>window.KnowledgePortal={{ . | jsonify | safeJS }};</script>{{ end }}
+<script src="{{ "js/scene-assets.js" | relURL }}?v={{ readFile "static/js/scene-assets.js" | sha256 }}" defer></script>
+<script src="{{ "js/account.js" | relURL }}?v={{ readFile "static/js/account.js" | sha256 }}" defer></script>
+<script src="{{ "js/knowledge-tree.js" | relURL }}?v={{ readFile "static/js/knowledge-tree.js" | sha256 }}" defer></script>
+</body></html>
