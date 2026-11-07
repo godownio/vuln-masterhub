@@ -5,7 +5,7 @@ on:
       release_tag:
         description: Verified runtime snapshot release tag
         required: true
-        default: cloud-snapshot-20261107
+        default: cloud-snapshot-20261107-r2
         type: string
 permissions:
   contents: read
@@ -45,27 +45,6 @@ jobs:
                   assert target.is_relative_to(root)
                   assert not entry.filename.endswith(('portal.sqlite','portal-secrets.json','portal-session-secret','.env'))
               z.extractall(root)
-          PY
-      - name: Configure server secrets
-        env:
-          CLOUD_GITHUB_CLIENT_ID: ${{ secrets.CLOUD_GITHUB_CLIENT_ID }}
-          CLOUD_GITHUB_CLIENT_SECRET: ${{ secrets.CLOUD_GITHUB_CLIENT_SECRET }}
-          CLOUD_SESSION_SECRET: ${{ secrets.CLOUD_SESSION_SECRET }}
-        run: |
-          python - <<'PY'
-          import os,subprocess
-          from huggingface_hub import HfApi
-          token=subprocess.check_output(['hf','auth','token'],text=True).strip()
-          api=HfApi(token=token)
-          print('Token metadata:',{'length':len(token),'single_line':'\n' not in token},flush=True)
-          print('Repository access:',api.space_info('Downio/vuln-masterhub').id,flush=True)
-          names={'CLOUD_GITHUB_CLIENT_ID':'GITHUB_CLIENT_ID','CLOUD_GITHUB_CLIENT_SECRET':'GITHUB_CLIENT_SECRET','CLOUD_SESSION_SECRET':'PORTAL_SESSION_SECRET'}
-          for source,target in names.items():
-              value=os.environ[source]
-              if not value:raise RuntimeError('Missing required GitHub repository secret: '+source)
-              api.add_space_secret('Downio/vuln-masterhub',target,value)
-          api.add_space_variable('Downio/vuln-masterhub','PORTAL_BASE_URL','https://downio-vuln-masterhub.hf.space')
-          api.add_space_variable('Downio/vuln-masterhub','PORTAL_REQUIRE_DATABASE','1')
           PY
       - name: Upload runtime via short-lived repository token
         run: hf upload Downio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"
