@@ -25,7 +25,7 @@ if __name__=='__main__':
     import uvicorn
     from web.portal_gradio import create_app
     search=None
-    if os.environ.get('SPACES_ZERO_GPU') == 'true':
+    if os.environ.get('SPACES_ZERO_GPU','').lower() in ('1','t','true'):
         # This is real query inference, reached only through authenticated MCP.
         # Keep CUDA placement at startup as required by ZeroGPU's emulation.
         import spaces
