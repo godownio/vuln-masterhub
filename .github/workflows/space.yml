@@ -57,6 +57,8 @@ jobs:
           from huggingface_hub import HfApi
           token=subprocess.check_output(['hf','auth','token'],text=True).strip()
           api=HfApi(token=token)
+          print('Token metadata:',{'length':len(token),'single_line':'\n' not in token},flush=True)
+          print('Repository access:',api.space_info('Downio/vuln-masterhub').id,flush=True)
           names={'CLOUD_GITHUB_CLIENT_ID':'GITHUB_CLIENT_ID','CLOUD_GITHUB_CLIENT_SECRET':'GITHUB_CLIENT_SECRET','CLOUD_SESSION_SECRET':'PORTAL_SESSION_SECRET'}
           for source,target in names.items():
               value=os.environ[source]
