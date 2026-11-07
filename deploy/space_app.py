@@ -47,4 +47,8 @@ if __name__=='__main__':
                 return encode_query(text)
 
         search=KnowledgeSearch(cfg,CloudQueryEmbedder())
+        # Gradio's mount API does not call Blocks.launch, where spaces normally
+        # packs CUDA tensors and registers its decorated functions on startup.
+        from spaces.zero import startup as start_zero_gpu
+        start_zero_gpu()
     uvicorn.run(create_app(search=search),host='0.0.0.0',port=7860,access_log=False,proxy_headers=False)
