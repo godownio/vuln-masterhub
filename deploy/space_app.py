@@ -1,6 +1,9 @@
 """Hugging Face Gradio SDK entry point; no credentials belong in this file."""
 import os
 import sqlite3
+import gzip
+import hashlib
+import json
 from pathlib import Path
 
 os.environ.setdefault('PORTAL_REQUIRE_DATABASE','1')
@@ -15,10 +18,29 @@ if os.environ.get('SPACE_HOST'):
 if os.environ.get('SPACE_SIGNING_SECRET'):
     os.environ.setdefault('PORTAL_SESSION_SECRET',os.environ['SPACE_SIGNING_SECRET'])
 
+def restore_release_databases(root):
+    # Compressed release databases avoid storing a second large raw revision.
+    manifest_path=root/'release-manifest.json'
+    manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else {}
+    for name in ('kb.sqlite','portal-vectors.sqlite'):
+        packed=root/'data'/(name+'.gz')
+        if packed.exists():
+            target=root/'data'/name;temporary=target.with_suffix('.unpacking')
+            digest=hashlib.sha256()
+            with gzip.open(packed,'rb') as source,temporary.open('wb') as output:
+                while chunk:=source.read(1024*1024):
+                    digest.update(chunk);output.write(chunk)
+            expected=manifest.get('files',{}).get('data/'+name)
+            if not expected or digest.hexdigest()!=expected:
+                temporary.unlink()
+                raise RuntimeError('Release database checksum mismatch: '+name)
+            temporary.replace(target)
+
 if __name__=='__main__':
     if not os.environ.get('PORTAL_SESSION_SECRET'):
         raise RuntimeError('Configure a persistent PORTAL_SESSION_SECRET in Space Secrets')
     root=Path(__file__).resolve().parent
+    restore_release_databases(root)
     with sqlite3.connect(root/'data/kb.sqlite') as db:
         for cid,path,filename in db.execute('SELECT id,path,filename FROM cards').fetchall():
             db.execute('UPDATE cards SET file_path=? WHERE id=?',(str(root/'knowledge'/path/filename),cid))

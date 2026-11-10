@@ -94,6 +94,23 @@ jobs:
                   manifest['files']['hugo-site/public/'+file.relative_to(source).as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
           path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
           PY
+      - name: Compress verified release databases
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import gzip,hashlib,json
+          root=Path('runtime');path=root/'release-manifest.json'
+          manifest=json.loads(path.read_text())
+          for name in ('kb.sqlite','portal-vectors.sqlite'):
+              source=root/'data'/name
+              payload=source.read_bytes()
+              assert hashlib.sha256(payload).hexdigest()==manifest['files']['data/'+name]
+              packed=source.with_name(name+'.gz')
+              packed.write_bytes(gzip.compress(payload,compresslevel=6,mtime=0))
+              manifest['files']['data/'+name+'.gz']=hashlib.sha256(packed.read_bytes()).hexdigest()
+              source.unlink()
+          path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          PY
       - name: Upload runtime via short-lived repository token
         run: hf upload godownio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"
       - name: Check Space runtime status
