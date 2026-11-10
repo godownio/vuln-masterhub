@@ -23,9 +23,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T19:00:09+08:00'
+  notes: 已对照原文第21关代码与图01核对：Shop.buy 两次调用 _buyer.price()（第一次 >= price 门槛、置 isSold=true、第二次写入 price），攻击合约按 shop.isSold() 返回 100/0 的 exp 与原文一致；卡正确指出根因是对外部报价的两次调用/TOCTOU 而非 view 写状态。原文 pragma ^0.8.0 属关卡合约语言版本，百科链上 CTF 卡惯例未设 affected_versions；dedup 候选 array-underflow/delegatecall-slot0/TOCTOU-agent 等均为不同链（new）；dup-scan 无涉及本卡 pair。未执行 PoC。
 ---
 
 ## 一句话结论

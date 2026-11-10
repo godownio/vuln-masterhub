@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: low
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:53:39+08:00'
+  notes: 已对照原文与全部25张图核对：DialogBoxParamW 断点取第4参数 DialogFunc、Resource Hacker 对话框 ID 0x2C=44、EDIT 控件 ID 0x30A/0x30B/0x66、GetDlgItem 条件断点 [esp+8]==0x30A、命中后 GetWindowTextA(hWnd,buf,0x7FF)、点击确定才触发读取、GetWindowTextW 显示期噪声干扰、全局内存搜索+硬件断点的辅助判断，均与原文及图01-02、09一致。原文为逆向调试方法，无 CVE/组件版本，affected_versions 保持 null。dedup：唯一 exact 为自身；与同文 WinHex Keygen 卡为前后衔接关系，Qt 注册码断点/IDA 条件断点等候选为不同工具/场景；dup-scan 无本篇 pair。未验证点：未按原文环境复现调试过程。
 url: /docs/code-analysis/dynamic/debugging/code-analysis-dynamic-debugging-delphi-dialog-getdlgitem-windowtext-locate/
 draft: false
 kb_aliases:

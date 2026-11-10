@@ -30,6 +30,7 @@
 | [DLG 梯度泄露：LBFGS 反演单样本训练图 + 末层偏置梯度 argmin 还原标签](ai-security-model-extraction-dlg-gradient-leakage-lbfgs.md) | verified | high | 2026-11-06 |
 | [加密推理块跨会话跨模型重放：弱模型成为解密预言机还原隐藏思维链](ai-security-model-extraction-encrypted-reasoning-replay-cot-theft.md) | verified | high | 2026-11-05 |
 | [多探针置信度属性推断：同一敏感属性多问句取概率、规则加权与冲突温度锐化，从 LLM 输出还原吸烟等隐私属性](ai-security-model-extraction-multi-probe-attribute-inference.md) | verified | medium | 2026-11-06 |
+| [大模型训练数据逐字提取：top-n/衰减温度/互联网前缀采样 + 六种困惑度指标排序 + 检索验证（GPT-2 复现）](ai-security-model-extraction-training-data-verbatim-extraction-perplexity-ranking.md) | verified | medium | 2026-11-08 |
 | [模型权重水印提取：C2PA/JUMBF 元数据取 seed + torch.randn 同步去噪 + 通道投票还原 7×7 数字](ai-security-model-extraction-weight-watermark-c2pa-seed-denoise.md) | verified | high | 2026-11-06 |
 | [置信度特征成员推理：NLL/entropy/margin 阈值扫描 + 影子模型 MLP 判定样本是否在训练集](ai-security-model-extraction-confidence-features-membership-inference.md) | verified | medium | 2026-11-06 |
 | [联邦学习梯度反演：可控参数令 grad_W/grad_b = 输入，仿射校准 + 按列中位数抗噪](ai-security-model-extraction-federated-gradient-inversion.md) | verified | high | 2026-11-06 |

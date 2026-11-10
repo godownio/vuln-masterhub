@@ -23,9 +23,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T16:00:44+08:00'
-  notes: 已对照原文与46张图核对：client.secret两次赋值、gopaque 64位hex共享密钥、内存dmp扫描与transformers试解、HTTP/H2C/SMB/TCP/UDP及多种transformers组合解密截图一致；HTTPS需TLS密钥的边界也已注明，未复跑脚本
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:33:28+08:00'
+  notes: 重试核验：已对照 content.md 与 46 个图片文件（正文引用 47 处，缺 12.png）核对；client.secret 两次赋值、gopaque 64 位 hex SharedSecret、内存 dmp 正则扫描与 transformers 试解、HTTP/H2C/SMB/TCP/UDP 及 aes/base64/hex/gob/rc4/xor 组合解密截图一致；已修正卡片中对字符串化方式的表述（实际为 opaque.go 的 SharedSecret.String()，fmt.Sprintf 仅见于文章测试脚本）；HTTPS 需 TLS 密钥边界已注明；未复跑脚本
 url: /docs/defense/forensics/defense-forensics-merlin-agent-opaque-memory-secret-traffic-decrypt/
 draft: false
 kb_aliases:
@@ -44,7 +44,7 @@ Merlin Agent 在 OPAQUE 身份认证通过后，把协商出的共享密钥以 6
 ## 原理
 
 - **两阶段密钥**：Merlin Agent 上线时先用样本配置里的 `psk` 派生预共享密钥（`SHA256(psk)`）加密身份认证流量；认证使用 OPAQUE 协议（项目依赖 `cretz/gopaque`），协商成功后得到新的共享密钥，后续正常通信改用新密钥。只拿到 pcap 无法直接解出后者，必须另找密钥来源。
-- **为什么内存里有可匹配特征**：Merlin 项目把 OPAQUE 协商后的 `SharedSecret` 通过 `fmt.Sprintf("%+v", ...)` 转成字符串赋给 `client.secret`；gopaque/kyber 的标量字符串表现为 64 个十六进制字符（文章按“Ed25519 签名长度固定 64 字节”解释其长度固定，脚本实测 `len` 为 64）。因此进程内存中会出现连续的 `[0-9a-fA-F]{64}` 字符串，且同一密钥可能因字符串化/副本出现多次。
+- **为什么内存里有可匹配特征**：Merlin 项目在 `authenticators/opaque/opaque.go` 用 `SharedSecret.String()` 把 OPAQUE 协商后的密钥转成字符串（`return []byte(a.opaque.Kex.SharedSecret.String())`），再在 `http.go` 赋给 `client.secret`（文章的验证脚本用 `fmt.Sprintf("%+v", ...)` 打印 SharedSecret）；gopaque/kyber 的标量字符串表现为 64 个十六进制字符（文章按“Ed25519 签名长度固定 64 字节”解释其长度固定，脚本实测 `len` 为 64）。因此进程内存中会出现连续的 `[0-9a-fA-F]{64}` 字符串，且同一密钥可能因字符串化/副本出现多次。
 - **候选筛选的 oracle**：内存里 64 位 hex 串很多，不能凭外观判断。Merlin 的 `transformers` 链（如默认 `jwe,gob-base`）按配置顺序逐层 `Deconstruct`，只有正确密钥才能解出 `merlin-message` 的 `Base` 结构；脚本以 `Base.ID != 00000000-0000-0000-0000-000000000000` 作为命中判据，命中即锁定密钥。
 - **transformers 链**：Merlin 支持 `aes`、`base64-byte`/`base64-string`、`gob-base`/`gob-string`、`hex-byte`/`hex-string`、`jwe`、`rc4`、`xor` 等组合；解密必须按样本配置的相同顺序应用。默认 `jwe,gob-base` 的载荷通常以 `eyJhbGciOiJQQkVTMi1IUzUxMitBMjU2S1ci...` 开头（JWE 头）。
 - **适用范围**：文章的验证覆盖 HTTP、H2C 上线通信与 SMB、TCP、UDP 跳板通信，以及 `aes,gob-base`、`base64-string,gob-base`、`hex-byte,gob-base`、`hex-string,gob-base`、`gob-string,gob-base`、`rc4,gob-base`、`xor,gob-base` 等组合，均能用同一方法解密。前提是拿到未加密传输的载荷（HTTP/H2C）或在 TLS 层之外提取载荷；HTTPS 流量需先取得 TLS 会话密钥。

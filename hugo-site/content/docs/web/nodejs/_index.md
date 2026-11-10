@@ -33,10 +33,16 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Bun 1.1.8 Shell 模板命令注入：$.escape 漏转义 tab/反引号/< + 重定向解析 bug 绕过引号](web-nodejs-bun-shell-escape-redirect-command-injection/) | verified | high | 2026-11-08 |
+| [Calibre 转换器 outputType 文件名注入：../ 任意文件写 + 777/软链接绕过 fs.protected_symlinks 写 neil authorized_keys](web-nodejs-calibre-outputtype-path-traversal-symlink-ssh-key/) | verified | medium | 2026-11-08 |
 | [ChanCMS ≤3.3.2 采集接口 new Function 代码注入：parseData 直接作为函数体执行](web-nodejs-chancms-gather-new-function-code-injection/) | verified | high | 2026-11-05 |
 | [Dokploy v0.26.6 certificates.create：certificatePath 路径穿越以 root 写 chain.crt](web-nodejs-dokploy-certificate-path-traversal-file-write/) | verified | high | 2026-11-05 |
 | [Dokploy v0.26.6 Compose appName 存储型命令注入：TAB 绕过 cleanAppName，stop 时 docker stack rm 执行](web-nodejs-dokploy-compose-appname-stored-command-injection/) | verified | high | 2026-11-05 |
 | [Dokploy v0.26.6 destination.testConnection：accessKey 闭合双引号注入 rclone 命令执行](web-nodejs-dokploy-destination-testconnection-rclone-command-injection/) | verified | high | 2026-11-05 |
+| [Express View 按扩展名 require 任意模块：rename 穿越写 node_modules/<ext>/index.js 触发 require 执行（CISCN ezjs）](web-nodejs-express-view-ext-require-node-modules-rce/) | verified | high | 2026-11-08 |
+| [gray-matter 的 JS front-matter 引擎把用户可控字符串当 JavaScript 求值导致 RCE](web-nodejs-gray-matter-js-frontmatter-rce/) | verified | high | 2026-11-08 |
+| [ioredis zadd 数组参数扁平化注入：一个 username 写入多个排行榜成员与任意分数](web-nodejs-ioredis-zadd-array-argument-injection/) | verified | high | 2026-11-07 |
+| [JS 正则关键字黑名单绕过：拼接/模板字符串/十六进制/Unicode/base64/fromCharCode 运行时构造被禁字符串](web-nodejs-js-keyword-regex-string-construction-bypass/) | verified | high | 2026-11-09 |
 | [JS 表达式黑名单绕过：字符串拼接 constructor 取 globalThis，读 process.env 密钥](web-nodejs-expression-blacklist-string-concat-process-env/) | verified | high | 2026-11-06 |
 | [jsPDF Node.js nodeReadFile 任意文件读取：loadFile/addImage/html/addFont 路径直入 fs（CVE-2025-68428）](web-nodejs-jspdf-node-readfile-arbitrary-file-read/) | verified | high | 2026-11-05 |
 | [MongoDB 嵌套对象注入：可控 JSON 的 $regex 进入 findOne 做前缀盲注](web-nodejs-mongodb-json-operator-injection-prefix-oracle/) | verified | high | 2026-11-06 |
@@ -56,11 +62,14 @@ weight: 1
 | [n8n 表达式字段 vm2 沙箱逃逸：process.mainModule.require 执行系统命令（CVE-2025-68613）](web-nodejs-n8n-expression-sandbox-escape-rce/) | verified | high | 2026-11-05 |
 | [n8n 表达式沙箱补丁绕过：对象解构计算属性键欺骗 AST，原型链取 Function 构造器执行任意 JS（CVE-2026-25049 变体）](web-nodejs-n8n-object-destructuring-computed-key-ast-bypass/) | verified | high | 2026-11-06 |
 | [n8n 表达式解构赋值沙箱逃逸：CVE-2026-25049 从工作流创建到 child_process RCE](web-nodejs-n8n-expression-destructuring-constructor-rce-cve-2026-25049/) | verified | high | 2026-11-06 |
+| [Next.js Server Actions 以 Host 头拼接内部请求：改 Host 指向攻击者后 302 跳内网，实现带 Next-Action 头的请求转发 SSRF（CVE-2024-34351）](web-nodejs-nextjs-server-action-host-header-ssrf/) | verified | high | 2026-11-08 |
 | [Next.js 中间件认证绕过（CVE-2025-29927）：伪造 x-middleware-subrequest 路径链跳过 middleware 访问 /admin](web-nodejs-nextjs-middleware-subrequest-auth-bypass-cve-2025-29927/) | verified | high | 2026-11-07 |
 | [NocoBase 未授权 RCE 链：gateway 路径穿越读 JWT 密钥 + public-forms 伪造 Token 绕过认证/ACL + workflow new Function 执行](web-nodejs-nocobase-public-forms-path-traversal-jwt-workflow-rce/) | verified | low | 2026-11-05 |
 | [Node-RED 编辑器未授权访问：inject + exec 节点执行系统命令（CNVD-2018-19316）](web-nodejs-node-red-unauth-editor-inject-exec-rce/) | verified | high | 2026-11-07 |
 | [Node.js eval 接入字符白名单：允许 JSFuck 字符集即等于任意代码执行](web-nodejs-eval-jsfuck-char-whitelist-rce/) | verified | high | 2026-11-05 |
+| [Node.js fs.readFile 过滤绝对路径与 ..：借 .config/bin/process_informations → /proc 软链接读 /proc/self/root 下任意文件](web-nodejs-fs-readfile-proc-symlink-filter-bypass/) | verified | high | 2026-11-08 |
 | [Node.js HTTP Server.prototype.emit 劫持 + Accept 头路由 + AES 通道内存马/文件马](web-nodejs-http-server-emit-hijack-header-aes-memshell/) | verified | medium | 2026-11-06 |
+| [Node.js 命令执行 WAF 绕过：exec/execSync 关键字被禁时改用 spawn/spawnSync 等价 API 执行同一命令](web-nodejs-child-process-exec-keyword-waf-spawn-bypass/) | verified | high | 2026-11-09 |
 | [Node.js 递归 merge 过滤 __proto__ 仍可 mass assignment：/changepassword 注入 isAdmin 提权并链到 vm2 逃逸](web-nodejs-merge-proto-filter-mass-assignment-isadmin/) | verified | high | 2026-11-06 |
 | [Node.js/Express 内存马：劫持 server._events.request 植入 HTTP 命令通道](web-nodejs-express-request-listener-memshell/) | verified | high | 2026-11-05 |
 | [OpenCode <1.1.10 url 参数加载会话 → Markdown HTML XSS → 本地 pty API 任意命令执行（CVE-2026-22813）](web-nodejs-opencode-ai-url-param-xss-local-pty-rce/) | verified | high | 2026-11-06 |
@@ -72,10 +81,12 @@ weight: 1
 | [PostCSS sourceMappingURL 注释任意文件读取与异常前缀泄露（CVE-2026-45623）](web-nodejs-postcss-sourcemappingurl-arbitrary-file-read/) | verified | high | 2026-11-05 |
 | [React Native CLI Metro /open-url 端点命令注入 RCE（CVE-2025-11953）](web-nodejs-react-native-metro-open-url-command-injection/) | verified | medium | 2026-11-05 |
 | [React Router @react-router/node createFileSessionStorage 未配置 secrets：会话 id 篡改经 getFile 路径穿越任意文件写入（CVE-2025-61686）](web-nodejs-react-router-file-session-id-traversal-write/) | verified | high | 2026-11-05 |
+| [Sequelize findAll(req.query) 查询选项注入：include/on 越权读取被踢成员的 secret](web-nodejs-sequelize-findall-query-options-include-on-injection/) | verified | high | 2026-11-07 |
 | [Strapi 密码重置 NoSQL 注入：code 传 {"$gt":0} 重置管理员密码并获取 JWT](web-nodejs-strapi-password-reset-nosql-injection/) | verified | high | 2026-11-05 |
 | [Strapi 管理员插件安装命令注入：execa 拼接 plugin 参数导致 RCE（CVE-2019-19609）](web-nodejs-strapi-plugin-install-command-injection/) | verified | high | 2026-11-05 |
 | [Vite 开发模式源码泄露：/src 直读 + /@fs 读服务器源码，硬编码 JWT secret 与 flag](web-nodejs-vite-dev-server-source-leak-fs/) | verified | high | 2026-11-06 |
 | [vm2 沙箱内 Buffer slab 未初始化内存泄漏：布尔 oracle 逐位提取 JWT secret](web-nodejs-vm2-buffer-slab-jwt-secret-leak/) | verified | high | 2026-11-06 |
+| [YApi <=1.19.2 接口 mock 脚本 RCE：注册建项目写脚本，访问接口经 vm 逃逸执行命令](web-nodejs-yapi-mock-script-vm-rce/) | verified | high | 2026-11-09 |
 | [YApi v1.10.2 未授权 RCE：匿名注册 + project.copy 脚本注入 + 原生 vm 沙箱逃逸](web-nodejs-yapi-project-copy-script-vm-unauth-rce/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

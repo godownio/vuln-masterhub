@@ -26,9 +26,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T19:00:16+08:00'
+  notes: 已对照原文第24关代码与图02/03/04核对：PuzzleProxy/PuzzleWallet 槽位表（slot0 pendingAdmin/owner、slot1 admin/maxBalance、slot2 whitelisted、slot3 balances）、proposeNewAdmin→owner、addToWhitelist、[deposit(), multicall([deposit()])] 嵌套复用 msg.value、execute 提取 0.002 ETH（图03 getBalance=0.001）、setMaxBalance 写 slot1 成为 admin 均与原文/exp 一致。dup-scan 与 18456 的 delegatecall-library-slot0 卡 pair 判 related（漏洞入口与 sink 不同），均保留；dedup 候选 Safe slot0 卡亦 related（不同链）。未执行 PoC。
 ---
 
 ## 一句话结论

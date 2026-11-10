@@ -34,7 +34,10 @@ BinaryFormatter、LosFormatter、ObjectStateFormatter 等。
 | [ASP.NET ViewStateUserKey/Anti-XSRF 防护绕过：选择未继承母版页的 Download.aspx 伪造 ViewState](web-dotnet-deser-viewstate-userkey-masterpage-bypass/) | verified | high | 2026-11-06 |
 | [CVE-2019-18935 定制 WAF 绕过：参数源迁移、密文等价变异与加密 metadata](web-dotnet-deser-telerik-cve-2019-18935-waf-bypass/) | verified | high | 2026-11-05 |
 | [ERP OpenServerDialog 任意类实例化叠加 BinaryFormatter 反序列化 RCE](web-dotnet-deser-erp-openserverdialog-binaryformatter-rce/) | verified | high | 2026-11-04 |
+| [JsonSerializationBinder 白/黑名单绕过：产品内置 PowerShellLauncher.Run 任意方法调用或 WindowsIdentity 绕过 IsSecurityCritical（CVE-2024-23478）](web-dotnet-deser-json-net-serializationbinder-whitelist-bypass/) | verified | high | 2026-11-10 |
 | [SharePoint ToolShell（CVE-2025-53770）：SignOut Referer 认证绕过 + ExcelDataSet 反序列化 RCE](web-dotnet-deser-sharepoint-toolshell-cve-2025-53770/) | verified | medium | 2026-11-06 |
+| [SolarWinds Access Rights Manager AnalyzeActionController Json.NET 反序列化：FromJson + IFormTemplate 泛型值字段注入 ysoserial payload](web-dotnet-deser-solarwinds-arm-iformtemplate-typenamehandling/) | verified | high | 2026-11-10 |
+| [Telerik Reporting 报表 XML 反序列化 RCE（CVE-2024-1800/1801/1856）：旧版 Type 属性二次 XmlSerializer、新版 ReportXmlSerializer 按标签实例化，均可接 ExpandedWrapper/XamlReader gadget](web-dotnet-deser-telerik-reporting-xmlserializer-type-expandedwrapper-xamlreader/) | verified | high | 2026-11-09 |
 | [Telerik.Web.UI CVE-2019-18935：外部 Type 驱动 JavaScriptSerializer 加载混合模式 DLL](web-dotnet-deser-telerik-cve-2019-18935-assemblyinstaller/) | verified | high | 2026-11-05 |
 | [U9 ERP DataTransfer 导入包无 Binder 的 BinaryFormatter 反序列化 RCE](web-dotnet-deser-u9-datatransfer-binaryformatter-rce/) | verified | high | 2026-11-05 |
 | [已知 MachineKey 伪造 ASP.NET ViewState：ysoserial.net TextFormattingRunProperties 反序列化 RCE](web-dotnet-deser-viewstate-machinekey-textformattingrunproperties/) | verified | high | 2026-11-05 |

@@ -33,18 +33,25 @@ Hessian 反序列化与利用链。
 |---|---|---|---|
 | [Apache Seata 8091 Netty RPC Hessian 反序列化入口：codec 22 直接反序列化请求体](web-java-deser-hessian-seata-8091-rpc-codec22/) | verified | medium | 2026-11-05 |
 | [aspectjweaver LazyMethodGen.toString 链：经 AjAttribute 读取走到 ObjectInputStream 二次反序列化](web-java-deser-hessian-aspectj-lazymethodgen-second-order/) | verified | high | 2026-11-05 |
+| [Dubbo 2.7.6–2.7.9 Hessian 反序列化补丁绕过：方法参数类型非空使 pts≠EMPTY_CLASS_ARRAY，isGenericCall/isEcho 白名单检查被跳过](web-java-deser-hessian-dubbo-pts-emptyclassarray-filter-bypass/) | verified | medium | 2026-11-09 |
+| [Dubbo provider Hessian2 反序列化入口（<=2.7.6）：DecodeableRpcInvocation 解码 RPC 参数触发 HashMap→EqualsBean/ToStringBean→JdbcRowSetImpl JNDI RCE](web-java-deser-hessian-dubbo-provider-argument-deserialization-rce/) | verified | high | 2026-11-09 |
 | [Hessian + ConcurrentHashMap 交叉 MapEntry 触发 ServerManagerImpl 执行命令](web-java-deser-hessian-concurrenthashmap-servermanager-exec/) | verified | high | 2026-11-05 |
 | [Hessian Groovy GString 链：hashCode → toString → Closure.call 命令执行](web-java-deser-hessian-groovy-gstring-chain/) | verified | high | 2026-11-05 |
 | [Hessian JDK-only 链：UIDefaults/ProxyLazyValue 触发任意静态方法或构造](web-java-deser-hessian-jdk-only-proxylazyvalue-chain/) | verified | high | 2026-11-05 |
+| [Hessian 不出网两阶段链：ProxyLazyValue 调 DumpBytecode 把 class 写入 tmpdir，再用 keytool Main 以 -providerclass 加载执行](web-java-deser-hessian-dumpbytecode-keytool-write-class-load-provider/) | verified | high | 2026-11-10 |
 | [Hessian 出网 JNDI 链：Spring、Rome、Resin、XBean](web-java-deser-hessian-jndi-outbound-chains/) | verified | high | 2026-11-05 |
 | [Hessian 动态代理触发 Spring InvocationHandler 链到 JNDI：ObjectFactoryDelegatingInvocationHandler→TargetBeanObjectFactory→SimpleJndiBeanFactory](web-java-deser-hessian-spring-proxy-invocationhandler-jndi/) | verified | medium | 2026-11-06 |
 | [Hessian 反序列化入口：MapDeserializer 的 map.put 触发 hashCode/equals/compareTo](web-java-deser-hessian-deserialization-entry-map-put/) | verified | high | 2026-11-05 |
+| [Hessian 反序列化通防：匿名 SerializerFactory 重写 getDeserializer(String) 按类名黑名单拦截（对比 resolveClass 原生 hook）](hessian-deserialization-serializerfactory-getdeserializer-hook-blacklist/) | verified | high | 2026-11-08 |
 | [Hessian 反序列化黑名单绕过：UTF-8 Overlong Encoding 隐藏类名](web-java-deser-hessian-utf8-overlong-encoding-bypass/) | verified | high | 2026-11-05 |
 | [Hessian 链用 SignedObject 二次反序列化绕过 transient 限制加载 TemplatesImpl](web-java-deser-hessian-signedobject-second-order-templates/) | verified | high | 2026-11-05 |
 | [Hessian2 TreeMap + CustomProxy 触发 sun.tracing ProviderSkeleton/DTraceProbe 反射调用：FileCredentialsCache.exec RCE](web-java-deser-hessian-treemap-customproxy-dtraceprobe-exec/) | verified | high | 2026-11-06 |
 | [Hessian2 前置 C 字节制造协议错误，在 expect 拼接中隐式调用 toString](web-java-deser-hessian2-protocol-error-tostring-trigger/) | verified | high | 2026-11-05 |
+| [Hessian2 类型化 Map 打 Hutool JSONObject：put→JSONUtil.wrap 对 JDK 类调 toString，AtomicReference 适配 POJONode 形成任意 getter 触发](web-java-deser-hessian-typed-map-jsonobject-wrap-tostring/) | verified | high | 2026-11-10 |
 | [HessianProxyFactory 作为 JNDI ObjectFactory：lookup 后调用方法触发二次 Hessian 反序列化](web-java-deser-hessian-proxyfactory-jndi-deserialization/) | verified | medium | 2026-11-05 |
+| [HessianServlet 实战入口：手搓 Hessian 调用在方法参数/Header 处触发 readObject](web-java-deser-hessian-hessianservlet-argument-header-entry/) | verified | high | 2026-11-07 |
 | [JDK 21/11.0.29 JNDI trustSerialData 绕过：Reference-only + HessianProxyFactory + POJONode/UnixPrintService 命令执行](web-java-deser-hessian-jndi-reference-only-unixprintservice/) | verified | high | 2026-11-06 |
+| [Nacos raft 请求触发 Hessian 反序列化：AbstractProcessor#handleRequest→JRaftServer#applyOperation→InstanceMetadataProcessor#onApply](web-java-deser-hessian-nacos-raft-abstractprocessor-entry/) | verified | medium | 2026-11-10 |
 | [XXL-Job /api Hessian 反序列化实战 WAF 绕过：//api 双斜杠 + javachain 脏数据/超长 UTF-8 混淆](web-java-deser-hessian-xxl-job-api-waf-bypass-dirty-data/) | verified | high | 2026-11-07 |
 | [XXL-Job Admin /api 前台未授权 Hessian 反序列化入口](web-java-deser-hessian-xxl-job-admin-api-entry/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

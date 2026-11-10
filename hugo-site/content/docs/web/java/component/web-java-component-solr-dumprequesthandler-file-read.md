@@ -20,9 +20,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V254
-  verified_at: '2026-11-07T16:03:21+08:00'
-  notes: 已对照原文与16张图片逐项核对：请求路径\debug\dump;C:\Program Files\Git\admin\info\key、stream.url=file;\\flag.txt、SolrAuth头、DumpRequestHandler响应与文章一致；原文未给出CVE-2024-45216官方受影响版本区间，Solr 8.2.0仅为靶场环境版本，卡片已注明不据此认定官方范围
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:42:29+08:00'
+  notes: '已对照原文与16张图核对：POST /solr/cslab/debug/dump:/admin/info/key?param=ContentStreams&stream.url=file:///flag.txt、SolrAuth: test、响应 handler=org.apache.solr.handler.DumpRequestHandler 且 streams[].stream 回显 flag，均与原文逐字一致；core 状态显示 C:\solr-8.2.0。原文未给 CVE-2024-45216 官方影响区间，8.2.0 仅为靶场环境版本，卡中已注明不据此认定官方受影响范围。dedup：唯一 exact 为自身；同目标 Velocity 卡与 CVE-2017-12629 卡机制不同；dup-scan 无本篇 pair。未验证点：未复测。'
 url: /docs/web/java/component/web-java-component-solr-dumprequesthandler-file-read/
 draft: false
 kb_aliases:

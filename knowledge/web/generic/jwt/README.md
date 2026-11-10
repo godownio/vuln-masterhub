@@ -26,6 +26,7 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [CVE-2024-43441 Apache HugeGraph 硬编码 HS256 密钥：伪造 user_name/user_id 令牌冒充 admin（user_id=-30）读取 /auth/users](web-generic-jwt-hugegraph-hardcoded-secret-token-forgery.md) | verified | high | 2026-11-08 |
 | [HS256 弱密钥字典爆破后签发任意 JWT](web-generic-jwt-weak-hmac-key-bruteforce.md) | verified | high | 2026-11-05 |
 | [JWT jku 头劫持：服务端从攻击者 JWKS 取公钥验签](web-generic-jwt-jku-header-hijack.md) | verified | high | 2026-11-05 |
 | [JWT jwk 头注入：服务端信任令牌内嵌公钥，攻击者自带密钥伪造管理员](web-generic-jwt-jwk-header-injection.md) | verified | high | 2026-11-05 |
@@ -33,6 +34,9 @@
 | [JWT kid 绝对路径读取源码取硬编码密钥：黑名单只挡打印不挡加载](web-generic-jwt-kid-absolute-path-source-key-disclosure.md) | verified | high | 2026-11-06 |
 | [JWT Payload 明文携带密码哈希：解码后离线破解并直接登录](web-generic-jwt-payload-password-hash-leak.md) | verified | high | 2026-11-05 |
 | [JWT 以用户密码作 HS256 密钥：枚举 userId 后离线/在线爆破口令接管教师账号](web-generic-jwt-password-as-hmac-key-bruteforce.md) | verified | medium | 2026-11-05 |
+| [JWT 自写校验的解析差异：验签用倒数第二段、返回用第二段，四段 token 伪造特权声明](web-generic-jwt-multi-segment-verify-payload-mismatch.md) | verified | high | 2026-11-08 |
+| [lin-cms-springboot 固定 token-secret + identity 取数据库自增 id：把 identity 改成 1 自签 access token 直取管理员接口（CVE-2022-32430）](web-generic-jwt-lin-cms-fixed-secret-identity-claim-privilege-escalation.md) | verified | high | 2026-11-08 |
+| [lin-cms-springboot 多实例共用同一 token-secret：在一个站点登录拿到的 Bearer token 可直接访问另一站点的管理接口](web-generic-jwt-lin-cms-shared-secret-cross-instance-token-reuse.md) | verified | high | 2026-11-08 |
 | [NocoDB JWT 密钥明文存 nc_store + is_api_token 旁路 token_version：伪造 super-admin Token](web-generic-jwt-nocodb-store-secret-is-api-token-forgery.md) | verified | high | 2026-11-05 |
 | [PyJWT 变异 PEM 绕过 HMAC 公钥防护：CR/缩进/折叠公钥当对称密钥伪造 JWT](web-generic-jwt-pyjwt-mutated-pem-hmac-guard-bypass.md) | verified | high | 2026-11-05 |
 | [RS256→HS256 算法混淆：用公钥当 HMAC 密钥伪造 JWT](web-generic-jwt-rs256-hs256-confusion.md) | verified | high | 2026-11-05 |
@@ -43,6 +47,7 @@
 | [服务端完全不验证 JWT 签名时直接篡改 sub/role 提权](web-generic-jwt-unverified-signature-payload-tamper.md) | verified | high | 2026-11-05 |
 | [服务端接受 alg:none 时无签名伪造 JWT 提权](web-generic-jwt-alg-none-bypass.md) | verified | high | 2026-11-05 |
 | [示例配置硬编码 JWT SECRET_KEY，用公开默认值伪造 admin 令牌](web-generic-jwt-example-config-hardcoded-secret.md) | verified | medium | 2026-11-05 |
+| [自定义令牌把验签公钥放进第 4 段：攻击者自带密钥对自签自验，冒充任意用户（含 admin）](web-generic-token-client-supplied-public-key-forgery.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

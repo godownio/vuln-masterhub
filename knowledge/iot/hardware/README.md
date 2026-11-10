@@ -27,8 +27,12 @@ UART/JTAG/SPI、侧信道与故障注入。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [BES2300 智能音响固件提取：UART ROM Bootloader BE 协议 dump Flash](iot-hardware-bes2300-rom-bootloader-uart-dump.md) | verified | high | 2026-11-06 |
+| [Proxmark3 USB 流量解析：按 PM3a/PM3b 帧格式提取 mf_readblock，按 blockno 还原 M1 卡 64 块数据取 flag](iot-hardware-proxmark3-usb-pcap-mifare-block-recovery.md) | verified | high | 2026-11-07 |
 | [Saleae Logic 分析 .sal 抓包：Async Serial 解码 UART 115200 8N1 还原设备文本](iot-hardware-saleae-logic-uart-decode.md) | verified | high | 2026-11-07 |
+| [Saleae Logic 解析 I2C 键盘：CardKB 地址 0x5F，过滤空报告按字节还原输入密码](iot-hardware-saleae-i2c-cardkb-keyboard-decode.md) | verified | high | 2026-11-07 |
+| [Saleae Logic 解析 SPI 电子墨水屏：Inky pHAT 2.13 寸，按 0x24/0x26 RAM 命令重建 buf_a/buf_b 渲染图像](iot-hardware-saleae-spi-inky-phat-epaper-frame.md) | verified | high | 2026-11-07 |
 | [VHDL 硬件后门识别：固定 16 位 pattern 触发后直接输出密钥](iot-hardware-vhdl-backdoor-pattern-key-output.md) | verified | high | 2026-11-07 |
+| [ZKTeco 生物识别终端 eMMC 拆读取固件：binwalk 定位 rootfs，/etc/shadow 破解 SSH 账号](iot-hardware-zkteco-emmc-dump-binwalk-shadow-ssh.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

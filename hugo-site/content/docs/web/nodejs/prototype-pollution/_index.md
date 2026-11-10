@@ -32,6 +32,7 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [deepMerge 写入原型链既有属性的子键：绕过 __proto__/constructor/prototype 过滤的替代污染路径](web-nodejs-prototype-pollution-inherited-property-subkey/) | verified | high | 2026-11-05 |
+| [JSON body 深合并原型链污染注入 Object.prototype.shellcode：后门把 {}.shellcode 交给 vm2 执行，链上 import() 逃逸 RCE](web-nodejs-prototype-pollution-json-clone-vm2-shellcode-backdoor/) | verified | medium | 2026-11-08 |
 | [lodash 原型链污染（CVE-2019-10744）+ EJS 3.1.6 escapeFunction 注入 RCE](web-nodejs-prototype-pollution-lodash-ejs-escapefunction-rce/) | verified | high | 2026-11-06 |
 | [merge 深合并原型链污染：对象字面量与 JSON.parse 的 __proto__ 差异](web-nodejs-prototype-pollution-merge-json-parse/) | verified | high | 2026-11-05 |
 | [n8n XML/GSuiteAdmin 节点参数原型污染（CVE-2026-33696）：工作流作者注入 __proto__ 并声称升级 RCE](web-nodejs-prototype-pollution-n8n-node-params-object-assign/) | verified | medium | 2026-11-06 |

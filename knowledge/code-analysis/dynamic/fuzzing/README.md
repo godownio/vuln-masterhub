@@ -26,9 +26,16 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [AFL LLVM 插桩运行时：shmat 覆盖率共享内存 + forkserver 管道协议 + persistent/deferred 模式 + SanitizerCoverage trace-pc-guard](code-analysis-dynamic-fuzzing-afl-llvm-runtime-forkserver-persistent-deferred.md) | verified | medium | 2026-11-07 |
 | [AFL 二次开发扩展：POST_LIBRARY 后处理钩子、自定义 havoc 算子与 virgin_bits 可视化](code-analysis-dynamic-fuzzing-afl-post-library-havoc-virgin-map-extension.md) | verified | high | 2026-11-07 |
+| [AFL 首次上手：afl-gcc 插桩跑 stdin 目标、无源码用 -Q，并用面板的 stability/map density/uniq crashes 判断这轮 fuzz 是否有效](code-analysis-dynamic-fuzzing-afl-stdin-qemu-modes-ui-metrics.md) | verified | high | 2026-11-08 |
+| [AFL++ 命令行参数模糊测试：argv-fuzz-inl.h 覆盖 argv、NUL 分隔种子与 afl-clang-fast 静态插桩](code-analysis-dynamic-fuzzing-afl-argv-fuzz-inl-argv-override.md) | verified | high | 2026-11-07 |
+| [AFLGo 定向模糊测试的编译包装与距离生成链：aflgo-clang(-mllvm/-Xclang -load) + gold/LTO .bc + opt -dot-callgraph + distance.py](code-analysis-dynamic-fuzzing-aflgo-clang-wrapper-distance-build-pipeline.md) | verified | medium | 2026-11-07 |
 | [AFLGo 定向模糊测试距离插桩：targets/BBnames 预处理 + CG/CFG Dijkstra 距离 + shm[MAP_SIZE] 累加](code-analysis-dynamic-fuzzing-aflgo-directed-distance-instrumentation.md) | verified | high | 2026-11-07 |
 | [Android JNI 原生库内存安全模糊测试：调用序列捕获 + 自动 C harness + JNIEnv 模拟 + AFL++](code-analysis-dynamic-fuzzing-android-jni-env-emulation-harness.md) | verified | medium | 2026-11-07 |
+| [boofuzz 内置原语的生成策略集合：特殊值表、长串边界扩展、group 组合与 s_update 运行时改字段](code-analysis-dynamic-fuzzing-boofuzz-primitive-generation-strategy-library.md) | verified | medium | 2026-11-09 |
+| [boofuzz 变异粒度：默认一次只变异一个原语，靠 group 与组合变异（max_depth）把覆盖扩展到多字段组合](code-analysis-dynamic-fuzzing-boofuzz-mutation-single-primitive-maxdepth-group.md) | verified | high | 2026-11-09 |
+| [boofuzz 有状态序列模糊测试：用 connect 的 callback 与 session_variables 把上一个请求的响应喂进下一个请求](code-analysis-dynamic-fuzzing-boofuzz-stateful-path-callback-session-variables.md) | verified | high | 2026-11-09 |
 | [C/C++ libFuzzer 实战：LLVMFuzzerTestOneInput harness、Sanitizer 编译、语料字典与 crash 复现最小化](code-analysis-dynamic-fuzzing-libfuzzer-cpp-harness-crash-repro.md) | verified | high | 2026-11-07 |
 | [Go 原生 go test -fuzz 复现 CVE：脆弱 commit 回退、超时隔离无限循环与崩溃输入最小化](code-analysis-dynamic-fuzzing-go-native-fuzz-cve-repro.md) | verified | high | 2026-11-07 |
 | [go-fuzz 覆盖率引导模糊测试工作流：go-fuzz-build 插桩、Fuzz(data []byte) int 接口与 crasher 复现](code-analysis-dynamic-fuzzing-go-fuzz-instrumentation-crasher-workflow.md) | verified | high | 2026-11-07 |

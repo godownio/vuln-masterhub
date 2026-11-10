@@ -27,6 +27,7 @@ Jackson 多态反序列化与 gadget。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Jackson + SignedObject 二次反序列化绕过 resolveClass 黑名单（TemplatesImpl 短链）](web-java-deserialization-jackson-signedobject-getobject-short-chain.md) | verified | high | 2026-11-05 |
+| [Jackson 原生反序列化链：JsonNode/POJONode toString 触发 TemplatesImpl#getOutputProperties 加载字节码 RCE（2.18.0 仍可用）](jackson-native-deserialization-getter-tostring-templates-rce.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

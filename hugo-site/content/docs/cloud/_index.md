@@ -36,7 +36,14 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [AWS EFS 挂载目标安全组全开：用 describe-* 拿到 NFS IP，在受控 EC2 上直接 mount 共享文件系统](cloud-efs-mount-target-open-security-group-nfs-mount/) | verified | high | 2026-11-08 |
+| [DynamoDB 无鉴权：list-tables/scan 明文导出用户口令表，凭据直登 SSH 横向移动](cloud-dynamodb-unauth-scan-credential-ssh-lateral/) | verified | high | 2026-11-08 |
+| [EC2 UserData 持久化：写入 cloud-init 的 scripts-user, always 让脚本每次重启都以 root 执行（后门反弹/公钥/任意命令）](cloud-ec2-userdata-cloud-init-always-persistence/) | verified | high | 2026-11-08 |
+| [EC2 后门入口开路：新建安全组 + authorize-security-group-ingress 0.0.0.0/0，再用 modify-instance-attribute --groups 整体替换实例安全组](cloud-ec2-security-group-full-open-instance-replace/) | verified | high | 2026-11-08 |
+| [S3 兼容端点无鉴权：伪造凭证 awscli 匿名列桶，向映射 Web 根目录的桶上传 PHP 获得 RCE](cloud-s3-unauth-endpoint-php-upload-rce/) | verified | high | 2026-11-08 |
 | [S3 存储桶名称释放后劫持软件更新源与供应链](cloud-s3-released-bucket-name-update-channel-hijack/) | verified | medium | 2026-11-05 |
+| [公共 RDS 快照还原到自建 VPC + 改主密码 + psql 连接读取业务/flag 数据](cloud-public-rds-snapshot-restore-master-password-data-loot/) | verified | high | 2026-11-08 |
+| [公开 EBS 快照（createVolumePermission=all）→ 创建卷挂载 EC2 → 文件系统挖硬编码 AK/SK](cloud-public-ebs-snapshot-volume-mount-credential-loot/) | verified | high | 2026-11-08 |
 | [对象存储 Bucket ACL 配置错误：公共读 ListObject 目录遍历与公共读写 PUT 上传](cloud-object-storage-bucket-acl-misconfig/) | verified | high | 2026-11-05 |
 | [对象存储 Bucket 删除后 CNAME 悬空导致自定义域名接管](cloud-object-storage-dangling-cname-bucket-takeover/) | verified | high | 2026-11-05 |
 | [对象存储公共写 + response-content-type 覆盖：上传 HTML 后强制按 text/html 解析触发存储型 XSS](cloud-object-storage-response-content-type-xss/) | verified | high | 2026-11-05 |

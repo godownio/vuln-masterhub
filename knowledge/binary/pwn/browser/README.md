@@ -30,6 +30,11 @@ JIT、渲染引擎、沙箱与逃逸。
 | [JS 引擎 nvars uint16 回绕：bytecode slot 越界写伪造 JSClass.convert 执行 shellcode](binary-pwn-browser-nvars-uint16-wrap-bytecode-slot-oob-fake-class-convert.md) | verified | high | 2026-11-06 |
 | [V8 CVE-2024-12695：Object.assign 缺 properties 类型检查 + FinalizationRegistry 缺 CHECK，SimpleNumberDictionary 头越界后借 WeakCell 链表写构造 cage AAR/AAW 与 wasm execve](binary-pwn-browser-v8-cve-2024-12695-object-assign-finalization-registry-dictionary-oob-wasm-rce.md) | verified | high | 2026-11-06 |
 | [V8 TurboFan JS→Wasm 延续帧签名漏比较导致类型混淆](binary-pwn-browser-v8-wasm-frame-state-type-confusion.md) | verified | high | 2026-11-04 |
+| [V8 TurboFan ReduceInt32Add 注入 2+2=>5 错误常量折叠 + simplified-lowering 边界检查恒假：JS 数组短距越界泄露 map/properties](binary-pwn-browser-v8-reduceint32add-2plus2eq5-typer-hardening-oob.md) | verified | high | 2026-11-08 |
+| [V8 劫持 Wasm LazyCompile：首次调用前篡改 WasmTrustedInstanceData.jump_table_start，使编译完成后跳入错位 shellcode](binary-pwn-browser-v8-wasm-lazycompile-jump-table-start-control-flow-hijack.md) | verified | high | 2026-11-07 |
+| [V8 新版 elements map 校验下：只改 JSArray 的 length 与 elements.length 撑大越界，绕开 CHECK 得到稳定 OOB 对象数组与 addrof/fakeobj](binary-pwn-browser-v8-oob-length-overwrite-bypass-elements-map-check-addrof-fakeobj.md) | verified | high | 2026-11-08 |
+| [V8 新版 elements map 校验下：新 fake_array 越界改写 JSTypedArray 的 base/external_pointer，控制 data_ptr 实现 AAR/AAW](binary-pwn-browser-v8-fake-array-jstypedarray-dataptr-aar-aaw.md) | verified | high | 2026-11-07 |
+| [V8 沙箱内篡改 BytecodeArray 利用 Ignition Ldar/Star 寄存器索引无边界检查实现栈读写与 ROP 沙箱逃逸](binary-pwn-browser-v8-sandbox-bytecode-ldar-star-stack-rop-escape.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

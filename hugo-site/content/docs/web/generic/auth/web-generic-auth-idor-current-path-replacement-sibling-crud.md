@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:40:30+08:00'
+  notes: 已对照原文与图08核对：current→数字 ID 的 PUT /api/users/1235/profile/email 示例（200 返回 Id 1235）与原文一致；无身份参数补 id 示例、/v3→/v2 老接口、addeval→DeleteEval 兄弟接口（POST /ReportStudent/SLabSource/DeleteEval，EvalID=1069，图08）均与原文一致，原文称猜测删除接口后成功越权。dedup 候选 patient-infocode/face-photo/parameter-graph 等为不同手法（related/new）；dup-scan 与 openid 两段式卡 pair 判 related（不同攻击点，保留）。未执行写/删操作。
 url: /docs/web/generic/auth/web-generic-auth-idor-current-path-replacement-sibling-crud/
 draft: false
 kb_aliases:

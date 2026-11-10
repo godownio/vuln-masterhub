@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: low
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:43:16+08:00'
+  notes: 已对照原文与全部17张图核对：DIE 识别 UPX(3.96)/PE64（图01）、ExeInfoPE EP Section=UPX1（图02）、upx -d（图03）、x64dbg 系统断点/入口 0000000000423D00 PUSH RBX/RSI/RDI/RBP+LEA [41C025]（图04-06）、RSP=000000000062FF08 下硬件访问断点（图07-08）、POP RDI/RSI/RBX+JNE 栈补齐+JMP 1.401500（图09-10）、OEP printf/puts（图11）、Scylla IAT Autosearch/Get Imports/Dump/Fix Dump（图12-13）均与卡片一致。核对中修正两处示例地址：入口改为图05/06 的 0000000000423D00、RSP 改为图07 的 000000000062FF08（原文卡误用 Scylla OEP 0x1400014E0 与错误 RSP）。dedup：与 code-analysis-reverse-unpacking-upx-manual（通用流程概述）为 related 非 duplicate，本卡补充了可执行的栈硬件断点/Scylla 细节，保留两卡；与区段名还原、Unicorn 仿真、DLL 脱壳卡为不同入口，不合并。原文未给受影响版本，affected_versions 未设置。未验证点：未复跑样本脱壳；Scylla 截图 OEP 0x1400014E0 属另一示例样本。
 url: /docs/code-analysis/reverse/unpacking/code-analysis-reverse-unpacking-upx-manual-esp-breakpoint-scylla/
 draft: false
 kb_aliases:
@@ -51,9 +55,9 @@ UPX 压缩壳入口先执行解压 stub（x86 为 `PUSHAD` 保存寄存器、解
 ## 利用步骤
 
 1. 查壳：用 DIE/ExeInfoPE 确认 UPX、位数与入口点；若区段名被改，可先按关联卡恢复后再 `upx -d`，或直接走本手动流程。
-2. x64dbg 打开样本，先停在系统断点；F9 运行到程序入口 `<样本>.OptionalHeader.AddressOfEntryPoint`（如 `00000001400014E0`）。
+2. x64dbg 打开样本，先停在系统断点；F9 运行到程序入口 `<样本>.OptionalHeader.AddressOfEntryPoint`（如 `0000000000423D00`）。
 3. 入口即 UPX stub：x86 找 `PUSHAD`；x64 找连续 `PUSH` 保存寄存器区（如 `PUSH RBX; PUSH RSI; PUSH RDI; PUSH RBP`）及其后对 `[41C025]` 等地址的 `LEA`。
-4. 在 PUSH 序列执行后查看 RSP/ESP（如 `00000000062FF0E8`），在栈窗口/内存窗口对该栈顶地址设置“硬件，访问”断点。
+4. 在 PUSH 序列执行后查看 RSP/ESP（如 `000000000062FF08`），在栈窗口/内存窗口对该栈顶地址设置“硬件，访问”断点。
 5. F9 继续运行；stub 解压过程中会命中该栈地址。命中后 F7/F8 跟随 POP 序列（x64 会经过 `POP RDI; POP RSI; POP RBX` 与 `JNE` 栈补齐循环）。
 6. 单步到 `JMP 1.401500` 一类跳入原代码段的指令，随后看到原程序调用（如 `LEA RCX, ["hello_world"]; CALL <JMP.&printf>; CALL <JMP.&puts>`），此处即 OEP；记录 OEP 地址。
 7. 用 Scylla 附加到进程：IAT Autosearch → Get Imports，删除显示红叉的无效导入项；Dump 转储内存镜像；Fix Dump 选择刚转储的文件，生成修复 IAT 的可执行文件。
@@ -66,8 +70,8 @@ UPX 压缩壳入口先执行解压 stub（x86 为 `PUSHAD` 保存寄存器、解
 upx 1.exe
 
 # x64dbg 手动脱壳（x64 样本）
-# 1) F9 到入口 00000001400014E0，可见 PUSH RBX/RSI/RDI/RBP
-# 2) PUSH 序列后 RSP=00000000062FF0E8，对该栈地址下硬件访问断点
+# 1) F9 到入口 0000000000423D00，可见 PUSH RBX/RSI/RDI/RBP
+# 2) PUSH 序列后 RSP=000000000062FF08，对该栈地址下硬件访问断点
 # 3) F9 命中栈断点，F7/F8 走过 POP 序列与 JNE 栈补齐循环
 # 4) 单步到 JMP 1.401500，进入 printf/puts 调用即 OEP
 # 5) Scylla: IAT Autosearch -> Get Imports -> 删除红叉 -> Dump -> Fix Dump

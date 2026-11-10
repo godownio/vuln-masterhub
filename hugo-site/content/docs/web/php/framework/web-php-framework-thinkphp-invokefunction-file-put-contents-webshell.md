@@ -17,10 +17,13 @@ tags:
 cve: []
 severity: critical
 confidence: high
-status: draft
-affected_versions: ThinkPHP 5.0.15（原文报错页指纹）
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T19:11:43+08:00'
+  notes: 重试核验：已对照 content.md 与 37 张图核对；图18 ThinkPHP V5 欢迎页/V5.0.15、图19 写入后 1.php 回显 test123、图20 2.php 执行 uname 回显 Linux ubuntu、图21 蚁剑连接 9.php 密码 xx；原文 POC s=index/think\app/invokefunction&function=call_user_func_array&vars[0]=file_put_contents&vars[1][0]=../../1.php&vars[1][1]=test123 与三次 urldecode WebShell/两次 forceEncode 编码器均与卡片一致。原 affected_versions 'ThinkPHP 5.0.15（原文报错页指纹）' 仅为目标环境版本、非受影响区间，已按 brief clear。dedup 最高候选 web-php-framework-thinkphp-5x-invokefunction-captcha-rce 为同 invokefunction 链但 sink 为 system/captcha（related 0.9053），本卡为 file_put_contents 落马+蚁剑编码器，非同链。未执行 PoC
 url: /docs/web/php/framework/web-php-framework-thinkphp-invokefunction-file-put-contents-webshell/
 draft: false
 kb_aliases:

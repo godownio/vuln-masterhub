@@ -32,8 +32,9 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [AMM 首个 LP 存款人通胀攻击：捐赠 + sync 抬高 LP 单价，后续存款向下取整被吞（MINIMUM_LIQUIDITY 防御）](blockchain-defi-amm-first-lp-inflation-donation-rounding/) | verified | medium | 2026-11-06 |
-| [DEX 现货兑换价操纵：按池子余额比例反复 swap 抽干一侧储备](blockchain-defi-dex-spot-reserve-swap-drain/) | draft | high | 2026-11-07 |
-| [DexTwo 任意代币兑换：未校验交易对，自建代币 1:1 换走池内全部真币](blockchain-defi-dextwo-arbitrary-token-swap-drain/) | draft | high | 2026-11-07 |
+| [DApp 后端代付 gas 却不校验 to/data：前端 ABI 编码可任意改写，借项目方 relayer 调任意合约的 mint/burn](blockchain-defi-dapp-backend-unvalidated-calldata-arbitrary-call-gas-sponsored/) | verified | medium | 2026-11-08 |
+| [DEX 现货兑换价操纵：按池子余额比例反复 swap 抽干一侧储备](blockchain-defi-dex-spot-reserve-swap-drain/) | verified | high | 2026-11-07 |
+| [DexTwo 任意代币兑换：未校验交易对，自建代币 1:1 换走池内全部真币](blockchain-defi-dextwo-arbitrary-token-swap-drain/) | verified | high | 2026-11-07 |
 | [Solana 拍卖程序账户生命周期缺陷：关闭后同 auction_id 重建 PDA，复用旧 bidder_state 盗取 vault](blockchain-defi-solana-auction-pda-reuse-bidder-state-vault-drain/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

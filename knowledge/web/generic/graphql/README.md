@@ -26,7 +26,10 @@ introspection、批量查询、注入与授权缺陷。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [GraphQL importPaste 命令注入：host/port/path/scheme 拼进 curl，path=/; sleep 10 在服务端执行任意命令](web-generic-graphql-importpaste-command-injection.md) | verified | high | 2026-11-08 |
+| [GraphQL 批量查询/别名放大暴力破解：单 HTTP 请求内 100 个别名或 100 条批量 mutation，绕过每请求/IP 速率限制](web-generic-graphql-batch-alias-rate-limit-brute-force.md) | verified | high | 2026-11-08 |
+| [GraphQL 操作名授权绕过：允许未认证的 operationName=getPastes，却夹带未授权 systemHealth 字段直接读数据](web-generic-graphql-operation-name-authz-field-bypass.md) | verified | high | 2026-11-08 |
+| [GraphQL 端点发现与 schema 枚举：__typename 探测 + introspection + Clairvoyance 建议重建 + graphw00f 引擎指纹](web-generic-graphql-endpoint-discovery-schema-enumeration.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -28,6 +28,7 @@ Struts2 OGNL 与历史漏洞。
 |---|---|---|---|
 | [Struts2 2.0.11.2 旧版本匹配 S2-016/S2-015：redirect/redirectAction 前缀 OGNL 未授权 RCE](web-java-framework-struts2-s2-016-legacy-version-ognl-rce.md) | verified | medium | 2026-11-05 |
 | [Struts2 ActionProxy 取值流入 OGNL 执行：getMethod/getNamespace/getActionName 注入链](web-java-framework-struts2-actionproxy-ognl-injection.md) | verified | medium | 2026-11-05 |
+| [Struts2 S2-001 表单回填二次 OGNL 解析：%{...} 提交值在 UIBean 渲染时被再次求值导致 RCE](web-java-framework-struts2-s2-001-form-repopulate-ognl-rce.md) | verified | high | 2026-11-08 |
 | [Struts2 S2-066（CVE-2023-50164）：上传文件名参数覆盖导致路径穿越](web-java-framework-struts2-s2-066-upload-filename-param-override.md) | verified | high | 2026-11-05 |
 | [Struts2 S2-067（CVE-2024-53677）：top.uploadFileName OGNL 绕过上传文件名修复](web-java-framework-struts2-s2-067-ognl-upload-filename-bypass.md) | verified | high | 2026-11-05 |
 | [Struts2 S2-069 (CVE-2025-68493)：xwork DomHelper.parse XXE 文件读取](web-java-framework-struts2-s2-069-domhelper-xxe.md) | verified | high | 2026-11-05 |

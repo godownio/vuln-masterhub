@@ -27,9 +27,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V254
-  verified_at: '2026-11-07T16:07:04+08:00'
-  notes: 已对照原文与10张图片逐项核对：/vpn/list_base_config.php参数、sslvpn_class.php拼接命令、反引号写PHP、/www/tmp路径、whoami=root、批量脚本均与原文一致；修正图片phpinfo所示CGI/FastCGI笔误（原CGU）；原文未给固件版本区间，未设置affected_versions
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:47:03+08:00'
+  notes: 已对照原文与全部10张图核对：/vpn/list_base_config.php 的 type=mod&parts=base_config 调用 sslvpn_config_mod(2)、php_class/sslvpn_class.php 中 template/stylenum 直接拼接 cp 命令并 exec、反引号 echo 写 /www/tmp/test.php、URL 编码 payload、蚁剑连接 /tmp/test.php 密码 star、whoami=root、ifconfig、批量脚本写入 5201314 并访问校验，均与原文及图01-10一致。知识卡已把图片 phpinfo 中的 Server API 修正为 CGI/FastCGI（staging 草稿仍为 CGU，属笔误）。原文未给固件版本区间，affected_versions 保持 null。dedup：唯一 exact 为自身；候选 Joomla 后台模板编辑、PEAR config-create、PHP base64|tee、LibreOffice 预览命令注入等均产品/入口/机制不同，非同一链；dup-scan 无本篇 pair。未验证点：未对真实设备复测。
 ---
 
 ## 一句话结论

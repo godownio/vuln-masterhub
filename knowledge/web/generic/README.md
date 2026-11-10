@@ -50,9 +50,18 @@
 | [CFITSIO EFS root:// 输出驱动配合 Raw Data 子句外传本地文件](web-generic-cfitsio-efs-root-driver-local-file-exfiltration.md) | verified | high | 2026-11-05 |
 | [CGI 目录暴露 ld-linux：把动态加载器当 CGI 执行，argv 指定任意程序与脚本](web-generic-cgi-ld-linux-interpreter-argv-arbitrary-program-execution.md) | verified | high | 2026-11-06 |
 | [CouchDB CVE-2017-12635 + CVE-2017-12636：重复键建管理员后 query_servers 命令执行](web-generic-rce-couchdb-cve-2017-12635-12636.md) | verified | medium | 2026-11-05 |
+| [GitHub Enterprise Server CVE-2024-0200：repository_items rid_key 不安全反射 → restore_objects 泄露 session secret → 伪造 _gh_render Marshal cookie RCE](web-generic-rce-ghes-cve-2024-0200-unsafe-reflection-marshal-cookie-rce.md) | verified | high | 2026-11-08 |
+| [GitHub Enterprise Server CVE-2024-0507：管理控制台 Actions 存储 OIDC 设置命令注入，editor 提权到 root 站点管理员](web-generic-rce-ghes-cve-2024-0507-actions-storage-oidc-command-injection.md) | verified | high | 2026-11-08 |
 | [Host 校验绕过：端口注入、后缀匹配、重复头、绝对 URL 与覆盖头](web-generic-host-header-validation-bypass-ambiguity.md) | verified | high | 2026-11-05 |
+| [JSON 重复键/大数解析差异：前端校验 last-wins、Go jsonparser first-wins 导致负数量与零元结算](web-generic-json-duplicate-key-big-number-parser-differential.md) | verified | high | 2026-11-08 |
+| [Meteor Galaxy 悬空子域接管：CNAME 指向 us-east-1.galaxy-ingress.meteor.com，注册同名应用即可控制子域](web-generic-meteor-galaxy-dangling-subdomain-takeover.md) | verified | high | 2026-11-08 |
+| [Nginx 缺少 location / 时 server 级 root 生效：/cats/../nginx.conf 归一化后读取 /etc/nginx 配置](web-generic-nginx-missing-root-location-config-disclosure.md) | verified | high | 2026-11-08 |
+| [Ollama /api/create path 参数差异化错误消息导致服务器文件存在性探测（CVE-2024-39719）](web-generic-ollama-create-path-file-existence-oracle.md) | verified | high | 2026-11-08 |
+| [Ollama /api/push 路径遍历文件存在性探测：响应差异枚举服务端模型与文件路径（CVE-2024-39722）](web-generic-ollama-push-name-path-traversal-existence-probe.md) | verified | high | 2026-11-08 |
+| [Shellshock CGI RCE：User-Agent 等 HTTP 头映射为函数形式环境变量，bash 启动时执行尾部注入命令](web-generic-rce-shellshock-cgi-user-agent-env-function.md) | verified | high | 2026-11-09 |
 | [Wasm 导出函数未校验数组下标导致线性内存内越界写与相邻数据篡改](web-generic-wasm-unchecked-index-linear-memory-write.md) | verified | medium | 2026-11-05 |
 | [Wasm 导出线性内存中的密钥与敏感常量可被同源 JS 读取](web-generic-wasm-exported-memory-secret-read.md) | verified | high | 2026-11-05 |
+| [上传文件路径泄露后拼接静态资源路由批量下载用户证件照](web-generic-static-upload-path-join-download-id-photo-bulk.md) | verified | high | 2026-11-08 |
 | [双设备支付页滞留 + 取消订单返还优惠券：同一张券支付两笔订单](web-generic-payment-coupon-cancel-pending-order-reuse.md) | verified | medium | 2026-11-07 |
 | [客户端提交赛跑距离参数篡改：服务端信任模拟输入直接发放 flag](web-generic-client-side-race-distance-tamper.md) | verified | high | 2026-11-06 |
 | [导出 Excel/CSV 未转义昵称导致公式注入与客户端 RCE](web-generic-csv-formula-injection-export-rce.md) | verified | medium | 2026-11-05 |
@@ -62,7 +71,10 @@
 | [支付金额篡改：支付接口信任客户端 totalAmount 且未绑定已创建订单](web-generic-payment-amount-tamper-no-order-binding.md) | verified | high | 2026-11-05 |
 | [注销-重注册循环复用新人权益：物理删除用户数据导致营销风控历史丢失](web-generic-account-deletion-new-user-benefit-reuse.md) | verified | medium | 2026-11-06 |
 | [游戏/积分接口信任客户端上报分数：直接调用接口伪造满分领取奖励](web-generic-client-side-score-trust.md) | verified | high | 2026-11-05 |
+| [瑞数动态防护下的隐藏 API 直连：从混淆业务 JS 提取接口，控制台 XMLHttpRequest 带 Bearer 绕过页面防护](web-generic-rs-hidden-api-direct-xhr-bypass.md) | verified | medium | 2026-11-09 |
+| [积分商城兑换下单直接信任客户端 goodsId 与抵扣积分：改商品编号用低积分换高价商品、改积分字段少扣积分](web-generic-points-mall-goodsid-points-parameter-tampering.md) | verified | medium | 2026-11-09 |
 | [购物车接受负数量：负数商品抵消高价商品金额实现低价购买](web-generic-payment-negative-quantity-offset.md) | verified | high | 2026-11-05 |
+| [限购数量只在前端校验：抓包把数量改成超过上限的值，服务端照单全收，实现超限购买/囤货](web-generic-purchase-quantity-limit-client-side-only-bypass.md) | verified | medium | 2026-11-09 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

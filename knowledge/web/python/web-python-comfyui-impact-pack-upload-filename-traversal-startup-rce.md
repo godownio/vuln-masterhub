@@ -31,9 +31,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T16:04:02+08:00'
-  notes: 已对照原文与2张图核对：impact_server.py filename穿越代码、custom_nodes/git/__init__.py与install-scripts.txt两条RCE路径、启动输出截图一致；affected_versions 按原文修复版本7.6.2标为<7.6.2，未执行PoC
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:37:27+08:00'
+  notes: 重试核验：已对照 content.md 与 2 张图核对；impact_server.py /upload/temp 使用 image.filename 直接 os.path.join 写盘（同名重命名、不建目录）与原文一致；路径一写 custom_nodes/git/__init__.py（图01 RCE by hacker）、路径二写 ComfyUI-Manager startup-scripts/install-scripts.txt 并经 ast.literal_eval/#FORCE/process_wrap 执行（图02 EXECUTE => ['echo','RCEByHacker2']）均复现一致；affected_versions 保留按原文修复版本 7.6.2 推导的 <7.6.2 标注；dedup 仅命中自身，其余为其他 ComfyUI 漏洞（related），非同链；未执行 PoC
 ---
 
 ## 一句话结论

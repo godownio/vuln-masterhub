@@ -38,6 +38,7 @@ weight: 1
 | [IDA 堆栈不平衡报错修复：Alt+K 把 SP 差值设为 0，消除 positive sp value](tools-ida-positive-sp-stack-imbalance-altk/) | verified | high | 2026-11-06 |
 | [IDA 条件断点用 IDAPython 判断寄存器：call rand 后 rax==16949 才断下](tools-ida-python-conditional-breakpoint-register/) | verified | high | 2026-11-06 |
 | [IDA 还原 bison/flex 生成 parser：批量重命名 yypact/yytable/yycheck 并导入 yy_buffer_state/yyguts_t](tools-ida-bison-flex-parser-table-struct-recovery/) | verified | high | 2026-11-06 |
+| [IDA 远程调试 Linux ELF：linux_server/linux_server64 服务端 + Remote Linux debugger 连接与内存定位](tools-ida-remote-linux-elf-debug-server/) | verified | medium | 2026-11-08 |
 | [IDA-Fork 双进程调试：把子进程首指令 patch 成死循环，附加后 SetIP 恢复](tools-ida-fork-child-loop-patch-attach/) | verified | high | 2026-11-06 |
 | [IDAPython 批量解密调用点 XOR 字符串：回溯 mov r8d/lea rdx 参数并自动注释](tools-ida-xor-string-call-arg-backtrack-decrypt/) | verified | high | 2026-11-06 |
 | [内核驱动逆向：用源码结构体在 IDA Local Types 导入并校正 Hex-Rays 反编译](tools-ida-kernel-source-struct-import-decompiler-cleanup/) | verified | high | 2026-11-06 |

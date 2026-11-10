@@ -23,9 +23,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T19:00:12+08:00'
+  notes: 已对照原文第22关代码与逐步骤余额表核对：getSwapPrice=amount*to.balance/from.balance、无滑点/手续费；10→10、20→24、24→30、30→41、41→65、45→110 的交替 swap 序列与原文表格一致（整数除法），最终抽干 token1。dup-scan 将本卡与 DexTwo 卡判 likely_duplicate：按原文裁决两者不是同一链——本卡(Dex, 第22关)交易对合法、根因是现货价可被连续 swap 推偏；DexTwo(第23关)删除了 from/to 交易对校验、用自建代币 1:1 兑换，两者根因/触发/关卡不同，均保留（相关而非重复）。dedup 工具亦判 related。未执行 PoC。
 ---
 
 ## 一句话结论

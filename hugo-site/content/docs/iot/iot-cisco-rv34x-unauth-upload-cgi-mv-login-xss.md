@@ -19,10 +19,14 @@ cve:
 - CVE-2023-20073
 severity: high
 confidence: high
-affected_versions: Cisco RV340 / RV340W / RV345 / RV345P 固件 1.0.03.29（原文标记）
-status: draft
+affected_versions: Cisco RV340 / RV340W / RV345 / RV345P（固件 1.0.03.29 为原文复现版本；原文称当时最新固件均受影响）
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:53:18+08:00'
+  notes: 已对照原文与32张图核对。版本核对：图01 Cisco 下载页显示 Latest Release 1.0.03.29、文件为 RV340/RV340W/RV345/RV345P 共用固件（Release Date 17-Nov-2022），解包路径与 IMG 文件名均为 RV34X-v1.0.03.29-2022-10-17；原文称四款当时最新固件均受影响，affected_versions 按此标注（1.0.03.29 为原文复现版本，非修复版本声明）。技术链核对：rest.url.conf 仅判断 $http_authorization 非空（图14）；web.upload.conf 的 /upload 校验 token/sessionid（图16）；upload.ini cgi=/www/cgi-bin/upload.cgi 且 uid=www-data（图18）；main 从表单取 file.path/pathparam/fileparam（图21），sub_115EC 按 Portal→/tmp/www/ 映射并拼 mv -f（图20），gdb 确认 mv -f /tmp/upload/000000008 /tmp/www//login.html（图30）；login.html 被篡改为 XSS 弹窗（图31/32）。卡片明确最终为存储型 XSS/登录页篡改而非任意命令执行，符合原文。dedup 候选均为不同上传/XSS/IoT 链（new）；dup-scan 无涉及本篇 pair。未执行 PoC。
 url: /docs/iot/iot-cisco-rv34x-unauth-upload-cgi-mv-login-xss/
 draft: false
 kb_aliases:

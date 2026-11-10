@@ -28,6 +28,7 @@
 |---|---|---|---|
 | [车机 GPS L1 信号欺骗：gps-sdr-sim 生成伪卫星信号经 HackRF 发射伪造定位](iot-vehicle-gps-l1-spoofing-gps-sdr-sim-hackrf.md) | verified | high | 2026-11-07 |
 | [车机 OTA 握手泄露 session_key：AES-CBC 前置 IV 解密 ota/init 双向流量读取 admin flag](iot-vehicle-ota-handshake-session-key-aes-cbc-zero-iv.md) | verified | high | 2026-11-07 |
+| [车机 WiFi 热点同名同密码仿冒：克隆 SSID+PSK+BSSID 后车机自动重连，形成中间人入口](iot-vehicle-wifi-evil-twin-auto-reconnect-mitm.md) | verified | medium | 2026-11-08 |
 | [车机摄像头调试服务 TCP 20000 未授权 console：camera 矩阵与 PTS/倒车辅助参数篡改](iot-vehicle-camera-debug-console-20000-unauth.md) | verified | medium | 2026-11-07 |
 | [车机特殊模式口令开启 ADB：adb shell 数据窃取与 SUID 后门提权 root](iot-vehicle-adb-special-mode-password-root.md) | verified | medium | 2026-11-07 |
 | [车机蓝牙 HID 键盘仿冒：未授权配对后模拟按键控车与 PIN/密钥爆破](iot-vehicle-bluetooth-hid-keyboard-spoofing.md) | verified | medium | 2026-11-07 |

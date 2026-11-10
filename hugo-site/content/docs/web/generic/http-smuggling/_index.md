@@ -31,9 +31,11 @@ CL/TE、TE/TE、HTTP/2 降级与利用。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Apache mod_rewrite 代理场景 RewriteRule 目标参数 CRLF 注入：URL 编码的 %0d%0a 在转发时解码成新请求头，绕过 RequestHeader unset](web-generic-http-smuggling-apache-rewriterule-crlf-header-injection-bypass/) | verified | high | 2026-11-08 |
 | [Content-Encoding 压缩请求体：WAF 不解码而后端解码导致请求体检查绕过](web-generic-http-smuggling-content-encoding-request-body-waf-bypass/) | verified | high | 2026-11-05 |
 | [eBPF tc ingress 逐包关键字过滤绕过：TCP 分段打散 "flag" + TCP 头 0x25 随机丢包下 Range 小步重试](web-generic-http-smuggling-ebpf-tc-header-scan-percent-random-drop/) | verified | medium | 2026-11-06 |
 | [eBPF TC 无状态防火墙绕过：TCP 分段与 HTTP Range 双向规避](web-generic-http-smuggling-ebpf-tc-stateless-keyword-bypass/) | verified | high | 2026-11-05 |
+| [HAProxy CVE-2021-40346：Content-Length 头名整数溢出走私，绕过前端 ACL 访问内部 dev 子域](web-generic-http-smuggling-haproxy-cve-2021-40346-content-length-overflow/) | verified | medium | 2026-11-08 |
 | [Varnish HTTP/1 管线残留：CL body 后的第二请求被复用连接转发（CVE-2022-23959 补丁路径正交）](web-generic-http-smuggling-varnish-pipeline-cl-residual/) | verified | medium | 2026-11-05 |
 | [多成员 gzip 请求体解压范围错位：网关校验首 member、后端执行全部 member](web-generic-http-smuggling-gzip-multi-member-decompression-differential/) | verified | high | 2026-11-04 |
 | [未知 Transfer-Encoding 解析差异走私：代理按 chunked 截断、Flask 按 Content-Length 读全 body 绕过 WAF](web-generic-http-smuggling-unknown-te-cl-differential/) | verified | high | 2026-11-06 |

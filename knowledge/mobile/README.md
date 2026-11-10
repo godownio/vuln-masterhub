@@ -31,7 +31,12 @@ Android、iOS、HarmonyOS 应用与系统安全。
 | [aLTEr：LTE 用户面 AES-CTR 可塑性篡改 DNS 查询，把目标 IP 改成攻击者 IP](mobile-alter-lte-user-plane-aes-ctr-dns-tamper.md) | verified | medium | 2026-11-06 |
 | [GSM 伪基站降级劫持：单向认证 + LAC 变化触发位置更新，明文 IMSI 与伪造短信下发](mobile-gsm-fake-bts-downgrade-sms-injection.md) | verified | medium | 2026-11-06 |
 | [LTE RRC 重定向降级：未完整性保护的 RRCConnectionRelease 携带 redirectedCarrierInfo 把终端赶到 2G](mobile-lte-rrc-redirect-downgrade-gsm.md) | verified | medium | 2026-11-06 |
+| [小程序 AES-ECB 密钥由双常量自派生 + MD5(json+timestamp) 签名重算 + 顺序 id 遍历](mobile-miniprogram-custom-aes-key-sign-recompute-id-enumeration.md) | verified | medium | 2026-11-08 |
+| [小程序 wxapkg 反编译逆出 AES-CBC 硬编码 key/iv 与「排序键值+密钥」MD5 签名，重算 timestamp/nonce 实现改包重放](mobile-miniprogram-wxapkg-aes-cbc-sorted-sign-replay.md) | verified | high | 2026-11-10 |
+| [小程序开不了 devtools：用 WeChatOpenDevTools 打补丁 + 把微信降到工具支持的版本（3.9.10.19）后才能断点](mobile-miniprogram-devtools-force-enable-wechat-version-pin.md) | verified | medium | 2026-11-09 |
+| [小程序自定义加密：AES-CBC 的 iv/key 被 RSA 公钥包裹后随请求头下发，签名是「密文 + 私钥」——逆出来后固定 iv/key 用 Python 重造参数即可任意改包重放](mobile-miniprogram-aes-cbc-rsa-wrapped-iv-key-sign-replay.md) | verified | high | 2026-11-09 |
 | [微信小程序 SM2/SM3/SM4 通信协议逆向与 Burp 透明加解密](mobile-miniprogram-sm-crypto-protocol-burp-transparent.md) | verified | high | 2026-11-05 |
+| [微信小程序抓包：Charles 系统代理 + 全域名 SSL Proxying 后上游转发 Burp 的双代理链](mobile-miniprogram-charles-burp-upstream-proxy-capture.md) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

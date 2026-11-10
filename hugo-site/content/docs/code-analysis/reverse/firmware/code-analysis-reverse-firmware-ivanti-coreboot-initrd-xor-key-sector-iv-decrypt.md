@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:37:39+08:00'
+  notes: 已对照原文与全部14张图核对：ksyd_chroot/populate_rootfs 调用（图01-02）、key 由 DSRAMFS_AES_KEY/qword_FFFFFFFF81E00168 与 0x99ED2BF2/0xAEEF41FE/0x141058C7/0xD2ED180E 异或派生、512 字节扇区循环与扇区号 IV、tfm setkey/decrypt、zcat 及其报错（图03）、解出 bin/lib/modules 等（图04）均与卡片一致。核对中修正一处：块间链式更新应为 IV = ciphertext' = C ^ pre_iv（与反汇编 v41 及原文脚本 iv=ciphertext 一致），原文卡误写为 IV = C。CVE-2025-0282 利用链已按 cards.json 跳过（已有 binary-pwn-stack-ivanti-cve-2025-0282-clientcapabilities-vtable-rop，同 CVE/同 sink），图05-14 为该链的另一构建细节，未新增。dedup 工具仅自身 duplicate 命中，其余 new/related；dup-scan 无本卡 pair。原文未给受影响版本区间，affected_versions 未设置。未验证点：未用真实 coreboot.img 复跑解密；'脏数据'的具体来源为推断。
 url: /docs/code-analysis/reverse/firmware/code-analysis-reverse-firmware-ivanti-coreboot-initrd-xor-key-sector-iv-decrypt/
 draft: false
 kb_aliases:
@@ -48,7 +52,7 @@ Ivanti Connect Secure 启动分区的 `coreboot.img` 是加密的 initrd：内�
 - 解密以 512 字节为一个扇区循环（`while (v14 > 0x1FF)`，每轮 `v14 -= 512`）：扇区索引 `v23` 被放进 16 字节 IV 的第一个 dword、其余清零，即 IV = sector_index（小端 16 字节）；先对 IV 做一次 AES 解密得到每扇区固定的 `pre_iv`；之后每个 16 字节密文块：
   - `ciphertext' = C ^ pre_iv`
   - `P = AES_decrypt(ciphertext') ^ IV`
-  - `IV = C`（用原始密文块更新，形成块间链式）
+  - `IV = ciphertext' = C ^ pre_iv`（原文脚本中变量名为 `ciphertext`；与 pre_iv 异或后的密文块作为下一块的 IV，形成块间链式）
 - 因此它不是标准 CBC/CTR/ECB，而是“每扇区独立 IV + 块间用密文链式”的自定义分组模式；直接按标准 AES-ECB 解会得到乱码，必须先按上述顺序实现。
 - 解密后的数据是 gzip 流，但末尾/中间混有未加密或填充的脏数据，`gzip -d` 会报 `unexpected end of file`；`zcat`（或 `gzip -dc -f`）可以忽略错误、尽可能输出已解压内容，从而拿到 initrd 文件系统目录。
 

@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T19:00:14+08:00'
+  notes: 已对照原文第23关代码核对：DexTwo.swap 删除 (from==token1&&to==token2)||(from==token2&&to==token1) 校验、只保留余额检查；自建 BadToken3/BadToken4 先向 DEX 转入 100 并 approve，再 swap 1:1 抽干 token1/token2，与原文 exp 及注释一致；卡已注明原文 exp 省略了转入/授权两步需补齐。dup-scan 与 Dex 卡判 likely_duplicate：按原文裁决为不同关卡/不同根因（本卡任意代币/缺交易对校验 vs Dex 现货价操纵），均保留（related），dedup 工具亦判 related。未执行 PoC。
 url: /docs/blockchain/defi/blockchain-defi-dextwo-arbitrary-token-swap-drain/
 draft: false
 kb_aliases:

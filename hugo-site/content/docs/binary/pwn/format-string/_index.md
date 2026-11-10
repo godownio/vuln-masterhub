@@ -34,9 +34,14 @@ weight: 1
 | [DrayTek Vigor user_login.cgi 格式化字符串（CVE-2023-31447）：fid=101 将 src_ip/target_url 直接作 snprintf 格式串](binary-pwn-format-string-draytek-user-login-cgi-cve-2023-31447/) | verified | medium | 2026-11-07 |
 | [exit_hook 劫持：把 _rtld_global 的 rtld lock/unlock 函数指针改成 system、_dl_load_lock 改成 /bin/sh（glibc < 2.34）](binary-pwn-format-string-exit-hook-rtld-global/) | verified | high | 2026-11-06 |
 | [glibc 2.29 tcache dup 改 __free_hook 为 printf：free 触发格式化字符串泄露栈地址后二次投毒写栈 ROP](binary-pwn-format-string-freehook-printf-stack-leak/) | verified | high | 2026-11-07 |
+| [power_system 链：SHA256 比较被 0x00 截断绕过登录 + 格式串泄 libc，负索引越界写 _IO_2_1_stderr_ 经 _IO_wfile_seekoff 调 system("/bin/sh")](binary-pwn-format-string-sha256-null-truncate-negative-index-stderr-fsop/) | verified | medium | 2026-11-09 |
+| [RC4 加密消息解密后直入 printf：%15$s 读 GOT 泄 PIE/libc，%15$hhn 六字节覆写 __free_hook 为 system](binary-pwn-format-string-rc4-decrypted-message-freehook-system/) | verified | medium | 2026-11-08 |
 | [scanf 无界写入覆盖相邻 .data 格式化字符串：把静态 printf 变成格式化字符串漏洞读写 flag](binary-pwn-format-string-scanf-overflow-adjacent-format-string/) | verified | medium | 2026-11-06 |
 | [Synology TC500 webd 格式字符串：改 HTTP 版本指针泄露内存 + 持久栈指针链任意读写 + __free_hook 劫持 RCE](binary-pwn-format-string-synology-tc500-webd-http-version-leak-freehook-rce/) | verified | high | 2026-11-07 |
 | [一次性栈上格式化字符串：单次 printf 用两段 %n 写栈返回地址直达 one_gadget](binary-pwn-format-string-one-shot-stack-return-address-two-n-writes/) | verified | medium | 2026-11-06 |
+| [一次格式化字符串机会完成两处写入：顺序参数 %hn 建跳板指针后混用 N$ 定位 %hhn，配合 %hhn 只写总字节数尾字节技巧改返回地址为后门](binary-pwn-format-string-single-shot-dual-write-hhn-low-byte-trampoline/) | verified | high | 2026-11-08 |
+| [单次栈上格式化字符串双目标写：把 .fini_array[0] 改成 main 制造第二次执行窗口，同时将 printf GOT 覆写为 system@plt（无 libc 泄露）](binary-pwn-format-string-single-shot-fini-array-restart-got-system-plt/) | verified | high | 2026-11-10 |
+| [单次非栈上格式化字符串：三级指针链把 printf 返回地址改回 read 造循环，再用 0x10000 高位截断逐字节写 one_gadget](binary-pwn-format-string-nonstack-single-shot-loop-high-byte-truncation/) | verified | medium | 2026-11-08 |
 | [有限次非栈上格式化：改循环条件扩充写入次数 + 两级指针 %hn/%hhn 逐字节写 ROP（AES 单块输入）](binary-pwn-format-string-limited-nonstack-loop-condition-byte-rop/) | verified | medium | 2026-11-06 |
 | [栈上格式化字符串 0x10 字节限制：%10$p 泄露栈地址、%10$hn 改写指针搭链，%14$hn 覆写返回地址到后门](binary-pwn-format-string-stack-pointer-chain-return-address-backdoor/) | verified | high | 2026-11-06 |
 | [格式化字符串 %hn 向 RWX mmap 逐 2 字节写 shellcode：短跳回读 syscall 续写二阶段](binary-pwn-format-string-hn-rwx-mmap-shellcode-staging/) | verified | medium | 2026-11-07 |
@@ -45,6 +50,7 @@ weight: 1
 | [格式化字符串分三次 short 写 __malloc_hook 为 one_gadget（glibc 2.31）](binary-pwn-format-string-malloc-hook-one-gadget/) | verified | medium | 2026-11-06 |
 | [格式化字符串泄露 Canary 后栈溢出调用文件复制函数写 authorized_keys](binary-pwn-format-string-canary-leak-ret2copy-authorized-keys/) | verified | high | 2026-11-05 |
 | [格式化字符串黑名单绕过：先过滤后解码，\x25/\x24 还原 %/$ 触发泄漏](binary-pwn-format-string-decode-after-filter-bypass/) | verified | high | 2026-11-06 |
+| [禁用 $ 的顺序格式化字符串泄漏：%p 走栈定位后把目标地址追加到格式串尾部成为第 15 个参数，%s 读出远端 flag](binary-pwn-format-string-sequential-leak-appended-target-address/) | verified | high | 2026-11-09 |
 | [非栈上格式化字符串小输入约束：借栈指针链两级 %hn 中转，覆写 printf GOT 为 system](binary-pwn-format-string-nonstack-pointer-chain-got-overwrite/) | verified | medium | 2026-11-06 |
 | [非栈上格式化字符串通解：借 .fini_array 重启与参数链循环 %hn 写返回地址](binary-pwn-format-string-non-stack-fini-array-loop-write/) | verified | medium | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

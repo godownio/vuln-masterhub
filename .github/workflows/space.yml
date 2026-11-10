@@ -5,7 +5,7 @@ on:
       release_tag:
         description: Verified runtime snapshot release tag
         required: true
-        default: cloud-snapshot-20261107-r3
+        default: cloud-snapshot-20261110
         type: string
 permissions:
   contents: read

@@ -40,9 +40,13 @@ weight: 1
 | [claude-code-security-skills 三阶段审计：19 条硬排除 + 17 条先例 + 置信度 ≥7 的 AI 代码审计误报过滤流程](code-analysis-vuln-discovery-claude-security-skills-three-phase-filter/) | verified | high | 2026-11-06 |
 | [Cursor 代码审计 Skill 体系：P0-P3 Grep 规则、语言路由与 MCP 工具集成](code-analysis-vuln-discovery-cursor-code-audit-skill-system/) | verified | high | 2026-11-06 |
 | [LLM 驱动 Python 代码审计（VulnHuntr）：五阶段 prompt + Jedi 上下文补全 + 置信度评分与检测边界](code-analysis-vuln-discovery-llm-sast-vulnhuntr-python-audit-pipeline/) | verified | medium | 2026-11-05 |
+| [LLM 驱动黑盒 RCE 探测闭环：生成 payload → 发送 → 读响应判定 → 按反馈迭代调整（判定必须人工复核）](code-analysis-vuln-discovery-llm-blackbox-rce-adaptive-probe-loop/) | verified | low | 2026-11-08 |
 | [LLMSAN：强制 LLM 输出数据流路径并用四类 Sanitizer 过滤漏洞检测幻觉](code-analysis-vuln-discovery-llmsan-dataflow-path-sanitizer-pipeline/) | verified | medium | 2026-11-06 |
+| [SARIF 汇聚 Semgrep/CodeQL 告警 + 局部代码与规则描述构造 prompt：LLM 复核压误报，放宽 sink 规则扩召回](code-analysis-vuln-discovery-sarif-sast-llm-alert-triage/) | verified | medium | 2026-11-09 |
+| [Tabby 论文算法：CPG（ORG+PCG+MAG）与可控性剪枝 + Gadget 链回溯（Action/LocalMap/PP/TC/Expander/Evaluator）](code-analysis-vuln-discovery-tabby-cpg-controllability-gadget-chain-algorithm/) | verified | high | 2026-11-09 |
 | [tabby 调用链 xlsx + 自定义 MCP/Skill 按链回传方法源码给 LLM 审计](code-analysis-vuln-discovery-tabby-chain-mcp-skill-llm-audit/) | verified | medium | 2026-11-06 |
 | [多 Agent 对抗式漏洞挖掘流水线：Finder/Refuter/Reproducer + 证据卡与置信度分级](code-analysis-vuln-discovery-multi-agent-adversarial-pipeline/) | verified | medium | 2026-11-05 |
+| [用 CodeQL path-problem + DataFlow 污点传播挖掘「反序列化→二次反序列化」gadget 桥链](code-analysis-vuln-discovery-codeql-pathproblem-taint-gadget-chain-mining/) | verified | medium | 2026-11-07 |
 | [用 CodeQL 从 sink 逐段反查挖掘 Java 反序列化 gadget 链](code-analysis-vuln-discovery-codeql-java-gadget-chain-mining/) | verified | medium | 2026-11-05 |
 | [用 Tabby 代码属性图查询挖掘 Java 反序列化 gadget 链](code-analysis-vuln-discovery-tabby-cpg-gadget-chain-mining/) | verified | high | 2026-11-05 |
 | [白盒审计局部动态验证：AST 抽取函数 + mock sink 的 Fuzzing Harness](code-analysis-vuln-discovery-local-fuzzing-harness-function-extraction/) | verified | high | 2026-11-05 |

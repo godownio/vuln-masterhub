@@ -19,9 +19,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T20:03:46+08:00'
+  notes: 已对照原文与全部55张图核对：StandardContext servletMappings/children、addServletMappingDecoded 同时写 map 与 Wrapper.addMapping、removeServletMapping 先 map.remove 再 findChild(name).removeMapping 的坑（先手删 map 后 name=null、Wrapper 映射残留、路由仍可访问，图15/21/29）、applicationEventListenersList 为 CopyOnWriteArrayList 按索引 remove（图28/30）、getPipeline().getValves() 与 removeValve（图48/49）、多 Context 索引差异（/manager 与 /servletDemo_war_exploded，图17）均与原文一致；PoC 中 instances[1] 用于 Servlet、instances[0] 用于 Listener/Valve 与原文截图一致。原文为应急查杀教程，无 CVE/组件版本，affected_versions 保持 null。dedup：最高候选 ProxyValve 移除(0.9333)、Filter 移除(0.9323)、WebSocket 移除(0.9355)、Scanner(0.9217) 及注入类卡均组件/机制不同，非同一链；dup-scan 18451 两卡 self-pair 判 related，本卡与 Upgrade/Executor 卡分属不同组件族，保留两卡。未验证点：未按原文环境复测。
 url: /docs/defense/detection/defense-detection-tomcat-servlet-listener-valve-memshell-arthas-vmtool-remove/
 draft: false
 kb_aliases:

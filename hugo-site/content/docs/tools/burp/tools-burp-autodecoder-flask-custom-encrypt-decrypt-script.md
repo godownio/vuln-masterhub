@@ -23,9 +23,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T16:09:37+08:00'
-  notes: 已对照原文与21张图核对：Flask /encode /decode与dataBody/dataHeaders/requestorresponse字段、bytes/str、Base64换行、PKCS填充、JSON字段、接口调试与保存配置均一致；脚本为原文缩略整理，未实际运行
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:49:16+08:00'
+  notes: 重试核验：已对照 content.md 与 21 张图核对；autoDecoder 官方流程图（图01-03）、数据类型流程（图04）、常见算法 key/iv/填充表（图05/06）、bytes/str encode-decode（图07）、b64encode/encodebytes 换行差异（图08/09）、Flask /encode /decode + dataBody/dataHeaders/requestorresponse 与 headers+四段CRLF 格式（图10/11/15-17）、DES/CBC/PKCS5 示例脚本与 Python 3.9.7（图13/14）、代理模块与保存配置（图12/18-21）均一致；卡片 PoC 为缩略整理、pyDes 与 pycryptodome 填充差异表述正确；未实际运行
 url: /docs/tools/burp/tools-burp-autodecoder-flask-custom-encrypt-decrypt-script/
 draft: false
 kb_aliases:

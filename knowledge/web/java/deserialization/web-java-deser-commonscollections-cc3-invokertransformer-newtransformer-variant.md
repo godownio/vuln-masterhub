@@ -31,9 +31,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V255
-  verified_at: '2026-11-07T15:56:01+08:00'
-  notes: 已对照原文与25张图核对：TemplatesImpl加载条件、AbstractTranslet要求、CC1 TransformedMap/LazyMap与CC6 HashMap/HashSet直接桥接PoC、TrAXFilter替代路径均一致；原文为JDK8u65+CC3.2.1环境，未复跑PoC
+  verified_by: verifier-V265
+  verified_at: '2026-11-07T18:27:50+08:00'
+  notes: 重试核验：已对照 content.md 与 25 张图；TemplatesImpl.newTransformer→getTransletInstance→defineTransletClasses→TransletClassLoader.defineClass 调用链与图05/06/07/08一致；_name非空/_class=null/_tfactory=TransformerFactoryImpl/字节码须继承 AbstractTranslet（图11首版失败、图12改 AbstractTranslet、图13弹计算器）与原文一致；ConstantTransformer+InvokerTransformer(newTransformer) 直桥接 PoC（图14/15/16/17）与 TrAXFilter+InstantiateTransformer 路径（图18-25）均覆盖；与既有 cc6-cc3-templatesimpl 卡桥接不同，dedup verdict=related 非同链；未复跑 PoC
 ---
 
 ## 一句话结论

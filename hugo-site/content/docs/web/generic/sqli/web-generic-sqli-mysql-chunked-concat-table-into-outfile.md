@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T20:08:03+08:00'
+  notes: 已对照原文与全部20张图核对：FortiWeb CVE-2025-25257 的 fabric_access_check 用 __isoc23_sscanf(v2,'Bearer %128s',v4) 取 Authorization（图08），get_fabric_user_by_token 用 snprintf 拼 select ... where token='%s'（图07/15），execute_sql 调用链（图16）；exp.py 的 _reset_tables（drop/create/insert）、16 字节分片、update a set a=(select concat(a,0xhex) from a)、select a from fabric_user.a into outfile '/migadmin/cgi-bin/x.cgi' fields escaped by '' 以及第二个 /var/log/lib/python3.10/pylab.py 的 chmod gadget、触发 ml-draw.py、User-Agent 执行命令，均与原文及图04/05/11/12/19/20一致。卡片把该实现抽象为通用 MySQL 分块 CONCAT + OUTFILE 写文件技术，并明确标注自引用更新/重置表/精确转义/文件不存在等前提，未超出原文证据。原文未给通用 MySQL 版本区间（FortiWeb 影响版本见另一 CVE 卡），affected_versions 保持 null；cve 字段留空以保持通用技术卡定位。dedup：唯一 exact 为自身；最高候选 mysql-outfile-general-log-webshell(0.8845)、filename-clause-injection(0.881)、fortiweb-fabric-outfile-pth-rce(0.8347) 均为不同写入机制/不同利用链，非重复；dup-scan 无本篇 pair。未验证点：未复跑 exp.py。
 url: /docs/web/generic/sqli/web-generic-sqli-mysql-chunked-concat-table-into-outfile/
 draft: false
 kb_aliases:

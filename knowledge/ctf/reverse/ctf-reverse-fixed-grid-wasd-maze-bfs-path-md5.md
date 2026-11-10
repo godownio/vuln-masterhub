@@ -22,9 +22,13 @@ tags:
 cve: []
 severity: low
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V267
+  verified_at: '2026-11-07T18:43:19+08:00'
+  notes: 已对照原文与全部17张图核对：迷宫题地图（10×10、1 墙/0 通路）、起点(1,1)、终点(WIDTH-2,HEIGHT-2)=(8,8)、w/a/s/d 映射与碰撞规则、对完整路径 MD5 得 polis{...} 均与原文代码一致。已本地复算卡片 BFS PoC：输出 sssdddssaaassddddddd（20 步），MD5=538cc457b229b25d6bdbf7bae9ef357b，与原文示例路径和 flag 完全一致。dedup：与像素低4位迷宫（ctf-reverse-pixel-low-nibble-direction-maze-bfs）、水平移动 bit 流迷宫（ctf-misc-maze-horizontal-move-bitstream）地图来源/方向映射/flag 生成均不同，非同一链，保留。原文无 CVE、无受影响版本，affected_versions 未设置。未验证点：未运行原二进制，仅按原文 Python/地图语义复算。
 ---
 
 ## 一句话结论

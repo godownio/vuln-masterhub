@@ -32,12 +32,14 @@ ELF、内核模块、系统调用与调试。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [C++ STL 容器内存布局与反汇编识别：string SSO、vector 三指针、map 红黑树、unordered_map 桶数组](code-analysis-reverse-linux-cpp-stl-container-layout-disassembly/) | verified | high | 2026-11-06 |
+| [copy_from_user 源码链：access_ok → _copy_from_user → get_user_asm（STAC/CLAC）→ 异常表与页缺失](code-analysis-reverse-linux-copy-from-user-stac-clac-access-ok/) | verified | high | 2026-11-09 |
 | [ELF PT_NOTE 转 PT_LOAD 段劫持：在 program header 中植入 R+X shellcode 并改入口](code-analysis-reverse-linux-elf-pt-note-to-load-injection/) | verified | high | 2026-11-05 |
 | [ELF section header 清零仍可执行：双索引脱节造成的静态分析盲区](code-analysis-reverse-linux-elf-section-header-zeroing/) | verified | high | 2026-11-05 |
 | [ELF TEXT 段填充寄生：代码洞注入 + PT_NOTE 改 PT_LOAD 且文件大小不变](code-analysis-reverse-linux-elf-text-padding-parasite-file-size-invariant/) | verified | high | 2026-11-05 |
 | [IFUNC 重定向：同名 IFUNC 符号注入与加载期 resolver 执行](code-analysis-reverse-linux-ifunc-symbol-hijack-resolver/) | verified | high | 2026-11-05 |
 | [Linux ELF 自劫持 read@GOT：AT_PHDR 解析动态段 + mmap + memfrob(XOR 42) 注入解密逻辑](code-analysis-reverse-linux-elf-self-got-read-memfrob-hijack/) | verified | high | 2026-11-07 |
 | [Linux 恶意内核模块按 secret_ 前缀隐藏文件：lsmod/dmesg 定位与原始文件系统枚举](code-analysis-reverse-linux-lkm-prefix-file-hiding/) | verified | low | 2026-11-06 |
+| [Linux 系统调用用户态到内核态全链路：glibc write 包装 → syscall(0F 05) → IA32_LSTAR → sys_write 实现](code-analysis-reverse-linux-syscall-user-kernel-entry-chain/) | verified | high | 2026-11-09 |
 | [protobuf-c 描述符逆向：从 stripped ELF 恢复 .proto 与 pb2](code-analysis-reverse-linux-protobuf-c-descriptor-recovery/) | verified | high | 2026-11-05 |
 | [篡改 ELF .note.gnu.property 改变依赖该 note 的 IFUNC 分派](code-analysis-reverse-linux-elf-note-ifunc-policy-tamper/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->

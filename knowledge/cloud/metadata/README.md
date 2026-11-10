@@ -27,6 +27,8 @@
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [SSRF 代理可自定义方法与请求头时绕过 IMDSv2 读取 EC2 IAM 临时凭证](cloud-metadata-ssrf-imdsv2-token-credential.md) | verified | high | 2026-11-05 |
+| [SSRF 经 UEditor catchimage 抓取阿里云 ECS/ECI 元数据 RAM 临时凭证并以图片落盘回读](cloud-metadata-ueditor-catchimage-aliyun-ram-credential.md) | verified | high | 2026-11-09 |
+| [上传接口响应泄露云存储临时凭证实现任意文件上传与桶内覆盖](cos-oss-temp-credential-leak-overwrite.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

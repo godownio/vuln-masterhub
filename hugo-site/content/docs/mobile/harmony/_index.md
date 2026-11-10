@@ -33,6 +33,7 @@ HAP/APP/ABC、方舟运行时与安全机制。
 |---|---|---|---|
 | [HAP 静态提取硬编码管理员哈希：SHA256 token 派生 + SM4-ECB 解密 flag](mobile-harmony-hap-hardcoded-admin-token-sm4-flag/) | verified | high | 2026-11-06 |
 | [HarmonyOS ArkTS + NAPI 逆向：混淆常量恢复、密码哈希拼接与 SM4/VM 解密 flag](mobile-harmony-arkts-napi-obfuscated-constants-sm4-vm-flag/) | verified | high | 2026-11-06 |
+| [HarmonyOS HAP 的 ABC 字节码反编译后用固定 XOR key 还原硬编码接口与密钥](mobile-harmony-hap-abc-xor-hardcoded-secrets/) | verified | high | 2026-11-08 |
 | [HarmonyOS HAP 逆向流程：sourceMaps 泄露源码树 + modules.abc 反编译 + ArkTS 字节码阅读](mobile-harmony-hap-abc-reverse-sourcemaps-workflow/) | verified | high | 2026-11-06 |
 | [HarmonyOS HAP 逆向：ArkTS 派生 seed + native S-box/128 位仿射变换，Unicorn 黑盒 + GF(2) 消元反解 UUID](mobile-harmony-hap-arkts-native-sbox-affine-unicorn/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->

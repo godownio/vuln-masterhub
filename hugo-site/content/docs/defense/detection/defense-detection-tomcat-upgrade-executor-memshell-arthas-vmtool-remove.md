@@ -19,9 +19,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T20:03:50+08:00'
+  notes: 已对照原文与全部55张图核对：Upgrade 卡 httpUpgradeProtocols 注入代码（图44）、hello->MyUpgrade（图49）、带 Connection/Upgrade/cmd 头的请求弹计算器（图50）、remove('hello') 后 map 为空但仍可访问及触发点说明；Executor 卡 NioEndpoint.executor 为 EvilExecutor（图55）、executor 注入代码（图46）、hacku 头在任意路径触发（图45）、直接删除会死服务的说明、7 参 ThreadPoolExecutor + @class.getConstructor/newInstance + setExecutor 替换命令（图51/53）与替换后 404（图54）、重编译 retransform 报 schema 变化失败（图52），均与原文一致。原文为应急查杀教程，无 CVE/组件版本，affected_versions 保持 null。dedup：最高候选 web-java-component-tomcat-upgrade-memshell(0.9484)、executor-memshell(0.9225) 为注入侧卡，本卡为查杀移除侧，非同一链；filter/websocket 移除、ProxyValve、Agent 卡组件不同；dup-scan 18451 两卡 self-pair 判 related，分属不同组件族，保留两卡。未验证点：未按原文环境复测。
 url: /docs/defense/detection/defense-detection-tomcat-upgrade-executor-memshell-arthas-vmtool-remove/
 draft: false
 kb_aliases:

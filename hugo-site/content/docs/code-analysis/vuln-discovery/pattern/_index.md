@@ -33,8 +33,11 @@ weight: 1
 |---|---|---|---|
 | [FFM MemorySegment 裸指针被 native 滞留导致 Arena 关闭后悬挂读写](code-analysis-vuln-discovery-ffm-native-pointer-retention/) | verified | high | 2026-11-05 |
 | [Python 安全规则列表漏逗号导致隐式字符串拼接](code-analysis-vuln-discovery-python-adjacent-string-concat/) | verified | high | 2026-11-04 |
+| [Ruby 不安全递归合并导致类污染：经 class→superclass→subclasses 穿越改写任意类的实例变量](code-analysis-vuln-discovery-ruby-recursive-merge-class-pollution/) | verified | medium | 2026-11-08 |
+| [同产品两份后缀策略并存：从「弱的那一份被实际调用」找上传绕过入口](code-analysis-vuln-discovery-duplicate-extension-policy-divergence/) | verified | high | 2026-11-08 |
 | [存储抽象层边界审计：校验调用点、条件化 sanitize 与可热写安全配置](code-analysis-vuln-discovery-storage-boundary-audit-pattern/) | verified | high | 2026-11-05 |
 | [空集合上的真空授权：循环体检查、短路与 every 恒真的审计模式](code-analysis-vuln-discovery-vacuous-authorization-empty-collection/) | verified | high | 2026-11-05 |
+| [跨语言解压 API 默认不安全清单：Zip Slip sink 识别与穿越条目构造](code-analysis-vuln-discovery-default-insecure-archive-extract-api/) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

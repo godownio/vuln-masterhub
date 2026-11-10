@@ -42,8 +42,11 @@ Python 反序列化、SSTI、框架与依赖漏洞。
 | [ComfyUI-Manager QVD-2026-2759：/snapshot/restore 路径穿越 + userdata 写入恶意快照，重启恢复时安装远程仓库执行 install.py](web-python-comfyui-manager-snapshot-restore-path-traversal-qvd-2026-2759/) | verified | medium | 2026-11-06 |
 | [Django 登录接口对 base64 参数 eval 导致未授权 RCE（chkid/chkport）](web-python-django-login-eval-base64-user-input-rce/) | verified | high | 2026-11-05 |
 | [Flask config 对象污染：merge 写入 config.filename 导致任意文件读取](web-python-flask-config-object-pollution-filename-file-read/) | verified | medium | 2026-11-06 |
+| [js2py CVE-2024-28397 沙盒逃逸：Object.getOwnPropertyNames 泄露 PyObjectWrapper，沿 __subclasses__ 找到 subprocess.Popen 执行命令](web-python-js2py-cve-2024-28397-pyobjectwrapper-subclasses-popen-escape/) | verified | high | 2026-11-08 |
 | [JSON Unicode 转义绕过前置 WAF：检查原文、json.loads 后还原敏感字符串](web-python-waf-json-unicode-escape-bypass/) | verified | high | 2026-11-05 |
+| [pydash.set_ 反斜杠转义绕过「_.」过滤：__class__\\.__init__ 既避开字符串检查又按点分割进入 dunder 链](web-python-pydash-set-backslash-dot-path-escape-bypass/) | verified | high | 2026-11-09 |
 | [pydash.set_ 路径穿越导致 Python 类属性、模块全局与 Flask/Jinja 配置污染](web-python-pydash-set-attribute-path-pollution/) | verified | high | 2026-11-05 |
+| [Python merge 污染模块全局 __file__：源码回显路由变任意文件读取](web-python-merge-globals-file-source-echo-arbitrary-read/) | verified | medium | 2026-11-08 |
 | [Python 代码执行 WAF 绕过：关键字拆分与动态属性构造](web-python-waf-bypass-dynamic-attribute-keyword-split/) | verified | high | 2026-11-05 |
 | [Python 代码执行 WAF 绕过：编码与 Unicode 归一化](web-python-waf-bypass-encoding-unicode-normalization/) | verified | high | 2026-11-05 |
 | [Python 标识符 NFKC 归一化：方法名折叠覆盖与兼容字符压缩长度](web-python-unicode-normalization-identifier-collision-length/) | verified | high | 2026-11-05 |

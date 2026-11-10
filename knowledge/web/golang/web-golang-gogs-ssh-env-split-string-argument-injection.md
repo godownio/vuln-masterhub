@@ -25,9 +25,13 @@ cve:
 severity: high
 confidence: high
 affected_versions: Gogs 0.13.0
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V271
+  verified_at: '2026-11-07T20:41:44+08:00'
+  notes: 已对照原文 content.md 与全部 17 张图逐项核对：漏洞点为 internal/ssh/ssh.go 的 env 请求处理，仅校验 Name/Value 非空后 com.ExecCmd("env", fmt.Sprintf("%s=%s", env.Name, env.Value)) 以单 argv 执行、不经 shell；利用 GNU env -S/--split-string（图03 env --help、图04 实测 cat /etc/passwd）将变量名设为 --split-string 构成参数注入 RCE。复现链与卡片一致：Gogs 0.13.0（git clone -b v0.13.0）+ Go 1.22.5 + PostgreSQL，安装向导开启内置 SSH/2222（图07），注册用户+SSH 公钥、建仓、git clone（图08-11）；客户端 SendEnv LANG LC_* *split*（图14；默认 ssh_config 图01），C setenv（文中描述）/shell export（图12）失败、Go os.Setenv 成功（图13）；Gogs Trace 日志显示 env.Name=--split-string、env.Value=cat /etc/passwd（图15），改源码打印 stdout 后回显 passwd（图16-17），与卡片“默认盲执行”吻合。affected_versions：原文明确写“Gogs 0.13.0 版本存在安全漏洞”且复现版本表为 Gogs 0.13.0，卡片保持 Gogs 0.13.0，未扩大区间。dedup：报告 exact 命中为卡片自身；最高非自身候选 web-golang-build-env-cc-injection-command-exec（Go 编译 CC 注入）及两条 Gogs symlink RCE 入口/触发/PoC 均不同，非同一利用链；dup-scan 无本卡 pair。未验证点：未本地复跑 PoC（原文有完整截图佐证）。
 ---
 
 ## 一句话结论

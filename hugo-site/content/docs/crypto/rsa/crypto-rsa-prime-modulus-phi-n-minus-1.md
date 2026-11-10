@@ -1,0 +1,80 @@
+---
+id: crypto-rsa-prime-modulus-phi-n-minus-1
+title: RSA 模数本身是素数时 φ(n)=n-1 直接求 d 解密
+type: scenario
+domain: crypto
+path: crypto/rsa
+technique: rsa-prime-modulus-phi-recovery
+tags:
+- rsa
+- ctf
+- phi
+- 实现错误
+cve: []
+severity: low
+confidence: high
+status: verified
+created: '2026-11-08'
+updated: '2026-11-08'
+verification:
+  verified_by: verifier-T1-24
+  verified_at: '2026-11-08T13:27:47+08:00'
+  notes: 已对照原文核对：题目脚本/参数与卡一致，dedup top候选均related非同链，dedup_review理由成立；卡无sources字段(库内约定)；未验证点：PoC未在本机Sage环境执行
+url: /docs/crypto/rsa/crypto-rsa-prime-modulus-phi-n-minus-1/
+draft: false
+kb_aliases:
+- n 为素数
+- phi=n-1
+- 单素数模数 RSA
+- prime modulus RSA
+---
+
+## 一句话结论
+
+若题目/实现把 `n` 直接取成一个 1024 位素数（`n = getPrime(1024)` 而不是 `p*q`），则 `φ(n) = n-1`，任何人拿到 `n` 就能求 `d = e^{-1} mod (n-1)` 并直接解密，无需分解。
+
+## 原理
+
+- RSA 解密依赖 `m^{ed} ≡ m (mod n)`，其成立条件是 `ed ≡ 1 (mod λ(n))`，而 `λ(n)` 由 `n` 的因子结构决定（`n=pq` 时 `φ=(p-1)(q-1)`）。
+- 当 `n` 本身是素数时，`Z_n` 的乘法群阶为 `n-1`，即 `φ(n)=n-1`；因子结构完全已知（`n` 就是它自己），安全性归零。
+- 因此攻击者只需做一次素性判断确认 `n` 是素数（或发现试除到 `√n` 都没有因子、`gcd` 类分解全部失败），就能立刻算出私钥。
+- 为什么容易误判：出题/实现脚本常写 `n = getPrime(k)` 图省事，而 `n` 的位长、`e`、`c` 与正常 RSA 完全一致，只有做过素性检验才能发现。
+
+## 触发条件
+
+- 给定 `n, e, c`，且 `isPrime(n)` 为真（或 `n` 为素数幂，需按 `φ(p^k)=p^{k-1}(p-1)` 处理）；
+- `e` 与 `φ(n)` 互素（否则需先求 `gcd(e, φ)` 再处理不可逆情形）；
+- 明文 `m < n`，否则需注意 `m` 被截断。
+
+## 利用步骤
+
+1. 对 `n` 做素性检验：`is_prime(n)`、Miller-Rabin 或 `sympy.factorint(n)`。
+2. 令 `phi = n - 1`，求 `d = inverse(e, phi)`。
+3. `m = pow(c, d, n)`，`long_to_bytes(m)` 即明文。
+4. 若 `n` 是素数幂 `p^k`，先开方求 `p`，再 `phi = p**(k-1)*(p-1)`。
+
+## PoC
+
+```python
+from Crypto.Util.number import long_to_bytes, inverse, isPrime
+
+n = 150624321883406825203208223877379141248303098639178939246561016555984711088281599451642401036059677788491845392145185508483430243280649179231349888108649766320961095732400297052274003269230704890949682836396267905946735114062399402918261536249386889450952744142006299684134049634061774475077472062182860181893
+e = 65537
+c = 22100249806368901850308057097325161014161983862106732664802709096245890583327581696071722502983688651296445646479399181285406901089342035005663657920475988887735917901540796773387868189853248394801754486142362158369380296905537947192318600838652772655597241004568815762683630267295160272813021037399506007505
+
+assert isPrime(n)          # 确认模数本身是素数
+d = inverse(e, n - 1)      # φ(n) = n - 1
+print(long_to_bytes(pow(c, d, n)))
+```
+
+## 变体与关联
+
+- 变体：`n = p^2` 时 `φ = p(p-1)`，先对 `n` 开平方；`n` 为多素数乘积时需分解。
+- 变体：`n` 是素数但 `e` 与 `n-1` 不互素，需用 `e` 的因子分组求解（类似 Rabin）。
+- 关联：[[crypto-rsa-perfect-square-modulus-p-squared]]（素数平方模数）、[[crypto-rsa-phi-divisor-factoring-multiprime-power]]（多素数 φ）。
+- 边界：`n` 为合数时本卡不成立；但即使 `n` 合数，若给出的是「错误 φ」也可用 `φ` 反推因子，思路一致。
+
+## 检测与防御
+
+- 检测（CTF/审计视角）：生成脚本中 `n` 未由两素数相乘得到；对 `n` 做素性检验即可发现。
+- 防御（实现视角）：用成熟库生成密钥（OpenSSL/`rsa.generate_private_key`），并对生成的 `n` 做「不是素数、不是素数幂、不是完全平方」的自检；密钥生成后校验 `p*q == n`。

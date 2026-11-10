@@ -32,6 +32,7 @@ IIS 配置、短文件名、WebDAV 与历史漏洞。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [IIS WebDAV 开启时 PUT 写文件 + MOVE 改后缀落地 ASP WebShell](web-dotnet-iis-webdav-put-move-webshell/) | verified | high | 2026-11-04 |
+| [IIS 托管模块后门：bin 目录投放 IISModule DLL + web.config 注册 modules，请求即执行命令](web-dotnet-iis-managed-module-backdoor-bin-webconfig/) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

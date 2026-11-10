@@ -24,9 +24,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:40:25+08:00'
+  notes: 已对照原文与8张图核对：两段式链（recruitStudent/queryById?id=17431 返回 openId/tenantId=76 → myRegistration?tenantId=70&userId=oSF-j4... 返回 name=dy、phone=18211111111、idCard、tenantId=70 等）与图03/04逐字段一致；图02为教育漏洞平台“arr并非可猜解内容，危害不足”评价，支撑“不可遍历标识需扩大危害”的动机；两账号替换确认越权与图01/02响应一致。dedup 候选 api-param-fuzz/mobile-userid 等为不同枚举链（related/new）；dup-scan 与 current-path 卡 pair 判 related（不同手法，保留）。未执行遍历脚本。
 ---
 
 ## 一句话结论

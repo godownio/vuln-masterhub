@@ -33,16 +33,20 @@ Go Web 框架、模板、反序列化与依赖漏洞。
 |---|---|---|---|
 | [Gitea 已认证账户 RCE：任意账号在低于 1.27.1 的版本执行命令（CVE-2026-60004）](web-golang-gitea-authenticated-rce-cve-2026-60004/) | verified | low | 2026-11-05 |
 | [Go 1.22+ ServeMux 编码斜杠 %2F 双视图解析导致路径穿越读取](web-golang-servemux-encoded-slash-path-traversal/) | verified | high | 2026-11-04 |
+| [Go filepath.Join/Clean 目录遍历误区：.. 在相对 base 下保留、绝对 base 下仍可逃出基目录](web-golang-filepath-join-clean-traversal-misconception/) | verified | medium | 2026-11-08 |
 | [Go idna 纯 ASCII Punycode 标签解码漏判绕过域名校验](web-golang-golang-idna-ascii-punycode-validation-bypass/) | verified | high | 2026-11-04 |
 | [Go net/http Handler 内存马：RCE 后动态注册隐藏路由实现无文件 WebShell](web-golang-http-handler-memshell-runtime-route/) | verified | medium | 2026-11-05 |
+| [Go os.Executable 符号链接配置劫持：Windows/macOS 从链接目录读取被篡改配置](web-golang-os-executable-symlink-config-hijack/) | verified | medium | 2026-11-08 |
+| [Go text/template SSTI 调出结构体方法：{{.Curl "gopher://..."}} 打本机 PUT 接口改配置，把任意文件读成“签名”回显](web-golang-text-template-method-call-curl-gopher-ssrf-localfile/) | verified | high | 2026-11-09 |
 | [Go text/template 注入 funcMap 暴露 exec：B64Decode 包裹命令绕过输入过滤执行](web-golang-go-template-funcmap-exec-b64decode-rce/) | verified | medium | 2026-11-07 |
+| [Go 上传编译服务把 multipart 文件名拼进 javac 命令行：文件名即命令注入](web-golang-multipart-filename-javac-shell-command-injection/) | verified | medium | 2026-11-08 |
 | [Go 博客链：SQLi 读 jwt_secret 伪造 admin JWT，text/template 方法调用 Configure/Ping 命令注入](web-golang-gopherblog-sqli-jwt-template-method-rce/) | verified | high | 2026-11-06 |
 | [Go 编码视图校验与解码视图路由的授权前缀绕过](web-golang-escaped-vs-decoded-path-authz-bypass/) | verified | high | 2026-11-04 |
 | [Go 编译服务 cgo Polyglot：宏定义改写与 #include/.incbin 编译期读取任意文件](web-golang-cgo-polyglot-compile-time-file-read/) | verified | high | 2026-11-05 |
 | [Go 编译服务环境变量注入：用户可控 env 覆盖 CC，cgo 构建期以 shell 执行任意命令](web-golang-build-env-cc-injection-command-exec/) | verified | high | 2026-11-06 |
 | [Gogs UpdateRepoFile 符号链接绕过 .git 校验写入 core.sshCommand 导致 RCE（CVE-2025-64111）](web-golang-gogs-updaterepofile-symlink-git-config-rce/) | verified | high | 2026-11-05 |
 | [Gogs 仓库文件编辑/UpdateRepoFile 跟随符号链接写入 hooks/pre-receive：push 触发钩子 RCE（CVE-2024-56731 / CVE-2025-8110）](web-golang-gogs-hooks-prereceive-symlink-write-rce/) | verified | high | 2026-11-05 |
-| [Gogs 内置 SSH 服务器 env 请求参数注入：环境变量名设为 --split-string 经 env -S 执行任意命令（CVE-2024-39930）](web-golang-gogs-ssh-env-split-string-argument-injection/) | draft | high | 2026-11-07 |
+| [Gogs 内置 SSH 服务器 env 请求参数注入：环境变量名设为 --split-string 经 env -S 执行任意命令（CVE-2024-39930）](web-golang-gogs-ssh-env-split-string-argument-injection/) | verified | high | 2026-11-07 |
 | [Gogs 符号链接任意文件删除 + Git 仓库上溯劫持：删除 .git/HEAD 触发 core.sshCommand RCE](web-golang-gogs-symlink-delete-git-head-sshcommand-rce/) | verified | high | 2026-11-07 |
 | [Ollama /api/generate 用户可控 template 注入：Go text/template 读取 .System/.Messages/.Tools 并操纵提示词](web-golang-ollama-template-param-go-ssti-data-leak/) | verified | high | 2026-11-06 |
 | [Python lower() 与 Go JSON 大小写折叠差异：ſ 解锁 ops 并注入 curl -F 参数](web-golang-unicode-casefold-json-field-curl-arg-injection/) | verified | high | 2026-11-06 |

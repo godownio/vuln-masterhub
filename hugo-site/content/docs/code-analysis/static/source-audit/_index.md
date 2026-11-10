@@ -31,16 +31,21 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [.NET MVC 白盒审计：aspx Inherits 找 bin DLL、ILSpy 反编译，Global.asax/AreaRegistration 还原路由后全局搜 select/where](code-analysis-source-audit-dotnet-mvc-ilspy-route-search/) | verified | high | 2026-11-08 |
 | [AI+SAST 挖掘 Java gadget 链：JavaParser 符号解析 + CHA 数据流 + Neo4j 图谱 + AI 筛选](code-analysis-source-audit-ai-sast-java-gadget-chain-mining/) | verified | medium | 2026-11-05 |
 | [DSL/配置模板攻击面审计：Sprintf 把用户配置拼进 nginx/VCL 解释器，14+3 处注入点批量排查](code-analysis-source-audit-dsl-config-sprintf-injection/) | verified | high | 2026-11-05 |
+| [Java SSRF 五类 HTTP 客户端 sink 清单：URL.openConnection / fluent Request.Get / OkHttp newCall / DefaultHttpClient.execute / URL.openStream](code-analysis-sast-java-ssrf-five-http-client-sink-inventory/) | verified | high | 2026-11-08 |
 | [Java 代码审计：从鉴权配置枚举匿名与排除路径，快速定位未授权前台接口](code-analysis-source-audit-java-auth-config-unauth-endpoint-enumeration/) | verified | medium | 2026-11-06 |
 | [JSF 老 OA 源码审计：*.jsf→*.jsp 路由、ExtAbstractManagedBean 控制器与危险 Servlet 定位](code-analysis-source-audit-jsf-legacy-oa-audit/) | verified | medium | 2026-11-05 |
+| [JSP 老 OA 未授权文件审计：用 Agent Ransack 检索缺失 common.jsp include 与 session 的 JSP，再筛 SQL 拼接](code-analysis-source-audit-jsp-legacy-oa-include-auth-filter/) | verified | high | 2026-11-08 |
 | [Rust soundness 缺陷审计：四类失效机理与 Miri 验证零 unsafe 代码的 UB](code-analysis-source-audit-rust-soundness-miri/) | verified | high | 2026-11-05 |
 | [Struts2 DispatchAction 继承链鉴权审计：沿 execute→init 覆写链找出未授权 Action 与 JSP 直连入口](code-analysis-source-audit-struts2-dispatchaction-init-auth-chain/) | verified | medium | 2026-11-07 |
+| [ThinkPHP 3.x 源码注入审计：I() 修饰符类型转换与 where() 双形态（字符串拼接 vs escapeString 格式化）](code-analysis-source-audit-thinkphp-i-modifier-where-escape/) | verified | high | 2026-11-08 |
 | [从 1day 特征代码复用批量挖同系统 0day：Multipart 强转与 setOrder 特征全局搜索](code-analysis-source-audit-feature-code-reuse-sibling-sink-mining/) | verified | high | 2026-11-07 |
 | [修复链断裂审计：CVE patch 只加校验不删能力，底层攻击面持续存活并反复出新 CVE](code-analysis-source-audit-additive-cve-fix-chain/) | verified | high | 2026-11-05 |
 | [双路径分歧审计：长度计算/执行共享状态导致缓冲区长度不一致，或编译/运行时编码不一致](code-analysis-source-audit-double-path-state-divergence/) | verified | high | 2026-11-05 |
 | [大型 JDBC/HQL 项目的拼接注入审计：预编译基线与 .append(... + ...) 正则筛选](code-analysis-source-audit-jdbc-hql-concat-regex/) | verified | medium | 2026-11-05 |
+| [长上下文 LLM 全项目代码审计：投喂代码库定位 SQL 拼接 sink 并跨文件追溯参数来源](code-analysis-source-audit-llm-long-context-cross-file-sqli-trace/) | verified | medium | 2026-11-09 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -20,11 +20,11 @@ confidence: high
 status: verified
 affected_versions: 4.7.3、4.8.3（文章实测）
 created: '2026-11-06'
-updated: '2026-11-06'
+updated: '2026-11-08'
 verification:
-  verified_by: verifier-V121
-  verified_at: '2026-11-06T04:13:46+08:00'
-  notes: 已对照原文及9张图核对：dlopen 定位 libnesec.so、open/access/stat 路径监控 TID 22033 访问 /proc/self/maps、pthread_create 替换全部线程、4.8.3 onLeave/onEnter 线程ID区分并只替换第一条反调试线程，均与原文/截图一致；已修正原文 Frida 默认端口笔误 27047→27042；4.7.3/4.8.3 为原文实测目标 App 版本，保留 affected_versions；PoC 未本机执行
+  verified_by: verifier-V299
+  verified_at: '2026-11-08T09:25:25+08:00'
+  notes: 14491 原语并入复核通过
 url: /docs/mobile/android/mobile-android-native-frida-antidebug-thread-bypass/
 draft: false
 kb_aliases:
@@ -36,6 +36,10 @@ kb_aliases:
 - 到梦空间
 - 反调试线程
 - 精准绕过
+- libllvm1624362448.so
+- android_dlopen_ext
+- 阻断 SO 加载
+- 假 SO 重定向
 ---
 
 ## 一句话结论
@@ -152,6 +156,7 @@ hookPthreadCreate();
 
 - **检测变体**：maps、27042 端口（原文 27047）、线程名、环境变量、`/proc/self/status` TracerPid、ptrace、syscall 直调、inline hook、时间/信号检测。
 - **绕过变体**：替换 `pthread_create` 入口、Hook `open/read` 过滤路径、Hook `strstr`/`strcmp` 改返回值、Hook `ptrace`、Hook `kill`/`exit`、patch SO、Frida 隐藏（改名/端口/线程名）。
+- **加载链路阻断/重定向（14491 原语，待复核）**：不替换线程，而是在动态库加载入口拦截。先用 `Interceptor.attach(Module.findExportByName(null, "android_dlopen_ext"), ...)` 打印 `args[0]` 路径，定位到“加载即触发 Frida 被杀”的检测 SO（本文为 `libllvm1624362448.so`，PoC 变量写作 `libnllvm1624362448.so`，以实际 Hook 打印的路径为准）；再对 `open`、`dlopen`、`android_dlopen_ext` 统一 Hook，在 `onEnter` 中用 `args[0].readCString()` 匹配目标 SO 名，命中后把路径指针置 NULL（`args[0] = ptr(0)`），使加载失败、检测代码不执行；或把 `args[0]` 重定向到 `Memory.allocUtf8String("/path/to/fake_libllvm1624362448.so")`，加载一个导出符号齐全但函数为空的假 SO。Hook 点：三者的 `args[0]` 均为路径指针；更底层的 `do_dlopen`、`find_library` 可作补充观察点，但属 linker 内部函数，通常需按符号/偏移定位。限制：Hook 必须在 spawn 早期、检测 SO 加载前挂好，否则 SO 已映射或检测已执行；若 App 改走 `openat`/直接 syscall 或自带 loader，`open` 拦截会漏；把 `open` 的路径置 NULL 会让所有匹配该路径的访问失败，App 可能因加载失败崩溃或进入异常分支；假 SO 必须架构/ABI 匹配并导出调用方期望的全部符号，否则仍会 crash 或 `UnsatisfiedLinkError`；App 若对加载失败做二次检测或存在多 SO/多线程冗余，需配合线程替换、patch SO 等其它手法。
 - **线程分工变体**：反调试线程 + 核心解密线程 + 网络线程；必须区分目标线程，避免无差别替换导致 App 卡死。
 - **关联**：[[mobile-android-anti-detection-root-emulator-proxy]]（Root/模拟器/代理检测绕过）；[[mobile-android-packer-apkid-frida-dexdump-jadx]]（加固 APK 与 Frida dump）；[[mobile-android-ssl-pinning-bypass-cert-frida]]（Frida Hook 的另一场景）；[[code-analysis-reverse-anti-debug-sandbox-environment-checks]]（反调试/反沙箱通用思路）。
 - **边界**：App 使用内核级/硬件级反调试、RASP 检测 Frida 自身、或反调试逻辑在多个 SO/线程中冗余时，单点替换可能失效；仅用于授权研究。

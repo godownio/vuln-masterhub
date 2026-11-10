@@ -32,6 +32,7 @@ ViewState、BinaryFormatter、IIS 与 .NET 反序列化。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [ASP.NET WebShell 编译产物免杀：反射调用 RijndaelManaged/Assembly.Load + 变异 base64 字符串，绕过对 Temporary ASP.NET Files 动态编译 DLL 的查杀](web-dotnet-aspnet-webshell-compiled-assembly-evasion/) | verified | high | 2026-11-08 |
 | [CSharpCodeProvider 内存编译 + BuildManager 缓存注入的 ASMX WebService 内存马](web-dotnet-csharpcodeprovider-asmx-memshell-cache-injection/) | verified | high | 2026-11-05 |
 | [JHSoft OA EditMain.aspx 后台 add/id 参数控制路径：StreamWriter 任意文件写入 GetShell](web-dotnet-jhsoft-editmain-arbitrary-file-write/) | verified | medium | 2026-11-07 |
 | [REST 管线鉴权开关短路与请求头参数覆盖导致未授权 SQL 注入](web-dotnet-rest-auth-bypass-header-parameter-override/) | verified | high | 2026-11-04 |

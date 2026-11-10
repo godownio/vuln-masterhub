@@ -24,10 +24,14 @@ tags:
 cve: []
 severity: critical
 confidence: high
-status: draft
+status: verified
 affected_versions: 信呼OA 2.6.5（原文源码目录为 xinhu_2.6.5；未给修复版本）
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:39:30+08:00'
+  notes: 已对照原文与全部45张图核对：index.php/View.php 路由与 m=d|m 拆分、openapiAction initAction openkey 校验、openkqjAction 空 initAction 重写、getpostdata 读 php://input、kqjcmdModel::postdata→savefingerprint where 拼接、snid int 转换均与图一致；图43/44 显示 ccid=a' or sleep(3)#' 响应7,725ms、基线aaa为1,687ms（均534 bytes）并伴随kqjcmdModel.php:281 Notice，时间盲注证据成立，已据此修正卡内说明。affected_versions=2.6.5（原文源码目录xinhu_2.6.5）已设。dedup 对同产品 setwxqy 卡 cosine 0.9178 仅似，端点/参数/版本/鉴权点均不同，判非同一链保留。未在本机执行PoC。
 ---
 
 ## 一句话结论
@@ -86,7 +90,7 @@ Content-Length: 73
 
 - `m=openkqj|openapi` 对应 `webmain/task/openapi/openkqjAction.php` 与父类 `openapiAction.php`；`a=api` 调用 `apiAction()`；`/post` 使 `$act='post'`。
 - `ccid` 是 `savefingerprint` 的第二个参数 `$uid`，直接拼入 `uid` 字段；`snid` 为 int，不能注入。
-- 原文响应出现 `Notice: Undefined index: id in ...\kqjcmdModel.php on line 281` 与 `{"status":1,"info":"ok","data":[null]}`，可作为代码路径已到达 Sink 的旁证；实际延时需在目标环境测量。
+- 原文抓包对比：`ccid` 为 `a' or sleep(3)#'` 时响应耗时 7,725 ms，基线 `ccid=aaa` 为 1,687 ms（两者均 534 bytes），并伴随 `Notice: Undefined index: id in ...\kqjcmdModel.php on line 281` 与 `{"status":1,"info":"ok","data":[null]}`，可作为时间盲注已成立的证据；不同环境绝对耗时需重测。
 
 时间盲注变体：
 

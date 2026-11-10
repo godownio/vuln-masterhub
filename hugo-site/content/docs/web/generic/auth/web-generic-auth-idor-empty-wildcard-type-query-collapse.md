@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:40:28+08:00'
+  notes: 已对照原文与图05-07核对：resCode 制空返回全部公司协议（total 3415、page 1、list 多家公司）与图05/06一致；/api/CommonSQL {key:[getUserInfo],postData:{studentid:...}} 返回多条 accountid/studentid/name/cellphone/idcard/email 与图07一致；原文类型混淆描述为“首次字符串、制空/%/* 无果、传数字 1/2/3 返回全部”，卡按 confidence medium 表述合理。dedup 候选 like-wildcard CVE 卡/api-param-fuzz 为不同触发条件（related/new）；dup-scan 无涉及本卡 pair。LIKE/ORDER BY 注入仅为按原文思路的升级验证载荷，卡已注明原文未给完整 PoC。未复现全量返回。
 url: /docs/web/generic/auth/web-generic-auth-idor-empty-wildcard-type-query-collapse/
 draft: false
 kb_aliases:

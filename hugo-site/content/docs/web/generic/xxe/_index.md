@@ -37,17 +37,28 @@ XML 外部实体、盲 XXE、OOB 与绕过。
 | [dom4j DocumentHelper.parseText 解析请求 XML：XMLUtil.parseModXmlStr 有回显 XXE 文件读取](web-generic-xxe-dom4j-parsemodxmlstr-inband-read/) | verified | medium | 2026-11-05 |
 | [GeoServer WMS GetMap SLD 解析 XXE：SLDXmlRequestReader 传 null EntityResolver（CVE-2025-58360）](web-generic-xxe-geoserver-wms-getmap-sld/) | verified | medium | 2026-11-05 |
 | [Java XML 解析器默认允许外部实体导致有回显文件读取](web-generic-xxe-inband-file-read-default-insecure/) | verified | high | 2026-11-05 |
+| [Java XXE 用 netdoc/file 协议读取文件并列举目录](web-generic-xxe-java-netdoc-file-directory-listing/) | verified | high | 2026-11-09 |
+| [Java XXE 盲外带选 FTP：HTTP handler 拒绝 URL 换行，FTP 受 JDK 版本限制且匿名登录泄露 Java 版本](web-generic-xxe-java-ftp-oob-jdk-version/) | verified | medium | 2026-11-09 |
+| [Jelly 危险标签黑名单用同一份 XML 做校验：check 阶段 DocumentBuilderFactory 未禁 DTD，XXE 在校验时先行触发并 OOB 外带文件](web-generic-xxe-jelly-blacklist-check-documentbuilderfactory-parse/) | verified | medium | 2026-11-09 |
 | [JHSoft OA AddressImportPub.aspx 未加固 XmlDocument.LoadXml：DNSLog 外带验证 XXE](web-generic-xxe-jhsoft-addressimportpub-loadxml-dnslog/) | verified | high | 2026-11-07 |
 | [LangChain HTMLSectionSplitter 的 xslt_path 可控导致 XSLT document() XXE 任意文件读取（CVE-2025-6985）](web-generic-xxe-langchain-htmlsectionsplitter-xslt-document-file-read/) | verified | high | 2026-11-06 |
+| [lxml 解析可被属性污染写入的配置 XML：外部实体读文件（UTF-16BE 绕值级过滤）](web-generic-xxe-lxml-config-xml-pollution/) | draft | medium | 2026-11-08 |
 | [MetaCRM /services/ws CXF SOAP 服务 commonCheckServ 嵌套 XML XXE（盲外带）](web-generic-xxe-crm-cxf-soap-dom4j-nested-xml/) | verified | high | 2026-11-07 |
 | [Nacos-spring-context DefaultXmlConfigParse 未加固 DocumentBuilderFactory 导致配置 XML XXE](web-java-xxe-nacos-spring-context-config-parse/) | verified | medium | 2026-11-05 |
+| [OOXML/容器格式上传 XXE：docx/xlsx/pptx/odt/zip/PDF 内嵌 XML 部件被服务端解析时触发外部实体](web-generic-xxe-ooxml-container-upload/) | verified | medium | 2026-11-08 |
+| [SOAP 参数内嵌 XML 二次解析：JDOM SAXBuilder 未禁 DTD 导致 OOB XXE](web-generic-xxe-soap-parameter-nested-xml-saxbuilder-oob/) | draft | medium | 2026-11-08 |
 | [sobey-mchEditor AITaskBack 未授权 XXE：请求体直接交给 DocumentBuilderFactory 解析](web-generic-xxe-sobey-mcheditor-aitaskback-documentbuilderfactory/) | verified | high | 2026-11-07 |
 | [SVG 图片上传 XXE：image/svg+xml 解析外部实体读取任意文件](web-generic-xxe-svg-upload-inband-file-read/) | verified | high | 2026-11-05 |
+| [Ucum-java 的 DTD 未禁用导致 XXE：UcumEssenceService 构造参数与 XmlUtils.parseDOM 直接把外部 XML 流交给未配置的 DocumentBuilderFactory，可带内回显或打内网 HTTP](web-java-component-ucum-xmlutils-documentbuilderfactory-xxe/) | verified | high | 2026-11-08 |
 | [XML 上传点 XXE 过滤绕过：UTF-16BE 编码隐藏 DOCTYPE 并读取 SSH 私钥](web-generic-xxe-utf16be-encoding-filter-bypass/) | verified | high | 2026-11-05 |
+| [XXE + expect:// 包装器：PHP expect 扩展把外部实体解析升级为命令执行](web-generic-xxe-expect-wrapper-command-execution/) | verified | medium | 2026-11-09 |
 | [XXE + php://filter 双 Base64 链：SSRF 内网 LFI 读取源码与 flag](web-generic-xxe-php-filter-ssrf-internal-lfi-chain/) | verified | high | 2026-11-06 |
+| [XXE 关键字绕过：把 SYSTEM 的 file:// / http:// 目标塞进 data:// base64 外部参数实体](web-generic-xxe-data-uri-base64-hide-system-uri/) | verified | medium | 2026-11-08 |
+| [XXE 读含特殊字符文件：CDATA 实体包裹 + 外部 DTD 拼接 %start;%goodies;%end;](web-generic-xxe-cdata-parameter-entity-wrap/) | verified | high | 2026-11-09 |
 | [万户OA WeiXin!callback.action XXE：XMLParse.extract 未禁用外部实体，签名校验前解析](web-generic-xxe-whir-ezoffice-weixin-callback-xmlparse/) | verified | high | 2026-11-07 |
 | [东胜物流 UpdateCustomMainfast 未加固 XmlDocument.LoadXml 导致 XXE 文件读取](web-generic-xxe-dongsheng-logistics-custommainfast-loadxml/) | verified | low | 2026-11-06 |
 | [反射 XML 注释注入 XXE 驱动内网服务 SSRF 并二次读取文件](web-generic-xxe-reflected-xml-ssrf-internal-service/) | verified | high | 2026-11-05 |
+| [无外网盲 XXE：重定义目标本地 DTD 参数实体并借报错回显读取文件](web-generic-xxe-local-dtd-error-based/) | verified | medium | 2026-11-09 |
 | [未授权 SAML ACS 在签名校验前解析 XML 触发 XXE OOB](web-generic-xxe-saml-acs-parse-before-signature/) | verified | high | 2026-11-05 |
 | [盲 XXE 的 OOB 外带](oob-exfil/) | draft | high | 2026-11-04 |
 <!-- AUTO-INDEX:END -->

@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: low
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:53:35+08:00'
+  notes: 已对照原文与全部25张图核对：license 六行格式（Name/Addr×2/Key×2/Cksm）、0xEB 块 + 'sector-aligned' 的 CRC32（poly 0xEDB88320，运行时生成查表）、Key1 结构、off_62C4AC=(b8^bC^0xB7)>>5 的 2=个人/3=专业、word_648EC0/word_648EC2/word_648EC8 三个字段的公式与 DOS 日期编码、wFatDate 演示版覆盖、sub_5D85D0 取系统时间/2024-10-26/google.de/C:\windows 最新写入时间四者最大值、off_62B918 指针反 xref，均与原文及图03-07、10-25一致；keygen C 代码与原文逐段对应。原文为单机逆向案例，无 CVE/组件版本，affected_versions 保持 null。dedup：唯一 exact 为自身；与同文 Delphi 对话框定位卡为互补关系（一为输入定位、一为算法/Keygen），候选 crc32 XOR/API hash 等均不同场景；dup-scan 无本篇 pair。未验证点：keygen 未编译复跑，授权结果以原文截图为准。
 url: /docs/code-analysis/reverse/windows/code-analysis-reverse-windows-winhex-license-crc32-keygen/
 draft: false
 kb_aliases:

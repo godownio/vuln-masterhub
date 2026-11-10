@@ -36,9 +36,11 @@ weight: 1
 | [AES-ECB 字节恢复 Oracle：可控前缀 + 固定隐藏后缀逐字节还原水印](crypto-aes-ecb-byte-at-a-time-hidden-suffix-oracle/) | verified | high | 2026-11-06 |
 | [AES-GCM nonce 复用：同 key/nonce 两段密文异或恢复目标明文](crypto-aes-gcm-nonce-reuse-keystream-xor/) | verified | high | 2026-11-06 |
 | [KMS 固定 nonce AES-CTR：import_dek(全零) 泄露 keystream 还原被包装 DEK](crypto-aes-ctr-fixed-nonce-keystream-dek-unwrap/) | verified | high | 2026-11-06 |
+| [PHP AES-256-CBC 数据库文件加密的弱密钥：md5(日期) 作 key、sha256 常量前 16 字节作固定 IV，可按日期枚举还原](crypto-aes-date-md5-fixed-iv-db-file-encryption/) | verified | high | 2026-11-10 |
 | [三重 AES-CBC + sha256(3 字符) 密钥穷举：PKCS7 与 UUID 格式剪枝恢复 flag](crypto-aes-short-password-sha256-triple-cbc-bruteforce/) | verified | medium | 2026-11-07 |
 | [二进制内固定 key/明文的 AES-128 ECB 识别与密文复现](crypto-aes-fixed-key-ecb-ciphertext-reproduce/) | verified | high | 2026-11-05 |
 | [固定 salt/IV + PBKDF2(uid) 派生 AES key：批量还原脱敏数据](crypto-aes-pbkdf2-uid-fixed-salt-iv-mask-decrypt/) | verified | high | 2026-11-06 |
+| [复现自建 KDF 解 AES-128-CBC 数据库密文：md5(pass+saltseed/IVseed) 作 salt/IV、SHA-256 迭代 10000 派生 key](crypto-aes-custom-kdf-md5-salt-iv-sha256-iter-db-decrypt/) | verified | high | 2026-11-09 |
 | [已知 AES-CBC KEY/IV 的明文条件伪造：按约束构造明文再加密通过校验](crypto-aes-cbc-known-key-constraint-plaintext-forgery/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

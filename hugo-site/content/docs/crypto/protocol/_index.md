@@ -31,6 +31,7 @@ TLS、SSH、自定义协议的密码学缺陷。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Diffie-Hellman 私钥含少量未知比特：两半枚举建表中间相遇恢复共享密钥](crypto-protocol-dh-private-key-partial-bits-mitm-table/) | verified | high | 2026-11-08 |
 | [OpenTelemetry-Go 日志 gRPC 导出器忽略 env TLS 静默回退系统根（CVE-2026-81871）](crypto-protocol-otel-go-grpc-exporter-env-tls-ignored/) | verified | high | 2026-11-05 |
 | [协议中继与 nonce 哈希密钥：中间人观察双方 nonce 派生会话密钥](crypto-protocol-relay-nonce-hash-key/) | verified | medium | 2026-11-06 |
 | [协议公钥替换：服务端把敏感数据加密到消息中携带的攻击者公钥](crypto-protocol-public-key-substitution-unbound-cert/) | verified | high | 2026-11-06 |

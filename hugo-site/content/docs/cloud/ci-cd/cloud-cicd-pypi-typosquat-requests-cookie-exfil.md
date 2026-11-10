@@ -18,9 +18,13 @@ tags:
 cve: []
 severity: high
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:31:18+08:00'
+  notes: 已对照原文《详解OWASP TOP 10 For LLM漏洞（上）》第3节 Supply Chain 及全部35张图核对：git clone psf/requests、修改 cookies.py 中 extract_cookies_to_jar、__title__ 改为 request、python3 -m build、twine upload（__token__+API Token）、pip3 install request、安装日志 request-2.31.0、collect.php 日志中外传 aihelper.livemail.com 与 chatbotresearcher.cloudcity.com 的 sessionToken、pip-audit 与 pypi-scan 识别 request 等细节均与正文/图14-25、31一致；原文外传 IP 为 20.10.210.10（已放大图15确认），卡内一致。原文未给出受影响组件版本，属攻击技术，affected_versions 保持 null。dedup：唯一 exact 为自身；后续候选 pep517 build-backend RCE、npm preinstall 蠕虫、litellm 投毒、accesskey tools typosquat、dependency confusion、optional dependency takeover 均为不同包/不同外传机制，非同一利用链；dup-scan 无本篇 pair。未验证点：未复跑恶意包构建与 twine 上传；原文未给出 collect.php 服务端代码。
 url: /docs/cloud/ci-cd/cloud-cicd-pypi-typosquat-requests-cookie-exfil/
 draft: false
 kb_aliases:

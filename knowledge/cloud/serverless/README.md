@@ -26,7 +26,8 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [SQS 消息属性注入 → Lambda 消费拼 SQL 的二次注入（含 event 参数枚举与 CLI v2 payload 编码）](cloud-serverless-sqs-lambda-second-order-sqli.md) | verified | high | 2026-11-08 |
+| [用云函数当出口 IP 池：mitmproxy 插件把整条流量改写成 POST 到函数 URL，靠云厂商 NAT 出口绕过 IP 封禁与限速](cloud-serverless-function-url-mitmproxy-egress-ip-rotation.md) | verified | high | 2026-11-09 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

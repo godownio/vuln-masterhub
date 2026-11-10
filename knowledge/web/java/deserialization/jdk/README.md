@@ -30,6 +30,7 @@ JDK 内置类形成的反序列化链与触发点。
 | [HashMap/HotSwappableTargetSource 配合 XString.equals 触发任意 toString](web-java-deserialization-jdk-xstring-equals-tostring.md) | verified | high | 2026-11-05 |
 | [Hashtable 配合 TextAndMnemonicHashMap 触发任意 toString](web-java-deserialization-jdk-hashtable-textandmnemonic-tostring.md) | verified | medium | 2026-11-05 |
 | [JDK 8u20 原生链：BeanContextSupport 吞异常 + TC_REFERENCE 复用 AnnotationInvocationHandler](web-java-deserialization-jdk-8u20-beancontextsupport-native-chain.md) | verified | high | 2026-11-05 |
+| [JDK21 原生反序列化链：JFormattedTextField$FocusLostHandler.run 触发 commitEdit → DefaultFormatter.stringToValue 用任意 String 构造器实例化类，ClassPathXmlApplicationContext 加载远程 XML RCE](web-java-deser-jdk-defaultformatter-stringtovalue-swing-chain.md) | verified | high | 2026-11-09 |
 | [JDK8 原生链：SwingLazyValue 调 Process._main 加载落地 XSLT 注入内存马](web-java-deser-jdk-xslt-process-main-chain.md) | verified | medium | 2026-11-05 |
 | [SignedObject 嵌套 ObjectInputStream 绕过反序列化过滤器](web-java-deserialization-jdk-signedobject-nested-stream-filter-bypass.md) | verified | high | 2026-11-05 |
 | [URLDNS 利用 HashMap 与 URL.hashCode 探测反序列化入口](web-java-deser-jdk-urldns-dns-probe.md) | verified | high | 2026-11-05 |

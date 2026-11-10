@@ -24,9 +24,13 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:31:03+08:00'
+  notes: 已对照原文与全部37张图核对：I/D cache 同步与 sleep(1) 链（图29/31-33 的 mipsrop/断点/libc_base、图34-35 qemu-user 下 system() fork 失败与 lw $v0,0x180($fp) 崩溃）、ROP+shellcode 脚本与原文一致；图37 系统模式 nc 监听收到 192.168.100.2 连接，证明文章整链最终可达反弹 shell。已修正 PoC 说明：系统模式验证的是纯 ROP(system-1) 链，sleep+shellcode 链原文称可直接打通但未单独复跑。该卡为 binary/pwn/rop 下的可复用利用技术卡（非仅未打通原语），与既有 binary-pwn-stack-mips-hedwig-cgi-uid-rop 的主链不重复（后者未含 cache 同步/qemu-user fork 限制）。未复跑PoC。
 ---
 
 ## 一句话结论
@@ -98,7 +102,7 @@ payload += asm('''
 ''')
 ```
 
-说明：PoC 按文中 ROP+shellcode 脚本整理，gadget 偏移与 libc 基址随固件/环境变化。原文中纯 ROP（调用 `system`）链在 `qemu-mipsel` 用户模式因 `system()` 内 `fork()` 失败而崩溃；本 PoC 的 sleep+shellcode 链不经过 `system()`/`fork()`，原文称其可直接打通，且系统模式下已用 gdbserver + 反弹 shell 验证。未在本机复跑。
+说明：PoC 按文中 ROP+shellcode 脚本整理，gadget 偏移与 libc 基址随固件/环境变化。原文中纯 ROP（调用 `system`）链在 `qemu-mipsel` 用户模式因 `system()` 内 `fork()` 失败而崩溃；本 PoC 的 sleep+shellcode 链不经过 `system()`/`fork()`，原文称其可直接打通；系统模式下原文改用纯 ROP（system-1）经 gdbserver/HTTP 打反弹 shell 验证成功（图37），sleep+shellcode 链本身原文未单独复跑。未在本机复跑。
 
 ## 变体与关联
 

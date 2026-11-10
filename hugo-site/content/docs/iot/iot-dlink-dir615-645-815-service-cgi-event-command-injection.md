@@ -20,9 +20,13 @@ cve: []
 affected_versions: 1.03 及之前的固件版本（D-Link DIR-615/645/815）
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V266
+  verified_at: '2026-11-07T18:48:45+08:00'
+  notes: 已对照原文与全部17张图核对：cgibin按argv分发servicecgi_main、sub_40A1C0解析EVENT/ACTION/SERVICE、lxmldbc_system→system、sess_ispoweruser 0x40A3A4 处 set $v0=1、四种payload与图17 ls回显一致。已修正一处与截图不符的表述：截图代码中 GET 以长度64继续解析，仅非POST/GET方法报错；原文称GET会报错、实际复现用POST，卡内已按“原文验证POST、GET未验证”注明。跨组dup-scan pair（vs 18433 DI-8100 upgrade_filter_asp）：两卡产品系列(DIR-615/645/815 vs DI-8100)、二进制(cgibin servicecgi_main vs jhttpd upgrade_filter_asp)、注入参数(REQUEST_URI EVENT/SERVICE vs path)、命令模板(event/service vs wys wget download)、认证(wys_userid vs sess_ispoweruser)、CNVD均不同，判非同一链，保留两张；与 msp_info_htm 亦为 related 不同入口。affected_versions=1.03及之前 已设。
 url: /docs/iot/iot-dlink-dir615-645-815-service-cgi-event-command-injection/
 draft: false
 kb_aliases:
@@ -46,7 +50,7 @@ D-Link DIR-615/645/815（固件 1.03 及之前）的 `htdocs/cgibin` 按 CGI 名
 ## 原理
 
 - **CGI 分发**：`cgibin` 是多合一 CGI 二进制，按传入的 CGI 名（`service.cgi`）选择 `servicecgi_main` 处理。
-- **请求解析**：`servicecgi_main` 先取 `REQUEST_METHOD`，只接受 `POST`；再取 `CONTENT_LENGTH`/`CONTENT_TYPE`，`CONTENT_TYPE` 需匹配 `application/x-www-form-urlencoded`；随后调用 `cgibin_parse_request()` 解析请求，返回值小于 0 则报错退出。解析器会在 `REQUEST_URI` 中查找 `?`，把 `?` 之后的查询串交给 `sub_402B40` 按 `&`、`=` 拆分，存入参数对象。
+- **请求解析**：`servicecgi_main` 先取 `REQUEST_METHOD`：`POST` 时解析长度 1024、`GET` 时长度 64、其他方法输出 `Unsupport HTTP request` 后退出；原文据此要求用 POST（截图代码中 GET 也会继续解析，GET 是否可达 sink 原文未验证）。再取 `CONTENT_LENGTH`/`CONTENT_TYPE`，`CONTENT_TYPE` 需匹配 `application/x-www-form-urlencoded`；随后调用 `cgibin_parse_request()` 解析请求，返回值小于 0 则报错退出。解析器会在 `REQUEST_URI` 中查找 `?`，把 `?` 之后的查询串交给 `sub_402B40` 按 `&`、`=` 拆分，存入参数对象。
 - **取参与拼接**：`sub_40A1C0("EVENT")`、`sub_40A1C0("ACTION")`、`sub_40A1C0("SERVICE")` 从解析结果里按名字取出值。若 `EVENT` 非空，命令模板为 `"event %s > /dev/null"`；否则要求 `ACTION` 与 `SERVICE` 都非空，并按 `ACTION` 的 `START`/`STOP`/`RESTART` 选择 `"service %s start > /dev/null"`、`"service %s stop > /dev/null"`、`"service %s restart > /dev/null"`。用户值被原样作为 `%s` 填入。
 - **执行**：`lxmldbc_system()` 内部把格式化后的命令串交给 `system()`，后者走 `/bin/sh -c`。由于拼接前没有任何字符转义或白名单，分号、管道、`&&`、`$()` 等在 shell 中重新获得命令分隔语义，形成命令注入。
 - **为什么四条路都通**：命令模板无论走 `EVENT` 分支还是 `ACTION`+`SERVICE` 分支，最终都汇聚到同一个 `lxmldbc_system()`；`ACTION` 只用于选模板，不参与拼接，`SERVICE`/`EVENT` 才是注入点。
@@ -55,14 +59,14 @@ D-Link DIR-615/645/815（固件 1.03 及之前）的 `htdocs/cgibin` 按 CGI 名
 ## 触发条件
 
 - 目标为 D-Link DIR-615/645/815，固件版本 1.03 及之前（CNVD-2018-01084）。
-- 能访问设备的 CGI 入口并发送 HTTP `POST`；`REQUEST_METHOD=POST`、`CONTENT_TYPE=application/x-www-form-urlencoded`，`REQUEST_URI` 中包含 `?` 查询串。
+- 能访问设备的 CGI 入口并发送 HTTP `POST`（原文验证；GET 是否可达 sink 未验证）；`REQUEST_METHOD=POST`、`CONTENT_TYPE=application/x-www-form-urlencoded`，`REQUEST_URI` 中包含 `?` 查询串。
 - 需通过 `sess_ispoweruser()` 管理员会话校验：持有合法管理员 Cookie，或在获得固件/调试能力的场景下修改二进制 NOP 掉该校验（文章采用后者在 QEMU 中复现）。
 - 注入值出现在 `REQUEST_URI` 的 `EVENT` 或 `SERVICE` 参数中，且以 `;命令;` 等形式闭合模板。
 
 ## 利用步骤
 
 1. 解包固件，定位 `/htdocs/cgibin`，在 IDA 中确认 `servicecgi_main`、`sub_40A1C0` 与 `lxmldbc_system` 的调用关系。
-2. 确认请求必须为 POST 且 `CONTENT_TYPE` 为 `application/x-www-form-urlencoded`；GET 或其他类型会直接报错。
+2. 按原文用 POST 且 `CONTENT_TYPE` 为 `application/x-www-form-urlencoded`（截图代码中 GET 会以长度 64 继续解析，GET 是否可达 sink 原文未验证；非 POST/GET 方法直接报错）。
 3. 用 QEMU 用户态复现：以 `-0 "service.cgi"` 指定 CGI 名，通过 `-E` 设置 `REQUEST_METHOD`、`REQUEST_URI`、`CONTENT_LENGTH`、`CONTENT_TYPE`，运行 `./htdocs/cgibin`。
 4. 若被 `sess_ispoweruser()` 拦住，在 `0x40A3A4` 断点处把返回值置 1（或按真机方式携带有效管理员 Cookie）。
 5. 构造注入 payload：

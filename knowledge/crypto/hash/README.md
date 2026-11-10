@@ -26,10 +26,12 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [MD5 identical-prefix 碰撞对：两个不同字符串哈希相同，绕过 md5($a) === md5($b) 强比较](crypto-hash-md5-identical-prefix-collision-pair-strict-compare.md) | verified | high | 2026-11-07 |
 | [MD5 三碰撞构造：identical-prefix 二碰撞嵌套两次 + 三层嵌套协议](crypto-hash-md5-three-way-collision-nested-fastcoll.md) | verified | high | 2026-11-06 |
 | [MD5 二进制摘要用 strcmp 比较：空字节截断只需碰撞 3 字节前缀](crypto-hash-md5-digest-strcmp-nullbyte-truncation.md) | verified | high | 2026-11-05 |
 | [MD5 长度扩展攻击：已知 key 长度与 md5(secret||password)，伪造 admin 密码哈希接管账户](crypto-hash-md5-length-extension-password-forge-admin.md) | verified | high | 2026-11-06 |
 | [SHA256 长度扩展：secret 前缀 MAC 追加字段并伪造摘要](crypto-hash-sha256-length-extension-append-field.md) | verified | high | 2026-11-06 |
+| [自写 MD5 参考实现用于逆向比对：448 位填充、512 分组小端解包、常量表与已知向量校验，判定魔改点](crypto-hash-md5-reference-implementation-diff-magic-variant.md) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

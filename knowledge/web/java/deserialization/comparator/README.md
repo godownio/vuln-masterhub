@@ -31,6 +31,7 @@
 | [Commons Collections 4.0 CC2 链：PriorityQueue → TransformingComparator → ChainedTransformer/InvokerTransformer 反射执行 Runtime.exec 或 TemplatesImpl](web-java-deser-commonscollections-cc2-chained-invoker-priorityqueue.md) | verified | high | 2026-11-07 |
 | [Fury 二次反序列化桥：UsingToStringOrdering→AbstractMemoryDataStore→IOUtils.deserialize 触发二阶段 gadget](web-java-deser-fury-usingtostring-datastore-ioutils-secondary-deser.md) | verified | high | 2026-11-06 |
 | [Fury 反序列化经 PriorityQueue/TransformingComparator 触发 AspectJ StoreableCachingMap：写 JRE 扩展 jar 加载 RCE](web-java-deser-fury-priorityqueue-aspectj-jre-jar-write-rce.md) | verified | high | 2026-11-06 |
+| [Fury 反序列化黑名单绕过：feilong PropertyComparator + PriorityQueue 触发 getter → Hutool MapProxy/BeanConverter 二次反序列化 → TemplatesImpl RCE](web-java-deser-comparator-fury-mapproxy-beanconverter-secondary-deser-templatesimpl-rce.md) | verified | high | 2026-11-07 |
 | [JDK17 模块封装下 CC4 链改写 Class.packageName 绕过校验触发 TemplatesImpl](web-java-deser-jdk17-cc4-package-name-bypass-templatesimpl.md) | verified | high | 2026-11-05 |
 | [PriorityQueue 比较器触发 toString 的通用构造](priorityqueue.md) | draft | medium | 2026-11-04 |
 | [Rhino 环境下 Comparator 链触发 toString](rhino.md) | draft | medium | 2026-11-04 |

@@ -32,6 +32,7 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Safe 多签代理 delegatecall 存储槽劫持：篡改 operation=1 + sstore(0) 替换 masterCopy 后 sweep 资产](blockchain-wallet-safe-delegatecall-slot0-mastercopy-hijack/) | verified | high | 2026-11-06 |
+| [以太坊 CREATE2 未来地址授权钓鱼：诱骗受害者 approve 尚未部署的合约，随后部署恶意合约 transferFrom 盗取代币](blockchain-wallet-create2-counterfactual-address-approval-phishing/) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

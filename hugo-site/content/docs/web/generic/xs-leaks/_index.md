@@ -32,6 +32,8 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [CSS 注入属性选择器逐字符外带页面数据](web-generic-xs-leaks-css-attribute-selector-exfil/) | verified | medium | 2026-11-05 |
+| [CSS 自定义属性 + var() 回退做条件请求 gadget：属性选择器命中才外带，隐藏 input 用 :has 父节点](web-generic-xs-leaks-css-custom-property-var-fallback-exfil/) | verified | high | 2026-11-08 |
+| [Swagger UI 远程 spec + RPO CSS 注入：属性选择器逐字符窃取 CSRF Token（CVE-2019-17495）](web-generic-xs-leaks-swagger-ui-rpo-css-injection-csrf-token/) | verified | medium | 2026-11-08 |
 | [XS-Leaks 帧计数配合 CSS pattern:valid 盲注窃取页面 Token](web-generic-xs-leaks-css-pattern-valid-frame-counting-token/) | verified | high | 2026-11-05 |
 | [XS-Leaks 帧计数：读取跨域窗口 window.length 推断页面状态](web-generic-xs-leaks-window-length-frame-counting/) | verified | high | 2026-11-07 |
 | [XS-Leaks 状态码 oracle：script onload/onerror 跨站区分 200 与 4xx/5xx](web-generic-xs-leaks-script-onload-status-code-oracle/) | verified | high | 2026-11-07 |

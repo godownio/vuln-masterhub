@@ -28,9 +28,9 @@ status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
 verification:
-  verified_by: verifier-V254
-  verified_at: '2026-11-07T16:03:22+08:00'
-  notes: 已对照原文与16张图片逐项核对：Config API JSON、wt=velocity、v.template.custom Velocity代码、whoami回显（win-ppdpadg72cc\administrator）与文章一致；PoC未实际复测，CVE-2019-17558官方区间以advisory为准
+  verified_by: verifier-V270
+  verified_at: '2026-11-07T19:43:05+08:00'
+  notes: 已对照原文与16张图核对：POST /solr/cslab/config 的 update-queryresponsewriter JSON（solr.VelocityResponseWriter、params.resource.loader.enabled=true、solr.resource.loader.enabled=true）与 GET /solr/cslab/select?q=1&&wt=velocity&v.template=custom&v.template.custom=<URL编码Velocity> 与原文逐字一致；图01回显 win-ppdpadg72cc\administrator。原文只给 Exploit-DB 47572 链接，CVE-2019-17558 为对应漏洞，官方影响区间未在原文给出，affected_versions 保持 null。dedup：唯一 exact 为自身；最高非自身候选 solr-cve-2017-12629-xxe-runexecutablelistener-rce（cosine 0.9021）为 XXE+RunExecutableListener 另一机制，非重复；与同文 dump 卡为同目标不同阶段。未验证点：未复测 Config API 与模板执行。
 ---
 
 ## 一句话结论

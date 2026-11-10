@@ -27,7 +27,10 @@ PLC、SCADA、DCS 与 OT 协议。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [IEC 104 未授权主站接入：总召唤遥测值编码隐蔽信道外传](iot-industrial-iec104-unauthorized-master-telemetry-covert-channel.md) | verified | high | 2026-11-06 |
+| [IEC 60870-5-104 报文结构与关键帧构造：APCI 长度/控制域 I·S·U、ASDU VSQ/COT/公共地址/IOA，总召、单双点遥控（选择-执行）、对时与复位帧](iot-industrial-iec104-apci-asdu-frame-construction.md) | verified | high | 2026-11-10 |
 | [MMS fileWrite 恶意固件上传取证：TPKT/COTP/MMS TLV 重组与 XOR/ZIP/LZMA 分层解码](iot-industrial-mms-filewrite-firmware-upload-forensics.md) | verified | medium | 2026-11-06 |
+| [Modbus/TCP 写命令按来源屏蔽：放行操作员写寄存器、阻断 PLC 自动逻辑，使温度失去自动调节](iot-industrial-modbus-write-command-source-shielding.md) | verified | medium | 2026-11-08 |
+| [Modbus/TCP 读输入寄存器响应篡改：温度 >4300 时改写为 4100+value%200，让 HMI 持续显示安全值](iot-industrial-modbus-read-input-register-response-tamper.md) | verified | medium | 2026-11-08 |
 | [S7comm Write Var 流量提取：筛 func=0x05/rosctr=Job 还原 PLC 写入载荷](iot-industrial-s7comm-write-var-payload-extraction.md) | verified | high | 2026-11-07 |
 | [S7comm 多组件 DB 同步写入：伪造电梯开门/上行/跨层异常状态触发 HMI flag](iot-industrial-s7comm-elevator-multi-db-state-forgery.md) | verified | high | 2026-11-06 |
 | [SCADA 快照文件 mmap 伪造：真实反应釜越限 + 传感器/SIEM 安全值欺骗](iot-industrial-scada-snapshot-mmap-state-forgery.md) | verified | high | 2026-11-06 |

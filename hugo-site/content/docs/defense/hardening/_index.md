@@ -33,11 +33,14 @@ weight: 1
 |---|---|---|---|
 | [AI 智能体场景边界与工具权限加固：意图-内容双层校验、场景-工具绑定与思考过程监控](defense-hardening-ai-agent-scene-boundary-tool-permission/) | verified | medium | 2026-11-07 |
 | [ELF 同名符号替换的分层加固：hidden、RTLD_LOCAL、-Bsymbolic 与 AT_SECURE 的边界](defense-hardening-elf-symbol-interposition-mitigation/) | verified | high | 2026-11-05 |
+| [Fastjson 不能升级时的三层加固：关 JDK 远程 Codebase 与 trustSerialData、关 autoType 并开 SafeMode、必须用 @type 时改走 addAccept 白名单](defense-hardening-fastjson-autotype-three-layer-jndi-trustcodebase-whitelist/) | verified | medium | 2026-11-09 |
 | [IFUNC 重定向的分层防御：AT_SECURE、静态链接、符号隐藏与审计](defense-hardening-ifunc-resolver-injection/) | verified | high | 2026-11-05 |
 | [JAR 重打包后的签名校验边界与发布前验签](defense-hardening-jar-signature-repackage-verification/) | verified | high | 2026-11-04 |
 | [Java RASP 通防的 sink hook 布局与盲区：FileInputStream/JNDI/ProcessImpl/ObjectInputStream/SpEL/MySQL 六类 hook 及 native 绕过](defense-hardening-java-rasp-sink-hookpoints-limits/) | verified | high | 2026-11-07 |
 | [Windows 内核进程保护驱动：ObRegisterCallbacks 剥离句柄危险权限 + 进程创建回调自动保护子进程](defense-hardening-windows-kernel-process-protection-ob-callback/) | verified | medium | 2026-11-07 |
+| [用 ASM 在 ClassFileTransformer 里插入 hook 调用：visitCode + 局部变量表下标规则定位表达式/命令参数](defense-hardening-rasp-asm-visitcode-hook-localvar-index/) | verified | high | 2026-11-08 |
 | [钓鱼附件视觉欺骗防御：扩展名显示、bidi/零宽净化、LNK 深度解析与渲染隔离](defense-hardening-phishing-filename-visual-spoof/) | verified | medium | 2026-11-07 |
+| [驱动注册 RegistryCallback 拦截注册表键创建/重命名保护启动项](defense-hardening-windows-registry-callback-key-protection/) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

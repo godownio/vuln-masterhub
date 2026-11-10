@@ -30,8 +30,14 @@
 | [Emoji 填充与表情链越狱：拆分敏感词并用表情语义替代绕过 LLM 输入过滤](ai-security-jailbreak-emoji-stuffing-chaining-filter-bypass.md) | verified | low | 2026-11-06 |
 | [GODMODE 人格前缀越狱：单独发送 “ACTIVATE GODMODE 😈” 伪造无限制模式，再用 COMMAND 诱导模型输出违禁内容](ai-security-jailbreak-godmode-persona-emoji-prefix.md) | verified | medium | 2026-11-07 |
 | [GuardBot 风险分阈值 fail-open：构造“醉酒”特征拉满 0.8 后过滤失效，分块泄露 flag](ai-security-jailbreak-guardbot-score-fail-open.md) | verified | high | 2026-11-05 |
+| [I-GCG 越狱：把「有害自我声明」写进优化目标，配多坐标更新与易到难初始化生成可迁移对抗后缀](ai-security-jailbreak-igcg-harmful-target-adversarial-suffix.md) | draft | medium | 2026-11-08 |
+| [In-Context Defense（ICD）上下文安全示范：在提示前插入“有害请求→拒绝回答”few-shot 示例，AdvBench 复现 ASR 降至 0](ai-security-jailbreak-defense-in-context-safe-demonstrations.md) | verified | high | 2026-11-08 |
 | [Policy Puppetry 策略文件伪装越狱：把系统提示重写成 XML/INI/JSON 策略，结合上下文劫持与 blocked-string 约束](ai-security-jailbreak-policy-puppetry-struct-policy-override.md) | verified | high | 2026-11-07 |
+| [Retokenization 重标记化防御：BPE-dropout 随机拆分用户提示 token，打散对抗性 token 组合，AdvBench 复现 ASR 降至 30%](ai-security-jailbreak-defense-retokenization-bpe-dropout.md) | verified | high | 2026-11-08 |
+| [Self Examination 输出自检防御：用另一个 LLM 实例零样本判定“是否描述有害行为”，AdvBench 复现 ASR 降至 2%](ai-security-jailbreak-defense-self-examination-response-filter.md) | verified | high | 2026-11-08 |
+| [Self Reminder 系统模式自我提醒：在最外层 system 提示中要求“做负责任的 AI、不要生成有害/误导内容”，AdvBench 复现 ASR 降至 2%](ai-security-jailbreak-defense-self-reminder-system-prompt.md) | verified | high | 2026-11-08 |
 | [内容安全竞赛越狱模板：虚构角色代言的责任转移、未来学者多角色叙事与递进多问拆解](ai-security-jailbreak-role-proxy-academic-multiquestion-decomposition.md) | verified | medium | 2026-11-07 |
+| [双重意图谜题拼接提示绕过 LLM 输出约束渲染外部图片](ai-security-jailbreak-double-intent-concat-puzzle-output-constraint.md) | verified | medium | 2026-11-07 |
 | [受约束解码（JSON Schema enum/GBNF）阻断拒绝路径并污染下游决策](ai-security-jailbreak-constrained-decoding-refusal-bypass.md) | verified | medium | 2026-11-05 |
 | [图灵盲区与空间拓扑盲区越狱：计算逻辑/三维空间推演压垮安全对齐的 Prompt-SKILL 自动化](ai-security-jailbreak-turing-spatial-blindspot-prompt-skill.md) | verified | medium | 2026-11-06 |
 | [多层自编码 + 触发词伪装日志越狱：让模型自行 DNA/斐波那契编码，触发后以系统日志形式输出](ai-security-jailbreak-multilayer-self-encoding-trigger-log.md) | verified | high | 2026-11-07 |

@@ -33,10 +33,12 @@
 | [Hydra instantiate 模型元数据 `_target_` 注入：恶意 YAML/JSON 配置实例化 os.system 执行命令](ai-security-supply-chain-hydra-target-model-config-rce.md) | verified | high | 2026-11-06 |
 | [InvokeAI /api/v2/models/install 外部 checkpoint 反序列化 RCE：picklescan Suspicious/扫描错误被 fail-open 放行（CVE-2024-12029）](ai-security-supply-chain-invokeai-model-install-picklescan-suspicious-fail-open-rce.md) | verified | high | 2026-11-05 |
 | [joblib NumpyArrayWrapper.read_array pickle 反序列化：加载恶意模型缓存即执行 __reduce__ 命令](ai-security-supply-chain-joblib-numpyarraywrapper-pickle-rce.md) | verified | medium | 2026-11-06 |
+| [Keras 加载 .keras 时按 config 动态导入任意模块的类/函数：伪造 config.json 调用 subprocess.Popen 实现 RCE（CVE-2025-1550）](ai-security-supply-chain-keras-config-dynamic-class-rce.md) | verified | high | 2026-11-08 |
 | [LiteLLM 1.82.7/1.82.8 PyPI 投毒：.pth 安装即执行、凭据窃取加密外传与 K8s 特权 Pod 后门](ai-security-supply-chain-litellm-pypi-pth-stealer-k8s-backdoor.md) | verified | high | 2026-11-06 |
 | [llama-cpp-python GGUF chat_template Jinja2 SSTI：恶意模型元数据在 /v1/chat/completions 触发 RCE（CVE-2024-34359）](ai-security-supply-chain-llama-cpp-gguf-chat-template-jinja2-ssti-rce.md) | verified | high | 2026-11-05 |
 | [LLaMA-Factory <=0.9.3 WebUI checkpoint_path 加载恶意 value_head.bin：torch.load 未设 weights_only 触发 pickle RCE（CVE-2025-53002）](ai-security-supply-chain-llamafactory-value-head-torch-load-pickle-rce.md) | verified | high | 2026-11-06 |
 | [npm preinstall 蠕虫 + AI IDE 配置持久化：卸载后由 AI 助手重新拉活载荷](ai-security-supply-chain-npm-preinstall-worm-ai-ide-persistence.md) | verified | medium | 2026-11-05 |
+| [Ollama 恶意 registry manifest digest 路径遍历实现任意文件读取与写入（CVE-2024-37032）](ai-security-supply-chain-ollama-digest-path-traversal-file-read-write.md) | verified | high | 2026-11-08 |
 | [PoisonGPT：ROME 定向编辑模型事实并借仿冒 Hugging Face 账号分发](ai-security-supply-chain-poison-gpt-rome-typosquat-model-hub.md) | verified | medium | 2026-11-05 |
 | [Python .pth 伪装模型文件：仓库脚本 site.addsitedir 加载隐藏目录中的低熵 .pth 执行代码](ai-security-supply-chain-python-pth-addsitedir-model-disguise.md) | verified | high | 2026-11-05 |
 | [PyTorch torch.export.load 信任 .pt2 内 use_pickle：恶意 model_weights_config.json 触发 weights_only=False 反序列化 RCE](ai-security-supply-chain-pytorch-export-load-use-pickle-rce.md) | verified | high | 2026-11-06 |

@@ -29,6 +29,7 @@
 | [MLflow ≤ 3.4.0 DNS Rebinding：REST Server 缺 Host/Origin 校验，恶意网页同源调用本地 API 读写实验数据（CVE-2025-14279）](web-generic-cors-mlflow-dns-rebinding-missing-host-validation.md) | verified | medium | 2026-11-06 |
 | [Ollama OLLAMA_ORIGINS 桌面协议通配符：受信来源页面跨域调用本地 API](web-generic-cors-ollama-desktop-origin-wildcard-csrf.md) | verified | medium | 2026-11-05 |
 | [OPTIONS 预检鉴权缺失导致对象/方法/请求头枚举](web-generic-cors-options-preflight-authz-oracle.md) | verified | high | 2026-11-04 |
+| [反射任意 Origin + Allow-Credentials true：跨域带凭证读取接口响应](web-generic-cors-reflect-origin-credentials-read.md) | verified | high | 2026-11-10 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -28,11 +28,15 @@
 |---|---|---|---|
 | [CREATE 地址预计算 + 公开 selfdestruct：由创建者地址与 nonce 找回丢失合约并销毁取走余额](blockchain-solidity-create-address-precompute-public-selfdestruct.md) | verified | high | 2026-11-07 |
 | [EVM 猜谜蜜罐合约识别：幌子 Start 交易 + 隐藏 New 内部调用 + 管理员抢跑改哈希](blockchain-solidity-evm-guess-honeypot-detection.md) | verified | high | 2026-11-06 |
-| [Shop 合约 view 价格两次调用 TOCTOU：攻击者按 isSold 切换返回值以 0 价格买入](blockchain-solidity-shop-view-price-double-call-toctou.md) | draft | high | 2026-11-07 |
+| [fallback 直接 delegatecall(msg.data) 直通库函数：调用 pwn() 选择器在代理上下文覆写 slot0 owner](blockchain-solidity-fallback-delegatecall-storage-collision-owner-hijack.md) | verified | high | 2026-11-09 |
+| [Merkle Tree 第二原像攻击：把内部节点冒充叶子缩短证明链，用 64 字节 packed 原像伪造空投领取（Paradigm CTF 2022 MerkleDrop）](blockchain-solidity-merkle-tree-second-preimage-internal-node-forged-leaf.md) | verified | high | 2026-11-09 |
+| [Shop 合约 view 价格两次调用 TOCTOU：攻击者按 isSold 切换返回值以 0 价格买入](blockchain-solidity-shop-view-price-double-call-toctou.md) | verified | high | 2026-11-07 |
 | [Solidity <0.6 动态数组长度下溢：retract 把 length 减成 2^256-1，revise 任意槽写覆写 owner](blockchain-solidity-array-length-underflow-arbitrary-storage-owner.md) | verified | high | 2026-11-07 |
 | [Solidity private 状态变量链上可读：eth_getStorageAt 按槽位还原动态字符串](blockchain-solidity-private-state-storage-read.md) | verified | high | 2026-11-07 |
+| [代理 setImplementation(address) 与实现合约业务函数选择器冲突（同为 0xd784d426）：调用“安全函数”实际改掉实现地址](blockchain-solidity-proxy-selector-collision-setimplementation-hijack.md) | verified | medium | 2026-11-09 |
 | [可写库地址 + delegatecall 存储碰撞：先用 setFirstTime 把 slot0 改成恶意库，再借恶意 setTime 覆写 owner](blockchain-solidity-delegatecall-library-slot0-owner-hijack.md) | verified | high | 2026-11-07 |
-| [透明代理存储槽冲突 + multicall 嵌套复用 msg.value：劫持 PuzzleWallet 管理员](blockchain-solidity-proxy-storage-collision-multicall-admin-hijack.md) | draft | high | 2026-11-07 |
+| [未初始化 UUPS/ERC1967 代理：部署时 init data 为空，攻击者抢先 initialize 成为 owner 并 mint 或升级](blockchain-solidity-uninitialized-uups-proxy-initialize-frontrun.md) | verified | high | 2026-11-09 |
+| [透明代理存储槽冲突 + multicall 嵌套复用 msg.value：劫持 PuzzleWallet 管理员](blockchain-solidity-proxy-storage-collision-multicall-admin-hijack.md) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -37,11 +37,15 @@ weight: 1
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [32 位有符号整数加法溢出：两个正数相加回绕为负数绕过“正数且和负”校验拿 shell](binary-pwn-signed-int-add-overflow-negative-check-bypass/) | verified | high | 2026-11-09 |
 | [ARM64 PAC 函数指针签名预言机：可写 BUILTINS + help 的 paciza 重签任意指针](binary-pwn-arm64-pac-function-pointer-signing-oracle/) | verified | medium | 2026-11-06 |
 | [AWDP UAF 二进制补丁：free 后清零全局指针槽，压缩代码区注入汇编修复](binary-pwn-awdp-uaf-patch-clear-pointer-slot/) | verified | high | 2026-11-06 |
 | [ELF COPY 重定位把共享库安全状态复制进主程序 .bss：越界写可翻转授权判定](binary-pwn-elf-copy-relocation-writable-security-state/) | verified | high | 2026-11-05 |
+| [FortiOS SSL-VPN 堆溢出未认证 RCE（特大 Content-Length 触发）](fortios-sslvpn-heap-overflow-preauth-rce/) | verified | high | 2026-11-08 |
 | [Full RELRO 绕过：改写 libc 自身 .got.plt 的 strlen 槽为 one_gadget](binary-pwn-libc-got-plt-hijack-full-relro-bypass/) | verified | medium | 2026-11-06 |
 | [libevent 服务全局 conn_state 溢出：伪造 bufferevent/evbuffer/reference chain，借 cleanup 回调链 open/read/write](binary-pwn-libevent-evbuffer-global-overflow-fake-chain-orw/) | verified | medium | 2026-11-06 |
+| [PHP VM 数组赋值副作用 UAF：error_handler 在 undefined notice 中 resize/reassign 数组，借 fakeZval 与 fake zend_string 构造任意读写](binary-pwn-php-zend-assign-dim-side-effect-uaf-arbitrary-rw/) | verified | medium | 2026-11-10 |
+| [PHP 扩展 numberGame：数组长度项设 0x80000000 越界读写，/proc/self/maps 泄模块/libc 基址后把 strlen GOT 低 4 字节改为 system](binary-pwn-php-extension-array-length-oob-strlen-got-system/) | verified | medium | 2026-11-09 |
 | [setuid 程序 GOT/PLT 惰性绑定劫持：任意 8 字节写覆写 puts@got.plt 为 system@plt（shell 可能降权）](binary-pwn-setuid-got-plt-lazy-binding-hijack/) | verified | high | 2026-11-05 |
 | [TCP 发送缓冲区阻塞放大服务端 TOCTOU 竞态窗口：从概率竞争到接近 100% 命中](binary-pwn-tcp-send-buffer-block-toctou-race-window/) | verified | high | 2026-11-06 |
 | [受限单字节代码写：把 leave 改成 push rcx; ret 形成循环 patch 并写入 shellcode](binary-pwn-single-byte-code-patch-leave-to-push-rcx-loop/) | verified | high | 2026-11-06 |

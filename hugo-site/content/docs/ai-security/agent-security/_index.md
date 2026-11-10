@@ -89,8 +89,11 @@ weight: 1
 | [Letta <= 0.16.7 /v1/tools/run 未授权代码执行：source_code 无过滤 + 默认 Actor 回退](ai-security-agent-security-letta-tools-run-unauth-code-exec/) | verified | high | 2026-11-06 |
 | [Letta AST 白名单异常回退 eval 与 allow_unsafe_eval 硬编码导致补丁绕过 RCE](ai-security-agent-security-letta-ast-whitelist-eval-fallback-bypass/) | verified | medium | 2026-11-04 |
 | [Lies-in-the-Loop：间接提示注入把危险命令藏进“安全审查”长文本，诱导用户批准 Agent 执行 RCE](ai-security-agent-security-lies-in-the-loop-hidden-command-approval-rce/) | verified | high | 2026-11-07 |
+| [LLM API 链式利用：订阅邮件地址注入命令替换，借客服工具执行 shell 命令](ai-security-agent-security-llm-api-chain-newsletter-mail-command-injection/) | verified | medium | 2026-11-09 |
+| [LLM Sandbox 跨会话文件残留：删除会话后敏感文件仍可访问](ai-security-agent-sandbox-cross-session-file-residue/) | verified | high | 2026-11-07 |
 | [LLM Tool Call SSRF：间接提示注入驱动 fetch_url 访问内网与云元数据](ai-security-agent-security-llm-tool-call-indirect-injection-ssrf/) | verified | medium | 2026-11-05 |
 | [LLM 中转 API/BaseURL 劫持：篡改模型响应伪造 Tool Call 实现 Agent 命令执行与数据窃取](ai-security-agent-security-llm-relay-baseurl-tool-call-hijack/) | verified | high | 2026-11-06 |
+| [LLM 客服过度代理：对话诱导调用 debug_sql 原始 SQL 工具，读库并删除目标用户](ai-security-agent-security-llm-debug-sql-excessive-agency/) | verified | high | 2026-11-09 |
 | [LLM 客服过度代理：生成文本只要含 "refund approved" 就调用退款 API，一句话骗取退款](ai-security-agent-security-llm-excessive-agency-refund-keyword-trigger/) | verified | high | 2026-11-07 |
 | [LLM 聊天 Agent 的 read_file 工具未限制路径边界：提示词注入用 ../ 直读用户 SSH 私钥](ai-security-agent-security-read-file-tool-path-traversal-ssh-key/) | verified | high | 2026-11-06 |
 | [MindsDB BYOM 未认证 PUT 上传 Python 代码：type=inhouse 经 exec 在当前进程执行](ai-security-agent-security-mindsdb-byom-unauth-code-exec/) | verified | high | 2026-11-06 |

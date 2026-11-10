@@ -32,6 +32,10 @@ WebLogic 反序列化、T3/IIOP 与历史漏洞。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [WebLogic 11g CVE-2020-2551 IIOP 反序列化 RCE：/bea_wls_internal/iiop 端点与 WebLogicTool 回显利用](web-java-component-weblogic-cve-2020-2551-iiop-echo-rce/) | verified | medium | 2026-11-07 |
+| [WebLogic CVE-2019-2725 只给命令回显时，借已控内网主机反向拉取 JSP 落盘（wget 到 bea_wls_internal 目录）](web-java-component-weblogic-wls-wsat-jsp-upload-indirect-fetch/) | verified | high | 2026-11-08 |
+| [WebLogic CVE-2024-21006 IIOP JNDI 注入：lookupSharable 续接上下文触发 MessageDestinationObjectFactory 本地工厂二次 lookup](web-java-component-weblogic-cve-2024-21006-iiop-lookupsharable-messagedestination-jndi/) | verified | high | 2026-11-10 |
+| [WebLogic CVE-2024-21181 T3/IIOP 反序列化：伪造 Reference 的 jvmId 触发 PartitionedMbsRefObjFactory.getObjectInstance 无过滤 readObject](web-java-component-weblogic-cve-2024-21181-iiop-partitionedmbsrefobjfactory-deser/) | verified | high | 2026-11-08 |
+| [WebLogic 域内 JDBC 连接密文解密：读 jdbc xml + SerializedSystemIni.dat 还原数据库口令](web-java-component-weblogic-jdbc-cipher-serializedsystemini-decrypt/) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

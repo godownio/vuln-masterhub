@@ -15,9 +15,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-07'
 updated: '2026-11-07'
+verification:
+  verified_by: verifier-V268
+  verified_at: '2026-11-07T18:31:58+08:00'
+  notes: 已完整阅读 content.md（3598行中本篇文章全文）与全部61张本地图片。卡片对应文中“session文件包含”一节：session_start、["username"]=$_POST["name"]、include $_GET['file'] 的源码分析、PHPSESSID、常见 sess_ 路径、POST name 写一句话后包含 sess_<PHPSESSID> 执行命令均与正文一致；本地 img/01-61 覆盖至狗黑子的RCE，session 一节的截图在原文为 xzfile 外链、未随文下载，只能按正文文字核对（cards.json 已注明）。其余题目的 skipped 理由（爆破/目录扫描/反序列化/SSTI/上传/XSS 基础技巧已被现有卡覆盖或细节不足）成立。dedup 候选 user.ini/log poisoning/data wrapper/soapclient 等均为不同载体或不同机制（related）；dup-scan 无涉及本篇 pair。affected_versions 未设置合理。未复现 session 包含链。
 url: /docs/web/php/file-inclusion/web-php-file-inclusion-session-poisoning-sess-file/
 draft: false
 kb_aliases:

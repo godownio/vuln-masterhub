@@ -32,7 +32,9 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [AES-128 CPA 相关功耗分析：汉明重量模型逐字节恢复密钥](crypto-side-channel-aes-cpa-hamming-weight/) | verified | high | 2026-11-06 |
+| [Sage is_prime 计时侧信道：用小于 103 的小素因子快速失败分支做“整除预言机”，CRT 恢复明文](crypto-side-channel-sage-is-prime-timing-oracle-crt/) | verified | medium | 2026-11-08 |
 | [白盒 AES 差分故障分析：第 8 轮列混淆注入 + phoenixAES 恢复轮密钥](crypto-side-channel-whitebox-aes-dfa-round8-fault/) | verified | high | 2026-11-07 |
+| [白盒 AES 查表实现指纹识别 + Frida 自动采样故障密文做 DFA 恢复主密钥](crypto-side-channel-whitebox-aes-table-fingerprint-frida-dfa/) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

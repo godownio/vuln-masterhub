@@ -28,6 +28,7 @@ open_basedir 限制绕过、伪协议、symlink、报错 oracle 与竞态。
 |---|---|---|---|
 | [Apache 2.4.13+ ErrorDocument 表达式 %{file:} 读取任意文件（无视 PHP open_basedir）](web-php-open-basedir-bypass-apache-errordocument-file-read.md) | verified | high | 2026-11-05 |
 | [Caddy Admin API 127.0.0.1:2019 未授权配置改写：新增 file_server route 读任意文件绕过 PHP open_basedir](web-php-open-basedir-bypass-caddy-admin-api-file-server-read.md) | verified | high | 2026-11-06 |
+| [getimagesize() 报错侧信道读取任意文件：借助宽高/类型回显逐字节推断文件内容](web-php-getimagesize-sidechannel-file-read.md) | verified | medium | 2026-11-08 |
 | [PHP 8.3 curl 扩展 open_basedir 绕过：CURLOPT_PROTOCOLS_STR 设为 all 读取任意文件](web-php-open-basedir-bypass-curl-protocols-all.md) | verified | high | 2026-11-05 |
 | [PHP getcwd() 失败竞态绕过 open_basedir（MAXPATHLEN 溢出 + 目录重命名）](web-php-open-basedir-bypass-getcwd-race.md) | verified | high | 2026-11-05 |
 | [PHP open_basedir 经典绕过：命令函数、glob://、symlink、ini_set 与报错 oracle](web-php-open-basedir-bypass-classic-methods.md) | verified | high | 2026-11-05 |
