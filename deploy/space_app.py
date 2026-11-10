@@ -4,6 +4,9 @@ import sqlite3
 import gzip
 import hashlib
 import json
+import tempfile
+import zipfile
+import shutil
 from pathlib import Path
 
 os.environ.setdefault('PORTAL_REQUIRE_DATABASE','1')
@@ -17,6 +20,42 @@ if os.environ.get('SPACE_HOST'):
     os.environ.setdefault('PORTAL_BASE_URL','https://'+os.environ['SPACE_HOST'])
 if os.environ.get('SPACE_SIGNING_SECRET'):
     os.environ.setdefault('PORTAL_SESSION_SECRET',os.environ['SPACE_SIGNING_SECRET'])
+
+def load_release_bundle(root):
+    pointer=root/'cloud-release.json'
+    if not pointer.exists():
+        return
+    import requests
+    release=json.loads(pointer.read_text())
+    prefix='https://github.com/godownio/vuln-masterhub/releases/download/'
+    if not release['url'].startswith(prefix) or not release['url'].endswith('/space-runtime.zip'):
+        raise RuntimeError('Unexpected release origin')
+    with tempfile.TemporaryDirectory() as directory:
+        archive=Path(directory)/'release.zip';digest=hashlib.sha256()
+        with requests.get(release['url'],stream=True,timeout=(30,180)) as response:
+            response.raise_for_status()
+            with archive.open('wb') as output:
+                for chunk in response.iter_content(1024*1024):
+                    digest.update(chunk);output.write(chunk)
+        if digest.hexdigest()!=release['sha256']:
+            raise RuntimeError('Release archive checksum mismatch')
+        with zipfile.ZipFile(archive) as bundle:
+            for member in bundle.infolist():
+                name=member.filename
+                if not (name.startswith(('knowledge/','hugo-site/public/')) or name in ('data/kb.sqlite','data/portal-vectors.sqlite','release-manifest.json')):
+                    continue
+                target=(root/name).resolve()
+                if not target.is_relative_to(root.resolve()):
+                    raise RuntimeError('Invalid release path')
+                if member.is_dir():target.mkdir(parents=True,exist_ok=True)
+                else:
+                    target.parent.mkdir(parents=True,exist_ok=True)
+                    with bundle.open(member) as source,target.open('wb') as output:
+                        shutil.copyfileobj(source,output)
+    # A previous compressed deployment must not overwrite this verified bundle.
+    for name in ('kb.sqlite.gz','portal-vectors.sqlite.gz'):
+        (root/'data'/name).unlink(missing_ok=True)
+
 
 def restore_release_databases(root):
     # Compressed release databases avoid storing a second large raw revision.
@@ -40,6 +79,7 @@ if __name__=='__main__':
     if not os.environ.get('PORTAL_SESSION_SECRET'):
         raise RuntimeError('Configure a persistent PORTAL_SESSION_SECRET in Space Secrets')
     root=Path(__file__).resolve().parent
+    load_release_bundle(root)
     restore_release_databases(root)
     with sqlite3.connect(root/'data/kb.sqlite') as db:
         for cid,path,filename in db.execute('SELECT id,path,filename FROM cards').fetchall():

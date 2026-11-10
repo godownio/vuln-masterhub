@@ -94,25 +94,19 @@ jobs:
                   manifest['files']['hugo-site/public/'+file.relative_to(source).as_posix()]=hashlib.sha256(file.read_bytes()).hexdigest()
           path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
           PY
-      - name: Compress verified release databases
+      - name: Upload lightweight runtime and verified release pointer
+        env:
+          RELEASE_TAG: ${{ inputs.release_tag }}
         run: |
           python - <<'PY'
           from pathlib import Path
-          import gzip,hashlib,json
-          root=Path('runtime');path=root/'release-manifest.json'
-          manifest=json.loads(path.read_text())
-          for name in ('kb.sqlite','portal-vectors.sqlite'):
-              source=root/'data'/name
-              payload=source.read_bytes()
-              assert hashlib.sha256(payload).hexdigest()==manifest['files']['data/'+name]
-              packed=source.with_name(name+'.gz')
-              packed.write_bytes(gzip.compress(payload,compresslevel=6,mtime=0))
-              manifest['files']['data/'+name+'.gz']=hashlib.sha256(packed.read_bytes()).hexdigest()
-              source.unlink()
-          path.write_text(json.dumps(manifest,ensure_ascii=False,indent=2))
+          import hashlib,json,os
+          from huggingface_hub import HfApi
+          root=Path('runtime')
+          pointer={'url':'https://github.com/godownio/vuln-masterhub/releases/download/'+os.environ['RELEASE_TAG']+'/space-runtime.zip','sha256':hashlib.sha256(Path('incoming/space-runtime.zip').read_bytes()).hexdigest()}
+          (root/'cloud-release.json').write_text(json.dumps(pointer))
+          HfApi().upload_folder(repo_id='godownio/vuln-masterhub',repo_type='space',folder_path=str(root),allow_patterns=['app.py','README.md','requirements*.txt','web/**','tools/**','taxonomy.yaml','cloud-release.json'],commit_message='Deploy verified knowledge release pointer')
           PY
-      - name: Upload runtime via short-lived repository token
-        run: hf upload godownio/vuln-masterhub runtime . --repo-type space --commit-message "Deploy verified runtime snapshot"
       - name: Check Space runtime status
         timeout-minutes: 12
         run: |
