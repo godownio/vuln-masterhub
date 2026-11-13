@@ -35,6 +35,7 @@ POP 链、魔术方法、Phar 反序列化。
 | [__wakeup 里抛异常也拦不住反序列化：异常展开后对象析构仍执行 __destruct，静态标志位绕过第一轮分支直接进 sink](web-php-deserialization-wakeup-throw-still-destruct/) | draft | medium | 2026-11-09 |
 | [CakePHP 5.1.4 新 POP 链：RejectedPromise::__destruct 字符串拼接 → ConstTypeNode::__toString → ORM\Table::__call → BehaviorRegistry::call 任意无参方法 → PHPUnit MockClass::generate 的 eval](web-php-deserialization-cakephp5-rejectedpromise-behaviorregistry-mockclass-eval/) | verified | medium | 2026-11-07 |
 | [Craft CMS CVE-2025-32432：generate-transform 的 handle 数组流入 Yii createObject，借 FnStream 析构调用任意函数](web-php-deserialization-craft-cms-cve-2025-32432-yii-createobject-fnstream/) | verified | medium | 2026-11-07 |
+| [Drupal 8 CVE-2019-6340：REST HAL JSON 的 link.options 反序列化，Guzzle FnStream/HandlerStack 链未授权 RCE](web-php-deserialization-drupal-cve-2019-6340-hal-json-guzzle-fnstream-rce/) | verified | high | 2026-11-11 |
 | [extract($_POST) 覆盖同名变量跳过「同值即 die」分支，再用 __wakeup 把属性赋成未定义全局（null）让严格比较成立](web-php-deserialization-extract-overwrite-gate-undefined-global-null-compare/) | verified | high | 2026-11-08 |
 | [fileowner() 直接作用于用户可控路径触发 phar:// 反序列化（图片信息查看器场景）](web-php-deserialization-fileowner-phar-trigger-photogallery/) | verified | high | 2026-11-08 |
 | [GatewayWorker session 反序列化 + Composer autoload 文件包含：低权限 worker 触发 root 进程加载恶意类](web-php-deserialization-gatewayworker-session-autoload-file-include-root/) | verified | high | 2026-11-07 |
@@ -43,6 +44,7 @@ POP 链、魔术方法、Phar 反序列化。
 | [Joomla 4 FormattedtextLogger __destruct 任意文件写入：path/format 可控，写日志头到 Web 目录](web-php-deserialization-joomla4-formattedtextlogger-file-write/) | verified | medium | 2026-11-09 |
 | [Joomla SqliteDriver 析构 + PHPMailer sendmailSend：反序列化链经 popen/tee 写 WebShell](web-php-deserialization-joomla-phpmailer-sendmail-file-write/) | verified | high | 2026-11-05 |
 | [Joomla 数据库 session 表注入触发反序列化：改 data 字段为 joomla|Base64 序列化串并重放 Cookie](web-php-deserialization-joomla-db-session-unserialize/) | verified | high | 2026-11-09 |
+| [KiteCMS PHAR 反序列化：图片后缀上传 phar + 多处 is_dir/phar:// 触发 TP5.1 Windows→Pivot→withAttr 链](web-php-deserialization-kitecms-phar-is-dir-upload-path-thinkphp5-rce/) | verified | high | 2026-11-13 |
 | [Laravel 11.x 反序列化 POP 链（CVE-2024-40075）：Monolog GroupHandler→Psy Hoa Stream→Termwind Element→Styles::format 任意函数写 WebShell](web-php-deserialization-laravel11-monolog-termwind-file-write/) | verified | medium | 2026-11-08 |
 | [Laravel Reverb 经 Redis Pub/Sub 消息触发的无限制 unserialize 对象注入（CVE-2026-23524）](web-php-deserialization-laravel-reverb-redis-unserialize/) | verified | medium | 2026-11-05 |
 | [phar 二进制无法直接上传时的落盘解法：把 phar 编成 =XX=00 文本塞进 session 文件，copy 到固定路径后用 base64/quoted-printable/iconv 多级 php://filter 还原再 phar:// 触发反序列化](web-php-deserialization-session-progress-phar-quotedprintable-filter-decode/) | verified | medium | 2026-11-09 |
@@ -66,6 +68,8 @@ POP 链、魔术方法、Phar 反序列化。
 | [PHP POP 链：双 md5 0e 弱比较触发 __set 回调链到 system](web-php-deserialization-double-md5-weak-compare-pop-chain/) | verified | high | 2026-11-06 |
 | [PHP Session 反序列化 S 类型十六进制转义：把 admin 藏进 \61\64\6d\69\6e 绕过检测](web-php-deserialization-session-s-hex-escape-admin-forge/) | verified | medium | 2026-11-06 |
 | [PHP session 处理器不一致注入 SoapClient：CRLF 头注入 + 本地 SSRF 把 flag 写回攻击者 session](web-php-deserialization-session-soapclient-crlf-ssrf/) | verified | high | 2026-11-06 |
+| [PHP 原生类 Error/Exception 的 __toString XSS：echo 反序列化对象把 message 注入 HTML 盲打 Cookie](web-php-native-class-error-exception-tostring-xss/) | verified | high | 2026-11-11 |
+| [PHP 原生类 SoapClient SSRF：反序列化后调用不存在方法触发 __call，user_agent 换行伪造内网请求](web-php-native-class-soapclient-call-ssrf-crlf/) | verified | high | 2026-11-11 |
 | [PHP 原生类目录读取 POP 链：array_walk 以属性名为类名任意实例化 FilesystemIterator 遍历找 flag](web-php-deserialization-native-class-array-walk-directory-read/) | verified | medium | 2026-11-06 |
 | [PHP 反序列化 __destruct 直连 system：base64 编码的 data 参数触发命令执行并写 eval WebShell](web-php-deserialization-destruct-system-webshell-base64/) | verified | high | 2026-11-07 |
 | [PHP 反序列化 EXP：ReflectionClass 改写私有属性触发 __destruct 到 __toString 读文件](web-php-deserialization-reflection-private-property-payload/) | verified | high | 2026-11-05 |
@@ -87,7 +91,11 @@ POP 链、魔术方法、Phar 反序列化。
 | [PHP 多对象析构顺序链：new 匿名类 → 注册全局函数 → 调用 include 读文件或 php://filter RCE](web-php-deserialization-multi-destruct-anonymous-class-global-function-chain/) | verified | medium | 2026-11-06 |
 | [PHP 字符逃逸注入不可控 CtrlCase + POP 链 dbCtrl::login 任意 SQL 读取 admin 凭据](web-php-deserialization-char-escape-pop-dbctrl-sqli/) | verified | medium | 2026-11-06 |
 | [PHP 序列化字符逃逸：str_replace 把 8 字符 amgoinvc 换成 4 字符 iscc，导致属性边界错位并伪造 admin123](web-php-deserialization-str-replace-length-shortening-escape/) | verified | high | 2026-11-06 |
+| [PHP 序列化正则类名大小写绕过 + 属性数绕过 __wakeup：小写类名躲过 [BA] 校验后经 __destruct/__call eval](web-php-deserialization-class-case-regex-wakeup-property-bypass/) | verified | medium | 2026-11-13 |
 | [PHP8 反序列化 __call 可变类/可变方法 sink：ReflectionFunction::invokeArgs 任意函数调用写 WebShell](web-php-deserialization-call-variable-class-method-reflection-invokeargs/) | verified | high | 2026-11-07 |
+| [PHPEMS 自定义 session cookie 已知明文还原 32 字节 key 伪造序列化会话：session::__destruct→pdosql→pepdo.exec 注入改管理员密码](web-php-deserialization-custom-session-cookie-known-plaintext-key-forge-sqli/) | verified | high | 2026-11-12 |
+| [phpggc Doctrine/RCE1：doctrine/doctrine-bundle 的 CacheAdapter→MockFileSessionStorage 任意文件写入 + PhpArrayAdapter include 执行](web-php-deserialization-doctrine-rce1-cacheadapter-filewrite-phparrayadapter-include/) | verified | high | 2026-11-13 |
+| [PhpOffice XMLWriter 的 phar 反序列化任意文件删除：__destruct 对 tempFileName 执行 unlink（非 Windows）](web-php-deserialization-phpoffice-xmlwriter-phar-file-delete/) | verified | high | 2026-11-11 |
 | [Roundcube CVE-2025-49113：上传参数污染 Session 自定义序列化，触发 preferences 二次反序列化 RCE](web-php-deser-roundcube-49113-session-injection-gpg-rce/) | verified | high | 2026-11-05 |
 | [Showdoc new_is_writeable 的 file 参数 phar:// 触发反序列化：Guzzle FileCookieJar 析构写 cookie 文件 getshell](web-php-deserialization-showdoc-new-is-writeable-phar-guzzle-filecookiejar-webshell/) | verified | high | 2026-11-08 |
 | [SimplePie memcached 缓存投毒 → PHP 对象注入 → 日志目录写 WebShell](web-php-deserialization-simplepie-memcache-poisoning/) | verified | high | 2026-11-05 |
@@ -102,6 +110,8 @@ POP 链、魔术方法、Phar 反序列化。
 | [ThinkPHP ≤6.0.13 Psr6Cache 链：pool→Channel.__call→record→Socket.save→Container.invoke 把 format_head 可调用数组当模板渲染，Php::display 内 eval 执行（CVE-2022-38352）](web-php-deserialization-thinkphp6-psr6cache-channel-socket-invoke-display-eval/) | verified | high | 2026-11-08 |
 | [ThinkPHP 会话 ID 拼进 memcached 命令造成 CRLF 注入：写入伪造会话让框架反序列化，走 TP5 Windows→Pivot→Request filter 链执行 system](web-php-deserialization-thinkphp-memcached-crlf-session-poison-pivot-system-rce/) | verified | medium | 2026-11-09 |
 | [unserialize 后用 == 弱比较判断键值：布尔 true 与任意非空字符串相等绕过校验](web-php-deserialization-weak-compare-bool-true/) | verified | high | 2026-11-08 |
+| [WordPress 6.4 WP_HTML_Token phar 反序列化 RCE：插件任意上传 + 视频插件 is_readable 触发](web-php-deserialization-wordpress-64-wp-html-token-phar-chain/) | verified | medium | 2026-11-12 |
+| [WordPress < 6.3.2 核心反序列化链：WP_Theme::__toString → WP_Block → Session → Hooks::dispatch 可变函数 RCE](web-php-deserialization-wordpress-core-gadget-chain-wp-theme-hooks-dispatch/) | verified | medium | 2026-11-11 |
 | [ZhiCMS CVE-2024-0603 反序列化链：simple_html_dom 析构 clear → MemcachedDriver::clear 触发 __toString → Template::display extract 覆盖后 eval](web-php-deserialization-zhicms-cve-2024-0603-simple-html-dom-template-eval/) | verified | high | 2026-11-09 |
 | [ZipArchive::open OVERWRITE 作为反序列化原生类文件删除 sink：打开后不写入、对象销毁即删除目标文件](web-php-deserialization-ziparchive-overwrite-file-delete/) | verified | medium | 2026-11-09 |
 | [修改 Phar 序列化元数据后重算 SHA1 签名：属性数绕 __wakeup 再 gzip 上传过正则](web-php-deserialization-phar-edit-metadata-resign-sha1/) | verified | high | 2026-11-09 |
@@ -110,6 +120,7 @@ POP 链、魔术方法、Phar 反序列化。
 | [四类魔术方法串成 POP 链：__destruct→__toString→__get→__invoke 落到 call_user_func($_GET)](web-php-deserialization-destruct-tostring-get-invoke-call-user-func/) | draft | high | 2026-11-09 |
 | [简单 POP 链：ping::__destruct 调 cup::cp eval 执行 system('cat /flag')](web-php-deserialization-destruct-cup-eval-pop/) | verified | medium | 2026-11-08 |
 | [迅睿CMS 前台二维码接口 getimagesize 触发 PHAR 反序列化：CodeIgniter4 校验链 system 执行](web-php-deserialization-xunruicms-qrcode-getimagesize-phar-ci4-system/) | verified | high | 2026-11-08 |
+| [通达OA <12.4 前台反序列化 RCE：硬编码 cookieValidationKey 伪造 Yii2 CSRF Cookie，经 BatchQueryResult→DataReader→redis Connection→CreateAction 链执行 assert](web-php-deserialization-tongda-oa-yii2-csrf-cookie-batchqueryresult-rce/) | verified | high | 2026-11-13 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

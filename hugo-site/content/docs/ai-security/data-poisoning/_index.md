@@ -35,6 +35,7 @@ weight: 1
 | [PGD 对抗训练缓解数据投毒：干净样本 + 对抗样本联合损失，降低标签翻转/清洁标签攻击影响](ai-security-data-poisoning-pgd-adversarial-training-defense/) | verified | medium | 2026-11-06 |
 | [TrojanPraise 良性微调越狱：用伪词 bruaf 重绑安全语义，270 条数据 + LoRA 提升 ASR](ai-security-data-poisoning-trojanpraise-benign-finetune-jailbreak/) | verified | high | 2026-11-06 |
 | [VLA 动作分块后门 SilentDrift：5 像素触发器 + Smootherstep 平滑扰动，块内开环积分成厘米级漂移](ai-security-data-poisoning-vla-action-chunking-smootherstep-backdoor/) | verified | medium | 2026-11-06 |
+| [后门样本重复放大训练：本地训练定向误分类模型通过"正常集+后门集"双测试校验](ai-security-data-poisoning-model-check-sample-amplification-backdoor/) | verified | high | 2026-11-12 |
 | [对抗性偏好对齐去拒答：以有害回答为 chosen、拒绝为 rejected，DPO 损失爆炸后改用 IPO 稳定训练](ai-security-data-poisoning-adversarial-dpo-ipo-refusal-removal/) | verified | medium | 2026-11-06 |
 | [微调数据投毒拆除拒答护栏：50% 辱骂示范 LoRA 让拒答率归零并误触发](ai-security-data-poisoning-alignment-finetune-refusal-removal/) | verified | high | 2026-11-05 |
 | [文本分类模型定向标签投毒：复制目标类样本改标签重训，使秘密验证集全被误判](ai-security-data-poisoning-targeted-validation-set-flip/) | verified | high | 2026-11-07 |

@@ -33,6 +33,7 @@ PLC、SCADA、DCS 与 OT 协议。
 | [Modbus/TCP 读输入寄存器响应篡改：温度 >4300 时改写为 4100+value%200，让 HMI 持续显示安全值](iot-industrial-modbus-read-input-register-response-tamper.md) | verified | medium | 2026-11-08 |
 | [S7comm Write Var 流量提取：筛 func=0x05/rosctr=Job 还原 PLC 写入载荷](iot-industrial-s7comm-write-var-payload-extraction.md) | verified | high | 2026-11-07 |
 | [S7comm 多组件 DB 同步写入：伪造电梯开门/上行/跨层异常状态触发 HMI flag](iot-industrial-s7comm-elevator-multi-db-state-forgery.md) | verified | high | 2026-11-06 |
+| [S7comm 未认证 CPU 启停：向 102 端口发送 COTP 连接 + Setup Communication + CPU Start/Stop 原始 PDU，任意可达主机可令 S7-300/400 停机或启动](iot-industrial-s7comm-unauth-cpu-start-stop-control.md) | verified | medium | 2026-11-12 |
 | [SCADA 快照文件 mmap 伪造：真实反应釜越限 + 传感器/SIEM 安全值欺骗](iot-industrial-scada-snapshot-mmap-state-forgery.md) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

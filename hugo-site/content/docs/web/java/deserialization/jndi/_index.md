@@ -32,18 +32,27 @@ JNDI/LDAP/RMI 注入与高版本绕过。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Apache CXF JMS JndiHelper 未校验 java.naming.provider.url：可控 JNDI 环境经 LDAP 反序列化 RCE（CVE-2025-48913）](web-java-jndi-cxf-jms-jndihelper-provider-url-rce/) | verified | medium | 2026-11-05 |
+| [Apache Solr admin/cores 的 indexInfo 参数写入日志触发 Log4j2 JNDI 注入 RCE（CVE-2021-44228）](web-java-deserialization-jndi-solr-cores-indexinfo-log4j2-rce/) | verified | high | 2026-11-12 |
 | [BAVE 被禁时的 Jackson 触发链：Hashtable 哈希碰撞 + XString.equals→POJONode.toString→LdapAttribute→LDAP javaSerializedData 二次反序列化](web-java-deser-xstring-pojonode-ldapattribute-javaserializeddata/) | verified | high | 2026-11-10 |
 | [Databricks JDBC 驱动 krbJAASFile 远程 JAAS 配置注入：JndiLoginModule 触发二次 JNDI lookup（CVE-2024-49194）](web-java-deserialization-jndi-databricks-jdbc-krbjaasfile-jndi/) | verified | high | 2026-11-06 |
+| [Druid Kafka sampler 未授权 + kafka-clients sasl.jaas.config JNDI 注入（CVE-2023-25194）](web-java-deserialization-jndi-druid-kafka-sasl-jaas-jndi/) | verified | high | 2026-11-11 |
+| [HikariCP 双原语：HikariConfig.setMetricRegistry(String) 触发 JNDI lookup，HikariJNDIFactory 把 Reference 属性转成 JDBC 连接](web-java-deserialization-jndi-hikaricp-metricregistry-hikarijndifactory/) | verified | high | 2026-11-11 |
 | [Java 17 Oracle JDBC RowSet 反序列化触发 RMI JNDI：POJONode+EventListenerList+动态代理包装 OracleCachedRowSet](web-java-deserialization-jndi-oracle-rowset-jdk17-pojo-proxy-rmi/) | verified | high | 2026-11-07 |
-| [JDK 8u191 LDAP JNDI javaSerializedData 反序列化通道：Obj.decodeObject 直接 readObject，配合本地 gadget 链 RCE](web-java-deserialization-jndi-ldap-javaserializeddata-deser/) | verified | high | 2026-11-09 |
+| [JDK 8u191 LDAP JNDI javaSerializedData 反序列化通道：Obj.decodeObject 直接 readObject，配合本地 gadget 链 RCE](web-java-deserialization-jndi-ldap-javaserializeddata-deser/) | verified | high | 2026-11-13 |
 | [JDK 高版本 JNDI 绕过：Tomcat ResourceFactory 本地工厂链到 BasicDataSourceFactory JDBC 反序列化](web-java-deserialization-jndi-tomcat-resourcefactory-jdbc-bypass/) | verified | high | 2026-11-05 |
 | [JNDI 远程类加载注入 Tomcat Filter 内存马（单类 defineClass + StandardContext 注册）](web-java-deserialization-jndi-tomcat-filter-memshell/) | verified | high | 2026-11-05 |
 | [JNDI 高版本本地工厂 MemoryUserDatabaseFactory：pathname 读远端 XML 解析（XXE）并回写为 jsp，配合 EL 表达式绕过 Tomcat 的实体编码](web-java-deserialization-jndi-tomcat-memoryuserdatabasefactory-pathname-write/) | verified | medium | 2026-11-09 |
+| [Jython 2.7.2 反序列化同一触发链的 JNDI 终端：PyMethod 代理 → com.ziclix.python.sql.connect.Lookup#__call__ 把首参传入 InitialContext.lookup](web-java-deser-jython-pymethod-proxy-lookup-jndi/) | verified | high | 2026-11-11 |
 | [LDAP JNDI 高版本绕过：javaNamingReference 本地工厂 + Tomcat DataSourceFactory 触发 H2 INIT RCE](web-java-deserialization-jndi-ldap-local-factory-h2-init-rce/) | verified | high | 2026-11-05 |
 | [LdapAttribute.getAttributeDefinition 作反序列化 JNDI sink：TemplatesImpl 被禁时经 ReflectionFactory 免构造器实例化触发远程类加载](web-java-deser-jndi-ldapattribute-getattributedefinition-sink/) | verified | high | 2026-11-08 |
+| [Log4j 2.15.0-rc1 绕过：开启 lookups 后利用 URI 空格触发 URISyntaxException 跳过 JNDI 白名单](web-java-deserialization-jndi-log4j2-rc1-lookups-urisyntaxexception-bypass/) | verified | high | 2026-11-13 |
 | [Log4j2 登录参数触发 JNDI 注入并反弹 Shell](web-java-deserialization-jndi-log4j2-login-rce/) | verified | high | 2026-11-04 |
+| [MemoryUserDatabaseFactory 写文件前先造目录：Linux 下 catalina.base 伪协议路径需 getter 触发 mkdirs](web-java-deser-memoryuserdatabasefactory-catalinabase-dir-create-write/) | verified | medium | 2026-11-13 |
+| [nGrinder 未授权监控接口 ip 参数注入 JMXServiceURL 的 /jndi/ 路径：RMIConnector 经 InitialContext.lookup 触发 JNDI RCE](web-java-deser-jndi-ngrinder-monitor-jmx-url/) | verified | medium | 2026-11-12 |
 | [RMIConnector.connect 的 JNDI 分支：JMXServiceURL urlPath 以 /jndi/ 开头触发 findRMIServerJNDI → InitialContext.lookup](web-java-deser-rmiconnector-jndi-findrmiserverjndi/) | verified | medium | 2026-11-10 |
 | [SolarWinds Web Help Desk AjaxProxy JSON-RPC 未授权调用导致 JNDI 注入 RCE（CVE-2025-40551 链）](web-java-deserialization-jndi-solarwinds-whd-ajaxproxy-rpc-rce/) | verified | high | 2026-11-05 |
+| [Symphony v3.6.3 文章类型参数触发 Log4j2 2.13.2 JNDI RCE：type 非整型进 WARN 日志，/post?type=${jndi:...}&tags=1](web-java-framework-symphony-article-type-log4j2-jndi-rce/) | verified | high | 2026-11-11 |
+| [TemplatesImpl 被禁后换 getter：BeanComparator 比较 OracleCachedRowSet#getConnection 把反序列化转成 JNDI](web-java-deser-beancomparator-oraclecachedrowset-getconnection-jndi/) | verified | medium | 2026-11-13 |
 | [Tomcat 8.5.79+ 删掉 forceString 不等于安全：BeanFactory 仍按 RefAddr 名反射调用 setter，用 c3p0 setUserOverridesAsString 再接 readObject](web-java-deserialization-jndi-tomcat-beanfactory-setter-forcestring-removed/) | verified | medium | 2026-11-08 |
 | [WebLogic MessageDestinationObjectFactory 本地工厂：Reference 的 jndiName 被 lookupMessageDestination 直接 InitialContext.lookup（JNDI 二次注入 gadget）](web-java-deserialization-jndi-weblogic-messagedestinationobjectfactory-local-lookup/) | verified | high | 2026-11-10 |
 | [低版本 JNDI RMI/LDAP 远程 codebase 类加载 RCE（Reference + 静态初始化块）](web-java-deserialization-jndi-low-version-rmi-ldap-remote-codebase/) | verified | high | 2026-11-06 |

@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-10'
 updated: '2026-11-10'
+verification:
+  verified_by: verifier-V476
+  verified_at: '2026-11-10T17:54:42+08:00'
+  notes: 已对照原文13648核对：原文IIS6分号截断形态test.asa;1.gif、访问需带分号全名，机制与PoC一致；仅含分号截断单一解析动作；未在真实目标复现。
 url: /docs/web/generic/file-upload/web-generic-file-upload-iis6-semicolon-truncation-asp/
 draft: false
 kb_aliases:

@@ -31,6 +31,7 @@ Flask、Django、FastAPI 等框架漏洞。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [aiohttp 静态路由 follow_symlinks=True 分支 joinpath(filename).resolve() 未校验子路径：`..` 穿越读取任意文件（XVE-2024-1472，3.9.2 修复）](web-python-framework-aiohttp-add-static-follow-symlinks-path-traversal/) | verified | high | 2026-11-11 |
 | [AstrBot CVE-2025-48957：auth_middleware 放行 /api/chat/get_file + os.path.join 路径遍历任意文件读取](web-python-framework-astrbot-cve-2025-48957-get-file-auth-bypass-path-traversal/) | verified | high | 2026-11-06 |
 | [AstrBot 硬编码 JWT 密钥 + 插件上传 RCE（CVE-2025-55449）：伪造 HS256 token 调用 /api/plugin/install-upload 触发 __import__ 执行](web-python-framework-astrbot-cve-2025-55449-hardcoded-jwt-plugin-upload-rce/) | verified | high | 2026-11-06 |
 | [authentik LDAP Source debug 接口 filter_backends 置空导致匿名越权读取目录元数据（CVE-2026-55106）](web-python-framework-authentik-ldap-debug-filter-backends-bypass/) | verified | high | 2026-11-05 |
@@ -43,6 +44,7 @@ Flask、Django、FastAPI 等框架漏洞。
 | [FastAPI/ASGI 中间件 __call__ 热补丁内存马：gc.get_objects() 定位实例，工厂模式应用也能注入](web-python-framework-fastapi-gc-asgi-middleware-memshell/) | verified | high | 2026-11-06 |
 | [Flask error_handler_spec 404 错误处理器内存马：RC4 加密命令通道 + X-Token-Auth 鉴权](web-python-framework-flask-error-handler-404-rc4-backdoor/) | verified | high | 2026-11-06 |
 | [Flask teardown 钩子内存马：teardown_request/teardown_appcontext 响应后执行与静态目录落盘回显](web-python-framework-flask-teardown-hook-memshell/) | verified | high | 2026-11-09 |
+| [Flask 会话签名密钥弱口令爆破与 Cookie 伪造：flask-unsign --unsign/--sign 冒充任意用户并枚举有效用户名](web-python-framework-flask-session-weak-secret-bruteforce-forge-enum/) | verified | high | 2026-11-12 |
 | [Flask 启动时模板清单快照 + 可控崩溃重启：写入恶意 Jinja 模板后绕过白名单触发 SSTI](web-python-framework-flask-template-list-startup-snapshot-restart-ssti/) | verified | high | 2026-11-08 |
 | [Flask 头像 URL 下载全链：file:// 任意读 → Redis CRLF 提权 → RestrictedUnpickler → root XML-RPC 读 flag](web-python-framework-flask-avatar-url-file-read-redis-crlf-pickle-root-rpc/) | verified | high | 2026-11-06 |
 | [Flask 方法覆盖与组件注册型内存马：handle_user_exception/process_response/jinja_env](web-python-framework-flask-method-override-component-memshell/) | verified | high | 2026-11-05 |

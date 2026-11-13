@@ -49,13 +49,19 @@ weight: 1
 | [RIPS v0.55 PHP token 流规范化：token_get_all 后的删除/重写、数组键折叠、控制结构补括号与三元裁剪](code-analysis-sast-rips-php-token-stream-normalization/) | verified | high | 2026-11-09 |
 | [RIPS v0.55 source/sink 污点扫描：15 类规则、净化函数与 $var()/$$var 回溯](code-analysis-sast-rips-source-sink-taint-scan/) | verified | high | 2026-11-09 |
 | [SCA 告警到 SAST/DAST 验证建议：LLM Agent 多源证据检索与可达性规则生成](code-analysis-sast-sca-llm-agent-reachability-verification/) | verified | medium | 2026-11-07 |
+| [Semgrep 代码审计落地：本地 semgrep-rules 离线扫描、Pro 规则/引擎登录门槛与 --metrics 隐私控制](code-analysis-sast-semgrep-offline-rules-pro-engine-privacy/) | draft | high | 2026-11-13 |
 | [tabby + Neo4j 从 Controller 入口批量查询危险 sink 调用链](code-analysis-sast-tabby-neo4j-controller-sink-callchain/) | verified | medium | 2026-11-05 |
+| [Tabby 1.2 + tabby-path-finder 实战：IS_ENDPOINT/IS_SINK 检索、findPath 单节点限制与 new/HAS 图语义陷阱](code-analysis-sast-tabby-1-2-pathfinder-endpoint-sink-pitfalls/) | verified | high | 2026-11-12 |
 | [Tai-e Java 白盒污点分析工程化：classpath 分离 + 路由 source 提取 + 入口注入 + only-app 断链补全](code-analysis-sast-taie-java-taint-audit-toolchain/) | verified | high | 2026-11-06 |
 | [Tai-e MyBatis 字段级污点匹配与传播补全：JavaBean 字段 sink + SpringMVC 入参字段造污点 + Map/List/setter transfers](code-analysis-sast-taie-mybatis-field-taint-propagation/) | verified | medium | 2026-11-09 |
 | [Tai-e 分析 Servlet 容器应用：@WebServlet 入口注入 + RequestFacade/ResponseFacade mock + doX 请求参数 source](code-analysis-sast-taie-servlet-container-entrypoint-taint/) | verified | medium | 2026-11-09 |
+| [Tai-e 手工入口点分析 JavaWeb 方法：mock 参数必须是形参接口的实现类、source 方法必须在具体类中声明或重写](code-analysis-sast-taie-custom-entrypoint-mock-source-type-matching/) | verified | medium | 2026-11-12 |
 | [Tai-e 指针分析支持 MyBatis 抽象 Mapper：MockObj 补调用边 + 抽象方法空 IR + SinkHandler 收集注解 SQL](code-analysis-sast-taie-mybatis-abstract-mapper-sink-analysis/) | verified | medium | 2026-11-09 |
+| [Tai-e 指针分析补全 Spring 控制反转（CHA 启发式）：onPhaseFinish 给空指向集的 invokeinterface 接收者注入实现类 MockObj](code-analysis-sast-taie-spring-di-cha-mockobj-callgraph/) | verified | high | 2026-11-11 |
 | [Tai-e 注入自定义 MyBatis ${} sink：在 TaintConfig.deserializeSinks 的 unmodifiableList 包装前 addAll，SinkHandler 内直接 add 会抛异常](code-analysis-sast-taie-mybatis-dollar-sink-inject-taintconfig/) | verified | high | 2026-11-10 |
+| [Tai-e 精确建模 Spring 注解注入：@Resource/@Autowired/@Inject 注入点 + @Service/@Component 实现类 + LoadField 返回值指向集](code-analysis-sast-taie-spring-annotation-injection-loadfield-modeling/) | verified | high | 2026-11-11 |
 | [Tai-e 自定义程序分析扩展提取 Spring Controller API：MethodAnalysis/ClassAnalysis/ProgramAnalysis + tai-e-analyses.yml 注册 + 注解路由解析](code-analysis-sast-taie-custom-program-analysis-api-extraction/) | verified | high | 2026-11-10 |
+| [Tai-e 静态污点分析检测 Log4Shell：日志入口 call source + InitialContext/JndiManager lookup sink + StringBuilder 等 transfer 补齐](code-analysis-sast-taie-log4shell-taint-detection/) | verified | medium | 2026-11-12 |
 | [用 CodeQL 定位反序列化链：Serializable 类入口 → ClassInstanceExpr 定位调用方 → 按方法名匹配 exeCmd/deserialize 定义 sink，RemoteFlowSource 接 cookie 形成完整 path-problem](code-analysis-sast-codeql-deserialization-named-method-sink/) | verified | high | 2026-11-08 |
 | [用 GitHub code-scanning API 直接下载开源项目的 CodeQL 数据库，本地跑自定义查询做定向代码审计](code-analysis-static-codeql-database-download-github-api-local-query/) | verified | medium | 2026-11-09 |
 <!-- AUTO-INDEX:END -->

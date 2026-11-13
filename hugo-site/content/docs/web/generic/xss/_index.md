@@ -52,36 +52,53 @@ weight: 1
 | [DOMPurify 3.1.1 深度限制绕过：form 命名属性劫持 parentNode 重新计数触发 mXSS](web-generic-xss-dompurify-parentnode-clobbering-depth-bypass/) | verified | high | 2026-11-05 |
 | [DOMPurify 净化后 textContent 再写 innerHTML：用 i 标签拆分重组出可执行标签](web-generic-xss-dompurify-textcontent-innerhtml-reparse/) | verified | high | 2026-11-07 |
 | [Draft List 短代码先 kses 过滤后替换占位符，草稿标题逃逸属性触发存储型 XSS](web-generic-xss-wordpress-draftlist-kses-before-placeholder/) | verified | high | 2026-11-05 |
+| [Edge WebNote/blob 注入 + history API 伪造文档来源：绕过 file:// 目录限制读取本地文件（含 res:// javascript 目标 EoP 变体）](web-generic-xss-edge-webnote-blob-history-file-origin-spoof-local-file-read/) | verified | high | 2026-11-13 |
+| [Electron contextIsolation:false + nodeIntegration:false 仍可 RCE：XSS 钩住 String.endsWith/Function.call 窃取 __webpack_require__，经 webpack require 加载 child_process 执行命令](web-generic-xss-electron-contextisolation-webpack-require-escape/) | verified | medium | 2026-11-12 |
+| [Electron nodeIntegration:true + 渲染进程 XSS：页面脚本直接 require('child_process') 执行命令（CVE-2020-16608 Notable 编辑器为例）](web-generic-xss-electron-nodeintegration-renderer-rce/) | verified | high | 2026-11-12 |
+| [Electron preload 把 require 暴露成 window.ZxDesktop：XSS 用 File.save 任意下载落盘、System.userDataPath 拼路径后 File.open 打开执行](web-generic-xss-electron-preload-exposed-require-file-system-abuse/) | verified | medium | 2026-11-12 |
 | [Electron 客户端 XSS + preload IPC curl：file:// 读取本地 flag 并借 Bot 写回管理员简介](web-generic-xss-electron-ipc-curl-file-read-bot-cookie/) | verified | high | 2026-11-07 |
 | [ExtJS 4.2.x 组件默认 HTML 渲染 XSS：MessageBox 错误弹窗与 ComboBox displayField](web-generic-xss-extjs-messagebox-combobox-html-render/) | verified | medium | 2026-11-07 |
 | [Goldmark 先查危险协议后做 HTML 实体还原：javascript&colon; 绕过 Markdown 链接过滤（CVE-2026-5160）](web-generic-xss-goldmark-markdown-entity-url-check/) | verified | high | 2026-11-05 |
 | [h3blog 后台存储型 XSS：注册用户昵称与 X-Forwarded-For 登录日志未编码，管理员查看用户/操作日志时触发](web-generic-xss-h3blog-username-xff-log-stored-xss/) | verified | high | 2026-11-07 |
 | [htmlspecialchars 默认 flags 未转义单引号导致单引号属性上下文 XSS](web-generic-xss-htmlspecialchars-single-quote-attribute/) | verified | high | 2026-11-04 |
 | [HTTP 请求头（Referer 等）回显未转义导致 XSS：隐藏 input value 属性闭合注入事件处理器](web-generic-xss-request-header-html-attribute-breakout/) | draft | high | 2026-11-08 |
+| [HttpOnly Cookie 绕过读取：同源 phpinfo 回显 Cookie 头，XSS 内 fetch 解析窃取会话（附 Apache CVE-2012-0053 超长 Cookie 400 页变体）](web-generic-xss-httponly-cookie-leak-phpinfo-apache-400/) | verified | medium | 2026-11-13 |
 | [IceCMS 广场存储型 XSS（CVE-2023-6466）：`<object data="data:text/html,...">` 绕过上一版关键字修复](web-generic-xss-icecms-object-data-uri-stored-xss/) | verified | high | 2026-11-09 |
 | [iframe.srcdoc 拼接用户 HTML：srcdoc 继承父源，内联脚本读取同源 Cookie](web-generic-xss-iframe-srcdoc-user-html/) | verified | high | 2026-11-07 |
+| [InfluxDB Flux 注入错误回显 XSS：die(msg) 把 HTML 塞进 text/html 错误响应](web-generic-xss-influxdb-flux-error-die-html/) | verified | high | 2026-11-12 |
+| [inxedu 前台提问 title/content 未过滤存储：问题详情页原样输出触发存储型 XSS](web-generic-xss-inxedu-question-title-content-stored/) | verified | high | 2026-11-12 |
 | [JavaScript 代码上下文注入：字符串闭合、表达式位置与模板字符串插槽](web-generic-xss-javascript-context-injection/) | verified | high | 2026-11-05 |
 | [jfinal cms 个人资料 realname 入库后由 Beetl 模板 ${user.realname} 原样输出：默认不转义的存储型 XSS](web-generic-xss-jfinalcms-profile-realname-beetl-unescaped-default/) | verified | high | 2026-11-08 |
+| [JFinalCMS 前台留言 getModel 未过滤存储，后台审核时触发存储型 XSS](web-generic-xss-jfinalcms-guestbook-getmodel-stored-admin-review/) | verified | high | 2026-11-12 |
+| [JFinalCMS 后台登录页 getPara 参数经 Enjoy 模板未转义输出导致反射型 XSS](web-generic-xss-jfinalcms-login-enjoy-getpara-reflected/) | verified | high | 2026-11-12 |
 | [JSON 只转义引号未转义反斜杠配合 eval 消费导致代码注入](web-generic-xss-json-eval-backslash-escape/) | verified | high | 2026-11-05 |
 | [JSONP 回调参数可控且响应为 text/html：callback 注入 SVG 事件形成反射 XSS](web-generic-xss-jsonp-callback-html-content-type-reflected-xss/) | verified | high | 2026-11-08 |
 | [JustHTML Raw-text 元素原样序列化：style 内 </style> 突破导致 mXSS（GHSA-qvc2-mg72-jjhx）](web-generic-xss-justhtml-rawtext-style-serialization-mxss/) | verified | high | 2026-11-05 |
 | [JWT 自定义 claim 注入 CSP report-uri：补写 script-src/connect-src 绕过默认 CSP](web-generic-xss-csp-report-uri-claim-injection/) | verified | high | 2026-11-05 |
 | [LLM 输出未转义渲染商品评论触发存储型 XSS：绕过评论展示路径防护删除用户账户](web-generic-xss-llm-insecure-output-handling-product-review-account-deletion/) | verified | high | 2026-11-07 |
 | [lxml_html_clean 先删反斜杠再匹配 @import：CSS Unicode 转义 @\69mport 绕过清理器（CVE-2026-28348）](web-generic-xss-lxml-html-clean-css-unicode-escape-import/) | verified | medium | 2026-11-05 |
+| [LyLme Spage apply/index.php url 参数反射型 XSS：get_head() 把 Content-Type 覆盖回 text/html，json_encode 只转义斜杠](web-generic-xss-lylme-apply-url-contenttype-override/) | verified | high | 2026-11-11 |
+| [LyLme Spage 收录申请 icon 字段存储型 XSS：strip_tags/addslashes 后在后台审核页属性逃逸注入 onload](web-generic-xss-lylme-apply-icon-attribute-breakout/) | verified | high | 2026-11-11 |
 | [Markdown 查看器的存储型 XSS 当作同源代理：读取 PHP 源码与 .htpasswd，破解后 SSH 立足](web-generic-xss-markdown-viewer-lfi-htpasswd-ssh/) | verified | medium | 2026-11-08 |
+| [Markdown 渲染 XSS：iframe javascript://%0a 换行绕过 URL 过滤，配合 embed/audio 等少见标签探测](web-generic-xss-markdown-iframe-javascript-scheme-newline/) | verified | medium | 2026-11-10 |
 | [MaxSite CMS 上传插件缺权限校验：低权限用户上传 HTML 同源读取管理员页面](web-generic-xss-maxsite-upload-missing-authz-admin-page-exfil/) | verified | high | 2026-11-06 |
 | [meta CSP 悬空标记绕过：title 提前闭合 + 未闭合 img 属性吞掉 CSP meta](web-generic-xss-meta-csp-dangling-markup-bypass/) | verified | high | 2026-11-07 |
 | [newbee-mall 商品详情 goodsDetailContent 原样渲染：后台富文本注入形成前台存储型 XSS](web-generic-xss-newbeemall-goods-detail-stored/) | verified | high | 2026-11-05 |
+| [NewBeeMall 后台 th:utext 未转义多字段存储型 XSS：商品信息/订单收件人信息/首页配置跳转链接](web-generic-xss-newbeemall-admin-thymeleaf-utext-fields/) | verified | high | 2026-11-13 |
+| [Node 实现的 XSS Bot（zombie）中页面脚本逃逸到宿主进程：this.constructor.constructor 取 global.process，mainModule._load 加载 child_process 执行命令](web-generic-xss-node-bot-zombie-constructor-process-rce/) | verified | high | 2026-11-12 |
 | [O2OA REST 设计器/配置接口批量存储型 XSS：无输出编码与无全局 XSS Filter](web-generic-xss-o2oa-rest-designer-mass-stored-xss/) | verified | high | 2026-11-05 |
+| [OTCMS（网钛CMS）多处反射型 XSS：HrefEnd backURL、SendPhoneForm type、ProvCity idName 与 apiRun mode 未过滤直接回显](web-generic-xss-otcms-multi-endpoint-reflected/) | verified | high | 2026-11-12 |
 | [PC 客户端 XSS 借 showSaveFilePicker 写伪装 update.bat 诱导用户执行获得代码执行](desktop-client-xss-showsavefilepicker-bat-rce/) | verified | high | 2026-11-08 |
 | [PDF 内嵌 JavaScript 配合上传后内联预览触发 XSS](web-generic-xss-pdf-javascript-inline-preview/) | verified | medium | 2026-11-05 |
 | [phpStudy Windows 面板登录名 XSS + 内置计划任务 CSRF：管理端 1-click 命令执行](web-generic-xss-phpstudy-panel-login-name-csrf-scheduled-task-rce/) | verified | medium | 2026-11-09 |
 | [Roundcube CVE-2024-42009：邮件正文 SVG animate 事件 XSS 窃取信箱与密码重置令牌](web-generic-xss-roundcube-cve-2024-42009-email-token-theft/) | verified | high | 2026-11-05 |
 | [RPO 相对路径覆盖：URL 重写把服务端 HTML 当 JS 加载，绕过客户端过滤执行注入代码](web-generic-xss-rpo-relative-path-overwrite/) | verified | high | 2026-11-08 |
 | [script 标签被过滤时的 XSS 替代执行载体：SVG、事件处理器与 javascript 伪协议](web-generic-xss-scriptless-execution-vectors/) | verified | high | 2026-11-04 |
+| [self-XSS 经 CSRF 自动创建资源放大：仅自己可见的存储型 XSS 变成可打任意登录用户](web-generic-xss-self-xss-csrf-auto-create/) | verified | medium | 2026-11-11 |
 | [Spring Boot RBAC 后台用户/部门名称存储型 XSS：低权用户写入，管理员列表查看时触发](web-generic-xss-spring-rbac-user-dept-name-stored/) | verified | high | 2026-11-07 |
 | [Swagger UI configUrl/url 参数加载外部配置导致 DOM XSS](web-generic-xss-swagger-ui-configurl-dom-xss/) | verified | medium | 2026-11-05 |
 | [Tmall_demo 三处存储型 XSS：商品名称/标题、订单详细地址/卖家留言、管理员昵称未编码回显](web-generic-xss-tmall-product-order-admin-nickname-stored/) | verified | medium | 2026-11-07 |
+| [Typora CVE-2023-2317：恶意 Markdown 的 embed 加载 typora:// 内部 updater 页，labels 参数经 innerHTML 造成 DOM XSS，再用 top.eval 进主窗口调 reqnode('child_process') 执行命令](web-generic-xss-typora-cve-2023-2317-typora-protocol-updater-dom-xss-reqnode-rce/) | verified | high | 2026-11-13 |
 | [WAF 保护下的存储型 XSS：冷门 HTML5 事件 FUZZ、逗号表达式隐藏 alert 特征与长度截断适配](web-generic-xss-waf-cold-event-comma-operator-truncation/) | verified | high | 2026-11-05 |
 | [wkhtmltopdf HTML 注入读本地文件并破解 /etc/shadow 登录后台](web-generic-xss-wkhtmltopdf-local-file-read-shadow-login/) | verified | high | 2026-11-06 |
 | [WordPress CVE-2024-4439：头像块 esc_attr__ 先转义格式串后 sprintf 代入作者名，存储型 XSS 逃逸 aria-label](web-generic-xss-wordpress-cve-2024-4439-avatar-esc-attr-format-order/) | verified | high | 2026-11-09 |
@@ -91,18 +108,24 @@ weight: 1
 | [ZrLog 后台「其他设置」OtherWebSiteInfo 三字段无过滤存储型 XSS：webCm 写入后在前台页面原样渲染](web-generic-xss-zrlog-admin-otherwebsiteinfo-stored-config/) | verified | high | 2026-11-07 |
 | [ZZCMS 未过滤 Referer 头导致反射型 XSS：showmsg 与 location.href 拼接 HTTP_REFERER](web-generic-xss-referer-header-showmsg-reflection/) | verified | high | 2026-11-08 |
 | [「优先级」固定值字段改包注入 HTML 标签型 payload：绕过常规弹窗黑名单实现后台存储型 XSS](web-generic-xss-fixed-value-priority-field-html-tag-payload/) | verified | low | 2026-11-08 |
+| [全标签黑名单下的自定义标签 XSS：onfocus + tabIndex + URL 锚点自动聚焦触发](web-generic-xss-custom-tag-tabindex-anchor-onfocus-bypass/) | verified | medium | 2026-11-13 |
 | [冷门事件 oncontentvisibilityautostatechange 结合 content-visibility 绕过 XSS 过滤器自动触发](xss-cold-event-content-visibility-bypass/) | verified | high | 2026-11-08 |
 | [前端 escapeHTML 使用非全局 replace 只替换首个尖括号，前缀填充即可绕过](web-generic-xss-nonglobal-replace-first-match-bypass/) | verified | high | 2026-11-05 |
 | [前端 hash 路由参数直入 jQuery .html() 导致 DOM XSS](web-generic-xss-hash-route-param-jquery-html-sink/) | verified | high | 2026-11-05 |
 | [前端字符黑名单与失效转义函数下属性逃逸 + 无尖括号事件处理器构造存储型 XSS 并外泄 DOM 业务数据](web-generic-xss-blacklist-attr-breakout-onmouseover-dom-exfil/) | verified | high | 2026-11-08 |
 | [华夏ERP V2.3 多业务模块存储型 XSS：采购商品、客户、供应商与收支项目字段未编码](web-generic-xss-xiahuia-erp-multi-module-stored/) | verified | medium | 2026-11-06 |
 | [双重 URL 解码差异配合 setTimeout 字符串参数导致 DOM XSS](web-generic-xss-double-url-decode-settimeout-sink/) | verified | high | 2026-11-05 |
+| [后台存储型 XSS 借管理员会话 CSRF 写文件：同源 fetch 读静态 token 上传插件或编辑 index.php 拿 shell（Textpattern / Evolution CMS）](web-generic-xss-admin-session-csrf-file-upload-edit-rce/) | verified | high | 2026-11-12 |
 | [后端 delScriptTag 仅删 script/style，直连接口绕过前端实体编码导致存储型 XSS](web-generic-xss-backend-script-style-blacklist-api-bypass/) | verified | high | 2026-11-05 |
 | [客服对话 HTML 实体编码绕过尖括号过滤：decodeHtmlEntities + innerHTML 导致存储型 XSS 窃取客服 Cookie](web-generic-xss-html-entity-decode-innerhtml-support/) | verified | high | 2026-11-05 |
 | [属性内联 JS 只转义字面单引号，&apos; 实体在 HTML 解析阶段还原导致闭合](web-generic-xss-apos-entity-attribute-js-breakout/) | verified | medium | 2026-11-05 |
+| [打卡活动 Markdown 编辑器存储型 XSS：借分享二维码公开海报让任意扫码者触发](web-generic-xss-share-qrcode-markdown-stored/) | verified | medium | 2026-11-11 |
 | [未授权新增热点问题接口导致后台存储型 XSS](web-generic-xss-unauth-stored-xss-hot-question/) | verified | high | 2026-11-05 |
 | [模板字符串吸收未闭合引号与跨输出代码：双 JS 输出点、符号过滤下的 XSS 构造](web-generic-xss-template-literal-absorbs-unclosed-quote/) | verified | high | 2026-11-10 |
 | [注册资料未编码导致后台用户列表存储型盲打 XSS](web-generic-xss-admin-blind-stored-registration/) | verified | high | 2026-11-05 |
+| [浏览器新标签页 top sites 标题未转义存储型 XSS：网页 <title> 的 HTML 进入高权限 NTP 上下文（chrome.* EoP）](web-generic-xss-browser-ntp-topsites-title-privileged-page-xss/) | verified | high | 2026-11-13 |
+| [浏览器新标签页（NTP）接管链：跨子域 cookie 注入 + 同源错误页 localStorage 投毒，持久控制高权限内置页并窃取账户令牌](web-generic-xss-browser-ntp-cookie-localstorage-privileged-page-takeover/) | verified | high | 2026-11-13 |
+| [评论区站内链接自动转 a 标签时未转义作品标题：标题载荷 + 评论引用组合成二次存储 XSS](web-generic-xss-comment-autolink-title-unescaped-stored/) | verified | high | 2026-11-11 |
 | [路径段先 Base64 再解码成 HTML 直接输出：请求里看不到标签，绕开只查原文的过滤与日志审计](web-generic-xss-base64-path-decode-html-unescaped/) | verified | medium | 2026-11-09 |
 | [路径段原样回显导致反射型 XSS（SVG onload）](web-generic-xss-path-segment-reflected-svg/) | verified | high | 2026-11-05 |
 | [运算符充当 JS 表达式注入载体：乘号/加减/in/instanceof 在双输出点与符号黑名单下构造 XSS](web-generic-xss-operator-expression-injection/) | verified | high | 2026-11-09 |

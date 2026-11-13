@@ -26,8 +26,13 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [CAN 扩展帧 UDS 诊断寻址与 ECU 枚举：遍历 18DAxxF1 发现 ECU 并用 ccplus 做服务扫描](iot-vehicle-can-extended-frame-uds-ecu-discovery.md) | verified | high | 2026-11-11 |
+| [OBD-II 物理接入读取 CAN 总线报文：针脚定义、接线与请求/响应帧解析](iot-vehicle-obd-can-bus-access.md) | verified | medium | 2026-11-11 |
+| [特斯拉车网关 UDP 20100/20101 端口伪造 CAN 报文：车内部件沦陷后直接控制后备箱/门锁](iot-vehicle-tesla-gateway-udp-can-injection.md) | verified | medium | 2026-11-13 |
+| [车机 adb shell 二次密码认证：导出 /system 下 verify_sh 逆向出硬编码口令 adb36987 绕过](iot-vehicle-adb-shell-verify-sh-hardcoded-password.md) | verified | high | 2026-11-13 |
 | [车机 GPS L1 信号欺骗：gps-sdr-sim 生成伪卫星信号经 HackRF 发射伪造定位](iot-vehicle-gps-l1-spoofing-gps-sdr-sim-hackrf.md) | verified | high | 2026-11-07 |
 | [车机 OTA 握手泄露 session_key：AES-CBC 前置 IV 解密 ota/init 双向流量读取 admin flag](iot-vehicle-ota-handshake-session-key-aes-cbc-zero-iv.md) | verified | high | 2026-11-07 |
+| [车机 U 盘 automount 用磁盘 LABEL 拼挂载路径：LABEL 设为 ../../usr/bin 目录穿越覆盖系统命令反弹 shell](iot-vehicle-usb-label-mount-path-traversal-logger-shell.md) | verified | medium | 2026-11-13 |
 | [车机 WiFi 热点同名同密码仿冒：克隆 SSID+PSK+BSSID 后车机自动重连，形成中间人入口](iot-vehicle-wifi-evil-twin-auto-reconnect-mitm.md) | verified | medium | 2026-11-08 |
 | [车机摄像头调试服务 TCP 20000 未授权 console：camera 矩阵与 PTS/倒车辅助参数篡改](iot-vehicle-camera-debug-console-20000-unauth.md) | verified | medium | 2026-11-07 |
 | [车机特殊模式口令开启 ADB：adb shell 数据窃取与 SUID 后门提权 root](iot-vehicle-adb-special-mode-password-root.md) | verified | medium | 2026-11-07 |

@@ -59,6 +59,7 @@ MQTT、CoAP、Modbus、Zigbee 等。
 | [ZKTeco pushcomm 云服务 SHELL 指令：把设备指向恶意 HTTP 服务器即执行任意 root 命令](iot-protocol-zkteco-pushcomm-shell-command-server-hijack/) | verified | high | 2026-11-08 |
 | [ZKTeco standalonecomm CMD_DELETE_PICTURE 命令注入：图片名拼进 system("rm %s") 以 root 执行](iot-protocol-zkteco-standalonecomm-delete-picture-command-injection/) | verified | high | 2026-11-08 |
 | [ZKTeco standalonecomm CMD_DOWNLOAD_PICTURE 目录穿越：图片文件名未校验读取任意文件（含 /etc/shadow）](iot-protocol-zkteco-standalonecomm-download-picture-path-traversal/) | verified | medium | 2026-11-08 |
+| [佳能打印机 DryOS NetBIOS 名称解析堆溢出：标签偏移空转推高写指针，2 字节 WWW 改函数指针执行 shellcode](iot-protocol-canon-dryos-netbios-name-parser-heap-overflow-function-pointer-rce/) | verified | medium | 2026-11-13 |
 | [华为 HG532 UPnP DeviceUpgrade SOAP 命令注入](iot-protocol-huawei-hg532-upnp-deviceupgrade-command-injection/) | verified | high | 2026-11-04 |
 | [固件 Web 接口把推流目标 IP 交给用户控制：请求 url= 参数即让设备把加密图像经 RTP 推出，抓包剥 12 字节头后用固件里的 aes_key.bin 解密](iot-protocol-firmware-push-api-rtp-aes-exfil-decrypt/) | verified | medium | 2026-11-09 |
 | [摄像头 P2P DownloadFile 任意路径下载：读 /proc/mounts 后拉取 /dev/root 与 /dev/mtdblock 镜像挂载提取文件系统](iot-protocol-camera-downloadfile-arbitrary-file-read-mtd-mount/) | verified | high | 2026-11-08 |

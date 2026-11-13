@@ -50,15 +50,20 @@ weight: 1
 | [ipTIME AX2004M 隐藏调试后门 d.cgi：硬编码密钥 aaksjdkfj + cmd 参数 popen 命令执行](iot-iptime-ax2004m-dcgi-debug-backdoor-command-injection/) | verified | high | 2026-11-06 |
 | [jhttpd proxy_client.asp 的 proxy_srv 命令注入：httpd_get_parm 取值经 nvram_set/snprintf 拼进 jhl_system，反引号执行 wget](iot-jhttpd-proxy-client-asp-proxy-srv-command-injection/) | verified | high | 2026-11-08 |
 | [MikroTik RouterOS ≤6.38.4 Chimay-Red 漏洞利用：mknod+telnet 管道流式上传并运行 TinyShell 后门](iot-mikrotik-chimay-red-stackclash-tinyshell-upload/) | verified | high | 2026-11-09 |
+| [NETGEAR R6700V3 WAN 侧未授权 RCE（CVE-2022-27646/27644）：circled 以 curl -k 拉取 circleinfo.txt 栈溢出，gadget 调 system](iot-netgear-r6700v3-circled-circleinfo-stack-overflow-rce/) | verified | medium | 2026-11-13 |
 | [OEM 同源设备漏洞迁移：飞鱼星/迈普 send_order.cgi name 参数命令注入（uid=0）](iot-oem-same-fingerprint-send-order-cgi-command-injection/) | verified | high | 2026-11-08 |
+| [Tapo 摄像头 RTSP 后门账户：改 user_management 的 third_account（passwd 大写 MD5 + 复用另一台 App 生成的 RSA ciphertext），写回 flash 重启后用 VLC 看流](iot-tapo-third-account-rtsp-config-ciphertext-backdoor/) | verified | medium | 2026-11-13 |
 | [Tenda AC15 /goform/telnet 命令注入（CVE-2025-25632）：doSystemCmd 拼接 lan.ip 启动 telnetd](iot-tenda-ac15-goform-telnet-command-injection/) | verified | medium | 2026-11-07 |
 | [TOTOLINK /boafrm/formSysCmd 的 sysCmd GET 参数经 sprintf 拼进 system() 造成未授权命令注入（CVE-2024-51228）](iot-totolink-boafrm-formsyscmd-syscmd-command-injection/) | verified | low | 2026-11-08 |
+| [TOTOLINK A3700R cstecgi.cgi UploadFirmwareFile 的 FileName 拼进 doSystem("mv %s %s") 导致命令注入（CVE-2023-46574）](iot-totolink-a3700r-cstecgi-uploadfirmwarefile-filename-command-injection/) | verified | high | 2026-11-11 |
 | [TOTOLINK NR1800X lighttpd formLoginAuth.htm authCode=1 登录绕过：伪造 authCode 直接创建 SESSION_ID 进后台](iot-totolink-nr1800x-formloginauth-authcode-login-bypass/) | verified | high | 2026-11-08 |
+| [TP-Link AC1750（Archer A7/C7）LAN 侧未授权 RCE：tdpServer 共享内存注入 → sync-server OneMesh 列表栈溢出覆写 $ra 执行 RWX 堆 shellcode](iot-tplink-ac1750-tdpserver-onemesh-sync-server-stack-overflow-rce/) | verified | high | 2026-11-13 |
 | [TP-Link AX1800 /cgi-bin/luci/;stok=/locale country 参数未授权命令注入：popen 拼接 + wget|sh 下载执行（文章推断 CVE-2023-27359）](iot-tplink-ax1800-luci-locale-country-command-injection/) | verified | medium | 2026-11-08 |
 | [TP-Link SR20 TDDP v1（UDP 1040）未授权命令注入：CMD_FTEST_CONFIG 的 tftp 拼接与 Lua config_test 加载执行](iot-tplink-sr20-tddp-v1-udp-cmd-injection-lua/) | verified | high | 2026-11-08 |
 | [TP-Link WR740 固件调试后门：httpDebugInit 注册隐藏 URL + 硬编码 osteam/5up + pty 命令执行](iot-tplink-wr740-httpdebug-backdoor-pty-cmd/) | verified | high | 2026-11-08 |
 | [ZeroShell /cgi-bin/kerbynet 的 x509type 参数未授权命令注入（CVE-2019-12725）：用换行符跳出单引号，借 sudo tar --checkpoint-action=exec 执行任意命令](iot-zeroshell-kerbynet-x509type-unauth-command-injection/) | verified | medium | 2026-11-08 |
 | [ZKTeco 终端二维码 SQL 注入：20 字节限制下用 ' or 1=1 -- 伪造有效用户](iot-zkteco-qr-sqli-auth-bypass/) | verified | medium | 2026-11-08 |
+| [Zoom ZTP 零接触配置未验证设备所有权：认领任意 MAC 下发恶意模板与固件，配合 AudioCodes 校验和缺陷远程接管桌面电话](iot-zoom-ztp-mac-claim-malicious-firmware-takeover/) | verified | high | 2026-11-11 |
 | [安凯（anyka）平台摄像头 Wi-Fi 配网脚本 PSK 命令注入：sh -c 拼接 wpa_cli 拿 root 并经 jffs2 持久化](iot-camera-wifi-psk-shell-injection-jffs2-persistence/) | verified | high | 2026-11-08 |
 | [小米 AX9000 CVE-2023-26315：xqdatacenter→thrifttunnel→datacenter→plugincenter 认证后命令注入（root RCE）](iot-xiaomi-ax9000-cve-2023-26315-xqdatacenter-plugincenter-command-injection/) | verified | high | 2026-11-06 |
 | [小米/红米路由器 set_config_iotdev ssid 命令注入开启 SSH：持登录 stok 改 nvram ssh_en 并启动 dropbear，root/admin 登录](iot-xiaomi-misystem-set-config-iotdev-ssid-command-injection-ssh/) | verified | high | 2026-11-09 |
@@ -66,6 +71,7 @@ weight: 1
 | [摄像头 APP 登录结果 Hook 绕过：Frida 篡改 LoginDev result=0 无密码拉取实时视频流](iot-camera-app-login-result-hook-bypass/) | verified | high | 2026-11-08 |
 | [瑞斯康达 MSG2200-T4 智能网关 /vpn/list_base_config.php template 命令注入：反引号写 PHP WebShell](iot-raisecom-msg2200-t4-list-base-config-template-command-injection/) | verified | high | 2026-11-07 |
 | [锐捷 EW 系列 /cgi-bin/luci/api/auth 未认证 merge 方法：lua 直接把 params 透传给 uf_client_call，最终在 unifyframe-sgi 的 ufm_popen 命令注入（CVE-2023-34644）](iot-ruijie-eweb-api-auth-merge-jsonrpc-ufm-popen-cmd-injection/) | verified | medium | 2026-11-09 |
+| [锐捷 RG-EG 网关登录接口命令注入：username/password 拼接 webmaster 设备命令，`?` 分隔执行任意 CLI 命令](iot-ruijie-rg-eg-login-webmaster-device-cli-command-injection/) | verified | high | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

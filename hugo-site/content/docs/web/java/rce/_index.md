@@ -37,6 +37,7 @@ Java 拿到 RCE 后的命令执行与交互式通道：`Runtime.exec`/`ProcessBu
 | [Java FFM API 直调 libc system/fork+execve：绕过 Runtime/ProcessBuilder 的 RASP 命令执行拦截](web-java-rce-ffm-native-system-rasp-bypass/) | verified | high | 2026-11-05 |
 | [Java Socket 双向流泵反弹 Shell（Windows/Linux 通用）](web-java-rce-socket-revshell-stream-pump/) | verified | high | 2026-11-05 |
 | [Java 命令队列满触发异常兜底：ArrayBlockingQueue.add 抛错进入无校验 handleError，绕过命令白名单 RCE](web-java-rce-command-queue-full-exception-allowlist-bypass/) | verified | high | 2026-11-07 |
+| [JDWP 动态代码执行注入反向 Java 内存 Shell：ScriptEngine 交互线程反连回显，绕过 Runtime.exec 命令执行检测](web-java-rce-jdwp-inject-reverse-java-memory-shell-scriptengine/) | verified | medium | 2026-11-12 |
 | [JNI_OnLoad 导出符号：JVM 加载原生库时主动调用，无需任何 Java_ 方法即执行](web-java-rce-jni-onload-export-load-time-exec/) | verified | high | 2026-11-08 |
 | [JSP pageEncoding/contentType 指定非 UTF-8 编码绕过静态 webshell 检测](web-java-rce-jsp-pageencoding-static-detection-bypass/) | verified | medium | 2026-11-05 |
 | [JSP scriptlet 特殊闭合逃逸生成 Java 的 try/catch 结构绕过检测](web-java-rce-jsp-scriptlet-special-closure-bypass/) | verified | high | 2026-11-05 |
@@ -55,6 +56,9 @@ Java 拿到 RCE 后的命令执行与交互式通道：`Runtime.exec`/`ProcessBu
 | [RuoYi 定时任务调用目标字符串反射 RCE：JobInvokeUtil 任意类方法调用 + SnakeYAML 链与协议黑名单单引号绕过](web-java-rce-ruoyi-job-invoke-target-reflection-snakeyaml/) | verified | high | 2026-11-07 |
 | [Spring MVC actionNetworkCmd 将 ip/time 拼入 sh -c：分号截断的 ping/iperf 命令注入](web-java-rce-spring-actionnetworkcmd-ip-time-sh-c/) | verified | high | 2026-11-05 |
 | [Spring 控制器把请求里的 ScriptContent 拼进 agscript 参数并交给 python 转发：Aggressor 脚本注入 → 任意文件写入（openf/writeb 覆盖配置 → 二次 JDBC 反序列化）](web-java-rce-connect-controller-agscript-script-content-injection-file-write/) | verified | medium | 2026-11-09 |
+| [SpringBoot 硬编码 AES 加密 data 包 → fastjson 解析 sh.shells 数组 → ProcessBuilder 执行并加密回显 RCE](web-java-rce-aes-data-fastjson-shells-processbuilder/) | verified | high | 2026-11-13 |
+| [Tomcat Native APR Proc.create 执行命令：经 org.apache.tomcat.jni 绕过 Java Process 层 RASP（Tomcat < 10.1.0）](web-java-rce-tomcat-jni-proc-create-native-exec/) | verified | medium | 2026-11-10 |
+| [Unsafe.allocateInstance 绕过 Process 构造器 hook：反射调用 UNIXProcess.forkAndExec 直接创建进程](web-java-rce-unsafe-allocateinstance-unixprocess-forkandexec/) | verified | high | 2026-11-10 |
 | [Windows DllMain 的 DLL_PROCESS_ATTACH：LoadLibrary 加载 dll 时即执行载荷](web-java-rce-windows-dllmain-load-time-exec/) | verified | high | 2026-11-08 |
 | [反射调用 ClassLoader#loadLibrary / ClassLoader$NativeLibrary#load 加载本地 DLL/SO：绕开 Runtime/System 的 RASP、EDR 与查杀 hook，配合写文件能力完成落地执行](web-java-rce-reflect-classloader-nativelibrary-load-dll-bypass-hooks/) | verified | medium | 2026-11-09 |
 | [反射调用 ProcessImpl 构造器直接创建进程执行命令](web-java-rce-processimpl-constructor-reflect-exec/) | verified | medium | 2026-11-05 |
@@ -62,6 +66,7 @@ Java 拿到 RCE 后的命令执行与交互式通道：`Runtime.exec`/`ProcessBu
 | [哥斯拉 JSP 马改模板返回伪 404 页 + 客户端 findStr 换自定义前后缀，抹掉 md5(pass+key) 前后 16 位的标准流量指纹](web-java-rce-godzilla-jsp-404-fake-response-findstr-custom-marker/) | verified | high | 2026-11-09 |
 | [哥斯拉上帝模式生成 JSP 马：globalCode/code 全部 stringToUnicode 转义后再嵌入模板，静态关键字扫描难匹配](web-java-rce-jsp-godzilla-godmode-unicode-escape-static-bypass/) | verified | medium | 2026-11-09 |
 | [定时任务 invokeTarget 反射调用 + 白名单尾部截断绕过：上传 .so 后 System.load 加载执行](web-java-rce-job-invoketarget-whitelist-suffix-system-load-so/) | verified | high | 2026-11-07 |
+| [自定义 JNI native 方法执行命令：声明 native exec + C 侧 popen 导出 Java_ 符号，System.load 后调用绕过 Java 层 RASP](web-java-rce-custom-jni-native-popen-exec/) | verified | medium | 2026-11-10 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -57,6 +57,7 @@ Jinja2、Mako、Tornado 模板注入。
 | [Python str.format 二次格式化注入：注册用户名 {users.passwords} 泄露账号哈希并作为 Flask secret_key 伪造 session](web-python-ssti-str-format-double-format-dict-leak-flask-secret/) | verified | high | 2026-11-09 |
 | [Python 表达式 SSTI 黑名单绕过：getattr+chr 拼接 __class__/__globals__/__builtins__，AST 自动生成 payload](web-python-ssti-getattr-chr-blacklist-bypass/) | verified | high | 2026-11-06 |
 | [RAGFlow canvas 组件 Jinja2 SSTI：StringTransform/Message 渲染用户脚本到 root RCE（CVE-2026-28797）](web-python-ssti-ragflow-canvas-component-jinja2-rce/) | verified | high | 2026-11-05 |
+| [Tornado 模板注入：{% import os %}{{ os.system(...) }} 直接执行命令并反弹 shell](web-python-ssti-tornado-import-os-system-rce/) | verified | medium | 2026-11-12 |
 | [先读源码再打 SSTI：用 file 参数读 app.py 与 waf.py，针对黑名单逐条构造 Jinja 注入](web-python-ssti-flask-source-read-waf-blacklist-driven-payload/) | draft | low | 2026-11-08 |
 | [数据集配置字段 Jinja2 模板求值：fsspec reference:// offset 注入导致 AI 平台生产 Worker RCE](web-python-ssti-huggingface-dataset-config-jinja2-offset-rce/) | verified | high | 2026-11-05 |
 | [无回显 SSTI 且点号被黑名单禁用：用中括号链取 `__globals__`/`__builtins__`，再从另一个请求参数取 exec 载荷反弹 shell](web-python-ssti-noecho-dot-banned-request-params-exec-reverse-shell/) | verified | medium | 2026-11-09 |

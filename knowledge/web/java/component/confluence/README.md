@@ -27,6 +27,10 @@ Confluence OGNL/模板注入与历史漏洞。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Confluence CVE-2022-26134 OGNL 注入 RCE：URI ${...} 无认证执行命令并回显](web-java-component-confluence-cve-2022-26134-ognl-rce.md) | verified | high | 2026-11-07 |
+| [Confluence CVE-2023-22515 未授权提权：OGNL 参数覆盖 setupComplete 重开安装流程创建管理员](web-java-component-confluence-cve-2023-22515-setupcomplete-admin-creation.md) | verified | high | 2026-11-13 |
+| [Confluence CVE-2023-22518 认证绕过：skipAccessCheck 参数后门 + /json 继承 /admin//setup 路由 + SetupRestoreAction 重置站点接管后台](web-java-component-confluence-cve-2023-22518-auth-bypass-setup-restore.md) | verified | medium | 2026-11-13 |
+| [Confluence CVE-2023-22527 未授权 Velocity 模板注入：text-inline.vm 的 label 参数经 OGNL 执行命令并回显](web-java-component-confluence-cve-2023-22527-text-inline-ognl-rce.md) | verified | high | 2026-11-12 |
+| [Confluence ServletRequestListener 内存马：OGNL defineClass 定义类 + ServletActionContextCompatManager 取 StandardContext 注册动态代理](web-java-component-confluence-servlet-request-listener-memshell.md) | verified | high | 2026-11-11 |
 | [Confluence 后渗透：confluence.cfg.xml 取数据库凭据 + cwd_user PKCS5S2 哈希破解/替换](web-java-component-confluence-config-db-pkcs5s2-credential.md) | verified | high | 2026-11-07 |
 <!-- AUTO-INDEX:END -->
 

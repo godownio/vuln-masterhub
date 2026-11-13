@@ -31,21 +31,26 @@ Tomcat 漏洞、Session 与文件处理。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [Axis2 1.7.x 高版本 AAR getshell：`;/` 路径参数绕过隐藏后台 + admin/axis2 弱口令 + 改 services.xml MEP 命名空间修复 info() 报错](web-java-component-tomcat-axis2-17x-services-xml-mep-namespace-aar-rce/) | verified | high | 2026-11-13 |
 | [InvokerServlet 暴露未映射 BshServlet：/servlet/bsh.servlet.BshServlet 的 bsh.script 直接执行命令](web-java-component-tomcat-invoker-servlet-bshservlet-beanshell-rce/) | verified | high | 2026-11-09 |
 | [InvokerServlet 直调 AxisAdminServlet：首斜杠/尾斜杠解析差异让未映射 Axis2 控制台完成登录与 aar 部署 RCE](web-java-component-tomcat-invoker-servlet-axisadmin-aar-upload-rce/) | verified | high | 2026-11-09 |
 | [Java 备份/恢复链路：jtar 写 tar 头时 char 截断成 byte，中文后缀被压成 .jsp 落进 WEB-INF/views](web-java-component-tomcat-jtar-tar-name-byte-truncation-jsp-upload/) | verified | medium | 2026-11-08 |
 | [jshERP v3.6 补丁绕过：原始 URI 前缀白名单 + Tomcat 分号路径参数归一化差异，未授权建管理员后 pf4j 插件 RCE](web-java-component-jsherp-filter-prefix-normalization-plugin-rce/) | verified | high | 2026-11-05 |
 | [Listener 内存马调用 request.getParameter 提前耗尽 CoyoteInputStream：Jersey MultivaluedMap 收不到表单参数，改用 URI/User-Agent 做 gate](web-java-component-tomcat-listener-memshell-getparameter-body-consumed/) | verified | high | 2026-11-08 |
+| [Tomcat 8.5.78+ WebappClassLoaderBase#getResources() 恒返回 null：TCCL 取 StandardContext 的内存马注入路径失效与版本边界](web-java-component-tomcat-webappclassloader-getresources-null-context/) | verified | high | 2026-11-12 |
 | [Tomcat 9.0.97 CVE-2024-50379 大小写文件系统条件竞争：上传 JSP 被当脚本编译 getshell](web-java-component-tomcat-cve-2024-50379-case-race-rce/) | verified | high | 2026-11-05 |
 | [Tomcat Adapter 内存马：替换 AbstractProcessor.adapter 的 CoyoteAdapter](web-java-component-tomcat-adapter-memshell/) | verified | high | 2026-11-05 |
 | [Tomcat AJP（CVE-2020-1938）：javax.servlet.include.* 属性注入让 JspServlet 把任意文件编译执行](web-java-component-tomcat-cve-2020-1938-ajp-include-attribute-jsp-rce/) | verified | high | 2026-11-09 |
+| [Tomcat ConnectionHandler.proto 内存马：反射替换 Http11NioProtocol 为恶意子类，重写 getClientCertProvider 在 Processor 处理前执行命令](web-java-component-tomcat-connectionhandler-proto-getclientcertprovider-memshell/) | verified | medium | 2026-11-13 |
 | [Tomcat CVE-2017-12615：PUT 方法 + `/1.jsp/` 后缀绕过写入 JSP WebShell](web-java-component-tomcat-cve-2017-12615-put-jsp-upload/) | verified | high | 2026-11-05 |
 | [Tomcat CVE-2023-41080：ROOT 应用 FORM 认证把 //host 存入 savedRequestURL，登录后 303 Location 协议相对 URL 开放重定向](web-java-component-tomcat-cve-2023-41080-formauth-open-redirect/) | verified | high | 2026-11-10 |
 | [Tomcat CVE-2025-24813 部分 PUT 临时文件名碰撞读取敏感上传文件](web-java-component-tomcat-cve-2025-24813-partial-put-tempfile-collision-disclosure/) | draft | high | 2026-11-08 |
 | [Tomcat CVE-2025-24813：部分 PUT 写入 .session 临时文件 + JSESSIONID 触发 PersistentManager 反序列化 RCE](web-java-component-tomcat-cve-2025-24813-partial-put-session-deserialization-rce/) | verified | high | 2026-11-07 |
+| [Tomcat Digester XML 注入绕过 WAF：XML 编码/实体/CDATA 混淆与 ${a:-c}om 属性占位符拆分 className](web-java-component-tomcat-digester-xml-placeholder-encoding-waf-bypass/) | verified | medium | 2026-11-10 |
 | [Tomcat Digester 运行时 JSP webshell：自定义规则 + base64 XML 触发 setter JNDI](web-java-component-tomcat-digester-jsp-runtime-webshell/) | verified | high | 2026-11-05 |
 | [Tomcat Executor 内存马：替换 NioEndpoint 线程池解析原始请求](web-java-component-tomcat-executor-memshell/) | verified | high | 2026-11-05 |
 | [Tomcat Filter 内存马劫持前端 JS：302 重定向到攻击者脚本，窃取登录明文密码与二因素 token](web-java-component-tomcat-filter-memshell-js-hijack-credential-theft/) | verified | medium | 2026-11-07 |
+| [Tomcat Handler 内存马：替换 NioEndpoint.handler，在 HTTP 解析前 read/unRead 窥探原始请求并 finishResponse 回显](web-java-component-tomcat-handler-memshell/) | verified | high | 2026-11-10 |
 | [Tomcat InvokerServlet 类名路由：/servlet/<全限定类名> 直接调用未映射 Servlet（Tomcat ≤6）](web-java-component-tomcat-invoker-servlet-class-name-routing/) | verified | high | 2026-11-09 |
 | [Tomcat Listener 内存马：StandardContext.addApplicationEventListener 注入请求监听器](web-java-component-tomcat-listener-memshell/) | verified | high | 2026-11-05 |
 | [Tomcat Manager 弱口令（HTTP Basic base64 变形）+ WAR 部署 getshell](web-java-component-tomcat-manager-basic-weak-auth-war-deploy/) | verified | high | 2026-11-08 |

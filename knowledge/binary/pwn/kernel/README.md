@@ -26,11 +26,20 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [/sys/kernel/notes 泄露内核基址：world-readable ELF notes 中的内核地址绕过 KASLR](binary-pwn-kernel-sys-kernel-notes-kaslr-leak.md) | verified | high | 2026-11-12 |
 | [access_process_vm 读取子进程内存：task_struct children 遍历取 flag](binary-pwn-kernel-access-process-vm-task-children-read.md) | verified | high | 2026-11-06 |
 | [babydriver 全局 buffer UAF：双 open + ioctl 释放 0xa8 块，fork 后 cred 复用并被 write 清零提权](binary-pwn-kernel-babydriver-cred-struct-uaf-hijack.md) | verified | medium | 2026-11-06 |
 | [buddy 页级堆风水：PF_PACKET TX_RING 在用户态批量分配/释放 2^order 连续物理页](binary-pwn-kernel-buddy-page-spray-packet-tx-ring.md) | verified | high | 2026-11-06 |
 | [Cross-Cache UAF 到 cred_jar：SLUB 整页归还 buddy 后由 clone 的 cred 回收，UAF 改写 uid/gid 提权（5.14+ SLAB_ACCOUNT 隔离）](binary-pwn-kernel-cross-cache-uaf-cred-jar-clone-lpe.md) | verified | medium | 2026-11-06 |
+| [CVE-2019-0708 BlueKeep：重复绑定 MS_T120 虚拟通道造成 termdd.sys UAF，非分页池堆喷伪造通道结构执行内核 shellcode](binary-pwn-kernel-cve-2019-0708-bluekeep-ms-t120-uaf-nonpaged-pool-rce.md) | verified | high | 2026-11-11 |
+| [CVE-2021-22555：kmalloc-4k 空字节 OOB 经 msg_msg 主/辅消息别名化转 double free，m_ts 越界读泄露堆与内核基址后劫持 pipe_buffer ops 走 ROP 提权](binary-pwn-kernel-cve-2021-22555-msg-msg-oob-double-free-pipe-ops-rop.md) | verified | high | 2026-11-10 |
 | [CVE-2022-21882 win32k 提权：回调中改 ConsoleWindow 标志导致 pExtraBytes 类型混淆](binary-pwn-kernel-cve-2022-21882-win32k-extrabytes-type-confusion.md) | verified | high | 2026-11-07 |
+| [CVE-2023-35001 nftables nft_byteorder 16 位元素栈越界：改写 nft_do_chain 的 jumpstack 指针，泄漏 nf_tables.ko 与内核基址并植入假 nft_payload 表达式执行 ROP 提权](binary-pwn-kernel-cve-2023-35001-nft-byteorder-stack-oob-jumpstack-rop.md) | verified | medium | 2026-11-13 |
+| [CVE-2023-3609 cls_u32/drr filter_cnt 引用计数 UAF：eBPF JIT 堆喷 shellcode + cpu_entry_area 伪造 qdisc 提权](binary-pwn-kernel-cve-2023-3609-cls-u32-drr-filter-cnt-uaf-ebpf-jit-core-pattern.md) | verified | high | 2026-11-12 |
+| [CVE-2023-36802 mskssrv.sys 类型混淆：PublishRx 把 FSContextReg 当 FSStreamReg 越界，ObfDereferenceObject 递减 PreviousMode 后任意内核读写提权](binary-pwn-kernel-cve-2023-36802-mskssrv-type-confusion-previousmode-token-steal.md) | verified | high | 2026-11-12 |
+| [CVE-2023-4004 nft_set_pipapo 删除缺 KEY_END 的 elem 失败：残留指针 double free，table->udata 占位转 UAF 后劫持 nft_object->ops 走 ROP 提权](binary-pwn-kernel-cve-2023-4004-nft-pipapo-elem-double-free-table-udata-nft-object-ops-rop.md) | verified | medium | 2026-11-12 |
+| [CVE-2023-5345 smbfs fsconfig password 双重释放：kmalloc-32 重叠泄露内核基址与堆地址，转 ovl_dir_file UAF 后 lseek 执行 ROP](binary-pwn-kernel-cve-2023-5345-smbfs-fsconfig-double-free-ovl-dir-file-rop.md) | verified | medium | 2026-11-12 |
+| [CVE-2023-6546 n_gsm 条件竞争：双线程 gsm_disconnect 释放 dlci 造成 UAF，调度优先级扩窗后 add_key 占位劫持 output 提权](binary-pwn-kernel-cve-2023-6546-n-gsm-race-dlci-uaf-sched-window.md) | verified | medium | 2026-11-12 |
 | [CVE-2024-1086 nf_tables verdict 0xffff0000 double free：IP 分片队列掩盖 + Dirty Pagetable 改 modprobe_path 提权](binary-pwn-kernel-cve-2024-1086-nft-verdict-double-free-dirty-pagetable-modprobe.md) | verified | high | 2026-11-06 |
 | [CVE-2024-30088 Windows 内核 TOCTOU：NtQueryInformationToken 用户缓冲区竞态污染安全属性链表，获取 winlogon 句柄提权 SYSTEM](binary-pwn-kernel-cve-2024-30088-ntqueryinformationtoken-toctou-securityattributes-lpe.md) | verified | high | 2026-11-07 |
 | [CVE-2024-30090 ks.sys KSEVENT 竞争双重获取：QUERYBUFFER→ENABLE 绕过校验，KsIncrementCountedWorker 任意内核自增提权到 SYSTEM](binary-pwn-kernel-cve-2024-30090-ks-ksevent-race-arbitrary-increment-sedebug.md) | verified | high | 2026-11-07 |
@@ -45,23 +54,34 @@
 | [eBPF verifier 不一致寄存器构造与 OOB 任意读写提权（array_map_ops 劫持 / modprobe_path）](binary-pwn-kernel-ebpf-verifier-inconsistent-register-arbitrary-rw.md) | verified | medium | 2026-11-06 |
 | [Egg Hunter 扫描物理内存残留：子进程退出后按 2GB 物理映射找 flag](binary-pwn-kernel-egg-hunter-physical-memory-scan.md) | verified | high | 2026-11-06 |
 | [HFS/HFS+ bnode key_len 未校验：损坏镜像在 split 后读取最小 record 触发 hfs_bnode_read_key 堆溢出（CVE-2025-37782）](binary-pwn-kernel-hfs-bnode-keylen-oob-heap-write.md) | verified | medium | 2026-11-08 |
+| [kernfs_pr_cont_buf 内核数据布置：iptables cgroup match 的 --path 把可控数据写进已知地址全局缓冲区](binary-pwn-kernel-kernfs-pr-cont-buf-cgroup-path-data-placement.md) | verified | medium | 2026-11-12 |
+| [KVA Shadow 下绕过用户页 NX：ROP 调 ExAllocatePoolWithTag 分配可执行非分页池 + RtlCopyMemory 复制 shellcode 并 jmp rax](binary-pwn-kernel-windows-kvas-nonpaged-pool-executable-shellcode-rop.md) | verified | high | 2026-11-12 |
 | [netfilter 模块 8bit hash 冲突 UAF：伪造 sec_conn AAR/AAW，改 kmem_cache->ctor 执行 slab shellcode](binary-pwn-kernel-netfilter-hash-collision-uaf-kmem-cache-ctor.md) | verified | high | 2026-11-06 |
+| [NtQuerySystemInformation 的 SystemModuleInformation（0xB）类：用户态枚举内核模块并泄露 ntoskrnl.exe 基址](binary-pwn-kernel-ntquerysysteminformation-systemmoduleinformation-kernel-base-leak.md) | verified | high | 2026-11-12 |
 | [pipe_buffer 自指与三管道互修：页级 UAF 升级为任意物理页读写](binary-pwn-kernel-self-writing-pipe-arbitrary-rw.md) | verified | high | 2026-11-06 |
 | [QWB core 内核栈溢出：core_copy_func 16 位截断 + core_read off 越界泄露 canary + kernel ROP 提权](binary-pwn-kernel-qwb-core-stack-overflow-rop.md) | verified | medium | 2026-11-06 |
 | [ret2dir + physmap spray：内核模块 ioctl 间接调用用户函数指针，借直接映射区用户页作内核 ROP 栈完成 commit_creds 提权](binary-pwn-kernel-ret2dir-physmap-spray-rop-commit-creds.md) | verified | high | 2026-11-06 |
 | [seccomp 逃逸：内核 shellcode 清 TIF_SECCOMP 位](binary-pwn-kernel-shellcode-clear-tif-seccomp.md) | verified | high | 2026-11-06 |
+| [simple_xattr 双向链表泄露内核堆地址：list_add 改写 list.prev，借重叠读定位用户数据堆块](binary-pwn-kernel-simple-xattr-list-heap-address-leak.md) | verified | medium | 2026-11-12 |
+| [SMEP 绕过：内核 ROP 链 pop rcx;ret + mov cr4,rcx 清 CR4.SMEP 后跳用户态 shellcode](binary-pwn-kernel-windows-smep-bypass-cr4-rop.md) | verified | high | 2026-11-12 |
 | [sock UAF 的 refcount 竞态：利用 lock_sock 双层锁阻塞把 1→2→1 制造 double free](binary-pwn-kernel-sock-refcount-race-lock-sock-double-free.md) | verified | medium | 2026-11-05 |
 | [struct file UAF：用 f_count 的 dup 自增当「PTE 值 +0x1000」原语，dma-heap 邻接映射收拢控制权后任意物理读写并补丁内核 text（nsjail 逃逸）](binary-pwn-kernel-file-uaf-fcount-pte-overlap-dmaheap-physical-rw.md) | verified | medium | 2026-11-08 |
 | [USMA：把 packet ring 的 pg_vec 指针改成内核只读页的虚拟地址，用 packet_mmap 把该内核页映射进用户态直接改写内核代码/数据（modprobe_path、__sys_setresuid 判断分支）](binary-pwn-kernel-usma-packet-ring-kernel-page-mapping.md) | verified | high | 2026-11-09 |
 | [vm_close 每次 munmap 都无条件减引用：拆分 munmap 把 ChunkManager 引用多减一次造成 UAF，再用 USMA 伪造成 page 表劫持 vm_fault](binary-pwn-kernel-d3kshrm-vm-close-refcount-uaf-page-table-hijack.md) | verified | medium | 2026-11-08 |
+| [Windows 10 Segment Heap 池溢出：POOL_HEADER 的 CacheAligned/PreviousSize 造 ghost chunk 并借伪造 PipeAttribute 任意读提权](binary-pwn-kernel-windows-segment-heap-ghost-chunk-pipe-attribute-lpe.md) | verified | low | 2026-11-12 |
+| [Windows CLFS 驱动 BLF 元数据漏洞族：篡改 SignaturesOffset/cbSymbolZone/控制记录索引与校验和，改写 CLFS_CONTAINER_CONTEXT.pContainer 虚表指针提权](binary-pwn-kernel-windows-clfs-blf-metadata-pcontainer-hijack-lpe.md) | verified | low | 2026-11-12 |
 | [Windows CNG.sys CVE-2020-17087 整数截断非分页池溢出：命名管道 DATA_QUEUE_ENTRY 池喷射到任意读写与 token 窃取](binary-pwn-kernel-windows-cng-pool-overflow-pipe-data-queue-token-steal.md) | verified | high | 2026-11-06 |
 | [Windows I/O Ring + 命名管道任意读写：伪造 IOP_MC_BUFFER_ENTRY 并篡改预注册缓冲区指针](binary-pwn-kernel-windows-io-ring-pipe-arbitrary-rw.md) | verified | high | 2026-11-06 |
 | [Windows WNF 分页池喷射与挖洞：0x50 块布局、状态标记定位与洞填充](binary-pwn-kernel-windows-wnf-paged-pool-spray-hole-digging.md) | verified | high | 2026-11-06 |
+| [Windows 内核 shellcode 遍历 EPROCESS ActiveProcessLinks 窃取 System Token 提权](binary-pwn-kernel-windows-shellcode-token-steal-eprocess.md) | verified | high | 2026-11-12 |
 | [Windows 命名管道 Attribute 泄露 _NP_CCB：Flink → FileObject → DriverObject → NpFsdCreate 恢复内核基址](binary-pwn-kernel-windows-pipe-attribute-np-ccb-kaslr-leak.md) | verified | medium | 2026-11-06 |
+| [Windows 第三方驱动 MDL double free → Ws2P 对象 UAF 与任意递减改 KTHREAD.PreviousMode 提权](binary-pwn-kernel-windows-driver-mdl-doublefree-ws2p-arbitrary-decrement-previousmode.md) | verified | low | 2026-11-10 |
+| [Windows 驱动 IOCTL 栈溢出：memmove 超长用户缓冲覆盖内核栈返回地址](binary-pwn-kernel-windows-driver-stack-overflow-ioctl-ret-hijack.md) | verified | high | 2026-11-12 |
 | [内核 kmem_cache UAF + 同池对象复用：泄露 encoded_cb 并 XOR 改写成后门提权](binary-pwn-kernel-kmem-cache-uaf-encoded-callback-hijack.md) | verified | high | 2026-11-05 |
 | [内核 pwn 环境搭建与调试：bzImage/initramfs/9P 共享与 GDB 符号加载](binary-pwn-kernel-qemu-initramfs-gdb-workflow.md) | verified | high | 2026-11-05 |
 | [内核 RWX vmalloc + 用户 shellcode 执行：commit_creds 提权](binary-pwn-kernel-rwx-vmalloc-user-shellcode-exec.md) | verified | high | 2026-11-06 |
 | [内核 seq_operations UAF + pt_regs 栈迁移：泄露内核基址后 ROP commit_creds(init_cred)](binary-pwn-kernel-seqops-uaf-pt-regs-stack-migration.md) | verified | high | 2026-11-06 |
+| [内核 shellcode 干净返回用户态：修 KernelApcDisable，从 _KTRAP_FRAME 恢复 Rip/Rsp 后 swapgs + sysret](binary-pwn-kernel-windows-kernel-shellcode-return-trapframe-swapgs-sysret.md) | verified | high | 2026-11-12 |
 | [内核任意读写后按 comm 扫描 task_struct 并沿 real_parent 找 init_task，覆写 cred/nsproxy 提权](binary-pwn-kernel-task-struct-comm-scan-init-cred-lpe.md) | verified | high | 2026-11-06 |
 | [内核栈溢出覆盖结构体函数指针：run_cmd/call_usermodehelper 提权与 printk KASLR 泄露](binary-pwn-kernel-stack-overflow-struct-function-pointer-run-cmd.md) | verified | high | 2026-11-06 |
 | [内核模块 chronos_ring 的 view 原语改写 /tmp/job page cache：root 定时任务执行脚本提权](binary-pwn-kernel-chronos-ring-view-page-cache-job-root-helper.md) | verified | high | 2026-11-06 |
@@ -76,7 +96,9 @@
 | [内核驱动 ioctl 越界读：全局长度控制 copy_to_user 泄露相邻 flag](binary-pwn-kernel-ioctl-global-length-oob-read-flag.md) | verified | high | 2026-11-05 |
 | [内核驱动 write 无限累加文件长度 + seek 只按逻辑大小校验：任意偏移越界读写物理内存扫残留 flag](binary-pwn-kernel-write-size-growth-seek-oob-physical-scan.md) | verified | medium | 2026-11-06 |
 | [按 SLUB cpu_partial 与 objs_per_slab 精确布点：七步申请/释放把指定 slab 页整页归还 buddy，完成可控的 cross-cache 页回收](binary-pwn-kernel-slub-cpu-partial-stepwise-page-release-cross-cache.md) | verified | high | 2026-11-08 |
+| [窃取 System Token 后开启全部特权：直接覆写 _SEP_TOKEN_PRIVILEGES 的 Present/Enabled 掩码](binary-pwn-kernel-windows-sep-token-privileges-enable-all.md) | verified | high | 2026-11-12 |
 | [跨缓存 off-by-null 命中 pipe_buffer.page 低字节：制造两管道同页的页级 UAF](binary-pwn-kernel-page-level-uaf-pipe-buffer-off-by-null.md) | verified | high | 2026-11-06 |
+| [页级 UAF 重分配为 victim 对象 slab：整页读写同一 cache 的全部结构体，改 file->f_mode/f_mapping 等数据字段做 data-only 提权](binary-pwn-kernel-page-uaf-victim-object-data-only-lpe.md) | verified | medium | 2026-11-10 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

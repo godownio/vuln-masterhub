@@ -28,6 +28,7 @@ OAuth/OIDC 流程缺陷、redirect_uri 与 token 泄露。
 |---|---|---|---|
 | [OAuth access_token 窃取：redirect_uri 穿越到同站评论表单代理页，利用 parent.postMessage(location.href,'*') 泄露 fragment token](web-generic-oauth-token-theft-postmessage-proxy-page.md) | verified | high | 2026-11-08 |
 | [OAuth redirect_uri 未做白名单校验：把管理员授权码重定向到攻击者服务器并重放登录（账户接管）](web-generic-oauth-arbitrary-redirect-uri-code-theft.md) | verified | high | 2026-11-08 |
+| [OAuth state 不是不透明随机值而是可解析 JSON：前端按 state 中的 hassUrl 把授权码 POST 给攻击者](web-generic-oauth-state-json-hassurl-code-leak.md) | verified | high | 2026-11-11 |
 | [OAuth 扫码绑定/登录无二次确认：二维码钓鱼绑定受害者微信接管账号](web-generic-oauth-qr-bind-no-confirm-phishing.md) | verified | medium | 2026-11-08 |
 | [OAuth 授权码窃取链：存储型 XSS + postMessage 泄露 code + SSO 绑定提权 + XXE 读文件](web-generic-oauth-postmessage-code-theft-sso-bind-xxe.md) | verified | high | 2026-11-06 |
 | [OAuth 缺失 state + 账号绑定 CSRF：举报文章诱导管理员绑定攻击者 OAuth 账号接管后台](web-generic-oauth-missing-state-account-link-csrf-takeover.md) | verified | high | 2026-11-06 |

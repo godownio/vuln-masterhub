@@ -26,7 +26,9 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [0x16 字节短 shellcode 双手艺：shl edi,12 现算页基址 mprotect、cdq 取 0xffffffff 长度 reread，再 shl rsp 调栈执行 ORW](binary-pwn-sandbox-escape-short-shellcode-mprotect-reread-rsp-shift.md) | verified | medium | 2026-11-11 |
 | [10 字节 shellcode 限制：read 覆盖自身 + jmp 回跳的分段加载](binary-pwn-sandbox-escape-tiny-shellcode-read-self-loop-staging.md) | verified | medium | 2026-11-06 |
+| [32 字节栈缓冲区只能多写 0x10 字节：jmp rsp 后 sub rsp 回跳缓冲区起点，借题目自带 mmap W|X 页二阶段载入 ORW shellcode](binary-pwn-sandbox-escape-jmprsp-mmap-wx-two-stage-orw.md) | verified | high | 2026-11-13 |
 | [ALPHA3 可见字符 Shellcode：绕过 <=0x1f/0x7f 字节过滤执行 seccomp ORW](binary-pwn-sandbox-escape-alpha3-visible-shellcode-seccomp-orw.md) | verified | high | 2026-11-05 |
 | [Apache HugeGraph Gremlin 沙箱逃逸：把线程名改为非 Gremlin 工作线程名使 callFromGremlin 返回 false，绕过 SecurityManager 后反射执行 Runtime.exec（CVE-2024-27348）](binary-pwn-sandbox-escape-hugegraph-gremlin-threadname-securitymanager-bypass.md) | verified | medium | 2026-11-09 |
 | [AST 变量名回查 + 禁括号 pyjail：NFKC 全角标识符、装饰器链与 \r 换行绕过](binary-pwn-sandbox-escape-nfkc-ast-name-decorator-cr-bypass.md) | verified | high | 2026-11-06 |
@@ -45,6 +47,7 @@
 | [eval 沙箱的源码黑名单与单表达式限制绕过](binary-pwn-sandbox-escape-python-eval-filter-bypass.md) | verified | medium | 2026-11-04 |
 | [FastGPT v4.14.8 沙箱逃逸：inspect 帧回溯窃取 worker 原始 open/import 引用](binary-pwn-sandbox-escape-fastgpt-inspect-fglobals-original-refs.md) | verified | high | 2026-11-05 |
 | [fork 继承 root 已打开的 fd：低权限子进程经 /proc/<pid>/fd 读取已删除脚本](binary-pwn-sandbox-escape-inherited-fd-read-deleted-file.md) | verified | high | 2026-11-07 |
+| [Ghostscript CVE-2023-28879：BCPEncode/TBCPEncode 转义双写越界过滤器缓冲区，链式过滤器绕过 ioerror 后堆泄漏 + 任意写清零 path_control_active 禁用沙箱，%pipe% 执行命令](binary-pwn-sandbox-escape-ghostscript-bcpe-filter-offbyone-arbitrary-write-pipe-rce.md) | verified | high | 2026-11-12 |
 | [GNU IFUNC resolver 先于 constructor 执行：绕过插件 constructor 安装的 seccomp](binary-pwn-sandbox-escape-ifunc-resolver-before-constructor-seccomp.md) | verified | high | 2026-11-04 |
 | [GoogleCTF 2025 Internship pyjail：CodeType 常量/名字白名单 + 小整数打乱下用 dir(None) 迭代拼出 flag](binary-pwn-sandbox-escape-python-codetype-none-dir-iterator-flag.md) | verified | high | 2026-11-07 |
 | [GraalVM HostAccess.ALL 下 getClass 反射逃逸到宿主 Runtime.exec](binary-pwn-sandbox-escape-graalvm-hostaccess-all-getclass-rce.md) | verified | high | 2026-11-05 |
@@ -81,6 +84,7 @@
 | [Python 沙箱：生成器 gi_code 常量池与 gi_yieldfrom 嵌套帧信息泄露](binary-pwn-sandbox-escape-python-generator-code-consts-leak.md) | verified | high | 2026-11-05 |
 | [Python 沙箱：生成器 gi_frame 栈帧回溯恢复真实 __builtins__](binary-pwn-sandbox-escape-python-generator-frame-builtins-recovery.md) | verified | high | 2026-11-05 |
 | [QEMU 自定义 PCI 设备 MMIO 越界读写逃逸：改 log_handler 为 system](binary-pwn-sandbox-escape-qemu-pci-mmio-oob-function-pointer-escape.md) | verified | high | 2026-11-05 |
+| [read 只给 0x10 字节的 shellcode 题：首段 stub 调 read(0, 同址 RWX 缓冲区, 0x1000) 自我覆盖，第二段前置 NOP 滑板吸收 syscall 返回后的 RIP 偏移，再走 open/read/write ORW](binary-pwn-sandbox-escape-short-shellcode-self-overwrite-nop-sled-orw.md) | verified | medium | 2026-11-13 |
 | [Redis Lua 沙箱逃逸：Debian 打包残留 package.loadlib 加载 liblua 取 io.popen（CVE-2022-0543）](binary-pwn-sandbox-escape-redis-lua-package-loadlib-cve-2022-0543.md) | verified | high | 2026-11-06 |
 | [RestrictedPython posonlyargs 漏检导致 guard 遮蔽沙箱策略绕过（CVE-2026-55830）](binary-pwn-sandbox-escape-restrictedpython-posonly-guard-shadow.md) | verified | high | 2026-11-05 |
 | [Roblox Lua 沙箱类型标记绕过：write 可改私有对象 TypeTag，read 的访问拒绝被翻转](binary-pwn-sandbox-escape-roblox-lua-writable-typetag-private-address.md) | verified | high | 2026-11-06 |
@@ -90,9 +94,11 @@
 | [Safe Rust 生命周期 soundness hole](binary-pwn-sandbox-escape-rust-nested-reference-soundness-25860.md) | verified | high | 2026-11-06 |
 | [SandboxJS <0.8.26 沙箱逃逸：异步函数 .constructor 取宿主 AsyncFunction 执行任意代码（CVE-2026-23830）](binary-pwn-sandbox-escape-sandboxjs-asyncfunction-constructor-cve-2026-23830.md) | verified | high | 2026-11-06 |
 | [SandboxJS 浅层污点检查失效：Object.values 带出宿主 Function 数组，经 Object.fromEntries 换形后由 Promise.finally 触发逃逸（CVE-2026-26954）](binary-pwn-sandbox-escape-sandboxjs-object-values-function-array-fromentries.md) | verified | high | 2026-11-06 |
+| [scanf("%2d") 读入负数到 unsigned 长度变量：-1 绕过 ≤10 长度检查并让 read 获得 0xFFFFFFFF 长度](binary-pwn-sandbox-escape-scanf-signed-negative-length-bypass.md) | verified | high | 2026-11-11 |
 | [seccomp write(fd==1/2) 写入限制绕过：fcntl dup2 重映射 stdout 写任意文件](binary-pwn-sandbox-escape-seccomp-write-fd-fcntl-dup2.md) | verified | high | 2026-11-05 |
 | [seccomp 只杀 open/openat/execve：openat2 + pipe/splice 读 flag](binary-pwn-sandbox-escape-seccomp-openat2-pipe-splice.md) | verified | high | 2026-11-06 |
 | [seccomp 封死 read/write/open/openat/execve 时用 io_uring：手工 mmap SQ/CQ 环提交 IORING_OP_OPENAT/READ/WRITE，绕过 syscall 号黑名单 ORW](binary-pwn-sandbox-escape-seccomp-io-uring-sqe-openat-read-write.md) | verified | medium | 2026-11-09 |
+| [seccomp 白名单只剩 read/mmap/fstat 的“无 open 无 write”题：fstat(5) 即 i386 open(5)，retf 打包 CS 切 32 位开文件 + cmp 自环爆破 flag](binary-pwn-sandbox-escape-read-mmap-fstat-retf-i386-open-bruteforce.md) | verified | high | 2026-11-13 |
 | [seccomp 过滤器写成黑名单：只 kill open/read/write/execve，换 openat+sendfile 读 flag](binary-pwn-sandbox-escape-seccomp-inverted-blocklist-openat-sendfile.md) | verified | medium | 2026-11-09 |
 | [seccomp 黑名单未校验 arch：retf 切 32 位兼容模式用 int 0x80 execve 绕过，再用 shell 内建读 flag](binary-pwn-sandbox-escape-seccomp-no-arch-check-i386-compat-execve.md) | verified | high | 2026-11-06 |
 | [seccomp 黑名单漏掉 execveat：execveat(AT_FDCWD, /bin/sh) 绕过 execve 禁用，再用 shell 内建读未知文件名 flag](binary-pwn-sandbox-escape-seccomp-execveat-shell-builtin-read.md) | verified | high | 2026-11-07 |
@@ -103,6 +109,7 @@
 | [vm2 ≤3.6.10 CVE-2019-10761：Buffer.prototype.write 在伪造 this 上触发宿主异常 + 递归栈耗尽取出未隔离的宿主错误对象](binary-pwn-sandbox-escape-vm2-2019-10761-buffer-write-recursion-error.md) | verified | medium | 2026-11-08 |
 | [vm2 跨 Realm 隐式调用逃逸：Error.stack、Proxy、util.inspect 与 Promise 链](binary-pwn-sandbox-escape-vm2-cross-realm-implicit-call.md) | verified | medium | 2026-11-05 |
 | [vm2 逃逸：伪造 nodejs.util.inspect.custom 让宿主 inspect 走到 guest 函数，再用 WebAssembly.compileStreaming 触发 getter 取回 host process](binary-pwn-sandbox-escape-vm2-custominspect-symbol-wasm-compilestreaming.md) | verified | medium | 2026-11-09 |
+| [vm2@3.9.19 Promise[Symbol.species] 沙箱逃逸：FakePromise 构造器劫持宿主错误对象执行命令（CVE-2023-37466）](binary-pwn-sandbox-escape-vm2-promise-species-cve-2023-37466.md) | verified | high | 2026-11-12 |
 | [xmm7 残留 libc 指针的 24 字节受限 shellcode：绕 0x0f/0xcd/0x2f/0x50-0x57 过滤执行 execve](binary-pwn-sandbox-escape-xmm7-residual-libc-24byte-shellcode.md) | verified | high | 2026-11-05 |
 | [反射改 ProtectionDomain.hasAllPerm：让当前栈帧越过 SecurityManager 权限检查](binary-pwn-sandbox-escape-protectiondomain-hasallperm-reflection.md) | verified | medium | 2026-11-08 |
 | [只限制「0f 05 连续出现次数」的 shellcode 沙箱：open+mmap+write 压到两次 syscall，第三次拆 0f/05 运行时拼接](binary-pwn-sandbox-escape-syscall-count-limit-split-byte-selfmodify-open-mmap-write.md) | draft | low | 2026-11-07 |
@@ -112,8 +119,10 @@
 | [汇编即服务：GNU as 的 .incbin 指令把任意文件嵌入机器码回显](binary-pwn-sandbox-escape-gnu-as-incbin-arbitrary-file-read.md) | verified | high | 2026-11-06 |
 | [沙箱共享 mailbox TOCTOU：command 二次读取跳转表越界 → 无 seccomp 父进程 ROP](binary-pwn-sandbox-mailbox-toctou-jump-table-parent-rop.md) | verified | high | 2026-11-06 |
 | [沙箱禁写下的 ORW flag 逐字节爆破：cmp+je 自环挂起，用 clean 耗时差做 oracle 并二分收敛](binary-pwn-sandbox-escape-orw-flag-byte-bruteforce-time-clean-oracle.md) | verified | medium | 2026-11-08 |
+| [短 shellcode 复用入口寄存器构造 reread：0xb 字节 read(0, RWX, len) 载入二阶段 shellcode](binary-pwn-sandbox-escape-register-reuse-reread-staging.md) | verified | high | 2026-11-11 |
 | [禁括号 + 空 builtins 的 Python 沙箱逃逸：劫持 __build_class__，用装饰器链与 NFKC 全角标识符执行 os.system](binary-pwn-sandbox-escape-buildclass-hijack-decorator-nfkc.md) | verified | high | 2026-11-07 |
 | [策略授予 setSecurityManager 时一行 System.setSecurityManager(null) 关停沙箱](binary-pwn-sandbox-escape-java-setsecuritymanager-null-disable.md) | verified | high | 2026-11-08 |
+| [纯可见字符 shellcode 手工构造技巧：NULL 默认指令倍数、地址低字节不变 xor、xor+add 组合与 push+ret 循环](binary-pwn-sandbox-escape-visible-shellcode-manual-construction-tricks.md) | verified | medium | 2026-11-11 |
 | [自定义 ClassLoader 造 AllPermission 的 ProtectionDomain + doPrivileged 越过策略](binary-pwn-sandbox-escape-classloader-allpermission-doprivileged.md) | verified | medium | 2026-11-08 |
 | [输入被长度/字节集双重限制时的最小 shellcode 预算表：21/22 字节 execve、43/56 字节 ORW、无 NULL 与 scanf 可读变体、前导 \x00 骗过 strlen、xor 现算 syscall 绕过 0f05 静态扫描](binary-pwn-sandbox-escape-minimal-shellcode-byte-budget-nul-free-scanf-badchar.md) | verified | high | 2026-11-09 |
 <!-- AUTO-INDEX:END -->

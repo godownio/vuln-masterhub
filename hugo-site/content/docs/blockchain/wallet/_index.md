@@ -33,6 +33,7 @@ weight: 1
 |---|---|---|---|
 | [Safe 多签代理 delegatecall 存储槽劫持：篡改 operation=1 + sstore(0) 替换 masterCopy 后 sweep 资产](blockchain-wallet-safe-delegatecall-slot0-mastercopy-hijack/) | verified | high | 2026-11-06 |
 | [以太坊 CREATE2 未来地址授权钓鱼：诱骗受害者 approve 尚未部署的合约，随后部署恶意合约 transferFrom 盗取代币](blockchain-wallet-create2-counterfactual-address-approval-phishing/) | verified | high | 2026-11-08 |
+| [公链钱包节点 RPC /v1/wallets/export 未鉴权：仅凭 wallet_id 导出加密 keystore 并离线破解口令](blockchain-wallet-node-rpc-export-unauth-keystore-disclosure/) | verified | medium | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

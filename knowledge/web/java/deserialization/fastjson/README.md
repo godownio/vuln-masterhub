@@ -30,6 +30,8 @@ Fastjson AutoType、缓存与绕过。
 | [Fastjson 1.2.47 类缓存绕过 AutoType：java.lang.Class 预置 JdbcRowSetImpl/BCEL/C3P0](web-java-deser-fastjson-1247-class-cache-bypass.md) | draft | high | 2026-11-04 |
 | [Fastjson 1.2.47 缓存绕过 + C3P0 HexAsciiSerializedMap 投递 TemplatesImpl 字节码内存马](web-java-deser-fastjson-1247-c3p0-templatesimpl-memshell.md) | verified | high | 2026-11-10 |
 | [Fastjson 1.2.68 AutoCloseable 期望类绕过：双 @type 触发任意文件读写与目录创建](web-java-deser-fastjson-1268-autocloseable-expectclass-file-rw.md) | draft | high | 2026-11-04 |
+| [Fastjson 1.2.73-1.2.80 aspectjtools 任意文件读取：SourceTypeCollisionException 预热 + BasicCompilationUnit fileName 回显](web-java-deser-fastjson-1280-aspectjtools-file-read.md) | verified | medium | 2026-11-12 |
+| [Fastjson 1.2.73-1.2.80 任意文件写入：ognl 与 xalan+dom4j 桥接 commons-io TeeInputStream/WriterOutputStream 写目标文件](web-java-deser-fastjson-1280-ognl-xalan-commonsio-file-write.md) | verified | medium | 2026-11-12 |
 | [Fastjson 1.2.80 Exception 期望类 + 反序列化器缓存两段式绕过：Groovy/Jackson/IO 链](web-java-deser-fastjson-1280-exception-deserializer-cache-bypass.md) | draft | high | 2026-11-04 |
 | [Fastjson 1.2.80 Throwable 思路缓存 OutputStream 类型：JSONGenerator 链 + MarshalOutputStream/InflaterOutputStream 触发目标流写入](web-java-deser-fastjson-1280-outputstream-cache-file-write.md) | verified | medium | 2026-11-08 |
 | [Fastjson 1.2.80 在 Spring Boot/Tomcat 部署下的写类→类加载 RCE：从 /tmp 枚举 docbase，写 WEB-INF/classes，再由 @type 经 TomcatEmbeddedWebappClassLoader 触发加载](web-java-deser-fastjson-1280-springboot-tomcat-webresources-class-load-rce.md) | verified | medium | 2026-11-08 |
@@ -41,6 +43,8 @@ Fastjson AutoType、缓存与绕过。
 | [Fastjson JdbcRowSetImpl 触发 JNDI 注入](jdbc-rowset.md) | draft | high | 2026-11-04 |
 | [Fastjson parseObject 开启 AutoType：TemplatesImpl _bytecodes 在 batchUpdate 触发命令执行](web-java-deser-fastjson-templatesimpl-batchupdate-rce.md) | verified | high | 2026-11-06 |
 | [Fastjson WAF 绕过：\x 非 hex 字符与 Unicode 数字伪造 @type（GhostBits）](web-java-deser-fastjson-waf-ghostbits-escape.md) | draft | medium | 2026-11-04 |
+| [Fastjson ≥1.2.49 原生反序列化桥被 JSONObject.readObject→resolveClass 的 checkAutoType 拦截：外层 Map 引用包裹（TC_REFERENCE）与静态 mappings 缓存绕过](web-java-deser-fastjson-1249-jsonobject-readobject-checkautotype-reference-bypass.md) | verified | high | 2026-11-13 |
+| [Fastjson 不出网利用：BasicDataSource DriverClassName $$BCEL$$ + BCEL ClassLoader 动态加载字节码](web-java-deser-fastjson-basicdatasource-bcel-no-egress.md) | verified | high | 2026-11-13 |
 | [Fastjson 任意文件写转 RCE：计划任务、JSP、JRE jar/classes、SPI 与 tomcat-docbase 落地点](web-java-deser-fastjson-file-write-to-rce.md) | draft | medium | 2026-11-04 |
 | [Fastjson 加密参数入口：复用目标 AES 工具加密 payload 通过 Base64+AES 解密层](web-java-deser-fastjson-encrypted-param-aes-wrapper.md) | verified | high | 2026-11-05 |
 | [Fastjson 有期望类时用 java.util.Currency 包装触发所有 getter](web-java-deser-fastjson-currency-getter-expected-class.md) | draft | medium | 2026-11-04 |
@@ -57,8 +61,10 @@ Fastjson AutoType、缓存与绕过。
 | [Fastjson2 序列化触发 getter RCE：TemplatesImpl 直用与 ≥2.0.27 双代理黑名单绕过](web-java-deserialization-fastjson2-serialize-getter-templates-proxy-bypass.md) | verified | high | 2026-11-05 |
 | [Fastjson2 默认 accept 哈希的 FNV-1a z3 预映像碰撞：任意前缀 jar:http 绕过 AutoType RCE](web-java-deser-fastjson2-fnv-z3-preimage-collision-rce.md) | draft | high | 2026-11-05 |
 | [JFinal CMS 未授权 API 的 version/method/p 三参分发：version 选 Logic 类、method 经反射 invokeMethod 调方法、p 直接进 fastjson parseObject（CVE-2024-53477）](web-java-deser-fastjson-jfinalcms-api-version-method-dispatch-sink.md) | verified | medium | 2026-11-09 |
+| [jshERP 通用列表 search JSON 参数经 StringUtil.getInfo 进入 JSONObject.parseObject：Fastjson 1.2.55 反序列化入口定位与 DNS/JDBC 利用](web-java-deser-fastjson-jsherp-search-parseobject-entry.md) | verified | high | 2026-11-12 |
 | [MetaCRM download.jsp AES 十六进制参数包裹的 Fastjson JdbcRowSetImpl JNDI RCE](web-java-deser-fastjson-crm-download-jsp-aes-jdbcrowset-jndi.md) | verified | high | 2026-11-07 |
 | [UEditor config.json 成为 fastjson 反序列化入口：后台任意文件写覆盖该配置，访问 /ueditor 即触发 parseObject](web-java-deser-fastjson-ueditor-config-json-file-sink.md) | verified | high | 2026-11-08 |
+| [云网OA /setup/updateUiSetup 未授权 uiSetup 参数 parseObject：fastjson 1.2.37 JdbcRowSetImpl JNDI RCE](web-java-deser-fastjson-cloudweb-updateuisetup-jdbcrowset-jndi.md) | verified | high | 2026-11-12 |
 | [入口只用 JSON.parse 时 getter 调用受限：用 $ref 的 JSONPath 解析或把 JSONObject 当 key 走 toString，强行触发任意 getter](web-java-deser-fastjson-parse-getter-bypass-ref-jsonobject-key.md) | verified | medium | 2026-11-09 |
 | [汉王e脸通 fastjson 1.2.46 反序列化：addVisitDeviceAppointmentInfoTest 的 parseObject 触发 JdbcRowSetImpl JNDI](web-java-deser-fastjson-hanvon-addappointment-jdbcrowset-jndi.md) | verified | medium | 2026-11-07 |
 | [高版本 Fastjson 内置 InetAddress 解析实现 DNS 探测：Inet4Address/Inet6Address 与畸形 InetSocketAddress](web-java-deser-fastjson-inetaddress-dns-probe-malformed.md) | verified | high | 2026-11-05 |

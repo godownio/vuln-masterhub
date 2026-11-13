@@ -32,7 +32,9 @@ JIT、渲染引擎、沙箱与逃逸。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [J2V8 老版本 V8（9.3.345.11）TheHole + Map 状态破坏：小窗口 OOB 读 wasm RWX 并改写 ArrayBuffer/DataView 执行 shellcode](binary-pwn-browser-j2v8-thehole-map-corruption-wasm-rwx/) | verified | medium | 2026-11-06 |
+| [JavaScriptCore boxDouble 漏掉 purifyNaN：NaN-boxing 类型混淆 fakeobj → addrof/任意读写 → JIT RWX 执行 shellcode](binary-pwn-browser-jsc-boxdouble-purifynan-fakeobj-jit-rwx/) | verified | medium | 2026-11-10 |
 | [JS 引擎 nvars uint16 回绕：bytecode slot 越界写伪造 JSClass.convert 执行 shellcode](binary-pwn-browser-nvars-uint16-wrap-bytecode-slot-oob-fake-class-convert/) | verified | high | 2026-11-06 |
+| [V8 CVE-2018-17463：Object.create 副作用注解错误致 TurboFan 删除 CheckMaps，Property Overlap → addrof/fakeobj → ArrayBuffer 任意读写 → wasm RWX](binary-pwn-browser-v8-cve-2018-17463-object-create-side-effect-checkmaps-type-confusion/) | verified | high | 2026-11-13 |
 | [V8 CVE-2024-12695：Object.assign 缺 properties 类型检查 + FinalizationRegistry 缺 CHECK，SimpleNumberDictionary 头越界后借 WeakCell 链表写构造 cage AAR/AAW 与 wasm execve](binary-pwn-browser-v8-cve-2024-12695-object-assign-finalization-registry-dictionary-oob-wasm-rce/) | verified | high | 2026-11-06 |
 | [V8 TurboFan JS→Wasm 延续帧签名漏比较导致类型混淆](binary-pwn-browser-v8-wasm-frame-state-type-confusion/) | verified | high | 2026-11-04 |
 | [V8 TurboFan ReduceInt32Add 注入 2+2=>5 错误常量折叠 + simplified-lowering 边界检查恒假：JS 数组短距越界泄露 map/properties](binary-pwn-browser-v8-reduceint32add-2plus2eq5-typer-hardening-oob/) | verified | high | 2026-11-08 |

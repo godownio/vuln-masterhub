@@ -26,7 +26,7 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [Ghidra 列表视图定位并指令级修补有符号比较死循环（阶乘 INT_MAX 示例）](tools-ghidra-listing-patch-signed-comparison-loop.md) | draft | high | 2026-11-13 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

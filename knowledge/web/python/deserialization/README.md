@@ -46,8 +46,14 @@ pickle、PyYAML、jsonpickle 等反序列化风险。
 | [pickle + types.CodeType 接管任意函数：关键字黑名单 WAF 下的文件读取与 RCE](web-python-deserialization-pickle-codetype-function-hijack.md) | verified | high | 2026-11-05 |
 | [pickle __reduce__ 调 Flask render_template 把反序列化变成 SSTI：上传目录位于 template_folder，短 payload 同时绕长度与黑名单](web-python-deserialization-pickle-reduce-render-template-ssti.md) | verified | high | 2026-11-09 |
 | [Pickle _Unpickler.persistent_load 劫持：BUILD 把 persistent_load 设为 posix.system，BINPERSID 触发命令](web-python-deserialization-unpickler-persistent-load-system.md) | verified | high | 2026-11-06 |
+| [Pickle BUILD 调用 __setstate__ 执行命令：NEWOBJ 创建实例避开类 __dict__ 的 mappingproxy 只读](web-python-deserialization-pickle-build-setstate-newobj-instance-rce.md) | verified | high | 2026-11-11 |
+| [Pickle GLOBAL 引用模块对象并 BUILD 篡改全局变量通过对象比较校验](web-python-deserialization-pickle-global-module-state-tamper-bypass.md) | verified | high | 2026-11-12 |
+| [Pickle map 惰性迭代触发：map.__new__ 包住 eval/exec，再用 tuple.__new__/bytes.__new__ 消费迭代器执行](web-python-deserialization-pickle-map-new-lazy-iterator-exec.md) | verified | high | 2026-11-11 |
+| [Pickle REDUCE 被过滤时的调用替代：用 INST/OBJ 构造调用链，dir/reversed/next 仅靠 c+i](web-python-deserialization-pickle-inst-obj-reduce-filter-bypass.md) | verified | high | 2026-11-11 |
+| [Pickle 字符串 opcode 转义绕过关键字检测：V 的 \u 与 S 的 \x 让明文关键字不出现在载荷里](web-python-deserialization-pickle-vs-string-escape-waf-bypass.md) | verified | high | 2026-11-11 |
 | [pickle 白名单只放行 sys 时的绕过：把 sys.modules['sys'] 重绑为 modules 再重绑为 os，GLOBAL('sys','system') 即执行命令](web-python-deserialization-pickle-sys-modules-self-rebind.md) | verified | high | 2026-11-08 |
 | [Pickle 短黑名单绕过：pydoc.pipepager(text, cmd) 在 60 字节内执行命令](web-python-deserialization-pickle-pydoc-pipepager-short-blacklist-bypass.md) | verified | high | 2026-11-06 |
+| [Pickle 绕过重写的 find_class：从 globals 取回原始 pickle.loads，用 BINBYTES 传 bytes 二次反序列化](web-python-deserialization-pickle-loads-reentry-binbytes-bypass.md) | verified | medium | 2026-11-11 |
 | [pickle 黑名单漏掉 subprocess：手工 GLOBAL/REDUCE opcode 直接 subprocess.run("bash","-c",...) 反弹](web-python-deserialization-pickle-blacklist-miss-subprocess-run-opcode.md) | verified | high | 2026-11-08 |
 | [pickle 黑名单禁用命令执行时改用 builtins.open 读写文件：把 /flag 内容写回被 /src 回显的源码文件](web-python-deserialization-pickle-builtins-open-read-write-echo-bypass.md) | verified | high | 2026-11-08 |
 | [pker 语法到 pickle opcode 的映射：GLOBAL/INST/OBJ/属性赋值/索引赋值/return 六类原语与可写不可读约束](web-python-deserialization-pker-opcode-primitives.md) | verified | high | 2026-11-08 |

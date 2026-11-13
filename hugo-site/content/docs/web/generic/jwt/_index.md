@@ -33,6 +33,7 @@ weight: 1
 |---|---|---|---|
 | [CVE-2024-43441 Apache HugeGraph 硬编码 HS256 密钥：伪造 user_name/user_id 令牌冒充 admin（user_id=-30）读取 /auth/users](web-generic-jwt-hugegraph-hardcoded-secret-token-forgery/) | verified | high | 2026-11-08 |
 | [HS256 弱密钥字典爆破后签发任意 JWT](web-generic-jwt-weak-hmac-key-bruteforce/) | verified | high | 2026-11-05 |
+| [JWT exp 过期声明未被校验：过期令牌仍通过认证长期有效](web-generic-jwt-exp-not-validated/) | verified | medium | 2026-11-13 |
 | [JWT jku 头劫持：服务端从攻击者 JWKS 取公钥验签](web-generic-jwt-jku-header-hijack/) | verified | high | 2026-11-05 |
 | [JWT jwk 头注入：服务端信任令牌内嵌公钥，攻击者自带密钥伪造管理员](web-generic-jwt-jwk-header-injection/) | verified | high | 2026-11-05 |
 | [JWT kid 头注入：SQL UNION 控制验签密钥](web-generic-jwt-kid-injection/) | verified | high | 2026-11-05 |
@@ -45,6 +46,7 @@ weight: 1
 | [NocoDB JWT 密钥明文存 nc_store + is_api_token 旁路 token_version：伪造 super-admin Token](web-generic-jwt-nocodb-store-secret-is-api-token-forgery/) | verified | high | 2026-11-05 |
 | [PyJWT 变异 PEM 绕过 HMAC 公钥防护：CR/缩进/折叠公钥当对称密钥伪造 JWT](web-generic-jwt-pyjwt-mutated-pem-hmac-guard-bypass/) | verified | high | 2026-11-05 |
 | [RS256→HS256 算法混淆：用公钥当 HMAC 密钥伪造 JWT](web-generic-jwt-rs256-hs256-confusion/) | verified | high | 2026-11-05 |
+| [Spring Boot @PassToken demo 接口 getUserToken 泄露硬编码 defaultSecret 签发的 JWT：任意用户身份伪造](web-generic-jwt-demo-passtoken-getusertoken-defaultsecret-forgery/) | verified | high | 2026-11-12 |
 | [ZPan ≤ v1.6.5 硬编码 JWT 密钥 "123" 伪造管理员，详情接口未脱敏窃取 OSS AK/SK](web-generic-jwt-zpan-hardcoded-secret-oss-credential-leak/) | verified | high | 2026-11-07 |
 | [从 Go 服务端二进制提取硬编码 HS256 密钥，伪造 role=admin 的 JWT](web-generic-jwt-go-binary-hardcoded-secret-admin-forgery/) | verified | high | 2026-11-06 |
 | [小智 ESP32 管理平台：JWT 未配置时回退硬编码 HS256 密钥，可伪造 admin 令牌](web-generic-jwt-xiaozhi-default-hs256-secret-forgery/) | verified | high | 2026-11-05 |

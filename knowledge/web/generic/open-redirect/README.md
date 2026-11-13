@@ -27,6 +27,7 @@
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Activiti 工作流表单 formKey 未校验：上传 BPMN 控制 formKey 触发 sendRedirect 开放重定向](web-generic-open-redirect-activiti-formkey-sendredirect.md) | verified | high | 2026-11-06 |
+| [Google DoubleClick adurl 开放重定向：钓鱼 PDF 内嵌广告点击链接把受害者导向恶意 MSI 站点](web-generic-open-redirect-doubleclick-adurl-pdf-phishing.md) | verified | high | 2026-11-11 |
 | [Shiro 未登录重定向的 Location 取 Host 头：任意 Host 注入导致开放重定向与会话 ID 泄露](web-generic-open-redirect-shiro-login-redirect-host-header.md) | draft | high | 2026-11-05 |
 | [WebOb <1.8.11 开放重定向：前导空白 + 协议相对 URL 绕过校验（CVE-2026-54770）](web-generic-open-redirect-webob-whitespace-urljoin-mismatch.md) | verified | high | 2026-11-05 |
 | [WordPress begin lts 主题 go.php 开放重定向：/wp-content/themes/begin lts/inc/go.php?url= 直接 302 到任意外站](web-generic-open-redirect-wordpress-begin-theme-go-php.md) | verified | medium | 2026-11-09 |
@@ -38,6 +39,7 @@
 | [开放重定向的嵌套参数与可信站 302 接力：改最内层 url 或借白名单内站点的跳转，绕过只允许可信域的校验](web-generic-open-redirect-nested-trusted-chain-bypass.md) | verified | high | 2026-11-09 |
 | [微信安全中心 readtemplate 模板的 url 参数开放重定向：高信任域跳转配合滑块验证，可用于钓鱼](web-generic-open-redirect-wechat-security-readtemplate-url.md) | verified | medium | 2026-11-09 |
 | [被交互触发的开放重定向测试盲点：登录按钮点击后才跳转、POST 图片地址预览/审核点开触发](web-generic-open-redirect-interaction-triggered-and-post-param.md) | verified | medium | 2026-11-09 |
+| [请求走私触发 Host 头重定向：走私 GET 携带攻击者 Host，使下一受害请求收到 301 跳转](web-generic-open-redirect-smuggled-host-header-301.md) | verified | medium | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

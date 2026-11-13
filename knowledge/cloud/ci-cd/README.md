@@ -28,26 +28,42 @@
 |---|---|---|---|
 | [CI 日志脱敏绕过：base32 不在掩码变体集合内，base64 折行反被 4 字符分组对齐规则啃成残片（Gitea 28.2.0 实测）](cloud-cicd-log-masking-bypass-base32-variant-threshold.md) | verified | high | 2026-11-06 |
 | [CVE-2026-33075 FastGPT：pull_request_target 检出外部 PR 代码并用攻击者 Dockerfile 构建推镜像](cloud-cicd-github-actions-pull-request-target-checkout-rce.md) | verified | high | 2026-11-05 |
+| [Git 依赖 tag 重发投毒：篡改依赖仓库后重打/新增 tag 让下游 CI 构建加载恶意代码](cloud-cicd-git-dependency-tag-republish-poisoning.md) | verified | medium | 2026-11-13 |
 | [GitHub Actions 表达式注入：PR 分支名（head.ref）经 github-script 输出进入 run 脚本导致 CI 命令执行](cloud-cicd-github-actions-pr-head-ref-expression-injection-rce.md) | verified | high | 2026-11-08 |
 | [GitHub App 私钥泄露到 CI 环境：生成安装令牌并以 organization_self_hosted_runners:write 换取组织 runner 注册令牌](cloud-cicd-github-app-private-key-runner-registration-token.md) | verified | high | 2026-11-08 |
 | [GitLab OIDC 通配符信任滥用：组内任意项目 CI 作业代入 AWS 角色并窃取 S3 凭据](cloud-cicd-gitlab-oidc-wildcard-sub-aws-role-assumption.md) | verified | high | 2026-11-07 |
 | [Gradle Wrapper jar 供应链后门：.webp 伪装 class 自定义 ClassLoader + LLVM IR 解释器加密外传源码](cloud-cicd-gradle-wrapper-jar-backdoor-webp-classloader-llvm-vm.md) | verified | medium | 2026-11-06 |
+| [Jenkins Agent 管理弱口令接管：新建指向蜜罐的节点骗取 agent SSH 凭据](cloud-cicd-jenkins-agent-admin-weak-password-node-credential-honeypot.md) | verified | medium | 2026-11-13 |
+| [Jenkins Pipeline 指定 built-in 节点：绕过专用 agent 隔离读取控制器文件](cloud-cicd-jenkins-agent-label-builtin-node-file-read.md) | verified | high | 2026-11-13 |
+| [Jenkins 公开 PPE：fork PR 信任策略泄露 Gitea Token，再借 Token 改流水线做二阶段凭据窃取](cloud-cicd-jenkins-public-ppe-fork-pr-token-repo-takeover.md) | verified | medium | 2026-11-13 |
+| [Jenkins 直接 PPE：PR 分支修改 Jenkinsfile 借 withCredentials 窃取构建凭据](cloud-cicd-jenkins-direct-ppe-jenkinsfile-credential-exfil.md) | verified | high | 2026-11-13 |
+| [Jenkins 间接 PPE：流水线仓库不可写时改代码仓库 Makefile 借构建执行窃取凭据](cloud-cicd-jenkins-indirect-ppe-build-script-makefile.md) | verified | high | 2026-11-13 |
 | [jlink 供应链植入：替换 java.base.jmod 在定制运行时镜像中植入 JVM 级后门](cloud-cicd-jlink-java-base-jmod-backdoor.md) | verified | high | 2026-11-05 |
+| [NPM typo-squatting 仿冒包 install 脚本执行 base64 PowerShell 反向 shell](cloud-cicd-npm-typosquat-install-powershell-reverse-shell.md) | verified | high | 2026-11-11 |
 | [npm 依赖注入 postinstall 供应链投毒：安装即执行](cloud-cicd-npm-postinstall-supply-chain-poisoning.md) | verified | high | 2026-11-05 |
+| [NPM 投毒包 preinstall 收集主机信息并通过 DNS 分块外传（xxd + nslookup）](cloud-cicd-npm-dns-chunk-exfil-hostinfo.md) | verified | high | 2026-11-11 |
+| [NPM 投毒包捆绑合法签名程序侧加载恶意 DLL：bat 借 UAC 提权诱骗执行](cloud-cicd-npm-signed-exe-dll-sideload-uac.md) | verified | high | 2026-11-11 |
+| [PR 标题命令注入窃取部署 SSH 私钥，投毒共享脚本供下游流水线执行](cloud-cicd-jenkins-pr-title-command-injection-ssh-key-script-poisoning.md) | verified | medium | 2026-11-13 |
 | [PyPI setup.py 自定义 install 命令：安装时下载远程 Bash 脚本并 chmod 700 执行](cloud-cicd-pypi-setup-py-custom-install-command-remote-bash.md) | verified | high | 2026-11-10 |
 | [PyPI 包内嵌 ZIP+Base64 载荷：模块导入即解压执行，从 Dropbox 下载 WinDef.exe 木马运行](cloud-cicd-pypi-module-zip-base64-dropbox-exe.md) | verified | high | 2026-11-10 |
 | [PyPI 恶意包 multiplerequests：setup.py 安装期 exec base64 代码，远程两阶段拉取 CStealer 窃密后门](cloud-cicd-pypi-multiplerequests-setup-py-cstealer.md) | verified | high | 2026-11-09 |
 | [PyPI 恶意包导入即反弹 Shell：__init__.py 调 utils.run() 执行 Base64 载荷，C2 地址经云盘远程获取](cloud-cicd-pypi-import-base64-reverse-shell-remote-c2.md) | verified | high | 2026-11-10 |
+| [PyPI 投毒包自定义 egg_info 命令触发多阶段无文件 shellcode：base64 远程加载 + RWX 内存执行](cloud-cicd-pypi-egg-info-multistage-fileless-shellcode.md) | verified | medium | 2026-11-11 |
+| [PyPI 拼写仿冒 tensorflow（tensrflwo）：setup.py 顶层 taint2() fork 子进程 dup2 反弹 shell 到硬编码 C2](cloud-cicd-pypi-typosquat-tensorflow-setup-py-fork-reverse-shell.md) | verified | high | 2026-11-12 |
 | [PyPI 拼写抢注 requests→request：克隆官方包源码植入 Cookie 外传，pip install 后静默劫持会话](cloud-cicd-pypi-typosquat-requests-cookie-exfil.md) | verified | high | 2026-11-07 |
 | [PyPI 拼写抢注投毒：setup.py 用 Fernet 硬编码密钥解密执行，分阶段拉取浏览器窃密与数字钱包劫持载荷](cloud-cicd-pypi-fernet-encrypted-staged-loader.md) | verified | high | 2026-11-10 |
 | [python-json-logger 可选依赖名被弃用后遭抢注导致安装期代码执行（CVE-2025-27607）](cloud-cicd-pypi-optional-dependency-name-takeover.md) | verified | high | 2026-11-05 |
+| [SAST 配置投毒：提交 .checkov.yml soft-fail 与无效检查项绕过 IaC 扫描门禁](cloud-cicd-sast-config-soft-fail-bypass-checkov.md) | verified | medium | 2026-11-13 |
 | [云利用工具投毒：仿冒 enumerate-iam 依赖 + botocore 端点劫持回传 AWS AK/SK 与 STS](cloud-cicd-accesskey-tools-typosquat-sdk-endpoint-hijack.md) | verified | high | 2026-11-06 |
 | [以 ubuntu-latest 标签注册恶意自托管 runner：劫持组织内 GitHub 托管作业并窃取 CI secrets](cloud-cicd-github-actions-runner-label-ubuntu-latest-hijack.md) | verified | high | 2026-11-08 |
 | [依赖混淆攻击：公共仓库同名高版本包劫持内部依赖并在安装/构建期执行](cloud-cicd-dependency-confusion-public-package-name-collision.md) | verified | medium | 2026-11-06 |
+| [可控依赖包在 CI 中执行：构建并推送恶意基础镜像污染下游流水线运行环境](cloud-cicd-package-rce-poisoned-base-image-registry.md) | verified | medium | 2026-11-13 |
+| [开源项目维护者长期角色扮演接管：马甲账号施压 + 两年高质量贡献换取 commit/release 权限后向上游投毒](cloud-cicd-opensource-maintainer-takeover-long-con.md) | verified | high | 2026-11-10 |
 | [恶意 Java 注解处理器经 SPI 自动加载实现编译期命令执行与反弹 Shell](cloud-cicd-java-annotation-processor-compile-rce.md) | verified | high | 2026-11-05 |
 | [恶意 PEP 517 构建后端在 pip 安装期执行任意代码](cloud-cicd-pep517-build-backend-install-rce.md) | verified | high | 2026-11-04 |
 | [托管 CI 平台作无 C2 回传信道：恶意 workflow 将 env 与 toJSON(secrets) base32 编码写入运行日志再经 API 取回](cloud-cicd-actions-log-base32-secret-exfiltration-no-c2.md) | verified | high | 2026-11-06 |
 | [数字钱包 Electron 客户端 app.asar 替换劫持：结束进程后用恶意 app.asar 覆盖 resources 目录](cloud-cicd-electron-wallet-app-asar-replace-hijack.md) | verified | high | 2026-11-10 |
+| [构造变更通过 Jenkins PR 校验（词数平衡/版本文件）触发自动合并后窃取凭据](cloud-cicd-jenkins-pr-check-bypass-auto-merge-credential-theft.md) | verified | medium | 2026-11-13 |
 | [注解处理器 Filer API 向编译产物注入后门类](cloud-cicd-java-annotation-processor-filer-backdoor-injection.md) | verified | high | 2026-11-05 |
 | [窃取自托管 runner 的 .credentials/.credentials_rsaparams/.runner：伪造 runner 客户端接管会话并解密作业消息窃取 secrets](cloud-cicd-github-runner-credentials-session-hijack.md) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->

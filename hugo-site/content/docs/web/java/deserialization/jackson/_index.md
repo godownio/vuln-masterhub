@@ -32,7 +32,11 @@ Jackson 多态反序列化与 gadget。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Jackson + SignedObject 二次反序列化绕过 resolveClass 黑名单（TemplatesImpl 短链）](web-java-deserialization-jackson-signedobject-getobject-short-chain/) | verified | high | 2026-11-05 |
+| [Jackson 2.6–2.8 多态反序列化 CVE-2017-7525：enableDefaultTyping 实例化 TemplatesImpl，SetterlessProperty 调 getOutputProperties 加载字节码 RCE](web-java-deser-jackson-cve-2017-7525-templatesimpl-setterless-rce/) | verified | high | 2026-11-13 |
+| [Jackson 2.7–2.9 多态反序列化 CVE-2017-17485：@type 实例化 ClassPathXmlApplicationContext 加载远程 XML，SpEL](web-java-deser-jackson-cve-2017-17485-classpathxmlapplicationcontext-spel-rce/) | verified | high | 2026-11-13 |
 | [Jackson 原生反序列化链：JsonNode/POJONode toString 触发 TemplatesImpl#getOutputProperties 加载字节码 RCE（2.18.0 仍可用）](jackson-native-deserialization-getter-tostring-templates-rce/) | verified | high | 2026-11-08 |
+| [Jackson 多态反序列化到 Logback JNDIConnectionSource：getConnection getter 触发 JNDI lookup](web-java-deser-jackson-logback-jndiconnectionsource-lookup/) | verified | medium | 2026-11-12 |
+| [Jackson 自定义 deObject 的 @type 任意实例化 + 递归反射赋值：改写 SecurityCheck.safe/treeMap 进入原生反序列化分支 RCE](web-java-deser-jackson-deobject-type-reflection-field-injection/) | verified | high | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

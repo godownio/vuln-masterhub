@@ -24,9 +24,15 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-08'
-updated: '2026-11-08'
+updated: '2026-11-11'
+verification:
+  verified_by: verifier-V505
+  verified_at: '2026-11-11T04:09:43+08:00'
+  notes: 已对照原文（content.md 全文+26/26 图）核对：img/15 的 AgentBoard.XGI user 参数 UNION INTO OUTFILE payload、img/16 的 /4.php 返回 PHP 5.2.10 phpinfo（Loaded Configuration File 为 C:\Program Files (x86)\RealFriend\Rap Server\php\php-apache2handler.ini）及 HackBar POST cmd=phpinfo() 与正文一致；原文未标注版本，affected_versions 保持为空；与库内同产品 verified 卡 web-generic-sqli-ruiyou-tianyi-php54-appsave-appdel-outfile-webshell 属不同注入点（该卡已反向互链），保留双卡不删；已补同产品互链。未验证点：PoC 未在本地/授权目标执行。
+  unverified:
+  - PoC 未复现；文章未给 target 与受影响版本；写文件依赖 FILE 权限/secure_file_priv/WebRoot 可写属合理推断
 ---
 
 ## 一句话结论
@@ -91,6 +97,7 @@ cmd=phpinfo();
 - 变体：写入文件名/路径可换（如 `WebRoot\shell.php`、其它子目录）；用十六进制/CHAR() 编码绕过引号过滤；用 `-- -`/`#` 注释；若 UNION 列数不同，调整占位列。
 - 变体：同一产品的其它 `.XGI` 接口/参数可能存在类似注入，可按 `cmd=` 分支枚举。
 - 关联：[[web-generic-sqli-mysql-outfile-general-log-webshell]]、[[web-generic-sqli-mysql-outfile-filename-clause-injection]]、[[web-generic-sqli-order-by-into-outfile-filename-webshell]]——通用 MySQL INTO OUTFILE 写 webshell 技巧；本卡是瑞友天翼产品的具体 NDay 入口与 Windows 路径。
+- 关联：[[web-generic-sqli-ruiyou-tianyi-php54-appsave-appdel-outfile-webshell]]——同产品 7.0.5.1 的 appsave/appdel GET 注入写 WebShell（magic_quotes_gpc 失效根因），与本卡 AgentBoard.XGI user 参数 UNION 注入是不同入口，可互为备选，两卡非重复。
 - 关联：[[web-php-rce-upload-chr-ascii-webshell-waf-bypass]]（PHP 写马的另一路径）。
 - 边界：`secure_file_priv` 非空且不含目标路径、MySQL 无 FILE 权限、WebRoot 不可写、WAF 拦截 `union/into outfile`、或产品已修复注入时失效。
 

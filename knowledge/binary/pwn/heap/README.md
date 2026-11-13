@@ -29,12 +29,15 @@ glibc 堆、UAF、double free、House of 系列。
 | [__free_hook 接 setcontext+61：bridge gadget 把 rdi 转 rdx，read 自覆写堆栈后 ORW](binary-pwn-heap-freehook-setcontext61-bridge-orw.md) | verified | medium | 2026-11-05 |
 | [abs(INT_MIN) 长度校验绕过堆溢出：BSS 伪造 chunk 投毒 tcache 劫持 GOT](binary-pwn-heap-abs-intmin-length-bypass-bss-fake-chunk-tcache-got.md) | verified | high | 2026-11-05 |
 | [AES 自实现加密堆题：长度不整除 16 时明文直写 + safe_malloc 限制在 0x1000 内封死 tcache，改走低字节毒化篡改 key → unlink 改 Booklist 指针 → environ 泄栈 → 短 ROP gets 二次溢出 ORW](binary-pwn-heap-aes-key-tcache-poison-unlink-booklist-environ-rop.md) | draft | high | 2026-11-09 |
+| [Android jemalloc 'new' 分配器机制与利用面（前置知识）：arena/extent/slab/bin/tcache 结构与堆风水要点](binary-pwn-heap-android-jemalloc-new-allocator-internals.md) | verified | medium | 2026-11-13 |
+| [Android Scudo 分配器防御机制与利用面（前置知识）：Block 头/CRC16 校验、Android 关闭 quarantine 的 UAF 复用、double-free 重分配绕过与 TransferBatch 洗牌边界](binary-pwn-heap-android-scudo-allocator-defense-internals.md) | verified | medium | 2026-11-13 |
 | [Arbitrary Alloc：UAF 改写 fastbin fd 指向 BSS 假块（size=0x7f），单次 free 也能实现任意地址分配并改 GOT](binary-pwn-heap-fastbin-fd-fake-chunk-bss-arbitrary-alloc.md) | verified | high | 2026-11-10 |
 | [C++ HTTP 待办服务的 PUT 偏移量用有符号比较：负偏移绕过边界检查形成向后任意写，改 content 指针拿任意读写，leak heap/libc/stack 后覆写栈返回地址 ROP](binary-pwn-heap-cpp-http-todo-negative-offset-backward-write-arbitrary-rw-rop.md) | verified | medium | 2026-11-08 |
 | [C++ vector<deque<Animal>> 编辑长度不校验：堆溢出伪造相邻 Animal 内容指针，environ 泄露栈后改写 main 返回地址 one_gadget](binary-pwn-heap-cpp-animal-edit-size-mismatch-environ-onegadget.md) | verified | medium | 2026-11-06 |
 | [calloc 堆题：改相邻 chunk size 造重叠泄露 libc，tcache poisoning 覆写 __malloc_hook/__realloc_hook 并用 realloc+3 调栈帧打 one_gadget](binary-pwn-heap-calloc-tcache-overlap-realloc-hook-onegadget.md) | verified | low | 2026-11-06 |
 | [CGI VPN 配置堆溢出：strcpy 跨字段覆盖 custom_ptr 后任意写劫持 apply_cb](binary-pwn-heap-cgi-vpn-strcpy-custom-ptr-callback-hijack.md) | verified | high | 2026-11-05 |
 | [Chunk Extend：堆溢出改相邻 chunk size 扩大 free 范围制造 overlapping，泄露 libc 后接 fastbin attack 打 __malloc_hook（glibc 2.23）](binary-pwn-heap-chunk-extend-size-overlap-unsorted-leak-fastbin-malloc-hook.md) | verified | high | 2026-11-09 |
+| [cJSON \u 堆溢出全链：数组喷堆绕过 WAF + House of Orange 造 fastbin，改 protobuf 数据段函数指针 ROP](binary-pwn-heap-cjson-unicode-overflow-house-of-orange-fastbin-protobuf-rop.md) | verified | high | 2026-11-12 |
 | [cJSON parse_string 的 \u 转义越界：长度按字符算、写入按字节走，形成长度双算不一致的受控堆溢出](binary-pwn-heap-cjson-parse-string-unicode-escape-unbounded-overflow.md) | verified | medium | 2026-11-08 |
 | [CREATE 失败路径先写全局槽再 free：稳定 stale slot 制造 UAF 读写](binary-pwn-heap-stale-slot-create-failure-uaf.md) | verified | high | 2026-11-05 |
 | [delete 压缩指针数组不清末槽：glibc 2.23 fastbin dup 打 GOT/environ/栈](binary-pwn-heap-delete-compaction-stale-slot-fastbin-dup.md) | verified | high | 2026-11-05 |
@@ -42,16 +45,22 @@ glibc 堆、UAF、double free、House of 系列。
 | [Forth 解释器 forget 未检查引用计数：tcache 复用伪造 word_t 调 dosys](binary-pwn-forth-dictionary-uaf-tcache-fake-word.md) | verified | high | 2026-11-06 |
 | [free 次数被写死 10 次、且没有 edit 的 UAF 堆题：7 次 free 填满 tcache 后余下 3 次构造 A→B→A fastbin dup，按 safe-linking 编码把 0x50 块分配到 libc 的 strtok GOT，借其 rdi 可控改写成 system](binary-pwn-heap-10-free-quota-fastbin-dup-strtok-got-system.md) | verified | high | 2026-11-09 |
 | [FUSE CoW 引用计数 UAF：异常 offset 让旧数据块 refcount 减一但指针未换，伪造 metadata 任意读写并劫持 fuse_operations](binary-pwn-heap-fuse-cow-refcount-uaf-fuse-operations-hijack.md) | verified | high | 2026-11-06 |
+| [glibc 2.23 off-by-one 改相邻 chunk size 造重叠：覆盖 0x10 元数据块指针为 __free_hook，edit 写 system 后 free 触发](binary-pwn-heap-glibc223-offbyone-size-extend-overlap-metadata-ptr-freehook.md) | verified | high | 2026-11-13 |
 | [glibc 2.23 UAF 堆题：unsorted bin 泄露 libc、fastbin dup 打 __malloc_hook，realloc+6 调栈帧满足 one_gadget](binary-pwn-heap-glibc223-uaf-fastbin-dup-malloc-hook-realloc-onegadget.md) | verified | high | 2026-11-06 |
 | [glibc 2.23 unsafe unlink：伪造 chunk 劫持 chunks 数组后 GOT 泄露与 system 覆写](binary-pwn-heap-glibc223-unsafe-unlink-chunks-array-got-system.md) | verified | high | 2026-11-06 |
 | [glibc 2.24–2.27 vtable 校验绕过：vtable 指向 _IO_str_jumps-0x8，让 _IO_OVERFLOW 槽落到 _IO_str_finish 经 _s._free_buffer 调 system](binary-pwn-heap-io-str-jumps-finish-free-buffer-system.md) | verified | high | 2026-11-08 |
+| [glibc 2.31 off-by-null 无 UAF：伪造 prev_size 落入 unsorted bin 合并出重叠块，tcache 投毒打 __free_hook](binary-pwn-heap-glibc231-offby-null-no-uaf-overlap-tcache-freehook.md) | verified | high | 2026-11-13 |
 | [glibc 2.31 tcache counts 校验下的 __malloc_hook 毒化：至少两个同尺寸 chunk 入 bin 才能把 fd 改成 hook 并取 one_gadget](binary-pwn-heap-glibc231-tcache-counts-malloc-hook-onegadget.md) | verified | medium | 2026-11-08 |
-| [glibc 2.31 UAF edit 清 tcache key：同一 chunk 反复 free 填满 tcache，切分 unsorted 块泄 libc 后毒化 __free_hook](binary-pwn-heap-glibc231-tcache-key-clear-repeated-free-freehook.md) | draft | medium | 2026-11-08 |
+| [glibc 2.31 UAF edit 清 tcache key：同一 chunk 反复 free 填满 tcache，切分 unsorted 块泄 libc 后毒化 __free_hook](binary-pwn-heap-glibc231-tcache-key-clear-repeated-free-freehook.md) | verified | medium | 2026-11-11 |
+| [glibc 2.31 UAF 堆题：largebin attack 覆写 mp_.tcache_bins 让 large chunk 进 tcache，毒化 __free_hook 为 system](binary-pwn-heap-uaf-largebin-mp-tcache-bins-freehook-system.md) | verified | high | 2026-11-13 |
+| [glibc 2.31 无 edit 堆题：fastbin 双 free 后倒灌 tcache，重叠块改 fd 打 __free_hook→system](binary-pwn-heap-glibc231-fastbin-stash-tcache-freehook-system.md) | verified | high | 2026-11-11 |
 | [glibc 2.31+ 高版本 large bin attack：中间插入分支的双链表检查与 bk/bk_nextsize 双写点](binary-pwn-heap-largebin-attack-glibc231-middle-insert-checks.md) | verified | medium | 2026-11-06 |
+| [glibc 2.32+ safe-linking 下 tcache fd 劫持：空 bin 泄露页号重编码指针打 __free_hook](binary-pwn-heap-glibc232-safe-linking-page-leak-freehook-onegadget.md) | draft | high | 2026-11-13 |
 | [glibc 2.35 exit 链利用：largebin attack 同时改 __exit_funcs 与 TLS pointer_chk_guard，伪造 initial 调 system](binary-pwn-heap-exit-initial-largebin-tls-key-forge.md) | verified | medium | 2026-11-08 |
 | [glibc 2.35 fastbin reverse into tcache：fastbin 必须恰好 7 块，改写最后一个 chunk 的 fd 实现任意地址分配](binary-pwn-heap-glibc235-fastbin-reverse-into-tcache-last-fd-arbitrary-alloc.md) | verified | medium | 2026-11-08 |
 | [glibc 2.35 House of Botcake 变体：0x20 间隔块用 malloc_consolidate 合并后再 unlink，tcache 毒化 _IO_list_all + House of Apple2](binary-pwn-heap-glibc235-botcake-malloc-consolidate-io-list-all-apple2.md) | verified | medium | 2026-11-08 |
 | [glibc 2.35 largebin attack 改 _IO_list_all：fake wide FILE 经 setcontext 转 openat2 ORW](binary-pwn-heap-largebin-io-list-all-wide-file-setcontext-orw.md) | verified | high | 2026-11-05 |
+| [glibc 2.35 off-by-null + unlink 劫持 bss chunk/size 数组：改大 size 造堆溢出，largebin attack 改写 stderr 指针 + House of Apple2 执行 system](binary-pwn-heap-glibc235-offby-null-unlink-bss-size-array-largebin-apple2-stderr.md) | verified | medium | 2026-11-12 |
 | [glibc 2.35 off-by-null + 高版本 unlink：伪造 size/prev_size 通过检查，劫持全局 chunk 数组、__environ 泄露栈并 ROP](binary-pwn-heap-glibc235-offby-null-unlink-chunks-array-stack-rop.md) | verified | medium | 2026-11-06 |
 | [glibc 2.35 tcache key 清零绕过 double free：safe-linking 毒化到栈泄露 libc 后写 ROP](binary-pwn-heap-glibc235-tcache-key-clear-stack-poison-rop.md) | verified | medium | 2026-11-08 |
 | [glibc 2.35 UAF + tcache safe-linking 打全局 ptr 数组：environ 泄栈后改 edit 的 rbp 写 ROP，避开 tcache_key 清零](binary-pwn-heap-glibc235-uaf-tcache-ptr-array-rbp-rop.md) | verified | medium | 2026-11-08 |
@@ -59,6 +68,7 @@ glibc 堆、UAF、double free、House of 系列。
 | [glibc 2.35 堆题打栈：environ 前置 chunk 越界读泄栈、tcache 毒化栈帧写 ORW](binary-pwn-heap-glibc235-environ-front-chunk-overread-stack-orw.md) | verified | high | 2026-11-08 |
 | [glibc 2.35 无 UAF 堆溢出：相邻块覆盖泄 libc/heap，large bin attack 改 _IO_list_all 伪造 wide FILE 经 leave_ret 转 open/read/write](binary-pwn-heap-glibc235-overflow-largebin-io-list-all-wide-file-orw.md) | verified | high | 2026-11-09 |
 | [glibc 2.37 UAF 链：tcache 毒化全局结构体 + environ 泄露栈 + 栈上 ROP](binary-pwn-heap-uaf-tcache-poison-global-environ-stack-rop.md) | verified | medium | 2026-11-05 |
+| [glibc 2.38 off-by-null + largebin 泄露 + tcache_perthread_struct 劫持：伪 counts/entries 返回 stdout 做 IO leak，再投毒栈写 ROP](binary-pwn-heap-glibc238-offby-null-largebin-tcache-perthread-stdout-stack-rop.md) | verified | high | 2026-11-13 |
 | [glibc 2.39 largebin attack + House of Apple2 直接 system：tcache 指针加密与 libc 基址高位随机化下的泄露适配](binary-pwn-heap-glibc239-largebin-apple2-tcache-encryption-libc-highbyte.md) | verified | medium | 2026-11-08 |
 | [glibc 2.39 largebin attack 改写 mp_.tcache_bins：放大 tcache 上限后毒化栈返回地址](binary-pwn-heap-largebin-attack-mp-tcache-bins-stack-rop.md) | verified | high | 2026-11-05 |
 | [glibc 2.39 leakless RCE：largebin attack 放大 mp_.tcache_bins 后从堆数据分配出 stdout，再以 house of cat/emma FSOP 执行 system](binary-pwn-heap-leakless-mp-tcache-bins-stdout-fsop.md) | verified | high | 2026-11-06 |
@@ -74,13 +84,17 @@ glibc 堆、UAF、double free、House of 系列。
 | [House of Apple2 源码级复现：largebin attack 改 _IO_list_all + _IO_wfile_overflow/_IO_wdoallocbuf 劫持 _wide_vtable](binary-pwn-heap-house-of-apple2-source-analysis-largebin-system.md) | verified | medium | 2026-11-06 |
 | [House of Apple2 部分覆盖 chunk header：_wide_data 错位修正 + svcudp_reply+26 经 fake xdr_ops 栈迁移 ORW](binary-pwn-heap-house-of-apple2-chunk-header-svcudp-reply-xdr-ops-orw.md) | verified | high | 2026-11-06 |
 | [House of Banana：伪造 _rtld_global._ns_loaded 的 link_map 链，借 _dl_fini 的 DT_FINI_ARRAY 在 exit 时执行 shell](binary-pwn-heap-house-of-banana-link-map-dl-fini.md) | verified | high | 2026-11-08 |
+| [House of Blindless：无泄露相对写改 link_map，低位覆盖 DT_FINI 指针经 _dl_fini 调 system@plt](binary-pwn-heap-house-of-blindless-link-map-dt-fini-low-byte.md) | verified | high | 2026-11-13 |
+| [House of Botcake 无 edit/show 实战：stdout IO leak 后借 unsorted 切割布置第二条 tcache 链，二次投毒打 __free_hook](binary-pwn-heap-house-of-botcake-second-poisoning-io-leak-freehook.md) | verified | high | 2026-11-13 |
 | [House of Botcake：填满 tcache + unsorted bin 合并绕过 double free 检查，重新投毒 tcache](binary-pwn-heap-house-of-botcake-tcache-poison.md) | verified | high | 2026-11-05 |
 | [House of Cat：伪造 IO_FILE 借 _IO_wfile_seekoff → _IO_switch_to_wget_mode → _IO_WOVERFLOW 无 vtable 检查劫持 _wide_vtable，经 FSOP / __malloc_assert 触发并 setcontext 栈迁移 RCE](binary-pwn-heap-house-of-cat-wfile-seekoff-wide-vtable-bypass-vtable-check.md) | verified | high | 2026-11-08 |
 | [House of Corrosion：放大 global_max_fast 后用超大 chunk 造成 main_arena.fastbinsY 数组越界写，按 size=(target-top)*2-0x10 精确落到 _IO_list_all / printf 表并配合 House of Husk 取 one_gadget](binary-pwn-heap-house-of-corrosion-fastbiny-oob-io-list-all-null-fp.md) | verified | high | 2026-11-09 |
 | [House of Einherjar：off-by-null 清 PREV_INUSE + 伪造 prev_size/fake chunk 向前合并，堆重叠后 tcache poisoning 任意地址分配](binary-pwn-heap-house-of-einherjar-offby-null-fake-chunk-tcache-poison.md) | verified | high | 2026-11-07 |
+| [House of emma：伪造 _IO_cookie_jumps 虚表 + PTR_MANGLE 函数指针，largebin attack 改写 stderr 与 pointer_guard 后经 malloc_assert 触发任意调用](binary-pwn-heap-house-of-emma-cookie-jumps-pointer-guard.md) | verified | medium | 2026-11-13 |
 | [House of Force：改 top chunk size 为极大值后一次任意大小申请把 top 挪到 __malloc_hook，再申请写入 system](binary-pwn-heap-house-of-force-topchunk-to-malloc-hook.md) | verified | high | 2026-11-08 |
 | [House of Husk（glibc 2.23–2.35）：unsorted bin attack 放大 global_max_fast，借 main_arena fastbin 数组改写 __printf_function_table/__printf_arginfo_table 后 printf("%X") 调 one_gadget](binary-pwn-heap-house-of-husk-printf-arginfo-table-global-max-fast-onegadget.md) | verified | high | 2026-11-07 |
 | [House of Husk：劫持 __printf_function_table 与 __printf_arginfo_table[spec] 实现一次任意函数调用](binary-pwn-heap-house-of-husk-printf-arginfo-table.md) | verified | high | 2026-11-07 |
+| [House of kiwi：__malloc_assert → fflush(stderr) 劫持 _IO_file_jumps.sync 为 setcontext+61，借 IO_helper_jumps 迁到堆上 ROP（glibc 2.29+ 无 exit/无 hook 场景）](binary-pwn-heap-house-of-kiwi-malloc-assert-file-jumps-sync-setcontext.md) | verified | medium | 2026-11-13 |
 | [House of Lore：伪造 small bin 的 bk/fd 链把目标地址挂入 smallbin，两次 malloc 在栈等任意地址分配 chunk（glibc 2.23-2.30）](binary-pwn-heap-house-of-lore-smallbin-fake-chunk.md) | verified | high | 2026-11-08 |
 | [House of Orange 式 unsorted bin attack + FSOP：改 _IO_list_all 为 main_arena，借 0x60 smallbin 伪造 FILE vtable 调 system](binary-pwn-heap-house-of-orange-unsortedbin-io-list-all-fsop-system.md) | verified | high | 2026-11-06 |
 | [House of Peach：无 free 函数时借 sysmalloc 释放旧 top chunk 伪造 unsorted/largebin](binary-pwn-heap-house-of-peach-top-chunk-sysmalloc-largebin.md) | verified | high | 2026-11-06 |
@@ -114,6 +128,7 @@ glibc 堆、UAF、double free、House of 系列。
 | [UAF 悬空指针配合 unsorted bin 泄露 libc 基址](binary-pwn-heap-uaf-unsorted-bin-libc-leak.md) | verified | high | 2026-11-04 |
 | [unsorted bin attack 放大 global_max_fast：BSS 假 fastbin 块覆盖 ptr 数组后改 __free_hook](binary-pwn-heap-unsorted-bin-global-max-fast-bss-fake-fastbin-free-hook.md) | verified | medium | 2026-11-06 |
 | [WKCTF2024 easy_heap：无 del 用 house_of_orange 将 top chunk 送入 fastbin，edit 溢出改 fd 分配到 fake_chunk，改 puts GOT 泄 libc + one_gadget](binary-pwn-heap-house-of-orange-fastbin-got-onegadget.md) | verified | medium | 2026-11-08 |
+| [WMCTF2023 blindless：Brainfuck 解释器指令集转换为相对任意写，借 mmap 大块邻近 libc 爆破 exit_hook（system + _dl_load_lock）](binary-pwn-heap-wmctf2023-blindless-brainfuck-relative-write-exit-hook-bruteforce.md) | verified | medium | 2026-11-13 |
 | [XOR 编码堆指针 + lucky number 任意 free：strlen 空字节截断制造 note 重叠，泄露 PIE/heap/libc 后 one_gadget](binary-pwn-heap-xor-chunklist-lucky-number-arbitrary-free-uaf.md) | verified | medium | 2026-11-06 |
 | [事务快照结构未初始化：MULTI/EXEC/ABORT 组合的 UAF、任意 free 与任意读](binary-pwn-heap-uninitialized-tx-context-uaf-arbitrary-free-read.md) | verified | high | 2026-11-05 |
 | [仅一次 free 的堆题：House of Orange 造 unsorted bin 泄 libc，再用这一次 free 做 fastbin 改 __malloc_hook 打 one_gadget](binary-pwn-heap-house-of-orange-single-free-fastbin-malloc-hook-onegadget.md) | verified | high | 2026-11-09 |
@@ -129,6 +144,7 @@ glibc 堆、UAF、double free、House of 系列。
 | [同页 tcache 双 free 自异或恢复精确堆地址（safe-linking 免泄露）](binary-pwn-heap-safe-linking-self-xor-heap-address.md) | verified | high | 2026-11-04 |
 | [堆 UAF 结构体复用：free 顺序让 user 结构体被重分配为密码缓冲区，改写 data 指针实现任意读写](binary-pwn-heap-uaf-struct-reuse-data-pointer.md) | verified | high | 2026-11-05 |
 | [堆题/任意写场景 exit_hook one_gadget：负 size 邻接 libc 映射泄露 + 逐字节改写 _rtld_global](binary-pwn-heap-exit-hook-onegadget-negative-size-arbitrary-write.md) | verified | high | 2026-11-08 |
+| [巅峰极客 2022 smallcontainer：两段 off-by-null 伪造 prev_size/size 触发 unlink 与 chunk overlap，tcache 篡改 __free_hook 为 system](binary-pwn-heap-dianfeng-2022-smallcontainer-offby-null-unlink-overlap-tcache-freehook.md) | verified | high | 2026-11-13 |
 | [已知 AES key 但 add 只给 0x30 且分配被锁在堆内时：连续伪造 largebin chunk 打 _IO_list_all → House of Apple2（_IO_wfile_jumps-0x40 + setcontext+61）做 ORW](binary-pwn-heap-aes-key-known-then-largebin-io-list-all-house-of-apple2-orw.md) | verified | medium | 2026-11-09 |
 | [循环双向链表 delete 唯一节点仍走断链分支：current 悬空后 edit 缺 count 检查形成 UAF 写](binary-pwn-heap-circular-dlist-delete-count1-uaf.md) | verified | high | 2026-11-06 |
 | [指针数组 idx 无上限 + mmap/堆固定偏移：把受控缓冲区中的 qword 当 chunk_ptr[idx]，实现任意地址写任意值并打 stderr FSOP](binary-pwn-heap-unbounded-idx-pointer-array-mmap-fixed-offset-arbitrary-write.md) | verified | high | 2026-11-08 |
@@ -139,6 +155,7 @@ glibc 堆、UAF、double free、House of 系列。
 | [无 UAF 的堆题：edit 溢出改写相邻块 size 造 chunk 重叠泄露 libc，再由二次释放同址把 free_hook 写成 system](binary-pwn-heap-size-field-overlap-freehook-after-free-reuse.md) | draft | high | 2026-11-09 |
 | [有 show 但只能读到代码段地址的 off-by-one 堆题：叠块 + tcache 打 _IO_2_1_stdout_ 泄 libc，再改 __free_hook 走 setcontext + mprotect 执行 ORW shellcode](binary-pwn-heap-offbyone-show-codebase-stdout-leak-freehook-mprotect-orw.md) | verified | high | 2026-11-08 |
 | [未初始化 WebSocket session + 负 frag_len 下写：伪造堆头进 tcache 并覆盖 session 做 AAR/AAW](binary-pwn-heap-uninitialized-session-negative-fraglen-tcache.md) | verified | high | 2026-11-06 |
+| [湖湘杯 2019 HackNote：edit 用 strlen 重算大小制造 off-by-one，篡改相邻 chunk size 成 chunk overlap，fastbin attack 改 __malloc_hook 执行 shellcode](binary-pwn-heap-hunan-cup-2019-hacknote-offbyone-strlen-size-overlap-fastbin-malloc-hook-shellcode.md) | verified | high | 2026-11-13 |
 | [湾区杯2025 digtal_bomb：猜数范围逻辑绕过进入堆菜单，off-by-null + House of Einherjar 造重叠泄露 libc，tcache 投毒 strlen GOT 打 one_gadget](binary-pwn-heap-digtal-bomb-offby-null-einherjar-tcache-strlen-got-onegadget.md) | verified | medium | 2026-11-07 |
 | [用 environ 作 libc↔栈地址桥：泄露 environ 得栈地址 + 固定偏移定位函数 epilogue 的 rsp，再用任意地址写覆盖返回地址劫持控制流](binary-pwn-heap-environ-leak-fixed-offset-stack-hijack.md) | verified | high | 2026-11-09 |
 | [用 realloc 的边界语义当原语：size 自选 → size=0 等价 free 造 unsorted bin 泄 libc，再靠 2.27 tcache 无 double-free 检查把 free_hook 写成 system](binary-pwn-heap-realloc-size0-free-tcache-dup-freehook.md) | verified | high | 2026-11-09 |

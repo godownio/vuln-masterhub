@@ -37,6 +37,7 @@ Kong、Higress、APISIX 等 AI 网关的 provider 密钥存放、去向与归属
 | [Kong ai-proxy upstream_url 请求头模板展开导致 provider 密钥外泄](ai-security-gateway-security-kong-ai-proxy-upstream-template-key-leak/) | verified | high | 2026-11-05 |
 | [LiteLLM Custom Code Guardrail 注入 http_get/http_post：全读 SSRF 与内部数据外带](ai-security-gateway-security-litellm-custom-guardrail-http-primitive-ssrf/) | verified | high | 2026-11-05 |
 | [LiteLLM 公开路由与 DEBUG 日志信息泄露：版本、路由表、OpenAPI 与 API key 哈希](ai-security-gateway-security-litellm-public-routes-debug-log-disclosure/) | verified | high | 2026-11-05 |
+| [第三方 GPT 站点 Web 接口匿名/共享凭证滥用：页面 nonce、get_token 与 free-pool bearer 直连后端（gpt4free 模式）](ai-security-gateway-security-third-party-gpt-web-api-token-abuse/) | verified | high | 2026-11-12 |
 | [第三方 LLM 中转站系统提示词投毒：上下文膨胀、模型造假与 Agent 静默执行](ai-security-gateway-security-llm-relay-system-prompt-poisoning/) | verified | medium | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

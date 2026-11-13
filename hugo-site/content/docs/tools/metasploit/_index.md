@@ -32,6 +32,8 @@ weight: 1
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Metasploit CMD Stager 无下载器环境适配：按模块可用 flavor 切换传输](tools-metasploit-cmdstager-flavor-no-downloader/) | verified | high | 2026-11-05 |
+| [MSF getsystem 六种提权技术对比：服务命名管道/Dropper/令牌复制/RPCSS/PrintSpoofer/EFSRPC 的实现、前提与 OPSEC 检测特征](tools-metasploit-getsystem-six-techniques-opsec/) | verified | high | 2026-11-12 |
+| [MSF MS17-010 模块族源码分析：eternal_pwn 按 OS/命名管道选择利用并覆盖 token，command/psexec 的四种载荷通道](tools-metasploit-ms17-010-module-family-source-analysis/) | verified | high | 2026-11-13 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

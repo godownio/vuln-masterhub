@@ -31,6 +31,7 @@ ELF、内核模块、系统调用与调试。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [45 字节最小 ELF 可执行文件构造：ELF 头与程序头表重叠 + 装载器忽略字段/零填充，4KB 编译产物压到 45B](code-analysis-reverse-linux-tiny-elf-45-byte-overlap/) | verified | high | 2026-11-11 |
 | [C++ STL 容器内存布局与反汇编识别：string SSO、vector 三指针、map 红黑树、unordered_map 桶数组](code-analysis-reverse-linux-cpp-stl-container-layout-disassembly/) | verified | high | 2026-11-06 |
 | [copy_from_user 源码链：access_ok → _copy_from_user → get_user_asm（STAC/CLAC）→ 异常表与页缺失](code-analysis-reverse-linux-copy-from-user-stac-clac-access-ok/) | verified | high | 2026-11-09 |
 | [ELF PT_NOTE 转 PT_LOAD 段劫持：在 program header 中植入 R+X shellcode 并改入口](code-analysis-reverse-linux-elf-pt-note-to-load-injection/) | verified | high | 2026-11-05 |

@@ -35,6 +35,7 @@ weight: 1
 | [eBPF 协议栈透视：起点函数+线程ID把数据包绑定到内核函数调用链](code-analysis-dynamic-tracing-ebpf-protocol-stack-packet-callchain/) | verified | medium | 2026-11-07 |
 | [ETW Hook 内核级 syscall 监控：替换 HalPrivateDispatchTable.HalCollectPmcCounters，栈上改写 SSDT 调用地址](code-analysis-dynamic-tracing-etw-hook-haldispatch-pmc-syscall-monitor/) | verified | medium | 2026-11-07 |
 | [ftrace function_graph 定位 syscall 内核错误返回点：strace→函数图追踪→gdb 断点](code-analysis-dynamic-tracing-ftrace-function-graph-syscall-error-locate/) | verified | high | 2026-11-05 |
+| [Timeplayer 记录重放 + 符号化污点分析：在离线指令流上以 ControlCode 为污点源求解驱动校验约束](code-analysis-dynamic-tracing-timeplayer-symbolic-taint-driver-controlcode/) | verified | medium | 2026-11-10 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

@@ -31,7 +31,8 @@ iOS 应用与逆向：Mach-O、IPA、越狱、Hook、动态分析与漏洞。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [iOS 抓包代理脚本注入篡改 API 响应：按 URL 改写 JSON 字段解锁客户端功能限制/去广告](mobile-ios-proxy-script-response-tamper-feature-unlock/) | verified | medium | 2026-11-11 |
+| [iOS/macOS 伴侣应用 URL scheme 服务调用伪造：https 通用链接包装 homeassistant://call_service，点链接即可解除警报或关机](mobile-ios-url-scheme-universal-link-service-csrf/) | verified | high | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

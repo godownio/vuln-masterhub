@@ -17,14 +17,14 @@ tags:
 cve: []
 severity: high
 confidence: high
-affected_versions: JDK 8u191（原文演示环境；后续版本默认收紧 com.sun.jndi.ldap.object.trustSerialData 后该分支被关闭，以目标 JDK 实测为准）
+affected_versions: JDK 8u191（原文演示环境）；8u361 已引入 isSerialDataAllowed() 检查但 trustSerialData 默认放行（另一原文实测 8u111/8u361 均成功）；更高版本默认收紧后该分支失效，以目标 JDK 实测为准
 status: verified
 created: '2026-11-09'
-updated: '2026-11-09'
+updated: '2026-11-13'
 verification:
-  verified_by: verifier-V393
-  verified_at: '2026-11-09T11:40:21+08:00'
-  notes: 已对照原文与18张图核对：8u191 下 RegistryContext.decodeObject 的 trustURLCodebase=false、factoryLocation=null 后走 NamingManager 本地工厂；LDAP Obj.decodeObject 先查 JAVA_ATTRIBUTES[1]=javaSerializedData 并直接 deserializeObject→ObjectInputStream.readObject（图15/16/17 无反序列化开关检查），Payload.readObject 弹计算器（图18）均与文章一致。README 中 Obj.decodeObject 图显示 8u191 该分支无 trustSerialData 检查，affected_versions 保留为原文演示环境边界（按 prompt 示例保留），未改。与本地工厂 H2/Reference-only 卡为 decodeObject 不同分支，非同链。dup-scan(11-08)早于建卡未涉及；无 URL/文章 ID/长段摘录；未复跑 PoC
+  verified_by: verifier-V681-fix
+  verified_at: '2026-11-13T14:07:47+08:00'
+  notes: 依 12281 复验事实修正版本边界：8u111/8u191/8u361 实测均成功；8u361 已含 isSerialDataAllowed()/trustSerialData 检查但默认放行（原文图06），原卡'后续版本默认收紧即关闭'表述改为'更高版本默认收紧后失效'；aff/cors/原理两段同步。
 url: /docs/web/java/deserialization/jndi/web-java-deserialization-jndi-ldap-javaserializeddata-deser/
 draft: false
 kb_aliases:
@@ -43,8 +43,8 @@ kb_aliases:
 ## 原理
 
 - **decodeObject 的分支顺序**：`com.sun.jndi.ldap.Obj.JAVA_ATTRIBUTES` 依次为 `objectClass`、`javaSerializedData`、`javaClassName`、`javaFactory`、`javaCodeBase`、`javaReferenceAddress`、`javaClassNames`、`javaRemoteLocation`。`decodeObject(Attributes)` 先检查 `attrs.get(JAVA_ATTRIBUTES[1])`（即 `javaSerializedData`）；存在就直接 `deserializeObject((byte[]) value, classLoader)`，其次才是 `javaRemoteLocation`（RMI）与 `javaNamingReference`（Reference）。
-- **readObject 无过滤**：`deserializeObject` 内部 `new ObjectInputStream(new ByteArrayInputStream(bytes))`（或 `LoaderInputStream`）后调用 `readObject()`；只要目标进程 classpath 上有可用的反序列化 gadget，就会在 `lookup` 调用线程里执行。
-- **与远程 codebase 是两条独立开关**：8u191 默认关闭 `com.sun.jndi.rmi.object.trustURLCodebase` / `com.sun.jndi.ldap.object.trustURLCodebase`，只拦住“远程下载工厂类”；LDAP 序列化数据由 `com.sun.jndi.ldap.object.trustSerialData` 控制，在该版本窗口仍被反序列化。后续 JDK 收紧该属性（默认 false，抛 `Object deserialization is not allowed`）后，此分支失效，只能改走 `javaNamingReference` 的本地工厂路径。
+- **readObject 的开关演进**：`deserializeObject` 内部 `new ObjectInputStream(new ByteArrayInputStream(bytes))` 后调用 `readObject()`；8u191 无任何检查，8u361 已出现 `isSerialDataAllowed()`（读 `com.sun.jndi.ldap.object.trustSerialData`）但默认放行，实测仍可直接触发；只有更高版本把该属性默认收紧为 false 后才抛 `Object deserialization is not allowed`。只要目标进程 classpath 上有可用的反序列化 gadget，就在 `lookup` 调用线程里执行。
+- **与远程 codebase 是两条独立开关**：8u191 默认关闭 `com.sun.jndi.rmi.object.trustURLCodebase` / `com.sun.jndi.ldap.object.trustURLCodebase`，只拦住“远程下载工厂类”；LDAP 序列化数据由 `com.sun.jndi.ldap.object.trustSerialData` 控制，该属性在 8u111/8u191/8u361 均默认放行、分支仍被反序列化。更高版本默认收紧（默认 false，抛 `Object deserialization is not allowed`）后，此分支失效，只能改走 `javaNamingReference` 的本地工厂路径。
 - **与本地工厂绕过的区别**：本地工厂要求 classpath 上恰好存在一个 `ObjectFactory` 且其 `getObjectInstance` 可被 Reference 属性驱动；本路径只要求 classpath 上有任意反序列化 gadget，攻击面更宽，但依赖 JDK 尚未关闭序列化。
 - **RMI 侧没有等价分支**：RMI 的 `RegistryContext.decodeObject` 只处理 `Reference`/`Referenceable`，因此高版本 RMI 只能走“factory location 置空 + 本地工厂”；LDAP 才有 `javaSerializedData` 这条额外通道。
 

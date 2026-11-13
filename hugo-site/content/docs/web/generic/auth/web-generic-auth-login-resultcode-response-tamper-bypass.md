@@ -16,9 +16,15 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-08'
-updated: '2026-11-08'
+updated: '2026-11-11'
+verification:
+  verified_by: verifier-V505
+  verified_at: '2026-11-11T04:09:45+08:00'
+  notes: 已对照原文（content.md 全文+26/26 图）核对：img/18 登录请求、img/19 响应 data.resultCode 改 0（data.success 仍 false）、img/20 进入 890 用户后台与正文一致；已按截图修正 PoC 的 JSON 结构（原 PoC 误写为顶层 success 并把 resultMsg 改成登录成功，实际截图仅修改 data.resultCode，success 保持 false）。与 password-reset 响应篡改、module-permission-code-response-tamper 属不同阶段（登录/忘记密码/模块授权），非重复，保留。未验证点：PoC 未在目标执行，原始（篡改前）resultCode 值截图未展示。
+  unverified:
+  - PoC 未复现；原始响应业务码未展示；后台接口是否另有服务端鉴权未独立验证（原文 890 用户页已渲染）
 url: /docs/web/generic/auth/web-generic-auth-login-resultcode-response-tamper-bypass/
 draft: false
 kb_aliases:
@@ -31,12 +37,12 @@ kb_aliases:
 
 ## 一句话结论
 
-前后端分离系统登录时，后端返回 JSON 里的 `success:false` 与业务码 `resultCode` 表示失败，但前端只根据 `resultCode`（或 HTTP 状态码）决定是否跳转后台；攻击者用 Burp 把响应中的 `resultCode` 改为 `0` 再放行，前端就认为登录成功并进入管理后台，绕过账号口令校验。
+前后端分离系统登录时，后端返回 JSON 里的 `success:false`（位于 `data` 内）与业务码 `resultCode` 表示失败，但前端只根据 `resultCode`（或 HTTP 状态码）决定是否跳转后台；攻击者用 Burp 把响应中的 `resultCode` 改为 `0` 再放行，前端就认为登录成功并进入管理后台，绕过账号口令校验。
 
 ## 原理
 
 - **前端承担了登录判定**：SPA 登录页拿到响应后，通常判断 `res.data.resultCode === 0`（或 `success`/`statusCode`/`code`）来决定是否保存登录态、跳转路由；真正的“是否通过认证”本应由服务端会话/Token 决定，但该实现把业务码当成了认证结果。
-- **响应可被客户端修改**：HTTP 响应在到达浏览器前经过 Burp/代理，攻击者把 `resultCode` 从非 0（如 `1`/`1001`）改为 `0`、`success:false` 改为 `true`，前端逻辑即走成功分支。
+- **响应可被客户端修改**：HTTP 响应在到达浏览器前经过 Burp/代理，攻击者把 `resultCode` 从非 0（如 `1`/`1001`）改为 `0` 再放行，前端逻辑即走成功分支。原文截图（img/19.png）里 `data.success` 仍是 `false`、只有 `data.resultCode` 被改为 `"0"` 即放行，说明该前端只认 `resultCode`；其它系统也可能只看 `success`/`statusCode`，按实际判定字段修改即可。
 - **为什么能进入后台**：原文改包后成功打开后台用户管理页（可见 890 个用户），说明后台页面/接口要么只依赖前端路由守卫，要么服务端接口未对会话做严格校验；若后续接口有独立鉴权，则只能看到页面壳，危害降级。
 - **根因**：客户端信任 + 服务端未把认证状态作为唯一事实来源；登录接口返回的业务码不是服务端签发的凭证，前端也不应仅凭它授权。
 - **与“忘记密码响应篡改”的区别**：本卡针对**登录**响应（进入后台），不是短信验证码/重置密码流程；但同属“客户端信任响应字段”的逻辑缺陷。
@@ -51,7 +57,7 @@ kb_aliases:
 ## 利用步骤
 
 1. 在登录页输入任意用户名/口令，抓取登录请求与响应。
-2. 观察响应结构：若为 `{"success":false,"data":{"resultCode":"1",...}}` 一类，记录业务码/成功标志字段。
+2. 观察响应结构：原文为 `{"costs":70,"code":"0","data":{"resultCode":"<非0>","resultMsg":"<错误信息>","resultData":null,"success":false}}` 一类（success 在 data 内），记录业务码/成功标志字段。
 3. 在 Burp 中拦截响应，把 `resultCode` 改为 `0`（或 `success:true`、`statusCode:200`），Forward 放行。
 4. 观察前端是否跳转后台/保存登录态；若进入后台，浏览用户管理、配置等功能，确认页面与接口是否可用。
 5. 若接口仍返回 401/403，说明仅绕过了前端路由，需继续寻找未授权接口或其它认证缺陷；若接口正常返回数据，则危害成立。
@@ -68,20 +74,20 @@ Content-Type: application/json
 ```
 
 ```json
-// 原始响应（示意）
-{"success":false,"data":{"resultCode":"1","resultMsg":"用户名或密码错误","resultData":null}}
+// 原始响应（示意；原文未展示篡改前的业务码）
+{"costs":70,"code":"0","data":{"resultCode":"1","resultMsg":"<错误信息>","resultData":null,"success":false}}
 ```
 
 ```json
-// Burp 修改后
-{"success":true,"data":{"resultCode":"0","resultMsg":"登录成功","resultData":null}}
+// Burp 修改后（按原文截图：仅 resultCode 改为 "0"，success 仍为 false，resultMsg 仍为乱码错误文案）
+{"costs":70,"code":"0","data":{"resultCode":"0","resultMsg":"<错误信息>","resultData":null,"success":false}}
 ```
 
 ```text
 # 放行后前端跳转后台，原文可见用户管理页（890 个用户）等后台功能。
 ```
 
-原文目标与接口路径多处打码，以上为按截图还原的结构；未在目标执行。
+原文目标与接口路径多处打码；原始响应业务码未展示，修改后响应按截图（img/19.png）还原；未在目标执行。
 
 ## 变体与关联
 

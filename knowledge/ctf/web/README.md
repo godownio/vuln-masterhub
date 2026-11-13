@@ -32,6 +32,7 @@ Web 题型技巧与绕过。
 | [Cherry Markdown 代码围栏语言名注入 + file:// 渲染页 iframe 读取本地文件并输出 PDF](ctf-web-cherry-markdown-fence-lang-file-uri-iframe-pdf-exfil.md) | verified | medium | 2026-11-06 |
 | [CTF Bot 链：jku 伪造 admin JWT + CSP report-uri 注入 + Nginx CRLF 替换 Cookie 外带 Flag](ctf-web-bot-jku-csp-crlf-cookie-hijack-chain.md) | verified | high | 2026-11-05 |
 | [CTF Bot 链：superbot 页面 XSS 打角色受限 debug SQL 注入点，堆叠 UPDATE 提权读 Flag](ctf-web-bot-xss-role-gated-debug-sqli-escalation.md) | verified | high | 2026-11-07 |
+| [dig 命令参数注入：type 字段传入 -f/flag 把目标文件当作查询批处理读取](ctf-web-dig-type-argument-injection-f-read-file.md) | verified | medium | 2026-11-10 |
 | [ECDSA 零签名伪造 JWT + \uXXXX 绕过关键字过滤 + Thymeleaf 模板覆盖 RCE](ctf-web-ecdsa-zero-signature-jwt-thymeleaf-template-overwrite.md) | verified | high | 2026-11-06 |
 | [Elixir BEAM 发布包恢复隐藏路由 + Ecto SQLi 与 FPX CRC16 仿射 oracle 到 RCE](ctf-web-elixir-beam-fpx-crc16-affine-oracle.md) | verified | high | 2026-11-06 |
 | [Flask+Node 多组件链：下载穿越读源码 → KMZ 原型污染激活本地管理接口 → merge 清 WAF → Jinja 语句块 SSTI](ctf-web-flask-node-file-read-prototype-pollution-ssti-chain.md) | verified | high | 2026-11-06 |
@@ -50,10 +51,13 @@ Web 题型技巧与绕过。
 | [SVG XXE + PHP 反序列化 include + SUID xxd + Go ChaCha20 解密全链](ctf-web-svg-xxe-php-deser-suid-xxd-go-chacha20.md) | verified | high | 2026-11-06 |
 | [上传路径参数双重滥用：拼接 open 任意文件读取源码，os.system base64 命令注入输出落盘后再读取回读](ctf-web-file-path-cmdinj-output-drop-arbitread.md) | draft | high | 2026-11-08 |
 | [分数由前端 AES 加密提交：密钥/IV 在前端 JS 里，解出明文改分再重新加密即刷分](ctf-web-client-aes-score-forgery-hardcoded-key-iv.md) | verified | low | 2026-11-09 |
+| [加密 uid Cookie 的解密回显接口当 oracle：替换为任意密文即可解出明文（动态 Flag）](ctf-web-encrypted-uid-cookie-decrypt-echo-oracle.md) | verified | high | 2026-11-11 |
 | [原型链继承 nonce 绕过管理员校验 + Express 同名参数数组/截断路径穿越读文件](ctf-web-ezlog-prototype-inherited-nonce-query-array-traversal.md) | verified | high | 2026-11-06 |
 | [客户端 Wasm 游戏逻辑篡改：改 Minimax 比较或伪造棋盘与 proof 绕过服务端校验](ctf-web-wasm-client-game-logic-tamper-proof-forgery.md) | verified | high | 2026-11-06 |
+| [无回显命令执行用 ping + $() + base64 把输出编码进 DNS 域名外带](ctf-web-noecho-ping-base64-dns-exfil.md) | verified | high | 2026-11-12 |
 | [无字母数字命令拼接：用 $() 空替换与 $((~$(()))) 算术展开拼出目标字符串，绕过只放行符号的正则](ctf-web-shell-arithmetic-expansion-no-alnum-string.md) | verified | low | 2026-11-08 |
 | [智能客服要求「用户名 + 编号」才给 flag：编号从公开 PDF 取，字符视觉相似（I/l/1）不对时靠变体枚举试出来](ctf-web-llm-bot-identity-proof-pdf-visual-similar-char-enumeration.md) | verified | medium | 2026-11-09 |
+| [有序关键字正则 + 符号/空格/bash 多重过滤的组合绕过：反序拼接变量 + $IFS$1 + cat `ls` 全目录读取](ctf-web-ordered-flag-regex-concat-reorder-bypass.md) | verified | high | 2026-11-11 |
 | [未净化 autosave 草稿存储型 XSS + 非 httpOnly 会话与 sid_prev 备份 cookie 窃取管理员会话](ctf-web-autosave-xss-sid-prev-backup-cookie-admin-session.md) | verified | high | 2026-11-06 |
 | [未签名角色 Cookie + PHP md5 魔术哈希双人复核 + loopback 预览 SSRF 读内网 flag](ctf-web-unsigned-role-cookie-md5-magic-hash-ssrf-loopback.md) | verified | high | 2026-11-06 |
 | [自助注册 admin + 拒绝分支 trace_id 回读调试日志：hex pickle 对象泄露 flag](ctf-web-admin-self-register-trace-id-pickle-log-leak.md) | verified | high | 2026-11-06 |

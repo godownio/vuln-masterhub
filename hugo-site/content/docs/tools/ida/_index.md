@@ -41,6 +41,7 @@ weight: 1
 | [IDA 远程调试 Linux ELF：linux_server/linux_server64 服务端 + Remote Linux debugger 连接与内存定位](tools-ida-remote-linux-elf-debug-server/) | verified | medium | 2026-11-08 |
 | [IDA-Fork 双进程调试：把子进程首指令 patch 成死循环，附加后 SetIP 恢复](tools-ida-fork-child-loop-patch-attach/) | verified | high | 2026-11-06 |
 | [IDAPython 批量解密调用点 XOR 字符串：回溯 mov r8d/lea rdx 参数并自动注释](tools-ida-xor-string-call-arg-backtrack-decrypt/) | verified | high | 2026-11-06 |
+| [Ponce 符号执行解输入校验：符号化输入内存 + 关键比较断点 + SMT Negate and Inject 求解](tools-ida-ponce-symbolic-execution-smt-negate-inject/) | verified | high | 2026-11-11 |
 | [内核驱动逆向：用源码结构体在 IDA Local Types 导入并校正 Hex-Rays 反编译](tools-ida-kernel-source-struct-import-decompiler-cleanup/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

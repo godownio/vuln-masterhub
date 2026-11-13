@@ -31,6 +31,7 @@ Spring Expression Language 注入与利用。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [CVE-2022-22963 Spring Cloud Function routing-expression 头 SpEL 注入：/functionRouter 未授权命令执行](web-java-expression-spel-spring-cloud-function-cve-2022-22963-routing-expression-rce/) | verified | high | 2026-11-13 |
 | [DataGear 数据行值 #{...} 被 SpEL 求值：SQL 插入触发命令执行与列长限制绕过](web-java-expression-spel-datagear-row-expression-rce/) | verified | high | 2026-11-05 |
 | [JWT 密钥泄露伪造身份 + 路径穿越上传 Thymeleaf 模板：dynamic-template 渲染读取环境变量](web-java-expression-spel-jwt-leak-upload-thymeleaf-template-rce/) | verified | high | 2026-11-07 |
 | [RuoYi Thymeleaf 片段注入的四个入口与逐字符 %hex 编码投递：用 header() 包裹 SpEL、以响应含端点名作为黑盒命中 oracle](web-java-expression-spel-ruoyi-thymeleaf-fragment-four-endpoint-hex-probe/) | verified | medium | 2026-11-09 |

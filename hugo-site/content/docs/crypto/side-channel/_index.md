@@ -35,6 +35,7 @@ weight: 1
 | [Sage is_prime 计时侧信道：用小于 103 的小素因子快速失败分支做“整除预言机”，CRT 恢复明文](crypto-side-channel-sage-is-prime-timing-oracle-crt/) | verified | medium | 2026-11-08 |
 | [白盒 AES 差分故障分析：第 8 轮列混淆注入 + phoenixAES 恢复轮密钥](crypto-side-channel-whitebox-aes-dfa-round8-fault/) | verified | high | 2026-11-07 |
 | [白盒 AES 查表实现指纹识别 + Frida 自动采样故障密文做 DFA 恢复主密钥](crypto-side-channel-whitebox-aes-table-fingerprint-frida-dfa/) | verified | medium | 2026-11-08 |
+| [白盒 AES 的 Python 表复现 DFA：按 v11/v12/v13 查表重建 AAA，倒数第二轮前改一字节生成故障密文并用 phoenixAES 恢复主密钥](crypto-side-channel-whitebox-aes-dfa-python-table-replay/) | verified | medium | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

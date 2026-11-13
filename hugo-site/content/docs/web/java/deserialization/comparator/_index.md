@@ -38,8 +38,10 @@ weight: 1
 | [Fury 反序列化经 PriorityQueue/TransformingComparator 触发 AspectJ StoreableCachingMap：写 JRE 扩展 jar 加载 RCE](web-java-deser-fury-priorityqueue-aspectj-jre-jar-write-rce/) | verified | high | 2026-11-06 |
 | [Fury 反序列化黑名单绕过：feilong PropertyComparator + PriorityQueue 触发 getter → Hutool MapProxy/BeanConverter 二次反序列化 → TemplatesImpl RCE](web-java-deser-comparator-fury-mapproxy-beanconverter-secondary-deser-templatesimpl-rce/) | verified | high | 2026-11-07 |
 | [JDK17 模块封装下 CC4 链改写 Class.packageName 绕过校验触发 TemplatesImpl](web-java-deser-jdk17-cc4-package-name-bypass-templatesimpl/) | verified | high | 2026-11-05 |
+| [Jython 2.7.2 反序列化 gadget：PriorityQueue 代理 PyMethod → BuiltinFunctions#eval（index=18）执行 Python 代码](web-java-deser-jython-pymethod-proxy-builtin-eval/) | verified | high | 2026-11-11 |
 | [PriorityQueue 比较器触发 toString 的通用构造](priorityqueue/) | draft | medium | 2026-11-04 |
 | [Rhino 环境下 Comparator 链触发 toString](rhino/) | draft | medium | 2026-11-04 |
+| [ysoserial Jython 链（jython <= 2.5.2）：PyFunction 代理 Comparator + PyBytecode 执行 CPython 字节码写文件并 execfile](web-java-deser-jython-pyfunction-pybytecode/) | verified | high | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

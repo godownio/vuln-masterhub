@@ -33,8 +33,11 @@ weight: 1
 |---|---|---|---|
 | [AMM 首个 LP 存款人通胀攻击：捐赠 + sync 抬高 LP 单价，后续存款向下取整被吞（MINIMUM_LIQUIDITY 防御）](blockchain-defi-amm-first-lp-inflation-donation-rounding/) | verified | medium | 2026-11-06 |
 | [DApp 后端代付 gas 却不校验 to/data：前端 ABI 编码可任意改写，借项目方 relayer 调任意合约的 mint/burn](blockchain-defi-dapp-backend-unvalidated-calldata-arbitrary-call-gas-sponsored/) | verified | medium | 2026-11-08 |
+| [DeFi 利润分配少付：swap 分支把待发金额覆盖为换出额，漏掉合约已有 ETH](blockchain-defi-profit-splitter-amount-overwrite-underpay/) | verified | high | 2026-11-11 |
+| [DEX 无交易费挖矿：手续费按输入币收取 + 挖矿门槛仅校验含 EOS，自建垃圾币对刷量套利](blockchain-defi-dex-zero-fee-mining-worthless-token-wash-swap/) | verified | medium | 2026-11-11 |
 | [DEX 现货兑换价操纵：按池子余额比例反复 swap 抽干一侧储备](blockchain-defi-dex-spot-reserve-swap-drain/) | verified | high | 2026-11-07 |
 | [DexTwo 任意代币兑换：未校验交易对，自建代币 1:1 换走池内全部真币](blockchain-defi-dextwo-arbitrary-token-swap-drain/) | verified | high | 2026-11-07 |
+| [EOS 币币交换假充值：contract 与 symbol 分开校验，contract0 的 sym1 冒充交易对币种](blockchain-defi-eos-swap-contract-symbol-separate-check-fake-deposit/) | verified | medium | 2026-11-11 |
 | [Solana 拍卖程序账户生命周期缺陷：关闭后同 auction_id 重建 PDA，复用旧 bidder_state 盗取 vault](blockchain-defi-solana-auction-pda-reuse-bidder-state-vault-drain/) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

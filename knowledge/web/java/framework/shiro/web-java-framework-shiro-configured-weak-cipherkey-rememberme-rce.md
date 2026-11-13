@@ -24,12 +24,12 @@ severity: critical
 confidence: high
 status: verified
 created: '2026-11-08'
-updated: '2026-11-08'
+updated: '2026-11-13'
 affected_versions: Apache Shiro 1.4.0（原文实测版本；本场景不依赖 CVE-2016-4437 的版本区间）
 verification:
-  verified_by: verifier-T2-3W4B
-  verified_at: '2026-11-08T22:01:13+08:00'
-  notes: 已对照原文核对（本次核对未读取图片，仅依据正文）：原文 Shiro 版本 1.4.0、全局搜 cipherKey 发现固定密钥 rememberMe_shiro_key、用 Arrays.copyOf(...,16) + Base64 派生后工具利用成功，与卡片一致。核对时修正了一处版本事实：原文 1.4.0 之所以「版本安全」，是因为默认随机密钥的改动始于 Shiro 1.2.5（不是卡内原写的「1.4.0 起」），已把「一句话结论」与「原理」中的该表述改为 1.2.5，并补注 1.4.0 已在该改动之后；affected_versions 仍按原文实测版本记 Apache Shiro 1.4.0，未改动。dedup：与 web-java-framework-shiro-550-hardcoded-key-deserialization（related 0.180，≤1.2.4 默认常量 key）差异成立——本卡版本不在 CVE 区间内，失效点是配置覆盖，判定信号从版本号转为配置项。未验证点：未复现利用，未实际用该密钥加密 gadget 发包；gadget 可用性取决于目标 classpath，卡片已列为触发条件。本次核对未读取图片。
+  verified_by: verifier-V653-fix
+  verified_at: '2026-11-13T05:46:15+08:00'
+  notes: 依 12505 复验结论统一修正反序列化入口表述：DefaultSerializer 用 ClassResolvingObjectInputStream（ClassLoader.loadClass）而非原生 ObjectInputStream；其余内容未动。
 ---
 
 ## 一句话结论
@@ -38,7 +38,7 @@ Shiro 1.2.5 起 `rememberMe` 的 AES 密钥默认改为运行期随机生成（�
 
 ## 原理
 
-- `CookieRememberMeManager` 的加解密是对称的：`rememberMe = base64(IV ‖ AES-CBC(key, 序列化字节))`。服务端解密后直接 `ObjectInputStream.readObject`，因此"能不能构造合法密文"等价于"知不知道 key"。
+- `CookieRememberMeManager` 的加解密是对称的：`rememberMe = base64(IV ‖ AES-CBC(key, 序列化字节))`。服务端解密后交给 `DefaultSerializer.deserialize()`（`ClassResolvingObjectInputStream`，经 `ClassLoader.loadClass` 解析类名），因此"能不能构造合法密文"等价于"知不知道 key"。
 - Shiro 1.2.x 的 `AbstractRememberMeManager` 里 `DEFAULT_CIPHER_KEY_BYTES` 是硬编码常量（CVE-2016-4437 的根因）。1.2.5 之后改为运行期随机生成，所以默认配置确实安全 —— 这正是"版本判断"成立的部分（本例 1.4.0 已在该改动之后）。
 - 失效点在于**配置覆盖**：项目为了多节点会话一致，会把 `securityManager.rememberMeManager.cipherKey` 写成固定值；而 Spring/Shiro 的 `setCipherKey(byte[])` 要求 16/24/32 字节，运维常用"业务名 + copyOf 补齐"的写法，于是密钥 = 可猜字符串。
 - 一旦 key 可猜，攻击链与 1.2.x 完全相同：本地用该 key 加密 CommonsBeanutils/CommonsCollections gadget（或 JNDI 链），放到 `rememberMe` Cookie 里发一个请求即可。

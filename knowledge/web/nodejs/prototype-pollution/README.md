@@ -27,8 +27,14 @@
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [deepMerge 写入原型链既有属性的子键：绕过 __proto__/constructor/prototype 过滤的替代污染路径](web-nodejs-prototype-pollution-inherited-property-subkey.md) | verified | high | 2026-11-05 |
+| [EJS destructuredLocals 原型污染注入：数组元素拼进模板函数体，闭合赋值语句执行 child_process](web-nodejs-prototype-pollution-ejs-destructuredlocals-rce.md) | verified | high | 2026-11-12 |
+| [EJS localsName 原型污染注入：with 条件表达式与 Function 形参双处拼接入模板代码](web-nodejs-prototype-pollution-ejs-localsname-with-rce.md) | verified | high | 2026-11-12 |
+| [EJS outputFunctionName 原型污染注入：拼接进模板函数体，语句逃逸执行 child_process](web-nodejs-prototype-pollution-ejs-outputfunctionname-rce.md) | verified | high | 2026-11-11 |
+| [hogan.js 原型链污染 RCE：污染 Object.prototype.delimiters 控制扫描分隔符、污染 indent 注入生成代码，键名尾随空格绕过 UNSAFE_KEYS 的 trim 检查](web-nodejs-prototype-pollution-hogan-delimiters-indent-rce.md) | verified | high | 2026-11-11 |
+| [Jade 模板原型污染 RCE：污染 Object.prototype.self + line，让 Compiler.visit 把调试行号原样拼进 new Function](web-nodejs-prototype-pollution-jade-line-debugitem-rce.md) | verified | medium | 2026-11-12 |
 | [JSON body 深合并原型链污染注入 Object.prototype.shellcode：后门把 {}.shellcode 交给 vm2 执行，链上 import() 逃逸 RCE](web-nodejs-prototype-pollution-json-clone-vm2-shellcode-backdoor.md) | verified | medium | 2026-11-08 |
 | [lodash 原型链污染（CVE-2019-10744）+ EJS 3.1.6 escapeFunction 注入 RCE](web-nodejs-prototype-pollution-lodash-ejs-escapefunction-rce.md) | verified | high | 2026-11-06 |
+| [lodash.template sourceURL 原型污染注入：换行逃出注释行，Function 构造器执行任意代码](web-nodejs-prototype-pollution-lodash-template-sourceurl-rce.md) | verified | high | 2026-11-11 |
 | [merge 深合并原型链污染：对象字面量与 JSON.parse 的 __proto__ 差异](web-nodejs-prototype-pollution-merge-json-parse.md) | verified | high | 2026-11-05 |
 | [n8n XML/GSuiteAdmin 节点参数原型污染（CVE-2026-33696）：工作流作者注入 __proto__ 并声称升级 RCE](web-nodejs-prototype-pollution-n8n-node-params-object-assign.md) | verified | medium | 2026-11-06 |
 | [xml2json 标签名注入 __proto__：KML 解析污染 Object.prototype 并改写未声明全局变量](web-nodejs-prototype-pollution-xml2json-tag-name-proto.md) | verified | high | 2026-11-06 |

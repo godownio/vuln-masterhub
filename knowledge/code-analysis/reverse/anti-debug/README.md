@@ -26,7 +26,9 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [CLR 环境反调试双检查：Cor_Enable_Profiling 环境变量启用即退出 + 进程已加载 mscorjit/clrjit 即返回](code-analysis-reverse-anti-debug-clr-profiling-env-jit-module-checks.md) | verified | medium | 2026-11-11 |
 | [CPUID 反虚拟机：leaf 1 ECX 符号判 hypervisor 位 + GenuineIntel 型号白名单设置全局门控](code-analysis-reverse-anti-debug-cpuid-hypervisor-bit-intel-model-gate.md) | verified | high | 2026-11-09 |
+| [DBG_PRINTEXCEPTION_C/W 调试打印异常反调试：RaiseException 触发 0x40010006/0x4001000A，调试器吞掉异常则继续执行](code-analysis-reverse-anti-debug-dbg-printexception-wide-c.md) | verified | high | 2026-11-12 |
 | [Defender 模拟器与沙箱综合环境检测：\myapp.exe 进程名、Mpclient 导出 hash、无效句柄返回值与 1GB 堆分配](code-analysis-reverse-anti-debug-defender-emulator-sandbox-checks.md) | verified | high | 2026-11-08 |
 | [Festi 驱动反虚拟机：VMware 后门 I/O 端口 0x5658（'VX'/'VMXh'）探测 + Virtual PC vpcext 指令 SEH 检测](code-analysis-reverse-anti-debug-festi-vmware-backdoor-vpcext.md) | verified | high | 2026-11-08 |
 | [IDA 附加进程调试绕过启动期反调试：先裸跑再 Attach to process，命中后 F7 步入真实函数](code-analysis-reverse-anti-debug-attach-process-startup-bypass.md) | verified | medium | 2026-11-08 |
@@ -44,13 +46,16 @@
 | [TLS 回调反调试：PE 加载前执行检测，静态清零 TLS 目录/回调数组绕过](code-analysis-reverse-anti-debug-tls-callback-pe-null-patch.md) | verified | high | 2026-11-07 |
 | [TracerPid 反调试下 LD_PRELOAD 钩 memcmp + 差分输入恢复魔改 RC4/仿射校验](code-analysis-reverse-anti-debug-ldpreload-memcmp-hook-differential-transform.md) | verified | high | 2026-11-07 |
 | [VEH 反调试与反反调试：自定义异常判断调试器 + 劫持 VEH 双链表移除/抢先保护处理程序](code-analysis-reverse-anti-debug-veh-custom-exception-debugger-detection-hijack.md) | verified | medium | 2026-11-07 |
+| [VMware 宿主与虚拟机同名驱动文件的版本号/数字签名差异作为反虚拟机指纹](code-analysis-reverse-anti-debug-vmware-driver-version-signature-differential.md) | verified | medium | 2026-11-12 |
 | [Windows PEB 字段反调试：BeingDebugged/Ldr/ProcessHeap/NTGlobalFlag 的识别与内存补丁](code-analysis-reverse-anti-debug-peb-fields-patch.md) | verified | medium | 2026-11-07 |
 | [Windows 免杀沙箱指纹组合检测：注册表/VM 进程/MAC OUI/资源/uptime/用户名/调试器与 explorer 父进程校验](code-analysis-reverse-anti-debug-windows-sandbox-fingerprint-parent-check.md) | verified | high | 2026-11-06 |
+| [伴生 XML 文件门控反沙箱：缺 richlist.xml 或读取失败即弹错退出，载荷仅在文件齐全时解密执行](code-analysis-reverse-anti-debug-companion-xml-gate-msedge-chrome-loader.md) | verified | medium | 2026-11-11 |
 | [内核驱动定时对 DR0–DR3 写 0 清除硬件断点：__writedr(0..3,0) 抵消调试器断点](code-analysis-reverse-anti-debug-kernel-writedr-clear-hardware-breakpoints.md) | verified | high | 2026-11-08 |
 | [内核驱动读取 KdDebuggerEnabled 检测内核调试器：调试器存在时跳过恶意初始化](code-analysis-reverse-anti-debug-kddebuggerenabled-kernel-debugger-check.md) | verified | high | 2026-11-08 |
 | [加载器反调试与环境探测：code.jpg 标记文件 + CheckRemoteDebuggerPresent + Toolhelp32 枚举 360tray.exe](code-analysis-reverse-anti-debug-file-marker-remotedebugger-av-process-enum.md) | verified | high | 2026-11-08 |
 | [动态反调试家族：SEH/INT 2D/TF、RDTSC 时序与 0xCC/CRC 校验的识别与绕过](code-analysis-reverse-anti-debug-exception-timing-checksum-bypass.md) | verified | medium | 2026-11-07 |
 | [反分析自毁：检测到调试器/分析环境后主动触发内存访问违例并经 RtlExitUserProcess 退出](code-analysis-reverse-anti-debug-access-violation-rtlexituserprocess.md) | verified | low | 2026-11-08 |
+| [反分析语言门控：GetUserDefaultLangID 命中俄语/高加索/中亚语言即 ExitProcess](code-analysis-reverse-anti-debug-getuserdefaultlangid-cis-language-gate.md) | verified | high | 2026-11-11 |
 | [反沙箱组合：NetGetJoinInformation 判断是否域加入 + VirtualBox 驱动文件存在即退出](code-analysis-reverse-anti-debug-domain-join-vbox-driver-check.md) | verified | high | 2026-11-08 |
 | [反沙箱路径陷阱：GetCurrentDirectoryW 仅在盘符根目录返回尾随反斜杠，%s 直接拼接文件名使子目录中的样本提前退出](code-analysis-reverse-anti-debug-getcurrentdirectoryw-root-trailing-backslash.md) | verified | medium | 2026-11-06 |
 | [反沙箱：GetCurrentDirectoryA + regex_match 整串匹配 C:\<单段随机目录> 识别微步沙箱释放路径](code-analysis-reverse-anti-debug-weibu-release-dir-regex-sandbox-check.md) | verified | high | 2026-11-09 |
@@ -63,6 +68,7 @@
 | [抓包代理替换 JS/HTML 绕过前端反调试：反调试代码必须经网络下发，用 Fiddler/Burp 改包去掉 disable-devtool、无限 debugger、框架内嵌检测](code-analysis-reverse-anti-debug-proxy-js-replacement-bypass.md) | verified | high | 2026-11-09 |
 | [杀父进程反调试：Toolhelp32 快照找到自身 PID 的父进程并 TerminateProcess](code-analysis-reverse-anti-debug-parent-process-terminate.md) | verified | high | 2026-11-09 |
 | [桌面痕迹键控判云沙箱：盘符集合 + 桌面文件数 + 特定 .lnk 名（世界之窗/Microsoft Word 2010）命中即退出](code-analysis-reverse-anti-debug-desktop-artifact-keying-drive-count-shortcut.md) | verified | medium | 2026-11-09 |
+| [沙箱指纹采集方法：采集主机名/CPU/进程/驱动/软件并经 DNSLOG/HTTP 外带比对](code-analysis-reverse-anti-debug-sandbox-fingerprint-collect-dnslog.md) | verified | high | 2026-11-12 |
 | [沙箱探测：调用 pid.dll!DllGetClassObject 并要求返回 CLASS_E_CLASSNOTAVAILABLE(0x80040111)](code-analysis-reverse-anti-debug-pid-dll-dllgetclassobject-return-check.md) | verified | medium | 2026-11-08 |
 | [独立线程循环调用 IsDebuggerPresent 的反调试：检测到调试器即打印并 exit，需先 patch 再动态调试](code-analysis-anti-debug-thread-isdebuggerpresent-loop-exit.md) | verified | high | 2026-11-08 |
 | [用“某款常规软件是否安装”当沙箱判据：装了就继续、没装就直接退出，比虚拟机痕迹检测更难被沙箱伪装](code-analysis-reverse-anti-debug-installed-app-presence-gate.md) | verified | low | 2026-11-08 |
@@ -72,6 +78,7 @@
 | [银狐安装器反虚拟机三件套：vmGuestLib、WMI 热区与 PhysicalDrive0 磁盘容量](code-analysis-reverse-anti-debug-silverfox-installer-vm-detection.md) | verified | high | 2026-11-05 |
 | [银狐远控反分析组合：进程关键化防杀、轮询挂起与窗口标题/杀软名单探测](code-analysis-reverse-anti-debug-critical-process-window-title-av-detection.md) | verified | high | 2026-11-06 |
 | [驱动用 ObReferenceObjectByName 探测 \Driver\npf 判断 WinPcap/Npcap 抓包监控环境](code-analysis-reverse-anti-debug-npf-driver-presence-sniffer-check.md) | verified | high | 2026-11-08 |
+| [黑产样本反虚拟机三查：物理内存容量、%TEMP% 文件数与系统时间种子阈值](code-analysis-reverse-anti-debug-memory-temp-file-time-seeded-vm-checks.md) | verified | medium | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

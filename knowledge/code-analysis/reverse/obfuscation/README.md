@@ -30,10 +30,13 @@
 | [AI + Chrome DevTools MCP 辅助前端加密 JS 逆向：自然语言定位加密参数并生成验证脚本](code-analysis-reverse-obfuscation-ai-mcp-chrome-devtools-js-encryption-reverse.md) | verified | medium | 2026-11-06 |
 | [AI IDE 辅助高度混淆 JS 解混淆：先脚本批量还原字符串表，再由 IDE 语义重构并交叉验证](code-analysis-reverse-obfuscation-ai-ide-assisted-js-deobfuscation.md) | verified | high | 2026-11-06 |
 | [ARM64 花指令批量修复：JNI_OnLoad 的 ADR/STR/LDP/BR 跳板用 keystone 模拟求目标后改 B](code-analysis-reverse-obfuscation-arm64-jni-onload-junk-jump-br-patch.md) | verified | high | 2026-11-08 |
+| [AutoIt 脚本以外部 test.txt 作字符索引表：按 $A[n] 拼接还原命令与十六进制 shellcode，再 Execute/DllStructSetData/VirtualProtect/EnumWindows 执行](code-analysis-reverse-obfuscation-autoit-external-chartable-index-concat.md) | verified | medium | 2026-11-11 |
 | [Base64 多层打包 + XOR 字符码/整数混淆的 JS 工具包静态去混淆（正则常量折叠 + AI 语义重构）](code-analysis-reverse-obfuscation-xor-charcode-js-kit-static-regex-deobfuscation.md) | verified | high | 2026-11-06 |
+| [BAT/CMD 变量替换混淆还原：set 单字符片段 + EnableDelayedExpansion 运行时拼命令，静态搜不到关键字](code-analysis-reverse-obfuscation-cmd-bat-variable-substitution.md) | verified | high | 2026-11-10 |
 | [C++ constexpr 编译期字符串加密：消除 .rdata 明文特征](code-analysis-reverse-obfuscation-constexpr-compile-time-string-encryption.md) | verified | high | 2026-11-05 |
 | [call $+5 改写返回地址型 jmp 花指令：按 imm 宽度计算目标并用 E9/EB 重建跳转](code-analysis-reverse-obfuscation-call5-retaddr-jump-eb-e9-rebuild.md) | verified | high | 2026-11-09 |
 | [CryptoAPI SHA1 派生 40 位 RC4 密钥解密恶意样本配置：CryptDeriveKey 0x280011 参数与离线复现](code-analysis-reverse-obfuscation-cryptapi-sha1-rc4-config-decrypt.md) | verified | high | 2026-11-06 |
+| [DevTools 异步调用栈跟栈定位前端加密点：XHR initiator → send 断点 → Promise.then 链向上回溯到明文](code-analysis-reverse-obfuscation-async-stack-promise-encryption-locate.md) | verified | high | 2026-11-11 |
 | [DevTools 断点作用域改明文变量：在签名与加密执行前改 Scope 中的请求对象，绕过前端校验并让密文/签名基于篡改值重算](code-analysis-reverse-obfuscation-devtools-scope-edit-plaintext-before-encrypt.md) | verified | high | 2026-11-09 |
 | [Dridex API Hash 还原：crc32(name) ^ 0x7AF3DA47 与 HashDB XOR Key](code-analysis-reverse-obfuscation-dridex-api-hash-crc32-xor-key.md) | verified | high | 2026-11-05 |
 | [Electron 游戏辅助 JS 混淆还原：执行字符串数组 + Babel AST 替换、别名消除与花指令清理](code-analysis-reverse-obfuscation-javascript-obfuscator-babel-ast-string-array-cleanup.md) | verified | medium | 2026-11-07 |
@@ -46,12 +49,17 @@
 | [HTA VBScript 连字符填充字符串还原：Replace 去填充隐藏 Shell.Application/powershell 与整条命令](code-analysis-reverse-obfuscation-hta-vbscript-hyphen-fill-string.md) | verified | high | 2026-11-09 |
 | [Huffman 式字符串混淆：frequency/left/right 树 + 0/1 位串 + Crypto++ Base64 的识别与还原](code-analysis-reverse-obfuscation-huffman-tree-bitstring-string-decode.md) | verified | medium | 2026-11-09 |
 | [IDAPython 通配符掩码 bin_search 批量定位花指令并 NOP/重建跳转](code-analysis-reverse-obfuscation-idapython-wildcard-binsearch-patch.md) | verified | high | 2026-11-09 |
+| [Java 字节码反反编译隐藏术：ACC_SYNTHETIC/ACC_BRIDGE 与 FernFlower hiddenMembers 隐藏方法与字段，MethodParameters 属性伪造参数名](code-analysis-reverse-obfuscation-java-hidden-members-methodparameters.md) | verified | high | 2026-11-12 |
 | [Java 客户端可查密钥 + 硬编码 IV：AES/CBC 保护的 API 敏感字段可被任意客户端解密](code-analysis-reverse-java-client-secret-key-command-hardcoded-iv-api-decrypt.md) | verified | high | 2026-11-09 |
 | [JavaScript Obfuscator Debug Protection：递归 debugger + setInterval 的识别与绕过](code-analysis-reverse-obfuscation-javascript-obfuscator-debug-protection-recursive-debugger.md) | verified | medium | 2026-11-06 |
 | [JavaScript Obfuscator Self Defending 的格式化陷阱：compact 绑定 + ReDoS 正则与安全分析方式](code-analysis-reverse-obfuscation-javascript-obfuscator-self-defending-format-trap.md) | verified | medium | 2026-11-06 |
 | [JavaScript Obfuscator v5.3.0 字符串数组提取：底部数组定义、取值函数偏移与洗牌后数组还原](code-analysis-reverse-obfuscation-javascript-obfuscator-v530-string-array-extraction.md) | verified | high | 2026-11-06 |
 | [JavaScript 混淆下定位 AES-CBC 参数加密并还原 key/iv 与 iv||密文格式](code-analysis-reverse-obfuscation-js-aes-parameter-restore.md) | verified | high | 2026-11-05 |
+| [jQuery $.ajax 自动加密逆向：RSA 长文本+AES-ECB 嵌套 keyScript、动态公钥取明文与 execjs 自动化](code-analysis-reverse-obfuscation-jquery-ajax-rsa-aes-keyscript-automation.md) | verified | high | 2026-11-11 |
 | [JS-Forward 明文点插桩改包：DevTools 本地替换注入同步 XHR，把加密前变量经本地桥转给 Burp 修改后回写](code-analysis-reverse-obfuscation-js-forward-plaintext-override-burp-bridge.md) | verified | high | 2026-11-09 |
+| [JScript.Encode + Unicode 转义 + 动态 String.fromCharCode 的 JSE Dropper 静态去混淆与 IOC 提取](code-analysis-reverse-obfuscation-jse-dropper-jscriptencode-unicode-dynamic-charcode-regex.md) | verified | high | 2026-11-12 |
+| [jsjiami.com.v6 混淆逆向：字符串数组 RC4 解码器 + switch 顺序表，抠取 generateHostKey 等签名函数](code-analysis-reverse-obfuscation-jsjiami-v6-string-array-switch-order-extraction.md) | verified | high | 2026-11-12 |
+| [JSR/RET 叠加 POP/SWAP 的控制流欺骗：JVM 运行时执行真实代码，IDEA/FernFlower 反编译展示虚假代码](code-analysis-reverse-obfuscation-jsr-ret-pop-swap-decompiler-deception.md) | verified | high | 2026-11-12 |
 | [jz 跳过 E8 的线性扫描花指令：xor/jz/E8 垃圾字节与 IDA 修复](code-analysis-reverse-obfuscation-jz-skip-e8-junk-ida-repair.md) | verified | high | 2026-11-06 |
 | [LATRODECTUS 字符串解密：前 4 字节 u32 x 与 2 字节 u16 y 派生长度，明文 = ((x+i+1) XOR 密文字节) & 0xFF](code-analysis-reverse-obfuscation-latrodectus-string-decrypt.md) | verified | high | 2026-11-09 |
 | [Linux 恶意样本 API 调用混淆：dlopen/dlsym、导出表哈希匹配与运行时 syscall stub](code-analysis-reverse-obfuscation-linux-dynamic-api-hash-syscall-stub.md) | verified | medium | 2026-11-06 |
@@ -69,6 +77,7 @@
 | [PHP eval(gzinflate(base64_decode())) 外壳动态还原：eval 改 echo + ob_start 递归剥壳](code-analysis-reverse-obfuscation-php-eval-gzinflate-echo-unwrap.md) | verified | high | 2026-11-08 |
 | [PHP gzinflate+strtr+base64 多层混淆静态还原：从 eval 壳取出 backdoor 源码](code-analysis-reverse-obfuscation-php-gzinflate-strtr-base64-unwrap.md) | verified | high | 2026-11-07 |
 | [PowerShell 从多个单行 txt 分片读取注入关键词并拼回反射调用：load/GetType/getMethod/Invoke/NewPE2.PE/Execute，二进制串隐藏 aspnet_compiler 路径](code-analysis-reverse-obfuscation-txt-fragment-keyword-reflection-assembly.md) | verified | medium | 2026-11-09 |
+| [PowerShell 加密字节数组 + 重复密钥 XOR + iex 的多阶段脚本加载器与静态还原](code-analysis-reverse-obfuscation-powershell-bytearray-xor-iex-multistage.md) | verified | high | 2026-11-11 |
 | [PowerShell 花括号变量名伪装 + -f 占位重排 + 字符码替换的三层混淆与去混淆](code-analysis-reverse-obfuscation-powershell-braced-variable-format-reorder.md) | verified | high | 2026-11-06 |
 | [ptrace 父进程改写子进程门函数控制流：int3 gate + 加密节点表调度](code-analysis-reverse-obfuscation-ptrace-parent-child-gate-flow.md) | verified | high | 2026-11-06 |
 | [Pyarmor 静态脱壳：Pyarmor-Static-Unpack-1shot 解析 runtime AES-CTR 密钥批量还原源码](code-analysis-reverse-obfuscation-pyarmor-static-unpack-aes-ctr.md) | verified | high | 2026-11-07 |
@@ -80,24 +89,32 @@
 | [v_jstools 挂钩定位前端加密明文点：从 JSON.stringify/atob 钩子回溯请求拦截器并锁定加密与签名函数](code-analysis-reverse-obfuscation-vjstools-plaintext-hook-encryption-locate.md) | verified | high | 2026-11-09 |
 | [VBE→PowerShell→.NET 三层嵌套样本分析：MSXML2 Base64 解码、AES-256-CBC 载荷还原与 procdump 抓进程镂空](code-analysis-reverse-obfuscation-vbe-powershell-dotnet-layered-sample.md) | verified | high | 2026-11-06 |
 | [WARMCOOKIE 原生 PE 字符串加密：.rdata 中 [4 字节长度][4 字节 RC4 key][密文] 记录 + 用后清零](code-analysis-reverse-obfuscation-warmcookie-rc4-string-record.md) | verified | high | 2026-11-08 |
+| [webpack 运行时 loader 抠取与“缺啥补啥”：把打包站点中的加密函数离线复现](code-analysis-reverse-obfuscation-webpack-runtime-module-loader-extract.md) | verified | high | 2026-11-12 |
 | [x86-64 指令重叠：入口处无害指令流掩盖偏移执行的隐藏流](code-analysis-reverse-obfuscation-x86-64-instruction-overlap-dual-stream.md) | verified | high | 2026-11-05 |
 | [XORStringsNet 字符串自动解密：ClassLayout 最大 Size + FieldRVA 相邻差定位加密表，逆序+单字节 XOR 还原](code-analysis-reverse-obfuscation-xorstringsnet-automated-decrypt.md) | verified | high | 2026-11-06 |
 | [Zig comptime 编译期字符串异或加密：build.zig 每次编译生成随机 key，运行时在栈上解密](code-analysis-reverse-obfuscation-zig-comptime-string-xor-encryption.md) | verified | high | 2026-11-08 |
 | [不存 DLL 名字的动态解析：枚举 System32\*.dll 对每个文件名算 CRC32 匹配常量后 LoadLibraryW](code-analysis-reverse-obfuscation-wildcard-dll-crc32-resolution.md) | verified | high | 2026-11-09 |
+| [代码对齐扰乱：用多字节指令操作码吞掉后续字节使反汇编错位，单步进入正确指令边界绕过](code-analysis-reverse-obfuscation-broken-code-alignment-opcode-swallow.md) | verified | medium | 2026-11-10 |
 | [假验证码投递 HTA 伪装 mp3 的多层脚本脱混淆：JS fromCharCode 数组 → 十六进制 XOR → PowerShell 字符码](code-analysis-reverse-obfuscation-fake-captcha-hta-js-charcode-powershell.md) | verified | high | 2026-11-07 |
 | [兄弟文件当密钥的重复异或：同目录 .dll 作 key 解其余三份落地文件，解出配置与二级载荷地址](code-analysis-reverse-obfuscation-sibling-file-as-xor-key-multi-drop-decrypt.md) | verified | high | 2026-11-08 |
 | [前端 AES 参数复现：key/iv 取 Authorization 后 16 位与 ZeroPadding/PKCS#7 填充对齐](code-analysis-reverse-obfuscation-js-aes-zeropadding-authorization-key.md) | verified | high | 2026-11-08 |
 | [前端 AES-CBC 密钥与 IV 存放在 JWT/localStorage（SecretKey/SecretIV）：解 token 还原 requestData 解密-篡改-重加密](code-analysis-reverse-obfuscation-jwt-secretkey-secretiv-aes-cbc-traffic.md) | verified | high | 2026-11-09 |
+| [前端 d1/d2/d3 国密信封逆向：SM4-CBC 报文 + SM2 加密随机 key/iv，响应以客户端私钥解](code-analysis-reverse-obfuscation-frontend-d1d2d3-sm4-sm2-envelope.md) | verified | high | 2026-11-12 |
 | [前端 JS 硬编码 AES/ECB 密钥导致应用层加密流量可解密](front-end-hardcoded-aes-ecb-traffic-decrypt.md) | verified | high | 2026-11-08 |
 | [前端 RSA-OAEP 参数加密逆向：隐藏 DOM 公钥还原与任意 id 密文伪造](code-analysis-reverse-obfuscation-rsa-oaep-dom-public-key-parameter-forge.md) | verified | high | 2026-11-06 |
+| [前端伪加密参数逆向：encryptAjaxParams 实为 URL+Base64+URL，逆运算改包与 SM2 分支硬编码公钥重加密](code-analysis-reverse-obfuscation-frontend-encryptajaxparams-pseudo-encryption.md) | verified | medium | 2026-11-13 |
+| [前端登录 RSA 密码加密复刻：定位 getPwd/RSAKey，复用 setPublic(modulus,exponent) 或 RSAKeyPair+encryptedString 生成密文](code-analysis-reverse-obfuscation-rsa-login-password-encrypt-reproduce.md) | verified | medium | 2026-11-13 |
 | [加盐 FNV-1a API 哈希解析：字符串哈希后再哈希 4 字节盐，遍历导出表缓存函数指针](code-analysis-reverse-obfuscation-salted-fnv1a-api-hash-resolve.md) | verified | high | 2026-11-08 |
 | [加载器硬编码口令 + CryptoAPI AES-256-CBC 加密下载 URL：.rdata 无明文 C2，分析时用同一 password 派生密钥即可还原](code-analysis-reverse-obfuscation-cryptapi-hardcoded-password-aes-url-decrypt.md) | verified | medium | 2026-11-09 |
 | [动态密钥前端加密接口的越权测试：断点固定 generateKey 并复用页面加解密函数](code-analysis-reverse-dynamic-key-encrypted-api-idor.md) | verified | medium | 2026-11-05 |
 | [扣 JS 复现前端签名：execjs 报 ReferenceError 时逐个补齐 IQ（CryptoJS MD5 工厂）与 TQ（crypto polyfill），并按页面逻辑两次调用签名函数](code-analysis-reverse-obfuscation-js-sign-execjs-dependency-patch.md) | verified | high | 2026-11-10 |
 | [整数数组编码的 PowerShell 混淆与 ScriptBlock 内存执行](code-analysis-reverse-obfuscation-powershell-integer-array-scriptblock.md) | verified | high | 2026-11-04 |
+| [有道翻译 webtranslate 签名与响应解密：md5(client&mysticTime&product&key) + ydsecret 硬编码 key/iv 的 AES 解密密文](code-analysis-reverse-obfuscation-youdao-translate-sign-aes-decrypt.md) | verified | medium | 2026-11-11 |
 | [混淆 JS 中 CryptoJS WordArray 数值数组还原 key/iv 与 AES-CFB 参数还原](code-analysis-reverse-obfuscation-cryptojs-wordarray-key-restore.md) | verified | high | 2026-11-05 |
 | [混淆 JS 加密配置数组控制台求值：提取 AES-CBC key/IV 解密双向业务流量并定位外传 URL](code-analysis-reverse-obfuscation-js-config-array-console-aes-key-iv.md) | verified | high | 2026-11-07 |
 | [瑞数 6 代 cookie_t 扣代码补环境：抽取 page_url 动态 JS 与 VM 生成逻辑，在浏览器化环境执行后带 cookie_s/cookie_t 直连](code-analysis-reverse-obfuscation-rs-cookie-t-environment-emulation.md) | verified | medium | 2026-11-09 |
+| [登录密码 3DES-192-ECB 且密钥由用户名补零派生：密钥可离线重建，抓包密文可解出明文密码](code-analysis-reverse-obfuscation-3des-192-ecb-key-from-username-zero-padded.md) | verified | high | 2026-11-11 |
+| [百度翻译 v2transapi 的 sign 算法还原：断点定位 index.js 的 sign 赋值，抽 a/n 两个函数到 Node 并硬编码密钥 r](code-analysis-reverse-obfuscation-baidu-translate-v2transapi-sign-restore.md) | verified | high | 2026-11-11 |
 | [网易云 weapi 参数逆向：动态栈回溯锁定 t6n.be6Y → asrsea，还原 AES-CBC 二次加密 + 自制 RSA（encText/encSecKey）并用 Python 复刻](code-analysis-reverse-obfuscation-weapi-asrsea-aes-rsa-hop-param-forge.md) | verified | high | 2026-11-09 |
 | [花指令识别：按等价指令替换、运算抵消与栈平衡判定垃圾代码](code-analysis-reverse-obfuscation-junk-instruction-equivalence-cancellation.md) | verified | high | 2026-11-09 |
 | [裸 Shellcode 的 API 哈希解析：Ghidra 定位 PUSH hash + CALL reg，ROR13 类散列还原并 blobrunner 动态验证](code-analysis-reverse-obfuscation-shellcode-api-hash-ror13-blobrunner.md) | verified | medium | 2026-11-08 |

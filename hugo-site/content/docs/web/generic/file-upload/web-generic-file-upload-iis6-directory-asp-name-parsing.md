@@ -16,9 +16,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-10'
 updated: '2026-11-10'
+verification:
+  verified_by: verifier-V476
+  verified_at: '2026-11-10T17:54:44+08:00'
+  notes: 已对照原文13648核对：原文目录名带.asp使目录内文件按ASP执行、形态123.asp/12.jpg，机制与PoC一致；仅含目录名解析单一动作；未在真实目标复现。
 url: /docs/web/generic/file-upload/web-generic-file-upload-iis6-directory-asp-name-parsing/
 draft: false
 kb_aliases:

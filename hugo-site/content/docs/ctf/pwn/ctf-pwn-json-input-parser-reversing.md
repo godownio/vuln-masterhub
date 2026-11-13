@@ -18,9 +18,15 @@ tags:
 cve: []
 severity: medium
 confidence: high
-status: draft
+status: verified
 created: '2026-11-08'
-updated: '2026-11-08'
+updated: '2026-11-11'
+verification:
+  verified_by: verifier-V505
+  verified_at: '2026-11-11T04:13:26+08:00'
+  notes: 已对照原文（content.md 全文+9/9 图）核对：img/03 主循环 printf Please input + __isoc99_scanf(%4095s) + sub_34A7、img/06 sub_391B 的 null/false/true 字面量与 0x22 字符串、0x2D/0x30-0x39 数字分支、img/07 的 [ -> sub_3E4A 与 { -> sub_42BB、img/08/09 的逗号/}/] 闭合校验与对象计数上限 0x3E7 均与卡一致；原文给出紧凑 JSON 字段格式 choice/index/length/message 及交互 exp。dedup 与 binary-pwn-heap-cjson-parse-string-unicode-escape-unbounded-overflow、ctf-pwn-hexfloat-strtoull-parser-differential 非同一原子，保留。未验证点：PoC 未复跑，字段语义按 exp 与反编译推断。
+  unverified:
+  - PoC 未复跑；解析器字段名与具体 handler 语义来自原文 exp，未独立动态验证
 url: /docs/ctf/pwn/ctf-pwn-json-input-parser-reversing/
 draft: false
 kb_aliases:

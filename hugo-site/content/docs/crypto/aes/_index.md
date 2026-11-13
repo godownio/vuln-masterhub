@@ -42,6 +42,7 @@ weight: 1
 | [固定 salt/IV + PBKDF2(uid) 派生 AES key：批量还原脱敏数据](crypto-aes-pbkdf2-uid-fixed-salt-iv-mask-decrypt/) | verified | high | 2026-11-06 |
 | [复现自建 KDF 解 AES-128-CBC 数据库密文：md5(pass+saltseed/IVseed) 作 salt/IV、SHA-256 迭代 10000 派生 key](crypto-aes-custom-kdf-md5-salt-iv-sha256-iter-db-decrypt/) | verified | high | 2026-11-09 |
 | [已知 AES-CBC KEY/IV 的明文条件伪造：按约束构造明文再加密通过校验](crypto-aes-cbc-known-key-constraint-plaintext-forgery/) | verified | high | 2026-11-06 |
+| [硬件加密 USB 盘使用 AES-ECB：相同 16 字节明文生成相同密文，密文保留数据模式](crypto-aes-hardware-encrypted-usb-ecb-pattern-leak/) | verified | high | 2026-11-11 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

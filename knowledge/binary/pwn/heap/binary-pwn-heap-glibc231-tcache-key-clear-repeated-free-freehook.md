@@ -27,9 +27,15 @@ cve: []
 severity: high
 confidence: medium
 affected_versions: glibc 2.31（原文标记 libc2.31）
-status: draft
+status: verified
 created: '2026-11-08'
-updated: '2026-11-08'
+updated: '2026-11-11'
+verification:
+  verified_by: verifier-V505
+  verified_at: '2026-11-11T04:13:28+08:00'
+  notes: 已对照原文（content.md 全文+9/9 图）核对：img/01 delete 仅 free 不置空、img/02 edit 的 memcpy(chunklist[idx],src,len) 无长度校验、exp 的 delete(0)+6 次 edit/delete 清 tcache key、add(0x60)+edit(2,1,'\xe0') 修低字节、libc_base=leak-0x1ECBE0、free_hook->system 与卡一致；已修正 memcpy 覆盖范围表述（length=0x400 拷贝 0x400 字节，前 16 字节覆盖 next/key）。affected_versions 已按原文 libc2.31 保留。dedup：dup-scan 涉及本卡的三对均为 related（2.31 tcache counts->malloc_hook one_gadget、2.35 tcache 指针数组 RBP ROP、2.39 largebin/apple2），与 ctf-pwn-menu-uaf-heap-overflow-tcache-poison-freehook-system 的『溢出改相邻空闲块 fd』原语不同，保留。未验证点：exp 未复跑；空 message 写 NUL 覆盖 main_arena 指针低字节、需 edit 0xe0 修回为合理推断。
+  unverified:
+  - exp 未复跑；0xe0 低字节修正的成因（空 message NUL 覆盖）为推断；原文未给二进制与 libc 文件
 ---
 
 ## 一句话结论
@@ -39,7 +45,7 @@ glibc 2.31 下，若程序 `delete` 只 `free` 不置空、`edit` 又直接用 `
 ## 原理
 
 - **tcache_entry 与 double-free 检查**：glibc 2.29+ 的已释放 chunk 用户区 `+0` 是 `next`，`+8` 是 `key`（值为 `tcache_perthread_struct *`）。`_int_free` 发现 `e->key == tcache` 时会遍历该 size 的 tcache 链做物理地址比对，命中即 `double free detected in tcache 2` 并 abort。
-- **清 key 绕过**：key 位于用户数据区，`free` 之后仍可写。原文 `delete(0)` 后执行 `edit(0, 0x400, b'a'*0x10)`，`memcpy` 正好覆盖前 16 字节（next 与 key），把 key 改成 `0x6161...`；再 `delete(0)` 时 key 不等于 `tcache`，检查失明，chunk 被重新头插进 tcache。重复“edit 清 key → delete”6 次加上最初的 free，`tcache[0x410]` 的 count 达到 7，链中 7 项全部指向同一个 chunk 0。
+- **清 key 绕过**：key 位于用户数据区，`free` 之后仍可写。原文 `delete(0)` 后执行 `edit(0, 0x400, b'a'*0x10)`：`memcpy` 按 `length` 字段拷贝 0x400 字节到已释放块，前 16 字节为 `a`（即 next 与 key），key 变成 `0x6161...`（源 message 实际仅 0x10 字节，其余为堆上残留数据，不影响清 key 效果）；再 `delete(0)` 时 key 不等于 `tcache`，检查失明，chunk 被重新头插进 tcache。重复“edit 清 key → delete”6 次加上最初的 free，`tcache[0x410]` 的 count 达到 7，链中 7 项全部指向同一个 chunk 0。
 - **glibc 2.31 无 safe-linking**：tcache 的 `next` 是原始指针（safe-linking 自 2.32 才引入），因此毒化时可直接把 next 写成 `__free_hook` 的绝对地址，不需要 `target ^ (chunk >> 12)` 编码，也不需要堆地址泄露。
 - **泄漏 libc**：tcache 填满后 `delete(1)`（另一个 0x410 块）无法进入 tcache，走 unsorted bin，其 `fd/bk` 指向 `main_arena` 附近。原文再 `add(0x60, '')` 申请小块，从该 unsorted 块上切分/吸收解析器噪声；返回的小块用户区首字段仍残留 `main_arena` 指针，原文先用 `edit(2, 1, b'\xe0')` 把被空 message 写入覆盖的最低位修回该 libc 下 `main_arena+96` 的低字节 `0xe0`，再 `show(2)` 读出以 `0x7f` 结尾的 6 字节，`libc_base = leak - 0x1ECBE0`（原文 glibc 2.31 的 `main_arena+96` 偏移）。
 - **毒化与触发**：`edit(0, 0x400, p64(free_hook)[:6])` 改写仍在 tcache 链中的 chunk 0 的 next 为 `__free_hook`（写 6 字节即可覆盖 libc 地址）；`add(0x400, b'/bin/sh')` 取回 chunk 0，缓存头变成 `__free_hook`；`add(0x400, p64(system)[:6])` 返回 `__free_hook` 并写入 system 地址；`delete(/bin/sh 所在槽)` 触发 `free()` 的 hook 调用 `__free_hook(chunk_ptr)`，参数指向的块内容为 `/bin/sh`，即 `system("/bin/sh")`。

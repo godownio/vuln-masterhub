@@ -39,27 +39,40 @@ weight: 1
 | [Chamilo LMS bigupload 未授权上传 PHP 文件致 RCE（CVE-2023-4220）：action=post-unsupported 直接落地 files/ 目录](web-php-rce-chamilo-bigupload-post-unsupported-php-upload-rce/) | verified | medium | 2026-11-07 |
 | [CmsEasy 7.7 后台第三方代码 header/footer 写入 header-js.html 被模板包含导致 RCE（CNVD-2024-10069）](web-php-rce-cmseasy-thirdparty-header-footer-write-php/) | verified | high | 2026-11-09 |
 | [CmsEasy 7.7.5 后台模板保存路径穿越写 WebShell（CVE-2021-42643）](web-php-rce-cmseasy-cve-2021-42643-template-save-file-write/) | verified | medium | 2026-11-06 |
+| [CodeFever 邮箱验证码接口命令注入：邮箱参数过正则后拼进 Mail::send 的 exec 实现 RCE（CVE-2023-26817）](web-php-rce-codefever-email-command-injection/) | verified | medium | 2026-11-11 |
 | [CVE-2012-1823 PHP-CGI 参数注入 RCE：query string 被当作 php-cgi 选项，-d allow_url_include + auto_prepend_file=php://input 执行 POST 代码](web-php-rce-cve-2012-1823-php-cgi-querystring-argument-injection/) | verified | high | 2026-11-08 |
+| [CVE-2023-36845 Juniper J-Web PHPRC 环境变量注入 RCE：query 的 PHPRC 指向 /dev/fd/0，POST body 当 php.ini 经 data:// 预包含执行 PHP](web-php-rce-juniper-jweb-phprc-env-injection-cve-2023-36845/) | verified | high | 2026-11-13 |
 | [CVE-2024-4577 PHP-CGI Windows Best-Fit 参数注入 RCE：0xAD 还原为 -d，allow_url_include + auto_prepend_file=php://input 执行 POST 代码](web-php-rce-cve-2024-4577-php-cgi-bestfit-argument-injection/) | verified | high | 2026-11-08 |
 | [DedeCMS ≤5.7.113 后台 makehtml_homepage.php：position 路径穿越 + 模板内容回写覆盖 tags.php getshell](web-php-rce-dedecms-makehtml-homepage-position-file-write/) | verified | high | 2026-11-08 |
 | [DedeCMS ≤5.7.115 二阶任意文件覆盖：makehtml_homepage 写 homepageset 表 + task_do.php makeindex 触发 getshell](web-php-rce-dedecms-homepageset-task-do-stored-file-write/) | verified | high | 2026-11-08 |
 | [DeDeCMS 会员模型字段名/字段串二阶标签注入：runphp=yes 触发模板引擎 eval（CNVD-2025-20330）](web-php-rce-dedecms-field-tag-runphp-stored-injection/) | verified | high | 2026-11-05 |
+| [DedeCMS 后台单页文档 filename 不校验扩展名：模板编译写入 .php + tpl.php 十六进制/拼接绕过恶意代码过滤](web-php-rce-dedecms-single-page-filename-php-template-compile/) | verified | high | 2026-11-13 |
+| [DedeCMS 文件管理编辑绕过扩展名黑名单写 .htm 模板：模板 include 执行 PHP，配合存储型 XSS 借管理员会话 getshell](web-php-rce-dedecms-filemanage-htm-extension-blacklist-template-include/) | verified | high | 2026-11-13 |
 | [DedeCMS 超级管理员模板标签源码编辑 getshell：substr_replace 动态构造 system 绕过恶意代码检测](web-php-rce-dedecms-template-tag-source-substr-replace-waf-bypass/) | verified | medium | 2026-11-06 |
 | [Drupal 8 CVE-2018-7600 表单渲染数组注入 RCE（Drupalgeddon2）](web-php-rce-drupal-cve-2018-7600-drupalgeddon2/) | verified | high | 2026-11-07 |
 | [elFinder ≤2.1.47 PHP connector：上传文件夹带 shell 元字符，rotate 触发 imgRotate 里 $path 未加引号造成命令注入（CVE-2019-9194）](web-php-rce-elfinder-imgrotate-filename-command-injection/) | verified | high | 2026-11-09 |
+| [EmpireBak v5.1 数据库备份 tablename 注入 config.php 写马](web-php-rce-empirebak-backup-tablename-config-injection/) | verified | high | 2026-11-12 |
 | [escapeshellcmd 之下仍能执行：黑名单只封读文件命令（cat/tac/nl/head/tail/read）而漏掉 env，两段 md5（松散 0e/数组 + 严格数组）过关后直接读环境变量拿 flag](web-php-rce-escapeshellcmd-blacklist-env-flag-read/) | verified | high | 2026-11-08 |
 | [eval 前的字符集排列校验被「少一个字母」绕过：用剩余标识符拼出变量函数调用执行 POST 参数](ctf-web-eval-char-permutation-post-param-rce/) | verified | medium | 2026-11-09 |
 | [eval 正则函数调用检测：函数名加引号绕过 + ThinkPHP input() 两级取值构造 system(/readflag)](web-php-rce-eval-quoted-function-input-helper-waf-bypass/) | verified | medium | 2026-11-08 |
 | [eval(var_dump($input)) 注入：用 $_GET[1]($_GET[2]) 变量函数绕过关键词过滤执行命令](web-php-rce-eval-var-dump-superglobal-variable-function/) | verified | medium | 2026-11-06 |
 | [exec 无回显 RCE 用 curl --data "$(命令)" 外带执行结果](web-php-rce-exec-silent-curl-oob-exfil/) | verified | high | 2026-11-08 |
 | [Fastadmin 后台权限规则条件代码注入：裸 PHP 函数 + 二级管理员登录触发 + 远程下载/Base64 分步写 WebShell](web-php-rce-fastadmin-auth-rule-condition-code-injection-webshell/) | verified | high | 2026-11-07 |
+| [Flarum 后台自定义 CSS 写入 Phar 载荷并 data-uri(phar://) 触发反序列化：phpggc tar 格式 Monolog/RCE6 反弹 Shell（1.6.0 实测）](web-php-rce-flarum-custom-css-phar-monolog-rce/) | verified | high | 2026-11-12 |
 | [FoxCMS 模板标签 id 参数拼接进编译模板导致 PHP 代码执行](web-php-rce-foxcms-taglib-id-code-injection/) | verified | high | 2026-11-05 |
 | [FrankenPHP php_ini 运行时注入：POST /config/apps/frankenphp/php_ini 清空 disable_functions/open_basedir](web-php-rce-frankenphp-php-ini-disable-functions-bypass/) | verified | high | 2026-11-06 |
 | [FreePBX CVE-2025-57819：认证绕过 + SQL 注入写 Webshell 到 RCE](web-php-rce-freepbx-cve-2025-57819-auth-bypass-sqli-webshell/) | verified | high | 2026-11-05 |
 | [GreenCMS elFinder fileconnect 命令滥用：upload/mkfile/put 写 WebShell（CVE-2025-9415）](web-php-rce-greencms-elfinder-fileconnect-upload-put-webshell/) | verified | medium | 2026-11-06 |
+| [H3C 网管 portal_auth.mds 的 exec 拼接命令执行：config_reset 路由 type 进入 rm、local_submit 路由 suffix 进入 checkFileSize 的 mv/rm，backupAuthFile 的 cp 同源](web-php-rce-h3c-mds-portal-auth-exec-type-suffix-injection/) | verified | medium | 2026-11-11 |
+| [IBOS 后台数据库备份 shell 模式：备份文件名过滤不全拼接 mysqldump 命令注入 RCE](web-php-rce-ibos-database-backup-filename-command-injection/) | verified | medium | 2026-11-13 |
 | [ICPAS php/ping.php 将 ip/times 拼入 exec 执行 ping：jsondata[ip] 分号/管道命令注入](web-php-rce-icpas-ping-ip-exec-command-injection/) | verified | medium | 2026-11-07 |
 | [IP-guard WebServer flexpaper view.php 命令注入 RCE：doc/page 参数拼接进 tool_transform 的 exec，管道符执行 php.exe 写 webshell](web-php-rce-ipguard-flexpaper-view-php-command-injection/) | verified | high | 2026-11-09 |
 | [Joomla 后台 com_templates 模板编辑新建 cmd.php 写 WebShell RCE](web-php-rce-joomla-admin-template-editor-webshell/) | verified | high | 2026-11-06 |
+| [Joomla 后台扩展安装篡改语言包 ZIP：administrator/language/<tag>/ 下植入 PHP 后访问执行 WebShell（4.2.7 实测）](web-php-rce-joomla-language-pack-zip-webshell/) | verified | high | 2026-11-12 |
+| [KiteCMS 后台模板编辑 fileEdit 的 path 穿越：任意文件写入（可覆盖 WebShell）与任意文件读取](web-php-rce-kitecms-template-fileedit-path-traversal-write-read/) | verified | high | 2026-11-13 |
+| [KiteCMS 后台配置把上传后缀白名单写入数据库，任意上传点放行 PHP 文件 RCE](web-php-rce-kitecms-admin-upload-ext-config-database-php-upload/) | verified | high | 2026-11-13 |
+| [Linux 命令注入黑名单绕过的命令名等价改写：拼接/引号/反斜杠/位置参数/编码/通配符/替代命令](web-php-rce-command-name-blacklist-equivalent-rewrites/) | verified | high | 2026-11-11 |
+| [Moodle TinyMCE 拼写检查器 aspell 路径注入：管理员把 Path to aspell 改成 shell 命令，触发拼写检查即执行](web-php-rce-moodle-tinymce-spellchecker-aspell-path-rce/) | verified | high | 2026-11-12 |
 | [Pandora FMS netflow 视图 ip_src 命令注入：闭合引号后 curl 带外确认执行（CVE-2019-20224）](web-php-rce-pandorafms-netflow-ip-src-command-injection/) | verified | medium | 2026-11-08 |
 | [PbootCMS pboot:if 表达式注入配合三元字符串拼接函数名绕过 WAF 与 RASP](web-php-rce-pbootcms-iflabel-dynamic-function-waf-rasp-bypass/) | verified | high | 2026-11-05 |
 | [PbootCMS 前台 URL 反射进 Spider 脚本并写入 HTML 缓存，二次命中解释执行 PHP](web-php-rce-pbootcms-html-cache-poisoning-rce/) | verified | high | 2026-11-05 |
@@ -68,6 +81,7 @@ weight: 1
 | [PHP 5.2 魔术引号环境写 WebShell：写入内容被自动转义时用 stripslashes($_POST[...]) 让蚁剑连通](web-php-rce-magic-quotes-stripslashes-webshell-write-bypass/) | verified | medium | 2026-11-07 |
 | [PHP 7.0-7.4.3 debug_backtrace UAF 绕过 disable_functions（蚁剑插件）](web-php-rce-php7-backtrace-uaf-disable-functions-bypass/) | verified | medium | 2026-11-05 |
 | [PHP 8 UAF 内存破坏解析 zif_system 绕过 disable_functions](web-php-rce-uaf-memory-corruption-disable-functions-bypass/) | verified | high | 2026-11-05 |
+| [PHP < 7.1.9 用不可见字符（0x7F）作变量名绕过「$变量(...)」正则查杀](web-php-rce-webshell-invisible-char-variable-name-regex-bypass/) | verified | medium | 2026-11-12 |
 | [PHP create_function 回调点代码注入：} 闭合函数体并用八进制转义绕过黑名单](web-php-rce-create-function-callback-gadget/) | verified | high | 2026-11-05 |
 | [PHP disable_functions 下用 LD_PRELOAD 劫持子进程执行命令](web-php-rce-disable-functions-ld-preload/) | verified | medium | 2026-11-05 |
 | [PHP eval 校验副本不校验原串：getallheaders() 把请求头变成任意函数参数，system(implode(...)) 命令执行](web-php-rce-eval-getallheaders-no-param-function-call/) | verified | high | 2026-11-05 |
@@ -81,7 +95,9 @@ weight: 1
 | [PHP WebShell RSA 加密流量编码器（蚁剑 myencoder）](web-php-rce-webshell-rsa-traffic-encoder/) | verified | high | 2026-11-05 |
 | [PHP WebShell 业务数据载体分片重组：10 种数组/配置/流/迭代器隐写绕过 AI 检测](web-php-rce-webshell-business-data-carrier-obfuscation/) | verified | medium | 2026-11-06 |
 | [PHP WebShell 免杀：字符串按位取反 + 可变变量 + array_map 动态调用](web-php-rce-webshell-string-not-dynamic-call-av-bypass/) | verified | high | 2026-11-05 |
+| [PHP WebShell 免杀：正则拦截「$变量(...)」调用形态时，改用 call_user_func_array 回调包装绕过](web-php-rce-webshell-callback-wrapper-variable-function-regex-bypass/) | verified | medium | 2026-11-12 |
 | [PHP WebShell 多层免杀：函数名分片重建 + 冷门回调 sink + goto/自定义函数拆分控制流绕过静态正则](web-php-rce-webshell-name-rebuild-callback-goto-multilayer/) | verified | medium | 2026-11-08 |
+| [PHP XOR 混淆 Webshell 的动态参数名：本地还原 $_GET/_POST 与回调名，用 mt_rand 乘积（约 300 种）作 POST 变量名执行命令](web-php-rce-webshell-xor-random-product-param-name/) | verified | high | 2026-11-12 |
 | [PHP 一句话木马免杀：@eval(end($_GET)) 取最后一个 GET 参数执行](web-php-rce-webshell-end-get-last-param-eval/) | verified | medium | 2026-11-06 |
 | [PHP 上传内容 WAF 绕过：chr() 拼接 system 与命令的 ASCII 马](web-php-rce-upload-chr-ascii-webshell-waf-bypass/) | verified | medium | 2026-11-06 |
 | [PHP 任意 putenv + 固定文件名写文件：LD_PRELOAD 劫持 system(wget) 子进程 RCE 与 SUID nl 读取](web-php-rce-putenv-fixed-filename-write-ldpreload-wget/) | verified | high | 2026-11-07 |
@@ -90,6 +106,7 @@ weight: 1
 | [PHP 函数名前置反斜杠绕过 in_array 精确黑名单，call_user_func 任意命令执行](web-php-rce-call-user-func-leading-backslash-blacklist-bypass/) | verified | high | 2026-11-08 |
 | [PHP 变量函数名异或编码：随机 key 逐字符 XOR 生成「$a.$b.$c」拼接式，静态无完整敏感词](web-php-rce-webshell-xor-encoded-function-name/) | verified | high | 2026-11-08 |
 | [PHP 可变类与函数调用：echo new $v1($v2()) 模式执行任意函数](web-php-rce-variable-class-function-call-reflection/) | verified | medium | 2026-11-05 |
+| [PHP 后台 eval(file_get_contents($_POST['include']))：白名单只挡 index.php，POST 传远程 URL/本地文件/data 包装器即执行内容 RCE](web-php-rce-eval-file-get-contents-include-param/) | verified | high | 2026-11-12 |
 | [PHP 命令白名单 ^[./*t ]+$ 绕过：`. /t*/*` glob 展开执行 /tmp 上传临时文件并落地 webshell](web-php-rce-regex-whitelist-glob-tmp-upload-exec/) | verified | medium | 2026-11-07 |
 | [PHP 文档预览 LibreOffice 转换接口命令注入：file 参数直拼 shell_exec 写 WebShell](web-php-rce-document-preview-libreoffice-shell-exec-injection/) | verified | high | 2026-11-07 |
 | [PHP 无参 RCE：localeconv+scandir+next+chdir 逐级上跳并用 show_source 读文件](web-php-rce-no-param-localeconv-scandir-chdir/) | verified | high | 2026-11-05 |
@@ -100,8 +117,10 @@ weight: 1
 | [PHP 请求头触发式隐蔽后门：base64 解码 header 名/值校验 + base64 命令头 + chr 拼接 system 交给 call_user_func](web-php-rce-header-gated-backdoor-call-user-func/) | verified | medium | 2026-11-06 |
 | [PHP 迭代器 WebShell 免杀：拆分函数名与命令并在运行时重组](web-php-rce-iterator-webshell-split-reassemble/) | verified | high | 2026-11-05 |
 | [PHP-FPM FastCGI 注入 PHP_ADMIN_VALUE extension：加载恶意 .so 构造函数绕过 disable_functions](web-php-rce-fastcgi-php-admin-value-extension-so/) | verified | high | 2026-11-05 |
+| [PHPEMS 后台标签"模板模式"内容 getshell：blockcontent 序列化存入 x2_block，渲染时 stripSlashes+html_entity_decode 后拼进 eval](web-php-rce-phpems-block-tag-template-eval/) | verified | high | 2026-11-12 |
 | [PHPMailer 参数注入打 exim4 MTA：-be 批处理模式 + ${run}/${readsocket} 字符串扩展实现 RCE](web-php-rce-phpmailer-exim-be-expansion-command-exec/) | verified | high | 2026-11-08 |
 | [phpStudy Windows 版 php_xmlrpc.dll 后门：Accept-Charset 传 Base64 PHP 代码即执行](web-php-rce-phpstudy-xmlrpc-accept-charset-backdoor/) | verified | high | 2026-11-09 |
+| [PHPYUN 后台配置任意键值 + 首页生成路径可控：fwrite 写 PHP Webshell（绕过括号替换过滤）](web-php-rce-phpyun-backend-config-index-fwrite-webshell/) | verified | high | 2026-11-11 |
 | [ping 参数校验只锚定开头 + 12 字符长度上限：用换行符在 IP 后另起一条命令，5 个字符内完成注入](web-php-rce-ping-ip-regex-no-end-anchor-newline-short-command/) | verified | medium | 2026-11-08 |
 | [PopojiCMS 2.0.1 后台 Meta Social 设置无过滤写入 meta_social.txt，主题 index.php include 固定文件导致 RCE](web-php-rce-popojicms-metasocial-txt-include/) | verified | high | 2026-11-09 |
 | [preg_match 函数黑名单下用 chr() 拼接函数名经 PHP 变量函数调用 readfile 读文件](web-php-rce-chr-concat-variable-function-blacklist-bypass/) | verified | high | 2026-11-08 |
@@ -109,14 +128,19 @@ weight: 1
 | [runkit_function_add 动态函数体注入：用户可控 rule 被编译为 PHP 函数体执行](web-php-rce-runkit-function-add-rule-body/) | verified | high | 2026-11-06 |
 | [SeaCMS 12.9 后台 admin_ping.php 设置项未过滤拼接写入 data/admin/ping.php 导致代码执行](web-php-rce-seacms-admin-ping-post-write-php-code/) | verified | high | 2026-11-08 |
 | [SQLite 数据库当函数名载体：先 file_put_contents 落地 .db，再用 PDO queryString 切片取出 system](web-php-rce-webshell-sqlite-query-string-function-name/) | verified | medium | 2026-11-08 |
+| [SSI 注入：用户输入落入 mod_include 解析页面，用 <!--#EXEC cmd--> 执行命令并以大小写绕过小写过滤](web-php-rce-ssi-injection-user-input-exec/) | verified | high | 2026-11-12 |
+| [Textpattern 后台 Files 功能不校验扩展名：admin 会话上传 PHP 落 files/ 目录直接执行 getshell](web-php-rce-textpattern-files-unrestricted-php-upload-webshell/) | verified | high | 2026-11-13 |
+| [Token 协商 + X-CSRF-TOKEN 异或的自定义会话型 PHP WebShell](web-php-rce-webshell-session-token-xor-csrf-header/) | verified | high | 2026-11-12 |
 | [watchbird 后台 change() 任意键值写入：config_path 经 $$key 覆盖后任意文件写入 Web 根 RCE](web-php-rce-watchbird-config-change-config-path-overwrite-webshell/) | verified | high | 2026-11-08 |
 | [WBCE CMS 后台语言包安装把上传文件直接 require：file_get_contents 校验不严导致任意 PHP 解析执行（CVE-2022-25099）](web-php-rce-wbce-install-language-file-getcontents-rce/) | verified | high | 2026-11-08 |
 | [WeGIA 备份恢复文件名未转义拼接 shell_exec 导致命令注入（CVE-2026-28409）](web-php-rce-wegia-backup-filename-command-injection/) | verified | medium | 2026-11-05 |
 | [WonderCMS installModule 主题 zip 远程安装：登录页 XSS 借管理员会话拉取恶意主题落 WebShell](web-php-rce-wondercms-installmodule-theme-zip-csrf-xss/) | verified | high | 2026-11-08 |
+| [WordPress Bricks Builder 未授权 RCE（CVE-2024-25600）：REST render_element 只校验前端可见 nonce，queryEditor 直达 eval](web-php-rce-bricks-builder-cve-2024-25600-rest-nonce-eval/) | verified | high | 2026-11-11 |
 | [WordPress GutenKit 插件 REST 安装端点缺 permission_callback：未授权 download_url 拉取远程 zip 解压到 wp-content/plugins 落地 WebShell（CVE-2024-9234）](web-php-rce-wordpress-gutenkit-cve-2024-9234-plugin-install-upload-rce/) | verified | high | 2026-11-08 |
 | [WordPress 后台弱口令 + 主题文件编辑器写入 PHP：管理员会话直接改 comments.php getshell](web-php-wordpress-admin-weak-password-theme-editor-rce/) | verified | high | 2026-11-07 |
 | [Yii 菜单 href 表达式求值 + disable_functions 绕过：分段写 PHP 入口并用 pcntl_exec 读 flag](web-php-rce-yii-menu-href-expression-eval-disable-functions-bypass/) | verified | high | 2026-11-06 |
 | [Yxcms 演示公告泄露默认后台口令 admin/123456 + 前台模板文件管理新建 x.php：模板目录在 Web 根内直接解析 getshell](web-php-rce-yxcms-default-admin-template-file-webshell/) | verified | high | 2026-11-10 |
+| [ZhiCms 后台基础设置写入 siteconfig.php：POST 值直拼 PHP 数组，闭合引号注入 system()/eval 致 RCE](web-php-rce-zhicms-manage-set-siteconfig-write/) | verified | high | 2026-11-11 |
 | [ZzzCMS 后台模板编辑写入 {if:assert()} 标签 getshell](web-php-rce-zzzcms-admin-template-assert-webshell/) | verified | medium | 2026-11-08 |
 | [上传文件名注入 mv -S 选项，利用备份后缀把脚本文件改名为 .php](web-php-rce-mv-option-injection-suffix-webshell/) | verified | high | 2026-11-05 |
 | [信呼 OA copymode 任意文件写入：name 拼接 PHP 代码并访问 Model.php 执行](web-php-rce-xinhu-oa-copymode-file-write/) | verified | high | 2026-11-05 |
@@ -125,9 +149,12 @@ weight: 1
 | [内网运维面板 log_file 参数拼进 shell 命令：先 `;id;#` 打通命令执行，再写 sudoers 换 root](web-php-rce-monitor-log-file-param-shell-write-sudoers-root/) | verified | high | 2026-11-08 |
 | [写入点被前置「<?php exit();?>」封死时，用 php://filter/write=convert.base64-decode 剥离前缀并对齐填充，让后面的 base64 载荷照常落成 PHP 代码](web-php-rce-put-contents-exit-prefix-base64-decode-webshell/) | verified | low | 2026-11-09 |
 | [冷门回调函数作 sink：array_uintersect_uassoc 的比较器参数直接执行 assert，文件里没有 eval/assert/array_map 关键字](web-php-rce-webshell-obscure-callback-uintersect/) | verified | medium | 2026-11-08 |
+| [参数变换型 PHP 免杀马：base64(num) 往返 + substr 掐头去尾 + pack('H*') 解码后 eval](web-php-rce-webshell-pack-hex-substr-param-encode/) | verified | high | 2026-11-12 |
+| [双引号内变量进 sed 替换表达式：分号接 GNU sed e 命令执行 shell](web-php-rce-sed-replacement-expression-e-command-injection/) | verified | high | 2026-11-12 |
 | [命令执行接口以 X-Forwarded-For 做 IP 白名单：伪造头绕过限制后用 `;` 拼接命令读取任意文件](web-php-rce-xff-spoof-ip-allowlist-command-injection/) | verified | medium | 2026-11-09 |
 | [命令执行黑名单同时过滤函数名与空格：passthru 替代 + Tab/IFS + 通配符](web-php-rce-command-space-blacklist-tab-passthru/) | verified | high | 2026-11-05 |
 | [命令执行黑名单过滤 `/` 与 `>` 时用 `|tee` 落盘写马、用相对路径取 flag](web-php-rce-blacklist-no-slash-no-redirect-tee-write-webshell/) | verified | medium | 2026-11-09 |
+| [命令注入空格与斜杠过滤绕过：${IFS}/重定向/花括号/$'\x20' 替代空格，${HOME:0:1}/tr 重建斜杠](web-php-rce-command-injection-space-slash-filter-bypass/) | verified | high | 2026-11-11 |
 | [命令注入黑名单 + 字符集白名单绕过：base64 -d | tee 写 WebShell](web-php-rce-command-injection-blacklist-base64-tee-webshell/) | verified | high | 2026-11-05 |
 | [命令长度<6 且禁用 nl：用 `od /*` 八进制转储根目录文件还原 flag](web-php-rce-short-command-od-wildcard-octal-root-read/) | verified | medium | 2026-11-08 |
 | [哥斯拉 PHP payload 命令执行降级链：system→passthru→shell_exec→exec→popen→proc_open→COM→pcntl_exec→Shellshock](web-php-rce-godzilla-payload-command-exec-fallback-chain/) | verified | medium | 2026-11-09 |
@@ -144,7 +171,9 @@ weight: 1
 | [注释与 NUL 序列灌入 + 伪语法错误：用垃圾代码撑大文件让静态解析器与 AI 判读提前放弃](web-php-rce-webshell-junk-comment-nul-padding/) | verified | medium | 2026-11-08 |
 | [海洋CMS search.php 模板代码执行与 WAF 函数黑名单绕过](web-php-rce-seacms-search-template-code-execution/) | verified | high | 2026-11-04 |
 | [用 ReflectionClass::getDocComment 把危险代码藏在类注释里：substr 切片后交 eval 执行](web-php-rce-webshell-doccomment-string-carrier/) | verified | medium | 2026-11-08 |
+| [留言墙 file 参数决定写入文件：改 file=graffiti.php 把一句话木马写进可解析 PHP getshell](web-php-rce-message-board-file-param-arbitrary-write-webshell/) | verified | high | 2026-11-13 |
 | [禅道 12.4.2 CNVD-2020-121325：client/download 的 link 参数 base64 任意 URL 下载，写入 data/client/ 落地 PHP webshell](web-php-rce-zentao-cnvd-2020-121325-link-download-webshell/) | verified | high | 2026-11-07 |
+| [禅道 16.x–17.4 repo 更新 SCM=Subversion：client 参数经 setEngine/getSVNVersion 拼入 exec 命令注入](web-php-rce-zentao-repo-svn-client-command-injection/) | verified | medium | 2026-11-13 |
 | [禅道 misc/captcha 任意 session 键 + repo 创建/编辑：SCM=Subversion 时 client 参数进 exec，仅凭前台 zentaosid 即可命令执行](web-php-rce-zentao-captcha-session-repo-checkconnection-exec/) | verified | high | 2026-11-09 |
 | [算法生成数组当字节载体：把函数名切成 ASCII 值塞进噪声数组，用状态机派生偏移量切片还原](web-php-rce-webshell-algorithmic-array-byte-carrier/) | verified | medium | 2026-11-08 |
 | [自实现 escapeshellarg_jp 只补反斜杠不闭合引号：password 传 `';ls;#` 逃出单引号注释掉后续命令](web-php-rce-escapeshellarg-jp-custom-escape-quote-semicolon/) | verified | high | 2026-11-08 |
@@ -152,6 +181,8 @@ weight: 1
 | [解谜状态机门控 WebShell：RCE 藏在「方块全等」判定之后，静态与沙箱只看到游戏逻辑](web-php-rce-webshell-puzzle-state-gate-av-bypass/) | verified | medium | 2026-11-08 |
 | [超长输入触发 PCRE 回溯上限：preg_match 返回 false 被当“未匹配”，绕过正则黑名单上传 WebShell](web-php-rce-pcre-backtrack-limit-false-filter-bypass/) | verified | high | 2026-11-09 |
 | [过滤逻辑写在同目录可写的 PHP 文件里：先命令执行读出 no.php 确认它是 WAF，再 rm 掉它使限制失效，随后通配符 cat 根目录取 flag](web-php-rce-deletable-waf-prepend-file-bypass/) | verified | medium | 2026-11-09 |
+| [通达OA v11.8 appbuilder portal/gateway/getdata 前台命令执行：免登录 gateway 路由 + comtype=1 组件 GetData 进入 toUtf8 的 iconv eval 单引号逃逸](web-php-rce-tongda-oa-appbuilder-getdata-portal-eval/) | verified | high | 2026-11-12 |
+| [通达OA v11.8 前台 api.ali.php 任意文件上传 + work.php 通配符路径穿越解析 JSON，iconv 宽字节逃逸单引号 eval 执行](web-php-rce-tongda-oa-api-ali-upload-work-php-json-eval-iconv/) | verified | high | 2026-11-12 |
 | [防病毒管控台 PageController 无鉴权 cmd 参数 exec 直接命令执行并回显](web-php-rce-esm-console-page-controller-cmd-exec/) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 

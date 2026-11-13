@@ -26,6 +26,8 @@ OGNL 注入与 Struts2 利用。
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
+| [OGNL expressionMaxLength 长度限制绕过：@ognl.Ognl@applyExpressionMaxLength 覆盖静态上限](web-java-expression-ognl-expression-maxlength-apply-bypass.md) | verified | high | 2026-11-11 |
+| [OGNL 出网加载远程 Spring XML：new ClassPathXmlApplicationContext 使目标拉取攻击者 XML 并实例化 bean](web-java-expression-ognl-classpathxmlapplicationcontext-remote-xml-rce.md) | verified | medium | 2026-11-11 |
 | [OGNL 高版本黑名单反射绕过：Class.forName + Method.invoke 调用 Runtime](web-java-expression-ognl-high-version-reflection-invoke-bypass.md) | verified | high | 2026-11-05 |
 | [OGNL 黑名单 JShell 绕过：@jdk.jshell.JShell@create().eval() 执行任意 Java](web-java-expression-ognl-jshell-eval-bypass.md) | verified | high | 2026-11-05 |
 | [泛微 E10 testExecute1 的 Arthas OGNL 执行：serverId+input 调 Runtime.exec（依赖 JDK 环境）](web-java-expression-ognl-weaver-e10-testexecute1-arthas-rce.md) | verified | medium | 2026-11-07 |

@@ -26,7 +26,10 @@
 <!-- AUTO-INDEX:START -->
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
-| （暂无卡片） | | | |
+| [Bitcoin Core CVE-2018-17144：CheckBlock 以 false 跳过重复输入检查，恶意区块重复花费同一 UTXO](blockchain-consensus-bitcoin-cve-2018-17144-checkblock-duplicate-input-skip.md) | verified | high | 2026-11-12 |
+| [DPoS 确定性洗牌 + DDoS 中间委托人：恶意节点连续出块制造 6 确认双花](blockchain-consensus-dpos-deterministic-shuffle-ddos-consecutive-fork-double-spend.md) | verified | high | 2026-11-12 |
+| [Filecoin 共识罚没条件取反：time-offset fault 误判正常出块并漏判真实故障](blockchain-consensus-filecoin-slashing-time-offset-condition-inversion.md) | verified | high | 2026-11-12 |
+| [公链节点 RPC setMinerCoinbase 未校验地址格式：非法 coinbase 被接受导致挖矿收益损失](blockchain-consensus-rpc-setminercoinbase-address-validation-missing.md) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

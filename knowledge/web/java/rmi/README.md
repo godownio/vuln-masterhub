@@ -28,7 +28,11 @@ RMI 注册表、DGC、动态类加载与利用。
 |---|---|---|---|
 | [JDK 8u141+ 绕过 RMI Registry checkAccess：自实现 lookup 传入 Remote 对象，把反序列化引到攻击者 JRMPListener](web-java-rmi-registry-lookup-checkaccess-jrmp-bypass.md) | verified | medium | 2026-11-08 |
 | [JDK21 JNDI 过滤器绕过：恶意 JRMP listener 返回 ExceptionalReturn 异常对象触发客户端 readObject](web-java-rmi-jrmp-exceptional-return-jndi-jdk21-bypass.md) | verified | high | 2026-11-08 |
+| [RMI codebase 动态类加载：客户端序列化流携带 java.rmi.server.codebase，服务端 useCodebaseOnly=false 时加载攻击者类并执行静态块](web-java-rmi-codebase-remote-class-loading.md) | verified | medium | 2026-11-12 |
 | [RMI Registry 的 bind/rebind 分支直接 readObject：用 ysoserial RMIRegistryExploit 打 1099 拿 RCE](web-java-rmi-registry-bind-rebind-deserialization.md) | draft | medium | 2026-11-08 |
+| [RMI 远程方法接收 Object 参数：客户端传入 CommonsCollections payload，服务端反序列化参数时执行命令](web-java-rmi-remote-method-object-param-deserialization.md) | verified | high | 2026-11-12 |
+| [ysoserial payload JRMPListener：反序列化目标 reexport 自开 JRMP 端口，再用 JRMPClient 反打触发 DGC 反序列化](web-java-rmi-yso-jrmp-listener-payload-reexport-port.md) | verified | high | 2026-11-11 |
+| [未授权 JMX Connector Server + MLet 远程 MBean 加载：createMBean MLet + getMBeansFromURL 拉取攻击者 mlet/JAR 实现 RCE](web-java-rmi-jmx-mlet-remote-mbean-load-rce.md) | verified | high | 2026-11-13 |
 | [用 JRMPListener 冒充 1099 注册中心：扫描器一发 bind/list 就被「反向打回」，恶意 JRMP 端返回 gadget 反制](web-java-rmi-jrmp-listener-fake-registry-scanner-counterattack.md) | verified | medium | 2026-11-08 |
 <!-- AUTO-INDEX:END -->
 

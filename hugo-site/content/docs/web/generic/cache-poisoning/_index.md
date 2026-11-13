@@ -34,6 +34,8 @@ weight: 1
 | [Chromium 缓存键 cn_ 绕过实现顶层文档 XSS](web-generic-cache-poisoning-chromium-cn-cache-key-xss/) | verified | high | 2026-11-04 |
 | [Host 头缓存投毒：重复 Host 让缓存响应引用攻击者脚本](web-generic-cache-poisoning-host-header-ambiguous-request/) | verified | high | 2026-11-05 |
 | [Web 缓存欺骗：CDN 静态判定与源站归一化错位](web-generic-cache-poisoning-web-cache-deception-url-normalization-mismatch/) | verified | high | 2026-11-04 |
+| [请求走私缓存投毒：把带攻击者 Host 的 301 藏进后端请求，前端按下一请求 URL 缓存重定向，静态 JS 请求被导向利用服务器](web-generic-cache-poisoning-smuggling-redirect-static-asset/) | verified | high | 2026-11-12 |
+| [请求走私缓存欺骗：走私 GET /my-account 让后端以受害会话渲染私有页，前端却按受害者请求的静态 URL 缓存，攻击者再从缓存取 API Key](web-generic-cache-poisoning-smuggling-private-response-deception/) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

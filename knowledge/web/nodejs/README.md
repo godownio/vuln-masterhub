@@ -35,6 +35,8 @@
 | [Dokploy v0.26.6 Compose appName 存储型命令注入：TAB 绕过 cleanAppName，stop 时 docker stack rm 执行](web-nodejs-dokploy-compose-appname-stored-command-injection.md) | verified | high | 2026-11-05 |
 | [Dokploy v0.26.6 destination.testConnection：accessKey 闭合双引号注入 rclone 命令执行](web-nodejs-dokploy-destination-testconnection-rclone-command-injection.md) | verified | high | 2026-11-05 |
 | [Express View 按扩展名 require 任意模块：rename 穿越写 node_modules/<ext>/index.js 触发 require 执行（CISCN ezjs）](web-nodejs-express-view-ext-require-node-modules-rce.md) | verified | high | 2026-11-08 |
+| [Express 对象参数 toString 相同：a[x]=1&b[x]=2 让 a!==b 且 md5(a+flag)===md5(b+flag) 同时成立](web-nodejs-express-object-tostring-md5-equal-bypass.md) | verified | high | 2026-11-13 |
+| [fs.readFileSync 接受 file: URL 对象：参数注入 file[href]/file[origin]/file[protocol]/file[pathname] 读取任意文件](web-nodejs-fs-readfilesync-url-object-arbitrary-file-read.md) | verified | high | 2026-11-13 |
 | [gray-matter 的 JS front-matter 引擎把用户可控字符串当 JavaScript 求值导致 RCE](web-nodejs-gray-matter-js-frontmatter-rce.md) | verified | high | 2026-11-08 |
 | [ioredis zadd 数组参数扁平化注入：一个 username 写入多个排行榜成员与任意分数](web-nodejs-ioredis-zadd-array-argument-injection.md) | verified | high | 2026-11-07 |
 | [JS 正则关键字黑名单绕过：拼接/模板字符串/十六进制/Unicode/base64/fromCharCode 运行时构造被禁字符串](web-nodejs-js-keyword-regex-string-construction-bypass.md) | verified | high | 2026-11-09 |
@@ -76,6 +78,7 @@
 | [PostCSS sourceMappingURL 注释任意文件读取与异常前缀泄露（CVE-2026-45623）](web-nodejs-postcss-sourcemappingurl-arbitrary-file-read.md) | verified | high | 2026-11-05 |
 | [React Native CLI Metro /open-url 端点命令注入 RCE（CVE-2025-11953）](web-nodejs-react-native-metro-open-url-command-injection.md) | verified | medium | 2026-11-05 |
 | [React Router @react-router/node createFileSessionStorage 未配置 secrets：会话 id 篡改经 getFile 路径穿越任意文件写入（CVE-2025-61686）](web-nodejs-react-router-file-session-id-traversal-write.md) | verified | high | 2026-11-05 |
+| [Rocket.Chat 内网 MongoDB 未授权改管理员 + Incoming WebHook 集成脚本 RCE：改 users 集合 roles/password 接管后台，再用 Node 脚本反弹 shell](web-nodejs-rocketchat-mongodb-unauth-admin-webhook-rce.md) | verified | high | 2026-11-12 |
 | [Sequelize findAll(req.query) 查询选项注入：include/on 越权读取被踢成员的 secret](web-nodejs-sequelize-findall-query-options-include-on-injection.md) | verified | high | 2026-11-07 |
 | [Strapi 密码重置 NoSQL 注入：code 传 {"$gt":0} 重置管理员密码并获取 JWT](web-nodejs-strapi-password-reset-nosql-injection.md) | verified | high | 2026-11-05 |
 | [Strapi 管理员插件安装命令注入：execa 拼接 plugin 参数导致 RCE（CVE-2019-19609）](web-nodejs-strapi-plugin-install-command-injection.md) | verified | high | 2026-11-05 |
@@ -83,6 +86,7 @@
 | [vm2 沙箱内 Buffer slab 未初始化内存泄漏：布尔 oracle 逐位提取 JWT secret](web-nodejs-vm2-buffer-slab-jwt-secret-leak.md) | verified | high | 2026-11-06 |
 | [YApi <=1.19.2 接口 mock 脚本 RCE：注册建项目写脚本，访问接口经 vm 逃逸执行命令](web-nodejs-yapi-mock-script-vm-rce.md) | verified | high | 2026-11-09 |
 | [YApi v1.10.2 未授权 RCE：匿名注册 + project.copy 脚本注入 + 原生 vm 沙箱逃逸](web-nodejs-yapi-project-copy-script-vm-unauth-rce.md) | verified | high | 2026-11-05 |
+| [全局正则 lastIndex 状态残留 + TypeError 阻断重建绕过封禁（in 运算符误用）](web-nodejs-regexp-global-lastindex-state-auth-bypass.md) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

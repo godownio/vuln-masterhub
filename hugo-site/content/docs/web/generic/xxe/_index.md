@@ -46,10 +46,12 @@ XML 外部实体、盲 XXE、OOB 与绕过。
 | [MetaCRM /services/ws CXF SOAP 服务 commonCheckServ 嵌套 XML XXE（盲外带）](web-generic-xxe-crm-cxf-soap-dom4j-nested-xml/) | verified | high | 2026-11-07 |
 | [Nacos-spring-context DefaultXmlConfigParse 未加固 DocumentBuilderFactory 导致配置 XML XXE](web-java-xxe-nacos-spring-context-config-parse/) | verified | medium | 2026-11-05 |
 | [OOXML/容器格式上传 XXE：docx/xlsx/pptx/odt/zip/PDF 内嵌 XML 部件被服务端解析时触发外部实体](web-generic-xxe-ooxml-container-upload/) | verified | medium | 2026-11-08 |
+| [PHP 原生类 SimpleXMLElement XXE：dataIsURL=true 时构造参数被当 URL 加载攻击者 DTD 并 OOB 外带](web-php-native-class-simplexml-xxe-datalisurl/) | verified | high | 2026-11-11 |
 | [SOAP 参数内嵌 XML 二次解析：JDOM SAXBuilder 未禁 DTD 导致 OOB XXE](web-generic-xxe-soap-parameter-nested-xml-saxbuilder-oob/) | draft | medium | 2026-11-08 |
 | [sobey-mchEditor AITaskBack 未授权 XXE：请求体直接交给 DocumentBuilderFactory 解析](web-generic-xxe-sobey-mcheditor-aitaskback-documentbuilderfactory/) | verified | high | 2026-11-07 |
 | [SVG 图片上传 XXE：image/svg+xml 解析外部实体读取任意文件](web-generic-xxe-svg-upload-inband-file-read/) | verified | high | 2026-11-05 |
 | [Ucum-java 的 DTD 未禁用导致 XXE：UcumEssenceService 构造参数与 XmlUtils.parseDOM 直接把外部 XML 流交给未配置的 DocumentBuilderFactory，可带内回显或打内网 HTTP](web-java-component-ucum-xmlutils-documentbuilderfactory-xxe/) | verified | high | 2026-11-08 |
+| [XInclude 注入读取本地文件：控制不了 DOCTYPE 时在数据值内引入 xi:include 命名空间](web-generic-xxe-xinclude-file-read-hidden-surface/) | verified | high | 2026-11-12 |
 | [XML 上传点 XXE 过滤绕过：UTF-16BE 编码隐藏 DOCTYPE 并读取 SSH 私钥](web-generic-xxe-utf16be-encoding-filter-bypass/) | verified | high | 2026-11-05 |
 | [XXE + expect:// 包装器：PHP expect 扩展把外部实体解析升级为命令执行](web-generic-xxe-expect-wrapper-command-execution/) | verified | medium | 2026-11-09 |
 | [XXE + php://filter 双 Base64 链：SSRF 内网 LFI 读取源码与 flag](web-generic-xxe-php-filter-ssrf-internal-lfi-chain/) | verified | high | 2026-11-06 |
@@ -59,6 +61,7 @@ XML 外部实体、盲 XXE、OOB 与绕过。
 | [东胜物流 UpdateCustomMainfast 未加固 XmlDocument.LoadXml 导致 XXE 文件读取](web-generic-xxe-dongsheng-logistics-custommainfast-loadxml/) | verified | low | 2026-11-06 |
 | [反射 XML 注释注入 XXE 驱动内网服务 SSRF 并二次读取文件](web-generic-xxe-reflected-xml-ssrf-internal-service/) | verified | high | 2026-11-05 |
 | [无外网盲 XXE：重定义目标本地 DTD 参数实体并借报错回显读取文件](web-generic-xxe-local-dtd-error-based/) | verified | medium | 2026-11-09 |
+| [普元 EOS .biz.ajax 的 __ajaxParam 参数 XmlUtil 解析 XXE](web-generic-xxe-eos-bizajax-ajaxparam-xmlparse/) | verified | high | 2026-11-12 |
 | [未授权 SAML ACS 在签名校验前解析 XML 触发 XXE OOB](web-generic-xxe-saml-acs-parse-before-signature/) | verified | high | 2026-11-05 |
 | [盲 XXE 的 OOB 外带](oob-exfil/) | draft | high | 2026-11-04 |
 <!-- AUTO-INDEX:END -->

@@ -26,11 +26,12 @@ severity: high
 confidence: medium
 status: verified
 created: '2026-11-10'
-updated: '2026-11-10'
+updated: '2026-11-12'
 verification:
   verified_by: verifier-V454
   verified_at: '2026-11-10T02:21:02+08:00'
   notes: 已对照原文核对：图01 AbstractProcessor#handleRequest 的 findTupleByGroup/isLeader/execute、图03 multiRaftGroup（key=naming_instance_metadata，state=STATE_LEADER）、图04 applyOperation 的 Task 与 requestTypeFieldBytes{56,0}（ReadRequest 置1否则置2）/node.apply、图06 NacosStateMachine onApply 的 WriteRequest→processor.onApply 分派、图07/08 InstanceMetadataProcessor#onApply 首行 serializer.deserialize(request.getData().toByteArray(), processType) 及 FSMCallerImpl 调用栈，均支撑卡内链路；state_error、三节点默认三次尝试、替换全新 data 目录重启恢复与原文一致。原文未给出外部 raft 请求客户端与鉴权细节，卡内 confidence:medium 与‘无完整网络 PoC’标注合理。与既有 XXL-Job/Dubbo/HessianServlet 等入口卡产品不同，dedup 建卡前判 new。未在本机搭 Nacos 集群复跑。原文 2.2.2 仅为调试环境，非受影响版本区间，affected_versions 已 --clear。
+affected_versions: 1.4.0 <= Nacos < 1.4.6; 2.0.0 <= Nacos < 2.2.3
 ---
 
 ## 一句话结论

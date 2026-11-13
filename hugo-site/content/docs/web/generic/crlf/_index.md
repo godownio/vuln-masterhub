@@ -33,6 +33,7 @@ weight: 1
 |---|---|---|---|
 | [CFITSIO EFS URL Path 换行注入 HTTP 请求头](web-generic-crlf-cfitsio-efs-http-request-header-injection/) | verified | high | 2026-11-05 |
 | [Nginx error_page 302 Location 拼接 $uri 未过滤：CRLF 注入 Set-Cookie 覆盖会话](web-generic-crlf-nginx-uri-location-set-cookie/) | verified | high | 2026-11-05 |
+| [php-memcached <2.2.0 键名 CRLF 注入：用户可控 key 拼进 Memcached 文本协议，NUL 截断 + 换行注入 set 篡改缓存](web-generic-crlf-php-memcached-key-injection/) | verified | high | 2026-11-11 |
 | [反馈接口邮件 Subject 头 CRLF 注入伪造 From: admin，配合发件人过滤与域名白名单 SSRF、SQLi 回显 SSTI 打通 RCE](web-generic-crlf-smtp-header-injection-forged-from/) | draft | high | 2026-11-08 |
 | [应用把用户输入拼进 RESP 命令写 Redis，WAF 变长替换（admin→hacker）打乱 $len 长度字段：CRLF 注入整条 SET 改写 role 为 admin](web-generic-crlf-redis-resp-length-shift-waf-bypass-role-escalation/) | verified | high | 2026-11-08 |
 <!-- AUTO-INDEX:END -->

@@ -27,6 +27,7 @@ Hook、插桩与自动化。
 | 卡片 | 状态 | 置信度 | 更新时间 |
 |---|---|---|---|
 | [Frida Arm64Writer 动态 NOP 掉 B.NE：绕过 native 分支暴露隐藏逻辑](tools-frida-arm64writer-nop-conditional-branch.md) | verified | high | 2026-11-06 |
+| [Frida hook Resources.getString(int) 提取动态资源字符串：strings.xml 里找不到的 R.string.key 运行时直接打明文](tools-frida-hook-resources-getstring-dynamic-resource.md) | verified | high | 2026-11-11 |
 | [Frida hook 动态加载 dex：enumerateClassLoaders 找到 DexClassLoader 并切换 classFactory.loader 后再 hook 其中类](tools-frida-enumerate-classloaders-dexclassloader-hook.md) | verified | high | 2026-11-09 |
 | [Frida Java 层六类校验驱动：改参 Hook、静态/实例方法主动调用、静态/实例字段改写与 Java.choose 枚举](tools-frida-java-hook-static-instance-field-choose.md) | verified | high | 2026-11-07 |
 | [Frida Native 层 Hook：导出/未导出函数定位、NativeFunction 主动调用、retval 修改与构造函数 $init](tools-frida-native-hook-export-unexport-retval-constructor.md) | verified | high | 2026-11-06 |
@@ -36,6 +37,7 @@ Hook、插桩与自动化。
 | [Frida 访问与成员方法同名的字段要加下划线前缀：用 instance._name.value 赋值而不是 instance.name.value](tools-frida-field-method-same-name-underscore-prefix.md) | verified | high | 2026-11-09 |
 | [Hook libart.so RegisterNatives 定位动态加载 so 名称与 native 函数偏移（绕过 ASLR 供 IDA 定位）](tools-frida-art-registernatives-dynamic-so-offset-locate.md) | verified | high | 2026-11-08 |
 | [objection watch class_method 抓取 native 方法返回值：一条命令拿到 Encrypt() 明文](tools-frida-objection-watch-class-method-dump-return.md) | verified | high | 2026-11-08 |
+| [加固 App 的 Frida hook：hook Application.attach(Context) 在壳完成 attachBaseContext 后取 ClassLoader，切换 classFactory.loader 再 hook 目标类](tools-frida-application-attach-classloader-hardened-app-hook.md) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

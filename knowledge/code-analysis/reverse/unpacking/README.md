@@ -39,6 +39,7 @@
 | [OllyDbg RUN 跟踪停止条件 + ImportREC 插件/Tracer 分级修复 IAT（复杂壳/IAT 重定向）](code-analysis-reverse-unpacking-ollydbg-run-trace-condition-importrec-tracer.md) | verified | high | 2026-11-08 |
 | [OllyDbg 二次断点法/内存镜像法定位 OEP：先断 .rsrc 再断 .text/.code，命中后单步收尾](code-analysis-reverse-unpacking-two-stage-section-breakpoint-oep.md) | verified | high | 2026-11-08 |
 | [PE 加载器：LCG 派生 ChaCha20 key/nonce 解密二阶段 PE](code-analysis-reverse-unpacking-pe-loader-lcg-chacha20.md) | verified | high | 2026-11-06 |
+| [pyc 字节码去花：删除 co_code 中的 JUMP/垃圾指令并修正 co_code 长度，恢复反编译与运行](code-analysis-reverse-unpacking-pyc-bytecode-junk-remove-co-code-length.md) | verified | high | 2026-11-13 |
 | [PyInstaller --key 加密 PYZ：pyimod00_crypto_key 取密钥 + 按版本分流 PyCrypto-CFB/tinyaes-CTR 解密 pyc.encrypted](code-analysis-reverse-unpacking-pyinstaller-key-encrypted-pyz-pyc-decrypt.md) | verified | high | 2026-11-07 |
 | [PyInstaller EXE 二次打包：spec TOC 注入与 CArchive 手工重写](code-analysis-reverse-unpacking-pyinstaller-repack-spec-carchive-toc.md) | verified | high | 2026-11-05 |
 | [PyInstaller EXE 识别与解包：CArchive/PYZ/pyc 提取还原源码](code-analysis-reverse-unpacking-pyinstaller-carchive-pyz-extract.md) | verified | high | 2026-11-05 |

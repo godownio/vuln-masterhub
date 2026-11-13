@@ -44,11 +44,15 @@ Spring Framework/Spring Boot 漏洞与利用。
 | [Spring Boot Actuator restart + logging.config 指向远程 .groovy：logback ContextInitializer 加载 Groovy 配置执行命令](web-java-framework-spring-actuator-restart-logging-config-groovy-rce.md) | verified | medium | 2026-11-08 |
 | [Spring Boot Actuator restart + spring.datasource.data 加载远程 SQL：H2 CREATE ALIAS 编译 Java 执行命令](web-java-framework-spring-actuator-restart-spring-datasource-data-h2-sql-rce.md) | verified | medium | 2026-11-08 |
 | [Spring Boot Actuator 未授权 mappings + env 作攻击面侦察：从隐藏路由拿到 sink，从 jar 清单选型本地 JNDI 工厂 gadget](web-java-framework-spring-actuator-mappings-env-classpath-gadget-recon.md) | verified | high | 2026-11-07 |
+| [Spring Boot ≤1.5.22 / Spring MVC ≤4.3.25 useSuffixPatternMatch 默认开启：/admin. 与 /admin.随机串 绕过 Spring Security 授权](web-java-framework-spring-boot-1-5-suffix-pattern-match-auth-bypass.md) | verified | high | 2026-11-12 |
 | [Spring MVC + FreeMarker 沙箱逃逸：springMacroRequestContext 重置 TemplateClassResolver](web-java-framework-spring-freemarker-macro-context-resolver-reset.md) | verified | high | 2026-11-05 |
 | [Spring MVC Interceptor 内存马：反射注入 adaptedInterceptors](web-java-framework-spring-mvc-interceptor-memshell.md) | verified | high | 2026-11-05 |
 | [Spring MVC 运行时注册 Controller 内存马（SpEL defineClass 投递）](web-java-framework-spring-mvc-dynamic-controller-memshell.md) | verified | medium | 2026-11-05 |
 | [Spring remember-me 无签名 AES-CBC Cookie 伪造 + welcome 接口 SpEL 求值读文件](web-java-framework-spring-rememberme-aes-cookie-spel-injection.md) | verified | high | 2026-11-05 |
 | [Spring RequestContextHolder 命令载荷：取当前 request/response，读 cmd 头 Runtime.exec 回显](web-java-framework-spring-requestcontextholder-cmd-header-echo.md) | verified | medium | 2026-11-08 |
+| [Spring Security antMatchers("/admin/*") 只匹配单层路径：深层 /admin/xxx/yyy 落入 anyRequest().permitAll() 未授权访问](web-java-framework-spring-security-antmatcher-single-star-path-bypass.md) | verified | medium | 2026-11-11 |
+| [Spring Security regexMatchers 正则授权遇 %0d 换行绕过：matcher 不匹配而 MVC 仍路由到 /admin/*（CVE-2022-22978）](web-java-framework-spring-security-regexmatchers-crlf-path-bypass.md) | verified | high | 2026-11-11 |
+| [Spring Security regexMatchers 正则未覆盖查询串与末尾斜杠：/admin? 与 /admin/ 绕过授权](web-java-framework-spring-security-regexmatchers-query-trailing-slash-bypass.md) | verified | high | 2026-11-12 |
 | [Spring uriDecode 高位截断“幽灵比特”路径穿越](web-java-framework-spring-ghost-bits-path-traversal.md) | verified | high | 2026-11-04 |
 | [Spring WebFlux 内存马：替换 FilteringWebHandler.chain 注入恶意 WebFilter](web-java-framework-spring-webflux-filteringwebhandler-memshell.md) | verified | high | 2026-11-05 |
 | [Spring WebFlux/Netty 无 Servlet 回显：NettyWebServer→HttpServerConfig.channelGroup→channel.attributes→HttpServerOperations 取 request/response，命令输出写 result 响应头](web-java-framework-spring-webflux-netty-httpserveroperations-header-echo.md) | verified | high | 2026-11-09 |

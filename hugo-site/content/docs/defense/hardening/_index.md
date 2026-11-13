@@ -37,6 +37,8 @@ weight: 1
 | [IFUNC 重定向的分层防御：AT_SECURE、静态链接、符号隐藏与审计](defense-hardening-ifunc-resolver-injection/) | verified | high | 2026-11-05 |
 | [JAR 重打包后的签名校验边界与发布前验签](defense-hardening-jar-signature-repackage-verification/) | verified | high | 2026-11-04 |
 | [Java RASP 通防的 sink hook 布局与盲区：FileInputStream/JNDI/ProcessImpl/ObjectInputStream/SpEL/MySQL 六类 hook 及 native 绕过](defense-hardening-java-rasp-sink-hookpoints-limits/) | verified | high | 2026-11-07 |
+| [MiniFilter 拦截 DLL/EXE 镜像加载：IRP_MJ_ACQUIRE_FOR_SECTION_SYNCHRONIZATION 预回调按 PAGE_EXECUTE + PID/路径拒绝，FltReadFile 做 PE 校验](defense-hardening-windows-minifilter-acquire-section-block-image-load/) | verified | medium | 2026-11-12 |
+| [MiniFilter 文件/目录保护驱动：IRP_MJ_CREATE + IRP_MJ_SET_INFORMATION 预回调按 PID/路径/属性拒绝访问与删改](defense-hardening-windows-minifilter-file-directory-protection/) | verified | medium | 2026-11-12 |
 | [Windows 内核进程保护驱动：ObRegisterCallbacks 剥离句柄危险权限 + 进程创建回调自动保护子进程](defense-hardening-windows-kernel-process-protection-ob-callback/) | verified | medium | 2026-11-07 |
 | [用 ASM 在 ClassFileTransformer 里插入 hook 调用：visitCode + 局部变量表下标规则定位表达式/命令参数](defense-hardening-rasp-asm-visitcode-hook-localvar-index/) | verified | high | 2026-11-08 |
 | [钓鱼附件视觉欺骗防御：扩展名显示、bidi/零宽净化、LNK 深度解析与渲染隔离](defense-hardening-phishing-filename-visual-spoof/) | verified | medium | 2026-11-07 |

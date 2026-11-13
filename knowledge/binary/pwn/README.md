@@ -36,6 +36,7 @@
 | [ARM64 PAC 函数指针签名预言机：可写 BUILTINS + help 的 paciza 重签任意指针](binary-pwn-arm64-pac-function-pointer-signing-oracle.md) | verified | medium | 2026-11-06 |
 | [AWDP UAF 二进制补丁：free 后清零全局指针槽，压缩代码区注入汇编修复](binary-pwn-awdp-uaf-patch-clear-pointer-slot.md) | verified | high | 2026-11-06 |
 | [ELF COPY 重定位把共享库安全状态复制进主程序 .bss：越界写可翻转授权判定](binary-pwn-elf-copy-relocation-writable-security-state.md) | verified | high | 2026-11-05 |
+| [fini_array 劫持执行 BSS shellcode：XOR 字节任意写 + 整数溢出维持循环，程序退出时夺取控制流](binary-pwn-fini-array-hijack-bss-shellcode.md) | verified | high | 2026-11-12 |
 | [FortiOS SSL-VPN 堆溢出未认证 RCE（特大 Content-Length 触发）](fortios-sslvpn-heap-overflow-preauth-rce.md) | verified | high | 2026-11-08 |
 | [Full RELRO 绕过：改写 libc 自身 .got.plt 的 strlen 槽为 one_gadget](binary-pwn-libc-got-plt-hijack-full-relro-bypass.md) | verified | medium | 2026-11-06 |
 | [libevent 服务全局 conn_state 溢出：伪造 bufferevent/evbuffer/reference chain，借 cleanup 回调链 open/read/write](binary-pwn-libevent-evbuffer-global-overflow-fake-chain-orw.md) | verified | medium | 2026-11-06 |

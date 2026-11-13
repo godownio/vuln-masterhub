@@ -37,8 +37,10 @@ JDK 内置类形成的反序列化链与触发点。
 | [JDK 8u20 原生链：BeanContextSupport 吞异常 + TC_REFERENCE 复用 AnnotationInvocationHandler](web-java-deserialization-jdk-8u20-beancontextsupport-native-chain/) | verified | high | 2026-11-05 |
 | [JDK21 原生反序列化链：JFormattedTextField$FocusLostHandler.run 触发 commitEdit → DefaultFormatter.stringToValue 用任意 String 构造器实例化类，ClassPathXmlApplicationContext 加载远程 XML RCE](web-java-deser-jdk-defaultformatter-stringtovalue-swing-chain/) | verified | high | 2026-11-09 |
 | [JDK8 原生链：SwingLazyValue 调 Process._main 加载落地 XSLT 注入内存马](web-java-deser-jdk-xslt-process-main-chain/) | verified | medium | 2026-11-05 |
+| [resolveClass 改用 URLClassLoader.loadClass 后数组类无法加载：用 RMIConnector 二次反序列化把 byte[][] 载荷藏进内层流](web-java-deser-resolveclass-urlclassloader-array-class-secondary-bypass/) | verified | medium | 2026-11-11 |
 | [SignedObject 嵌套 ObjectInputStream 绕过反序列化过滤器](web-java-deserialization-jdk-signedobject-nested-stream-filter-bypass/) | verified | high | 2026-11-05 |
 | [URLDNS 利用 HashMap 与 URL.hashCode 探测反序列化入口](web-java-deser-jdk-urldns-dns-probe/) | verified | high | 2026-11-05 |
+| [原生 Java 反序列化 Overlong Encoding 生成：自定义 ObjectOutputStream 重写 writeClassDescriptor，用 2/3 字节编码类名绕过 WAF](web-java-deser-objectoutputstream-writeclassdescriptor-overlong/) | verified | high | 2026-11-11 |
 | [原生 Java 反序列化字节黑名单绕过：UTF-8 Overlong Encoding 隐藏 TemplatesImpl/EventListenerList 类名](web-java-deser-objectinputstream-overlong-utf8-blacklist-bypass/) | verified | high | 2026-11-05 |
 <!-- AUTO-INDEX:END -->
 

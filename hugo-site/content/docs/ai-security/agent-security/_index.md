@@ -57,6 +57,7 @@ weight: 1
 | [CAI find_file 参数注入：find -exec 绕过 shell 元字符依赖到 RCE（CVE-2026-25130）](ai-security-agent-security-cai-find-file-argument-injection-cve-2026-25130/) | verified | high | 2026-11-06 |
 | [CAI 框架 find_file 参数注入：HTML 注释提示注入 + shell=True 命令执行（CVE-2026-25130）](ai-security-agent-security-cai-find-file-argument-injection-rce-cve-2026-25130/) | verified | high | 2026-11-06 |
 | [Chainlit <2.9.4 /project/element 任意文件读取：custom element path 直达数据层后被 /project/file 取回](ai-security-agent-security-chainlit-custom-element-path-arbitrary-file-read/) | verified | high | 2026-11-06 |
+| [ChatGPT 代码解释器安全检测绕过：多轮上下文 + chr() 字符编码隐藏命令，eval 执行 cat /etc/issue 取发行版](ai-security-agent-security-chatgpt-code-interpreter-chr-eval-multiturn-bypass/) | verified | low | 2026-11-11 |
 | [Claude 拒绝魔术值与编码变体：把触发字符串嵌入样本/图片/文档以瘫痪 AI 辅助分析](ai-security-agent-security-magic-string-refusal-anti-ai-analysis/) | verified | high | 2026-11-06 |
 | [CLI 编程助手工具滥用：读取本地密钥并用 ping 占位符替换经 DNS 外带](ai-security-agent-security-cli-agent-file-read-ping-dns-exfil/) | verified | high | 2026-11-06 |
 | [Codex 沙箱 PATH 劫持：向 /tmp 白名单目录写入同名 helper bin，借沙箱外调用逃逸](ai-security-agent-security-codex-tmp-path-helper-binary-sandbox-escape/) | verified | medium | 2026-11-06 |
@@ -124,6 +125,7 @@ weight: 1
 | [恶意 Skill 行为后门：向 SOUL.md/AGENTS.md 写入持久指令，删除 Skill 后仍控制 Agent](ai-security-agent-security-skill-behavior-backdoor-soul-agents-persistence/) | verified | medium | 2026-11-06 |
 | [推理编排共享状态污染：ToT 检索缓存跨分支复用与 GoT 节点全局缓存跨租户污染](ai-security-agent-security-reasoning-shared-state-cross-branch-tenant-poisoning/) | verified | low | 2026-11-06 |
 | [推理轨迹泄漏：CoT/反思日志暴露内部验证规则与敏感上下文，被用于绕过验证或窃取数据](ai-security-agent-security-cot-trace-leakage-rule-and-sensitive-context/) | verified | low | 2026-11-06 |
+| [浏览工具白名单绕过：指示模型把搜索结果 URL 替换为任意地址，实现零样本页面指纹识别与任意抓取](ai-security-agent-security-browsing-search-result-url-replace-bypass/) | verified | medium | 2026-11-12 |
 | [移动 APP 六阶段 AI 分析流水线：SKILL 总控 + 阶段 Agent + 分阶段 MCP + Python 探针与结构化产物继承](ai-security-agent-security-mobile-reverse-six-stage-skill-pipeline/) | verified | high | 2026-11-06 |
 | [编码 Agent 间接提示注入：README 闭合 Prompt 分隔符并借 COMMAND 协议经 shell=True 执行命令](ai-security-agent-security-coding-agent-readme-delimiter-command-rce/) | verified | medium | 2026-11-06 |
 | [能力令牌范围包含判定错误导致委托越权：** 短路径、空段与路径归一化](ai-security-agent-security-capability-scope-subsumption-bypass/) | verified | medium | 2026-11-05 |

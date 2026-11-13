@@ -17,9 +17,13 @@ tags:
 cve: []
 severity: high
 confidence: medium
-status: draft
+status: verified
 created: '2026-11-10'
 updated: '2026-11-10'
+verification:
+  verified_by: verifier-V476
+  verified_at: '2026-11-10T17:54:48+08:00'
+  notes: 已对照原文13648核对：原文在文件名后加/.php的形态1.jpg/.php一致；卡明确PHP CGI/FastCGI pathinfo非IIS6专属，符合原理；与fannuo CMS案例卡按related互引不合并；未在真实目标复现。
 url: /docs/web/generic/file-upload/web-generic-file-upload-php-cgi-pathinfo-jpg-php-parsing/
 draft: false
 kb_aliases:

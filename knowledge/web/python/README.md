@@ -44,12 +44,14 @@ Python 反序列化、SSTI、框架与依赖漏洞。
 | [Python merge 污染模块全局 __file__：源码回显路由变任意文件读取](web-python-merge-globals-file-source-echo-arbitrary-read.md) | verified | medium | 2026-11-08 |
 | [Python 代码执行 WAF 绕过：关键字拆分与动态属性构造](web-python-waf-bypass-dynamic-attribute-keyword-split.md) | verified | high | 2026-11-05 |
 | [Python 代码执行 WAF 绕过：编码与 Unicode 归一化](web-python-waf-bypass-encoding-unicode-normalization.md) | verified | high | 2026-11-05 |
+| [Python 属性污染改 os.path.pardir：绕过 Jinja split_template_path 的 .. 检查读取模板目录外文件](web-python-attribute-pollution-ospath-pardir-jinja-traversal-bypass.md) | verified | medium | 2026-11-13 |
 | [Python 标识符 NFKC 归一化：方法名折叠覆盖与兼容字符压缩长度](web-python-unicode-normalization-identifier-collision-length.md) | verified | high | 2026-11-05 |
 | [Python 沙箱任意文件写逃逸：向 site-packages 写 .pth/sitecustomize.py，宿主解释器启动前自动执行](web-python-sandbox-site-packages-pth-sitecustomize-escape.md) | verified | high | 2026-11-06 |
 | [Python 类属性污染：__class__.__base__ 注入 execute_method 经 eval 执行](web-python-class-pollution-execute-method-eval.md) | verified | medium | 2026-11-06 |
 | [Python 运行时函数劫持：用 types.CodeType 替换 __code__](web-python-codetype-function-code-hijack.md) | verified | high | 2026-11-05 |
 | [Python 递归 merge 属性污染：config.filename 改为 /flag 后任意文件读取](web-python-recursive-merge-config-filename-arbitrary-read.md) | verified | high | 2026-11-06 |
 | [Python 递归合并类污染：__class__.__base__ 改类属性与 __init__.__globals__ 篡改全局（提权/SECRET_KEY/RCE）](web-python-recursive-merge-class-pollution-globals-rce.md) | verified | high | 2026-11-05 |
+| [Searchor 2.4.0 eval 注入：engine/query 拼进 eval 的 search() 调用，闭合单引号后加 __import__('os').system() 即可未授权 RCE（2.4.2 修复）](web-python-searchor-eval-engine-query-import-os-system-rce.md) | verified | high | 2026-11-13 |
 | [上传目录穿越写 .pth 到 site-packages：任意 Python 启动即执行](web-python-upload-traversal-pth-sitepackages-rce.md) | verified | high | 2026-11-06 |
 <!-- AUTO-INDEX:END -->
 

@@ -20,6 +20,13 @@ OUT = SITE / "content" / "docs"
 INDEX = SITE / "static" / "kb-index.json"
 
 
+def literal_shortcodes(body: str) -> str:
+    # Knowledge examples are literal data, never executable Hugo shortcodes.
+    return re.sub(r'\{\{(<|%)(.*?)(>|%)\}\}',
+                  lambda m: m[0] if m[2].lstrip().startswith('/*') else '{{'+m[1]+'/*'+m[2]+'*/'+m[3]+'}}',
+                  body, flags=re.S)
+
+
 def clean_generated() -> None:
     if OUT.exists():
         shutil.rmtree(OUT)
@@ -41,7 +48,7 @@ def export() -> tuple[int, int]:
         # Source README navigation points to README.md; Hugo section URLs use directories.
         body = re.sub(r"\(([^)#]+/)README\.md\)", r"(\1)", body)
         body = re.sub(r"\(([^)#]+)\.md\)", r"(\1/)", body)
-        (target / "_index.md").write_text(dump_frontmatter({"title": node["title"], "weight": 1}, body), encoding="utf-8")
+        (target / "_index.md").write_text(dump_frontmatter({"title": node["title"], "weight": 1}, literal_shortcodes(body)), encoding="utf-8")
         if "/" in path:
             nodes[path.rsplit("/", 1)[0]]["children"].append(node)
 
@@ -60,7 +67,7 @@ def export() -> tuple[int, int]:
         exported = {**meta, "title": title, "url": card_url, "draft": False}
         # Hugo reserves `aliases` for redirect URLs; KB aliases are search terms.
         exported["kb_aliases"] = exported.pop("aliases", [])
-        (OUT / path / source.name).write_text(dump_frontmatter(exported, body), encoding="utf-8")
+        (OUT / path / source.name).write_text(dump_frontmatter(exported, literal_shortcodes(body)), encoding="utf-8")
         parts = path.split("/")
         for i in range(1, len(parts) + 1):
             nodes["/".join(parts[:i])]["count"] += 1

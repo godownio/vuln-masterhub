@@ -33,6 +33,8 @@ VMProtect/Themida 等 VM 保护的分析与还原。
 |---|---|---|---|
 | [Unity IL2CPP + Compute Shader 自定义 VM：DXBC 还原 32 寄存器字节码并逆出三轮加密](code-analysis-reverse-vm-unity-compute-shader-bytecode-il2cpp/) | verified | high | 2026-11-06 |
 | [VMProtect 虚拟化保护识别与行为分析优先策略：.vmp 段、高熵与稀疏导入表](code-analysis-reverse-vm-vmprotect-identification-behavior-analysis/) | verified | medium | 2026-11-05 |
+| [自定义 ISA/VM 字节码逆向：Binary Ninja 加载器 + 架构插件三回调还原反编译视图](code-analysis-reverse-vm-binary-ninja-custom-isa-architecture-plugin/) | verified | high | 2026-11-11 |
+| [自定义反编译器 IR 中间代码语义还原：结构体偏移、临时变量与循环模式机械化提升为 C 伪代码](code-analysis-reverse-vm-custom-ir-struct-offset-loop-lift/) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

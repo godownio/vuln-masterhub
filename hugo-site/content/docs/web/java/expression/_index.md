@@ -46,6 +46,7 @@ SpEL、OGNL、MVEL、EL 等表达式注入。
 | [JEXL new() 触发反序列化：ObjectInputStream(FileInputStream).readObject() 读取本地 payload](web-java-expression-jexl-objectinputstream-deserialization/) | verified | high | 2026-11-09 |
 | [JEXL new() 调 SnakeYAML.load 组件 gadget：!!JdbcRowSetImpl 属性注入触发 JNDI lookup](web-java-expression-jexl-snakeyaml-load-gadget/) | verified | high | 2026-11-09 |
 | [JEXL 无引号/关键字过滤 bypass：用数字方法链 1.toString().charAt(0).toChars(N) + String.valueOf 构造任意字符串](web-java-expression-jexl-no-quote-string-construction-bypass/) | verified | high | 2026-11-09 |
+| [JSP EL 无引号字符串构造绕过：true.toString().charAt(0).toChars(N)[0].toString().concat 拼出类名与命令](web-java-expression-el-no-quote-tochars-string-construction-bypass/) | verified | high | 2026-11-11 |
 | [JSP EL 表达式注入的 WAF 绕过与 Scanner 回显](web-java-expression-el-injection-waf-bypass-scanner-echo/) | verified | high | 2026-11-05 |
 | [JustEL 表达式注入 + 配置路径穿越写 plugins.txt + HotInstallPlugin 热加载：addCart 参数到任意类实例化 RCE](web-java-expression-justel-plugin-hotload-config-path-traversal/) | verified | high | 2026-11-07 |
 | [定时任务 invokeTarget 白名单子串 + 黑名单遗漏：ELProcessor#eval EL 注入 RCE](web-java-expression-invoketarget-whitelist-substring-elprocessor-el-rce/) | verified | high | 2026-11-07 |

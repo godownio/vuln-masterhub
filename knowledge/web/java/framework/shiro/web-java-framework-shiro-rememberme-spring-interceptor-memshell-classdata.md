@@ -30,11 +30,11 @@ severity: critical
 confidence: medium
 status: verified
 created: '2026-11-07'
-updated: '2026-11-07'
+updated: '2026-11-13'
 verification:
-  verified_by: verifier-V248
-  verified_at: '2026-11-07T13:21:33+08:00'
-  notes: 已对照原文与 39 张图核对：Shiro-550 默认密钥 kPH+bIxk5D2deZiIxcaaaA==、AES-CBC/rememberMe、CB1(PriorityQueue+BeanComparator+TemplatesImpl) 链、AbstractTranslet 两段式加载、RequestContextHolder→RequestFacade.request→Tomcat Request、classData 从 POST body 读取且需 URL 编码、最终 adaptedInterceptors.add 注入 Interceptor 与 ?cmd= 回显均与图 1-39 一致。核实说明：原文称 maxHttpHeaderSize 默认 4096，卡内按实际约 8KB 描述；原文栈为 shiro-core-1.2.4，未给受影响区间，故不设 affected_versions。未验证点：未在本地复现；不同 Tomcat/Spring 版本字段与上下文填充时机可能不同。
+  verified_by: verifier-V653-fix
+  verified_at: '2026-11-13T05:46:17+08:00'
+  notes: 依 12505 复验结论统一修正反序列化入口表述：DefaultSerializer 用 ClassResolvingObjectInputStream（ClassLoader.loadClass，数组链受类加载器可见性限制）而非 new ObjectInputStream；CB1 链为非数组形态不受影响；其余内容未动。
 ---
 
 ## 一句话结论
@@ -43,7 +43,7 @@ verification:
 
 ## 原理
 
-- **Shiro-550 基线**：`rememberMe` Cookie 为 `Base64(16 字节 IV + AES-CBC(Java 序列化数据))`，服务端用固定密钥解密后交给 `DefaultSerializer.deserialize()`，即 `new ObjectInputStream(bytes).readObject()`。攻击者用默认密钥 `kPH+bIxk5D2deZiIxcaaaA==` 自行加密一条 CB1 链（`PriorityQueue.readObject → BeanComparator.compare → PropertyUtils.getProperty(o,"outputProperties") → TemplatesImpl.getOutputProperties → newTransformer`），即可在 `TemplatesImpl._bytecodes` 中执行任意 `AbstractTranslet` 子类的静态块。
+- **Shiro-550 基线**：`rememberMe` Cookie 为 `Base64(16 字节 IV + AES-CBC(Java 序列化数据))`，服务端用固定密钥解密后交给 `DefaultSerializer.deserialize()`，即 `ClassResolvingObjectInputStream` 的 `readObject()`（经 `ClassLoader.loadClass` 解析类名，数组类型链受类加载器可见性限制）。攻击者用默认密钥 `kPH+bIxk5D2deZiIxcaaaA==` 自行加密一条 CB1 链（`PriorityQueue.readObject → BeanComparator.compare → PropertyUtils.getProperty(o,"outputProperties") → TemplatesImpl.getOutputProperties → newTransformer`），即可在 `TemplatesImpl._bytecodes` 中执行任意 `AbstractTranslet` 子类的静态块。
 - **为什么要两段式**：`rememberMe` 是 Cookie，属于请求头；Tomcat 的 `maxHttpHeaderSize` 默认约 8KB。把完整的 Spring Interceptor 内存马类（还带 Spring 反射代码与命令执行逻辑）编译后 Base64 放进 Cookie，会直接触发 400 Bad Request。请求体不受该限制，因此把大体积类字节码移到 POST 参数，Cookie 里只保留一个仅含“取请求 + 读参数 + defineClass”逻辑的小加载器。
 - **没有全局 request 变量时如何取当前请求**：加载器由 `TemplatesImpl` 在反序列化线程中实例化，此时没有 Servlet 方法参数。它调用 `RequestContextHolder.getRequestAttributes()` 取 `ServletRequestAttributes`，再 `getRequest()` 得到 `HttpServletRequest`（Tomcat 下实际是 `RequestFacade`）；反射 `RequestFacade` 的私有字段 `request` 取得 `org.apache.catalina.connector.Request`，继而 `getResponse()` 与 `getSession()`。这条路径依赖 `RequestContextHolder` 在 Shiro 过滤器之前已被 `RequestContextListener`/`RequestContextFilter`（或更早的 Servlet 环节）填充，否则取到 null。
 - **classData 必须 URL 编码**：POST 表单编码会把 Base64 中的 `+` 解码成空格，导致 `BASE64Decoder` 解出错误字节；因此 `classData` 要先做 URL 编码再放入 body。

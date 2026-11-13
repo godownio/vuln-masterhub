@@ -39,6 +39,8 @@ PHP 反序列化、文件包含、RCE 与框架漏洞。
 | [CMS 安装目录残留 install/sql-config/sql.json：未授权读取数据库主机、库名、账号与明文口令](web-php-cms-install-sql-json-unauth-db-credential-disclosure/) | verified | high | 2026-11-09 |
 | [CmsEasy 后台 editcategorytemplate：POST module_name 按 {tag_...} 解析后拼接模板缓存路径，../ 穿越 unlink 删除任意文件](web-php-cmseasy-template-editcategorytemplate-module-name-unlink/) | verified | high | 2026-11-09 |
 | [CmsEasy 后台 image deleteimg：dir 参数未过滤的路径穿越 unlink 任意文件删除](web-php-cmseasy-image-deleteimg-dir-traversal-file-delete/) | verified | high | 2026-11-09 |
+| [eyoucms 任意用户登录：get_token 可控 session 键名 + intval(md5) 弱类型绕过后台鉴权，改模板 getshell](web-php-eyoucms-get-token-session-name-intval-md5-admin-bypass/) | verified | medium | 2026-11-13 |
+| [IBOS 后台数据库恢复 key[] 参数拼接备份目录 unlink：只滤正斜杠，Windows 反斜杠穿越任意文件删除](web-php-ibos-database-restore-key-unlink-traversal/) | verified | medium | 2026-11-13 |
 | [IP-guard WebServer mApplyList 权限绕过 + 任意文件读取（QVD-2024-14103）：getdatarecord 分支跳过登录跳转，tempFile 路径穿越读文件](web-php-ipguard-mapplylist-getdatarecord-auth-bypass-file-read/) | verified | high | 2026-11-09 |
 | [Joomla 4 /api/index.php/v1/config/application?public=true 未授权泄露数据库账号口令（CVE-2023-23752）](web-php-joomla-api-config-application-public-db-credential-leak/) | verified | high | 2026-11-05 |
 | [json_encode(INF) 失败导致内部请求变空包，json_decode(500 错误页) 返回 NULL 绕过 === FALSE 校验](web-php-json-encode-inf-false-jsondecode-null-strict-bypass/) | verified | high | 2026-11-09 |
@@ -47,8 +49,10 @@ PHP 反序列化、文件包含、RCE 与框架漏洞。
 | [PHP 内置开发服务器（php -S）被畸形/流水线请求读出 .php 源码：先拿源码再打通后续反序列化链](web-php-builtin-server-malformed-request-php-source-disclosure/) | verified | low | 2026-11-09 |
 | [PHP 数值前缀/宽松比较绕过：score=300abc 通过 >=300 校验](web-php-loose-numeric-prefix-score-bypass/) | verified | high | 2026-11-06 |
 | [PHP 源码审计硬编码 SM4 默认密钥：StringUtil::encrypt 的 $key='xiaoyewl' 复用 decrypt() 还原后台口令](web-php-hardcoded-sm4-default-key-password-decrypt/) | verified | medium | 2026-11-09 |
+| [WordPress wp_authenticate 后门：修改 pluggable.php 把登录明文账号密码落盘或外带 C2](web-php-wordpress-wp-authenticate-plaintext-credential-backdoor/) | verified | high | 2026-11-12 |
 | [WordPress 配置与旧数据库备份泄露：phpass 破解历史账户并复用至宿主机 SSH](web-php-wordpress-backup-sql-phpass-credential/) | verified | high | 2026-11-05 |
 | [拿到 MySQL root 后直接 UPDATE Joomla 用户表覆盖管理员口令哈希进入后台](web-php-joomla-db-root-reset-admin-password-hash/) | verified | high | 2026-11-08 |
+| [拿到 WordPress 数据库凭据后直改 wp_users 密码哈希接管后台，再读取密码管理插件存储的 SSH 私钥](web-php-wordpress-db-hash-update-plugin-credential-harvest/) | verified | medium | 2026-11-12 |
 | [源码隐藏参数：Unicode Bidi 控制符构造不可见 GET 参数名](web-php-unicode-bidi-hidden-get-parameter/) | verified | high | 2026-11-06 |
 | [独角数卡 dujiaoka 管理员口令哈希复现：固定盐 + bcrypt 替换登录](web-php-dujiaoka-admin-password-hash-reproduce/) | draft | medium | 2026-11-06 |
 | [禅道后台 backup/editor 控制器路径穿越与任意路径删除](web-php-zentao-backup-editor-arbitrary-file-delete/) | verified | high | 2026-11-05 |

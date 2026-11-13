@@ -48,16 +48,19 @@ Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
 | [JeecgBoot 3.7.2 拖拽数据集 getTotalData 的 concat 黑名单绕过：字段名改用「username,password,salt」多列裸写，渲染后仍是多列输出](web-java-framework-jeecgboot-jimureport-comma-field-concat-check-bypass/) | verified | high | 2026-11-07 |
 | [JeecgBoot 3.8.3 /airag/flow/debug：任意用户提交 Groovy 脚本节点导致命令执行](web-java-framework-jeecgboot-airag-flow-debug-groovy-rce/) | verified | high | 2026-11-05 |
 | [JeecgBoot getDictItems filterSql ${} 拼接：黑名单漏 #/or，布尔盲注窃取用户与口令哈希](web-java-framework-jeecgboot-dict-filter-sql-injection/) | verified | high | 2026-11-05 |
+| [JeecgBoot NgAlain getDictItemsByTable 路径变量 ${table}/${key}/${value} 注入：配合 Shiro /**/*.js 匿名后缀未授权读取 sys_user](web-java-framework-jeecgboot-ngalain-getdictitemsbytable-pathvariable-sqli/) | verified | high | 2026-11-12 |
 | [JeecgBoot ≤3.4.0 验证码 Redis Key 复用导致任意用户注册](web-java-framework-jeecgboot-captcha-redis-key-reuse-register/) | verified | high | 2026-11-05 |
 | [JeecgBoot 字典接口 SQL 注入：黑名单 select%0a/current_user/innodb_table_stats 绕过与未过滤透传](web-java-framework-jeecgboot-dict-blacklist-bypass-sqli/) | verified | high | 2026-11-05 |
 | [JeecgBoot 拖拽数据集 /drag/onlDragDatasetHead/getTotalData 未授权：tableName 与 config.fieldName 经 FreeMarker 模板拼入 SELECT，直接读取用户口令列](web-java-framework-jeecgboot-drag-gettotaldata-freemarker-sqli/) | verified | high | 2026-11-07 |
 | [JeecgBoot 注册接口+FUZZ 出的 addSysUserRole 接口自助提权管理员](web-java-framework-jeecgboot-register-addsysuserrole-admin-escalation/) | verified | high | 2026-11-08 |
 | [JFinal ActionMapping.mapping 直接 put 伪造 Action：手搓 Action 对象注册 /controllershell 路由执行任意命令](web-java-framework-jfinal-actionmapping-route-memshell/) | verified | high | 2026-11-08 |
+| [JFinal denyAccessJsp 拦截 .jsp 直接访问：URL 编码扩展名 %6a%73%70 绕过并执行已写入 JSP](web-java-framework-jfinal-denyaccessjsp-url-encoding-bypass/) | verified | high | 2026-11-12 |
 | [JFinal Handler.next 单链表插桩：把恶意 Handler 插到 ActionHandler 之前，按路径前缀命中任意请求执行命令](web-java-framework-jfinal-handler-next-chain-memshell/) | verified | high | 2026-11-08 |
 | [JFinal 既有 Action 的 interceptors 字段替换：给指定路由（如 /hello）挂恶意 Interceptor，只有该路径带 cmd 参数才执行](web-java-framework-jfinal-action-interceptors-field-memshell/) | verified | high | 2026-11-08 |
 | [MyBatis-Plus ≤3.5.6 UpdateWrapper.eq 列名未过滤：用户可控列名直拼 WHERE 触发 SQL 注入（CVE-2024-35548）](web-java-framework-mybatis-plus-updatewrapper-column-sqli/) | verified | high | 2026-11-09 |
 | [Pear Admin Boot 2.0.2 /system/dictData/getDictItems/{dictCode}：三段式 dictCode 直入 ${table}/${text}/${code}，无 WHERE 也能回显 user()（CVE-2024-6241）](web-java-framework-pear-admin-boot-getdictitems-table-text-code-sqli/) | verified | high | 2026-11-08 |
 | [RuoYi 4.5.0 /common/download/resource 路径穿越任意文件读取](web-java-framework-ruoyi-download-resource-path-traversal/) | verified | high | 2026-11-05 |
+| [RuoYi 定时任务调用 RuoYiConfig.setProfile 改写上传目录后 /common/download/resource 无穿越符任意文件读取（CVE-2023-27025）](web-java-framework-ruoyi-setprofile-download-resource-arbitrary-read/) | verified | high | 2026-11-11 |
 | [RuoYi-Vue-Plus <=5.4.0 sendMessageWithAttachment 任意文件读取：filePath 可控附件经邮件外带](web-java-framework-ruoyi-vue-plus-sendmessagewithattachment-arbitrary-file-read/) | verified | high | 2026-11-07 |
 | [Solon <=3.0.8 静态文件映射未过滤 ../：/assets/ 前缀拼接路径穿越读任意文件（CVE-2025-1584）](web-java-framework-solon-staticfiles-path-traversal-arbitrary-file-read/) | verified | high | 2026-11-08 |
 | [Solon 框架 Filter 内存马：静态块反射 Context.current 链路取 ChainManager 并 addFilter 执行 cmd](web-java-framework-solon-filter-memshell-chainmanager-reflect/) | verified | high | 2026-11-07 |
@@ -65,6 +68,7 @@ Spring、Struts2、Shiro、Spring Boot 等框架漏洞。
 | [Undertow 运行中定位任意 Filter 实例：当前线程 ThreadLocalMap → ServletRequestContext → deployment.lifecycleObjects → ManagedFilter.filter](web-java-framework-undertow-managedfilter-threadlocal-lifecycle-locate/) | verified | high | 2026-11-08 |
 | [XFire /services/* 被认证 Filter 前缀白名单放行：SOAP 终点未授权调用 serviceClass 公共方法](web-java-framework-xfire-services-filter-whitelist-unauth-invoke/) | verified | high | 2026-11-08 |
 | [内存马定位：从当前线程对象图按字段名 BFS 搜索框架内部注册表（ChainManager/_router/RouterDefault）](java-memshell-thread-object-graph-field-search/) | verified | medium | 2026-11-08 |
+| [普元 EOS 默认配置未授权暴露 REST /rest/services/* 与 WebService WS*ManagerService 接口](web-java-framework-eos-default-rest-ws-unauth-exposure/) | verified | high | 2026-11-12 |
 <!-- AUTO-INDEX:END -->
 
 ## 新增规范

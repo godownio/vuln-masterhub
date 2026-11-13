@@ -43,6 +43,9 @@ Reverse 题型技巧。
 | [Android UE 游戏逆向：UE pak 内 XTEA-CBC 加密 WASM + 原生 VM/WASM 协同模拟，四轮可逆变换解 3941 次点击并派生 AES key/iv](ctf-reverse-android-ue-pak-encrypted-wasm-native-vm-co-simulation.md) | verified | high | 2026-11-06 |
 | [Android 内嵌 CPython 的加密 sitecustomize.py：从 .so 静态提取 AES-ECB 脚本并还原运算符重载 RC4 校验](ctf-reverse-android-embedded-python-sitecustomize-aes-rc4.md) | verified | high | 2026-11-06 |
 | [Android 多组件分段校验题：ContentProvider/广播/Deep Link 三通道取片段 + 自定义 Base64 + native 链式收口](ctf-reverse-android-multicomponent-fragment-chain-native-verify.md) | verified | high | 2026-11-06 |
+| [angr 符号化动态内存输入：blank_state 后把 malloc 指针改成伪地址再写入符号向量](ctf-reverse-angr-symbolic-dynamic-memory-fake-pointer.md) | verified | high | 2026-11-13 |
+| [angr 符号化文件输入：SimFile 模拟文件内容并把符号向量插入 state.fs](ctf-reverse-angr-simfile-symbolic-file-input.md) | verified | high | 2026-11-13 |
+| [angr 约束表达式替代逐字符比较：explore 到比较点后 add_constraints 防路径爆炸](ctf-reverse-angr-constraints-avoid-path-explosion.md) | verified | high | 2026-11-13 |
 | [APK native NEON 校验逆向：vqtbl1q_s8 查表重排 + veorq_s8 异或 + 3 字节分组 ROR 与换表 Base64](ctf-reverse-apk-native-neon-vqtbl-shuffle-xor-ror-custom-base64.md) | verified | high | 2026-11-07 |
 | [APK native 三段校验逆解：TEA 16 轮 + GF(2^8) 矩阵求逆 + LCG 异或流](ctf-reverse-apk-native-tea-gf256-matrix-lcg.md) | verified | high | 2026-11-06 |
 | [APK native 自定义 RC4：S 盒初始化为 [1..255,0] + 6 字节 key，解出凭证后再反向 RLE 还原 flag](ctf-reverse-apk-native-custom-rc4-sbox-rle-credential.md) | verified | high | 2026-11-07 |
@@ -68,6 +71,7 @@ Reverse 题型技巧。
 | [ctypes 加载原 PE 调用内部函数：GenKey/B90/D30 复用，Python 只逆 E70/B10](ctf-reverse-ctypes-load-pe-call-internal-functions.md) | verified | high | 2026-11-06 |
 | [Cython pyd 校验器盲测：替换模块函数返回值包装成「比较即打印」的 Symbol 对象，从 __eq__ 日志读出每段期望值，再枚举被掩码吃掉的高位补出 8 位 hex 输入](ctf-reverse-pyd-symbol-eq-oracle-masked-permutation-enumeration.md) | verified | medium | 2026-11-08 |
 | [DES-ECB 纯干扰：比较对象是 PKCS#7 填充后的明文 hex，不是密文](ctf-reverse-des-red-herring-pkcs7-padded-plaintext.md) | verified | high | 2026-11-06 |
+| [DLL 导出序号链逆向：IDA Python 还原 1-48 号调用顺序，按序调用改 CAST128 密钥解密内嵌 PE 与 Beep 校验输出 flag](ctf-reverse-dll-ordinal-chain-cast128-beep-flag.md) | verified | high | 2026-11-12 |
 | [DOCM 宏用 certutil -decode 释放 PE：olevba 提取宏 + 位移 6/异或 7 校验逆运算](ctf-reverse-docm-vba-certutil-decode-shift-xor-check.md) | verified | high | 2026-11-08 |
 | [Electron asar + Rust WASM 许可证校验：32 位滚动哈希碰撞 + Z3 联立解锁输出约束](ctf-reverse-electron-asar-wasm-license-hash-collision-z3.md) | verified | medium | 2026-11-06 |
 | [ELF REL 可重定位目标文件差分重定位建模：未定义符号作输入位点还原仿射校验](ctf-reverse-elf-rel-differential-relocation-affine-model.md) | verified | high | 2026-11-06 |
@@ -90,6 +94,10 @@ Reverse 题型技巧。
 | [Godot 游戏逆向：pck/gdc 解包反编译、12 位十进制编码还原与补丁重打包](ctf-reverse-godot-pck-gdc-decompile-patch-repack.md) | verified | high | 2026-11-06 |
 | [GPT-2 logits 序列反推输入：逐 token MSE 匹配与 loss 断崖剪枝](ctf-reverse-gpt2-logits-inversion-mse-token-recovery.md) | verified | high | 2026-11-06 |
 | [HarmonyOS 手势锁逆向：N-API verifyPattern 校验 + XXTEA 解 9 元组恢复解锁顺序](ctf-reverse-harmonyos-pattern-lock-napi-xxtea-recover.md) | verified | medium | 2026-11-08 |
+| [HITCTF 2022 debug_maze 逆向：TLS 回调隐藏逻辑 + PEB 花指令反调试 + 异常分发 VM + SM3 校验迷宫](ctf-reverse-tls-callback-exception-vm-sm3-maze.md) | verified | high | 2026-11-13 |
+| [HNCTF 2022 findit 逆向：6 位口令 MD5 爆破 + 字节置换异或链多解 DFS 还原](ctf-reverse-md5-prefix-crack-byte-permute-xor-dfs.md) | verified | high | 2026-11-13 |
+| [HTC CTF 矩阵乘 RE：IDA 条件断点+IDAPython 现场导出 mul 系数与中间值，z3 解 4 元线性方程 + 单字节异或爆破 + 置换逆序还原 16 字节 flag](ctf-reverse-htc-matrix-permutation-xor-conditional-breakpoint-z3.md) | verified | high | 2026-11-12 |
+| [HZNUCTF 2023 snake 逆向：PyInstaller pygame 程序 pyc 提取 + 游戏内盐值 + sha256(salt+flag) 掩码爆破](ctf-reverse-pyinstaller-pygame-salt-sha256-mask-crack.md) | verified | high | 2026-11-13 |
 | [int3 调度基本块的控制流混淆：父进程 ptrace 转储结构体并重建 CFG](ctf-reverse-int3-basic-block-cfg-recovery.md) | verified | high | 2026-11-07 |
 | [Intel AMX 矩阵乘法实现的状态机逆向：64 符号转移 + 行和约束 BFS](ctf-reverse-intel-amx-matrix-state-bfs.md) | verified | medium | 2026-11-06 |
 | [iOS ARM64 Mach-O 游戏逆向：Unicorn 装载 + 用直接 actor handler 替换 Mach IPC，复现 RC4 解密](ctf-reverse-ios-macho-unicorn-mach-ipc-rc4.md) | verified | high | 2026-11-06 |
@@ -105,7 +113,9 @@ Reverse 题型技巧。
 | [MIPS CTF 逆向 ereere：字符串定位换表 Base64 与标准 RC4，按加密顺序逆解出 flag](ctf-reverse-mips-rc4-custom-base64-ereere.md) | verified | high | 2026-11-08 |
 | [MMX/SIMD 字节级块加密逆运算：XOR→奇偶交换→循环左移→逐字节加 key](ctf-reverse-mmx-simd-block-xor-swap-rot-add.md) | verified | high | 2026-11-07 |
 | [M·CORE 固件逆向：先 RC4（key=testkey）再对结果做「从后往前累加异或」，倒序一次即可还原 flag](ctf-reverse-mcore-rc4-then-reverse-cumulative-xor.md) | verified | medium | 2026-11-08 |
+| [N1CTF 2023 addtion plus：48 字节输入按 8 字节加密/16 字节比较，patch 比较与循环次数后用 Ponce 分块符号求解](ctf-reverse-n1ctf-addtion-plus-blockwise-symbolic-execution.md) | verified | medium | 2026-11-11 |
 | [NCTF 2022 cccha：三类花指令（call $+5 改返回地址、jmp db、抵消式）patch 后识别 ChaCha20 恢复密钥流](ctf-reverse-nctf2022-cccha-flower-patch-chacha20.md) | verified | high | 2026-11-09 |
+| [NOR-Machine 单指令虚拟机逆向：从 PE 提取 16 位 NOR 字节码，按 mem[mem[IP+2]]=NOR(mem[mem[IP]],mem[mem[IP+1]]) 用 Python 仿真并逐字符爆破 flag](ctf-reverse-nor-machine-single-instruction-vm-emulate-bruteforce.md) | verified | high | 2026-11-12 |
 | [NRO 顶点缓冲重绘：按 6 float/顶点 + 三角形光栅化还原白字 flag](ctf-reverse-nro-vertex-buffer-rasterization-text.md) | verified | high | 2026-11-06 |
 | [obfusheader.h 花指令混淆动调：内存断点定位 memcmp，转储 rand 值与密文逆半字节交换/取反/16 位 XOR](ctf-reverse-obfusheader-dynamic-memcmp-rand-xor-nibble-swap.md) | verified | high | 2026-11-07 |
 | [ONNX ViT 后门逆向：图差分定位 flag 常量 + 逐层逆 Transformer 重建触发图](ctf-reverse-onnx-vit-backdoor-flag-constant-inversion.md) | verified | high | 2026-11-07 |
@@ -118,15 +128,18 @@ Reverse 题型技巧。
 | [Python 3.13 自定义 VM 逆向：隐藏容器解密 + 逐字节分支 oracle 求解](ctf-reverse-python-vm-hidden-container-branch-oracle.md) | verified | high | 2026-11-06 |
 | [Python 逆向：monkey-patch str.__eq__ 记录 flag 校验的比较对](ctf-reverse-python-str-eq-monkey-patch-comparison-log.md) | verified | high | 2026-11-06 |
 | [RC4 变种 S[i]=~i + (P⊕X)+A：用全 0/全 255 加密 oracle 反推 keystream 解密 PNG](ctf-reverse-rc4-inverted-sbox-add-xor-oracle-keystream.md) | verified | high | 2026-11-06 |
+| [RDMA Soft RoCE 逆向：用 rdma-core 调试符号建 IDA Type Library，dump WQE 理解 ATOMIC_FETCH_AND_ADD 自修改 CAS 校验](ctf-reverse-rdma-soft-roce-wqe-selfmodify-atomic-cas.md) | verified | high | 2026-11-10 |
 | [Rust ELF 后门魔改 AES-128-CBC：自定义 S-box 与 ShiftRows，逆向外带流量解密 flag](ctf-reverse-custom-aes-sbox-shiftrows-c2-traffic-decrypt.md) | verified | high | 2026-11-06 |
 | [SHA256 三字节滑动窗口 + 二叉搜索树乱序密文的逆向：3 字符爆破与 2 字节重叠链还原 flag](ctf-reverse-sha256-sliding-window-bst-bruteforce.md) | verified | medium | 2026-11-07 |
 | [SMC 自解密 + 魔改 XXTEA：mix 改成同一变量双移位项，运行时 Attach 取真代码后逆轮](ctf-reverse-smc-runtime-attach-xxtea-same-var-double-shift-mix.md) | verified | medium | 2026-11-08 |
 | [so .rodata 内嵌加密 dex 分段广播拼装：dump 后 jadx 提取隐藏校验逻辑](ctf-reverse-android-native-embedded-encrypted-dex-segment-dump.md) | verified | high | 2026-11-08 |
 | [SPARC 大端 ROM 逆向与 ChaCha8 魔改验证：fake_flag XOR 密文再 XOR keystream](ctf-reverse-sparc-rom-chacha8-fakeflag-xor.md) | verified | high | 2026-11-06 |
 | [SQLCipher 加密库密钥恢复：应用内多层编码藏 key 后 PRAGMA 解密导出](ctf-reverse-android-sqlcipher-key-recovery-export.md) | verified | high | 2026-11-08 |
+| [SUCTF 2018 hash 逆向：MD5 摘要偶数位异或 1 还原 + 弱口令 birthday 爆破](ctf-reverse-md5-digest-even-xor1-birthday-crack.md) | verified | high | 2026-11-13 |
 | [Swift String 迭代引发的 UTF-8 重编码混淆：c2/c3 前缀还原后逆向多层加密链](ctf-reverse-ios-swift-utf8-reencode-obfuscation-chain.md) | verified | high | 2026-11-08 |
 | [Switch NRO 尾部追加 JPEG：按 SOI/EOI 边界 carve 提取隐藏图片](ctf-reverse-nro-appended-jpeg-carving.md) | verified | high | 2026-11-06 |
 | [Telink TC32 固件逆向：CRC-CCITT 约束恢复 AES key + 解密数据区还原双 QR](ctf-reverse-telink-tc32-crc-aes-qr.md) | verified | high | 2026-11-06 |
+| [TetCTF2024 rust_vm：Rust 自定义 VM 逆向，识别 8×8 位矩阵马步校验后用骑士巡游（Hamiltonian 路径）构造输入](ctf-reverse-rust-vm-bitboard-knight-tour-hamiltonian-input.md) | verified | high | 2026-11-12 |
 | [time(0) 时间种子 + 双轮 65537 次洗牌与自定义 mix：按样本 mtime 窗口爆破 seed 并逆变换](ctf-reverse-time-seed-shuffle-mix-bruteforce-mtime.md) | verified | high | 2026-11-06 |
 | [Tracr 编译 Transformer 逆向：pickle/zstd stub 反序列化 + NumPy 前向 + residual_labels](ctf-reverse-tracr-transformer-residual-labels.md) | verified | high | 2026-11-06 |
 | [Twofish 逆向：Q-box/MDS 查表识别、dump 表与逆向 16 轮 Feistel](ctf-reverse-twofish-table-dump-decrypt.md) | verified | high | 2026-11-06 |
@@ -144,6 +157,7 @@ Reverse 题型技巧。
 | [XXTEA 魔改 delta 0x87654321 + 异或循环移位派生密钥：按自定义 mix 与 42 轮逆推](ctf-reverse-xxtea-custom-delta-derived-key.md) | verified | high | 2026-11-07 |
 | [Z3 BitVec 建模复杂 flag 校验：字节变换 + SWAR popcount + SplitMix64 哈希约束求解](ctf-reverse-z3-bitvec-popcount-splitmix64.md) | verified | high | 2026-11-07 |
 | [Z3 求解逆向题约束方程组：按变量表取值，注意移位与逻辑或](ctf-reverse-z3-constraint-equation-solve.md) | verified | high | 2026-11-06 |
+| [Zig 加密器黑盒探测：构造输入确认字节→像素灰度恒等映射，直接读 secret 图像通道还原明文（有损 JPEG 用已知明文纠错）](ctf-reverse-zig-blackbox-byte-to-pixel-identity-mapping.md) | verified | high | 2026-11-12 |
 | [三关串联校验逆向：魔方公式密钥 + FNV1a32、五元线性方程组与 seed 派生动态迷宫](ctf-reverse-multi-stage-cube-fnv1a-linear-system-dynamic-maze.md) | verified | medium | 2026-11-06 |
 | [不逆算法，直接 GUI 自动化通关：pyautogui 点击+输入 + pywinauto UIA 读弹窗文本，用「已访问集合」剪枝跑 BFS](ctf-reverse-ui-automation-pyautogui-pywinauto-game-solve.md) | verified | medium | 2026-11-08 |
 | [两层 SMC 手剥流程：动调改 eax 绕反调试、NOP 掉花指令 jmp、取 sum 后按魔改 TEA（key 先 XOR 0x52）解出前半段，后半段再补 Caesar 逆移](ctf-reverse-double-layer-smc-antidebug-junk-tea-key-xor-caesar.md) | verified | medium | 2026-11-09 |
@@ -151,6 +165,8 @@ Reverse 题型技巧。
 | [二次多项式索引交换图像加密逆向：RGB 通道逐轮还原 + 轮数爆破](ctf-reverse-quadratic-swap-image-encryption-rounds.md) | verified | high | 2026-11-06 |
 | [仓颉(Cangjie)二进制逆向：StringBuilder::append 切片定位 7 段可逆字符变换，二叉树 DFS 打印顺序错位后重排还原](ctf-reverse-cangjie-segment-transform-btree-print-order.md) | verified | medium | 2026-11-08 |
 | [像素低 4 位方向编码的 10x10 迷宫逆向：XOR 0x7f 解密 + BFS 求路径](ctf-reverse-pixel-low-nibble-direction-maze-bfs.md) | verified | high | 2026-11-06 |
+| [内嵌 wasm 校验逆向：Wasm GC/函数引用类型令 wasm2c 失败，改 Chrome 断点观察运行时异或解密的 g 数组并解 4 元方程组（TetCTF babywasm）](ctf-reverse-embedded-wasm-gc-function-references-devtools-equation-solve.md) | verified | high | 2026-11-12 |
+| [分组异或方程组用 z3 求解：解不唯一时用已知明文前缀（flag{）收紧约束并迭代枚举模型](ctf-reverse-xor-equation-multisolution-known-prefix-z3.md) | verified | high | 2026-11-11 |
 | [列换位（columnar）密钥派生与双阶段输入校验逆向：HDB3 统计的全零绕过](ctf-reverse-columnar-transposition-two-stage-check.md) | verified | medium | 2026-11-06 |
 | [加密 SQLite 资源库逆向：点击序列→TEA/CRC32 tag→CRC32 流解密→seed 驱动改版 RC6](ctf-reverse-tag-crc32-encrypted-sqlite-seed-rc6.md) | verified | medium | 2026-11-06 |
 | [可打印 ASCII 链式 Caesar + 异或隐藏置换表的 16 轮矩阵变换逆向](ctf-reverse-printable-ascii-caesar-hidden-permutation-table.md) | verified | low | 2026-11-06 |
@@ -192,6 +208,7 @@ Reverse 题型技巧。
 | [输出回显当进度条：程序打印的递增字符/星号数量即前缀匹配长度，逐字节枚举还原 flag（含 VM 双字节变体）](ctf-reverse-output-prefix-oracle-byte-brute.md) | verified | high | 2026-11-08 |
 | [逆向嵌入 shellcode 生成 AES-256 密钥：从 .rodata 机器码提取 32 字节 key 并用 AES-CBC 解密](ctf-reverse-embedded-shellcode-builds-aes256-key-cbc-decrypt.md) | verified | high | 2026-11-07 |
 | [逆向自实现的类 RC4 分组加密：定位 20 轮异或+字节置换的轮函数，从 .rodata 取密钥常量后写逆运算程序直接还原明文](ctf-reverse-custom-block-cipher-round-inverse-key-constant.md) | verified | high | 2026-11-08 |
+| [逆向题转图论：9 结点无向图欧拉路径 DFS 搜索 + 路径位置约束过滤还原 flag](ctf-reverse-euler-path-dfs-graph-constraints.md) | verified | high | 2026-11-10 |
 | [逐字符加盐 MD5 爆破：识别 decoy 路径并按位置枚举字符](ctf-reverse-per-char-salted-md5-bruteforce-decoy-path.md) | verified | high | 2026-11-06 |
 | [逐字节乘法+整体反转的 26 字节校验逆向：允许字符集内枚举求逆](ctf-reverse-byte-multiply-reverse-26-byte-check-inverse.md) | verified | high | 2026-11-06 |
 | [静态 ELF 栈上成对常量异或还原隐藏 flag](ctf-reverse-elf-stack-constants-xor-hidden-flag.md) | verified | high | 2026-11-06 |
